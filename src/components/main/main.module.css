@@ -1,0 +1,89 @@
+@font-face {
+    font-family: 'MangoDdobak-B';
+    src: url('https://fastly.jsdelivr.net/gh/projectnoonnu/2405-3@1.1/MangoDdobak-B.woff2') format('woff2');
+    font-weight: 700;
+    font-style: normal;
+}
+
+@font-face {
+    font-family: 'GongGothicMedium';
+    src: url('https://fastly.jsdelivr.net/gh/projectnoonnu/noonfonts_20-10@1.0/GongGothicMedium.woff') format('woff');
+    font-weight: normal;
+    font-style: normal;
+}
+
+* {
+    font-family: 'GongGothicMedium';
+}
+
+.container {
+    display: flex;
+    height: 100vh;
+}
+
+.main__wrap {
+    height: 100%;
+    max-width: 1200px;
+    padding-top: 9rem;
+    margin-left: auto;
+    margin-right: auto;
+    z-index: 11;
+    position: relative;
+    box-sizing: border-box;
+}
+
+.section {
+    margin-bottom: 5rem;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+}
+
+.section h2 {
+    font-size: 2rem;
+    color: #333;
+    margin-bottom: 10px;
+}
+
+.section p {
+    line-height: 1.6;
+    font-size: 1.1rem;
+    color: #666;
+}
+
+code {
+    background-color: #eaeaea;
+    padding: 2px 4px;
+    border-radius: 4px;
+}
+
+
+
+/* 새로운 스타일 추가 */
+.section .main__start {
+    font-size: 1.5rem;
+    color: #333;
+    position: relative;
+    cursor: pointer;
+    font-family: 'GongGothicMedium';
+}
+
+.section .main__start {
+    padding: 15px 60px;
+    border: 1px solid #333;
+    border-radius: 100px;
+    text-align: center;
+    display: inline-block;
+    color: #333;
+    font-size: 20px;
+    font-weight: 500;
+    cursor: pointer;
+}
+
+.section .main__start:hover {
+    background-color: #a19c9c;
+    color: #ffffff;
+    border: 1px solid #a19c9c;
+    transition: 0.5s ease-out;
+}

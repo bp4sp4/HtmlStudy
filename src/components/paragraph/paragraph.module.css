@@ -1,0 +1,78 @@
+.container {
+    display: flex;
+    justify-content: center;
+    width: 100%;
+    max-width: 1200px;
+    height: 100vh;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+.main__wrap {
+    width: 100%;
+    max-width: 900px;
+    height: 100%;
+    padding-top: 9rem;
+    margin-left: 220px;
+    /* Adjust margin-left to accommodate fixed header width */
+    box-sizing: border-box;
+}
+
+.section {
+    margin-bottom: 5rem;
+    display: flex;
+    flex-direction: column;
+}
+
+.main__wrap .title {
+    font-size: 2.5rem;
+    font-weight: 700;
+    margin-bottom: 1rem;
+}
+
+.codeContainer {
+    background-color: #f4f4f4;
+    padding: 1rem;
+    border-radius: 5px;
+    position: relative;
+    font-family: none;
+}
+
+.ex__name {
+    font-size: 1.5rem;
+    font-weight: 700;
+    margin-bottom: 1rem;
+}
+
+
+pre {
+    margin: 0;
+}
+
+.code {
+    background-color: #eaeaea;
+    padding: 2px 4px;
+    border-radius: 4px;
+    display: block;
+}
+
+.copyButton {
+    margin-top: 1rem;
+    padding: 0.5rem 1rem;
+    background-color: #333;
+    color: #fff;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+}
+
+.copyButton:hover {
+    background-color: #555;
+}
+
+.copySuccess {
+    margin-left: 1rem;
+    color: green;
+    font-weight: bold;
+}

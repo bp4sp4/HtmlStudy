@@ -1,25 +1,26 @@
-import logo from './logo.svg';
-import './App.css';
+import React from "react";
+import Router from "./components/route";
+import { useState, useEffect } from "react";
 
-function App() {
+const getRandomColor = () => {
+  const colors = ["#b5d692", "#a3cca2", "#d5e6f5"];
+  return colors[Math.floor(Math.random() * colors.length)];
+};
+
+const App = () => {
+  const [bgColor, setBgColor] = useState("#fff");
+
+  useEffect(() => {
+    setBgColor(getRandomColor());
+  }, []);
+
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+    <div>
+      <div style={{ backgroundColor: bgColor }}>
+        <Router />
+      </div>
     </div>
   );
-}
+};
 
 export default App;
