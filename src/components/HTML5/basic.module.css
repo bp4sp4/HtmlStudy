@@ -60,6 +60,7 @@
 
 pre {
     margin: 0;
+    line-height: 1.2;
 }
 
 .code {
@@ -96,6 +97,7 @@ pre {
     border: 1px solid #ccc;
     border-radius: 5px;
     background-color: #fafafa;
+    font-family: none;
 }
 
 .render__name {

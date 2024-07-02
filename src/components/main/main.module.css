@@ -16,20 +16,24 @@
     font-family: 'GongGothicMedium';
 }
 
+
 .container {
     display: flex;
     height: 100vh;
+    max-width: 1200px;
+    margin-left: auto;
+    margin-right: auto;
 }
 
 .main__wrap {
     height: 100%;
-    max-width: 1200px;
+    width: 100%;
     padding-top: 9rem;
-    margin-left: auto;
-    margin-right: auto;
+    margin-left: 13rem;
     z-index: 11;
     position: relative;
     box-sizing: border-box;
+    overflow-y: auto;
 }
 
 .section {
@@ -58,24 +62,18 @@ code {
     border-radius: 4px;
 }
 
-
-
-/* 새로운 스타일 추가 */
+/* New styles for the button */
 .section .main__start {
     font-size: 1.5rem;
     color: #333;
     position: relative;
     cursor: pointer;
     font-family: 'GongGothicMedium';
-}
-
-.section .main__start {
     padding: 15px 60px;
     border: 1px solid #333;
     border-radius: 100px;
     text-align: center;
     display: inline-block;
-    color: #333;
     font-size: 20px;
     font-weight: 500;
     cursor: pointer;
