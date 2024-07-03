@@ -1,0 +1,13 @@
+{
+  "files": {
+    "main.css": "/HtmlStudy/static/css/main.e151573d.css",
+    "main.js": "/HtmlStudy/static/js/main.758e5857.js",
+    "index.html": "/HtmlStudy/index.html",
+    "main.e151573d.css.map": "/HtmlStudy/static/css/main.e151573d.css.map",
+    "main.758e5857.js.map": "/HtmlStudy/static/js/main.758e5857.js.map"
+  },
+  "entrypoints": [
+    "static/css/main.e151573d.css",
+    "static/js/main.758e5857.js"
+  ]
+}
