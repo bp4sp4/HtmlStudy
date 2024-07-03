@@ -1,12 +1,35 @@
-import React from "react";
+import React, { useState, useEffect } from "react";
 import { NavLink } from "react-router-dom";
 import styles from "./header.module.css";
-import Footer from "../footer/footer";
 
 const Header = () => {
+  const [isDarkMode, setIsDarkMode] = useState(false);
+  const [isDropdownOpen, setIsDropdownOpen] = useState(false);
+
+  useEffect(() => {
+    if (isDarkMode) {
+      document.documentElement.classList.add("dark");
+      document.documentElement.classList.remove("light");
+    } else {
+      document.documentElement.classList.add("light");
+      document.documentElement.classList.remove("dark");
+    }
+  }, [isDarkMode]);
+
+  const toggleDarkMode = () => {
+    setIsDarkMode(!isDarkMode);
+  };
+
+  const toggleDropdown = () => {
+    setIsDropdownOpen(!isDropdownOpen);
+  };
+
   return (
     <>
       <header className={styles.header}>
+        <button onClick={toggleDarkMode} className={styles.toggleButton}>
+          {isDarkMode ? "라이트 모드" : "다크 모드"}
+        </button>
         <div className={styles.logo}>
           <NavLink to="/">
             <h1>&lt;HtmlStudy/&gt;</h1>
@@ -24,12 +47,41 @@ const Header = () => {
                 기본문서구조
               </NavLink>
             </li>
-            <li>
+            <li onClick={toggleDropdown} className={styles.dropdown}>
               <NavLink
                 to="/paragraph/paragraph"
                 activeClassName={styles.active}
               >
-                Paragraph - P태그
+                Paragraph - P태그{" "}
+                <span className={styles.arrow}>
+                  {isDropdownOpen ? "▲" : "▼"}
+                </span>
+              </NavLink>
+              <ul
+                className={`${styles.dropdownMenu} ${
+                  isDropdownOpen ? styles.show : ""
+                }`}
+              >
+                <li>
+                  <NavLink to="/paragraph/sub1" activeClassName={styles.active}>
+                    SubMenu 1
+                  </NavLink>
+                </li>
+                <li>
+                  <NavLink to="/paragraph/sub2" activeClassName={styles.active}>
+                    SubMenu 2
+                  </NavLink>
+                </li>
+                <li>
+                  <NavLink to="/paragraph/sub3" activeClassName={styles.active}>
+                    SubMenu 3
+                  </NavLink>
+                </li>
+              </ul>
+            </li>
+            <li>
+              <NavLink to="/HTML5/basic" activeClassName={styles.active}>
+                기본문서구조
               </NavLink>
             </li>
           </ul>

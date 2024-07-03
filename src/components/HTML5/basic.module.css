@@ -2,76 +2,99 @@
     display: flex;
     justify-content: center;
     width: 100%;
-    max-width: 1200px;
     height: 100vh;
     margin-left: auto;
     margin-right: auto;
+    font-family: Arial, sans-serif;
+    background-color: var(--background-color);
 }
 
 .main__wrap {
     width: 100%;
     max-width: 900px;
     height: 100%;
-    padding-top: 9rem;
+    padding-top: 3rem;
     margin-left: 13rem;
     box-sizing: border-box;
 }
 
 .section {
-    margin-bottom: 3rem;
+    margin-bottom: 1.5rem;
     display: flex;
     flex-direction: column;
 }
 
 .main__wrap .title {
-    font-size: 2.5rem;
+    font-size: 2rem;
     font-weight: 700;
     margin-bottom: 1.3rem;
-    color: #f39c12;
+    color: var(--text-color);
 }
 
 .descwrap {
     width: 100%;
     line-height: 1.5;
+    color: var(--text-color);
 }
 
 .section .descwrap__subtitle {
-    font-size: 1.5rem;
+    font-size: 1.25rem;
+    font-weight: bold;
+    color: var(--text-color);
 }
 
 .section .descwrap__subtitle__desc {
     margin-top: 1rem;
-    font-size: 1.3rem;
+    font-size: 1.1rem;
+    color: var(--text-color);
+}
+
+.windowBar {
+    display: flex;
+    align-items: center;
+    padding: 0.5rem;
+    background-color: #e0e0e0;
+    border-radius: 5px 5px 0 0;
+    margin-bottom: 0.5rem;
+}
+
+.circle {
+    width: 12px;
+    height: 12px;
+    border-radius: 50%;
+    margin-right: 0.5rem;
+}
+
+.red {
+    background-color: #ff5f56;
+}
+
+.yellow {
+    background-color: #ffbd2e;
+}
+
+.green {
+    background-color: #27c93f;
 }
 
 .codeContainer {
+    padding-bottom: 1.5rem;
     background-color: #f4f4f4;
-    padding: 1rem;
     border-radius: 5px;
     position: relative;
     font-family: none;
 }
 
+
 .ex__name {
-    font-size: 1.5rem;
+    font-size: 1.25rem;
     font-weight: 700;
     margin-bottom: 1rem;
-}
-
-pre {
-    margin: 0;
-    line-height: 1.2;
-}
-
-.code {
-    background-color: #eaeaea;
-    padding: 2px 4px;
-    border-radius: 4px;
-    display: block;
+    color: var(--text-color);
 }
 
 .copyButton {
-    margin-top: 1.5rem;
+    margin-left: 1rem;
     padding: 0.5rem 1rem;
     background-color: #333;
     color: #fff;
@@ -97,16 +120,22 @@ pre {
     border: 1px solid #ccc;
     border-radius: 5px;
     background-color: #fafafa;
-    font-family: none;
+
 }
 
 .render__name {
-    font-size: 1.5rem;
+    font-size: 1.25rem;
     font-weight: 700;
-    margin-bottom: 1rem;
     margin-top: 2rem;
+    color: var(--text-color);
 }
 
-.render__code p {
-    font-family: none;
+.render__wrap {
+    position: relative;
+    display: flex;
+    flex-direction: column;
+}
+
+.render__name__sub {
+    color: var(--text-color);
 }

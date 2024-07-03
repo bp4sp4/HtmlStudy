@@ -1,11 +1,14 @@
-import React, { useState } from "react";
-import styles from "../paragraph/paragraph.module.css";
+import React, { useState, useEffect } from "react";
+import styles from "./paragraph.module.css";
 import Header from "../header/header";
+import Prism from "prismjs";
+import "prismjs/themes/prism.css";
+import "prismjs/components/prism-markup.min.js";
 
 const Paragraph = () => {
   const [copySuccess, setCopySuccess] = useState("");
-
   const exampleCode = `<p>This is a paragraph.</p>`;
+  const jobcode = `<span>This is a span</span> <!-- p태그와 비슷하다고 생각할 수 있지만 스타일 적용이나 요소를 묶을때 사용함 -->`;
 
   const copyToClipboard = () => {
     navigator.clipboard.writeText(exampleCode).then(
@@ -13,6 +16,10 @@ const Paragraph = () => {
       () => setCopySuccess("복사 실패.")
     );
   };
+
+  useEffect(() => {
+    Prism.highlightAll();
+  }, []);
 
   return (
     <div className={styles.container}>
@@ -34,8 +41,13 @@ const Paragraph = () => {
         <section className={styles.section} id="example">
           <h2 className={styles.ex__name}>P 태그 예제</h2>
           <div className={styles.codeContainer}>
+            <div className={styles.windowBar}>
+              <span className={`${styles.circle} ${styles.red}`}></span>
+              <span className={`${styles.circle} ${styles.yellow}`}></span>
+              <span className={`${styles.circle} ${styles.green}`}></span>
+            </div>
             <pre>
-              <code>{exampleCode}</code>
+              <code className="language-markup">{exampleCode}</code>
             </pre>
             <button onClick={copyToClipboard} className={styles.copyButton}>
               코드 복사
@@ -49,6 +61,14 @@ const Paragraph = () => {
             <div className={styles.render__code}>
               <p>This is a paragraph.</p>
             </div>
+          </div>
+          <div className={styles.render__name}>
+            <span className={styles.render__name__sub}>알아두기만해!</span>
+          </div>
+          <div className={styles.render__code}>
+            <pre>
+              <code className="language-markup">{jobcode}</code>
+            </pre>
           </div>
         </section>
       </main>

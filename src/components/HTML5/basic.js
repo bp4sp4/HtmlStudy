@@ -1,6 +1,8 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import styles from "./basic.module.css";
 import Header from "../header/header";
+import "prismjs/themes/prism.css";
+import Prism from "prismjs";
 
 const Basic = () => {
   const [copySuccess, setCopySuccess] = useState("");
@@ -18,9 +20,9 @@ const Basic = () => {
 <!-- 주석내용 --> 코딩화면에는 보이지만 브라우저에 출력되지 않는 부분을 처리합니다.
 `;
 
-  const jobcode = `<meta name="Keywords" content = "검색엔진이 우선 순위로 체크하는 검색어"
-<meta name="Author" content = "웹사이트를 제작한 제작자 또는 제작사"
-<meta name="description" content = "웹사이트에 대한 짧은 설명 입력"`;
+  const jobcode = `<meta name="Keywords" content = "검색엔진이 우선 순위로 체크하는 검색어">
+<meta name="Author" content = "웹사이트를 제작한 제작자 또는 제작사">
+<meta name="description" content = "웹사이트에 대한 짧은 설명 입력">`;
 
   const copyToClipboard = () => {
     navigator.clipboard.writeText(exampleCode).then(
@@ -28,6 +30,10 @@ const Basic = () => {
       () => setCopySuccess("복사 실패.")
     );
   };
+
+  useEffect(() => {
+    Prism.highlightAll();
+  }, []);
 
   return (
     <div className={styles.container}>
@@ -49,8 +55,13 @@ const Basic = () => {
         <section className={styles.section} id="example">
           <h2 className={styles.ex__name}>HTML 기본 코드 예제</h2>
           <div className={styles.codeContainer}>
+            <div className={styles.windowBar}>
+              <span className={`${styles.circle} ${styles.red}`}></span>
+              <span className={`${styles.circle} ${styles.yellow}`}></span>
+              <span className={`${styles.circle} ${styles.green}`}></span>
+            </div>
             <pre>
-              <code>{exampleCode}</code>
+              <code className="language-markup">{exampleCode}</code>
             </pre>
             <button onClick={copyToClipboard} className={styles.copyButton}>
               코드 복사
@@ -60,10 +71,12 @@ const Basic = () => {
             )}
           </div>
           <div className={styles.render__wrap}>
-            <h2 className={styles.render__name}>알고 있으면 좋은 잡지식</h2>
+            <p className={styles.render__name}>
+              <span className={styles.render__name__sub}>알아두기만해!</span>
+            </p>
             <div className={styles.render__code}>
               <pre>
-                <code>{jobcode}</code>
+                <code className="language-markup">{jobcode}</code>
               </pre>
             </div>
           </div>

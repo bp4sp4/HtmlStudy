@@ -1,28 +1,12 @@
-@font-face {
-    font-family: 'MangoDdobak-B';
-    src: url('https://fastly.jsdelivr.net/gh/projectnoonnu/2405-3@1.1/MangoDdobak-B.woff2') format('woff2');
-    font-weight: 700;
-    font-style: normal;
-}
-
-@font-face {
-    font-family: 'GongGothicMedium';
-    src: url('https://fastly.jsdelivr.net/gh/projectnoonnu/noonfonts_20-10@1.0/GongGothicMedium.woff') format('woff');
-    font-weight: normal;
-    font-style: normal;
-}
-
-* {
-    font-family: 'GongGothicMedium';
-}
-
-
 .container {
     display: flex;
     height: 100vh;
-    max-width: 1200px;
+    width: 100%;
+
     margin-left: auto;
     margin-right: auto;
+    background-color: var(--background-color);
+    color: var(--text-color);
 }
 
 .main__wrap {
@@ -30,7 +14,7 @@
     width: 100%;
     padding-top: 9rem;
     margin-left: 13rem;
-    z-index: 11;
+    z-index: 0;
     position: relative;
     box-sizing: border-box;
     overflow-y: auto;
@@ -46,42 +30,42 @@
 
 .section h2 {
     font-size: 2rem;
-    color: #333;
+    color: var(--text-color);
     margin-bottom: 10px;
 }
 
 .section p {
     line-height: 1.6;
     font-size: 1.1rem;
-    color: #666;
+    color: var(--text-color);
 }
 
 code {
-    background-color: #eaeaea;
+    background-color: var(--code-background-color);
     padding: 2px 4px;
     border-radius: 4px;
 }
 
-/* New styles for the button */
 .section .main__start {
     font-size: 1.5rem;
-    color: #333;
+    color: var(--text-color);
     position: relative;
     cursor: pointer;
     font-family: 'GongGothicMedium';
     padding: 15px 60px;
-    border: 1px solid #333;
+    border: 1px solid var(--button-border-color);
     border-radius: 100px;
     text-align: center;
     display: inline-block;
     font-size: 20px;
     font-weight: 500;
     cursor: pointer;
+    z-index: 1;
 }
 
 .section .main__start:hover {
-    background-color: #a19c9c;
-    color: #ffffff;
-    border: 1px solid #a19c9c;
+    background-color: var(--button-hover-background-color);
+    color: var(--button-hover-text-color);
+    border: 1px solid var(--button-hover-border-color);
     transition: 0.5s ease-out;
 }

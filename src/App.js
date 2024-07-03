@@ -1,25 +1,11 @@
 import React from "react";
 import Router from "./components/route";
-import { useState, useEffect } from "react";
-import Footer from "./components/footer/footer";
-
-const getRandomColor = () => {
-  const colors = ["#b5d692", "#a3cca2", "#d5e6f5"];
-  return colors[Math.floor(Math.random() * colors.length)];
-};
+import "./styles/theme.css";
 
 const App = () => {
-  const [bgColor, setBgColor] = useState("#fff");
-
-  useEffect(() => {
-    setBgColor(getRandomColor());
-  }, []);
-
   return (
     <div>
-      <div style={{ backgroundColor: bgColor }}>
-        <Router />
-      </div>
+      <Router />
     </div>
   );
 };
