@@ -1,4 +1,6 @@
-/* paragraph.module.css */
+* {
+    font-family: 'GongGothicMedium';
+}
 
 .container {
     display: flex;

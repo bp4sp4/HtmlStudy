@@ -1,3 +1,7 @@
+* {
+    font-family: 'GongGothicMedium';
+}
+
 .container {
     display: flex;
     justify-content: center;
