@@ -114,6 +114,7 @@ class Vscode extends Component {
                 개발자들은 어떤 개발툴을 사용할까?
               </h2>
               <div>
+                <div>세계</div>
                 <div className={styles.world__chart} id="world-chart">
                   <ReactApexChart
                     options={this.state.worldOptions}
@@ -122,6 +123,8 @@ class Vscode extends Component {
                     height={350}
                   />
                 </div>
+
+                <div>국내</div>
                 <div className={styles.local__chart} id="local-chart">
                   <ReactApexChart
                     options={this.state.localOptions}
