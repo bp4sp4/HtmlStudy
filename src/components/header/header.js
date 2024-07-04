@@ -43,6 +43,15 @@ const Header = () => {
               </NavLink>
             </li>
             <li>
+              <NavLink
+                to="/devtools/vscode"
+                exact
+                activeClassName={styles.active}
+              >
+                Visual Studio Code
+              </NavLink>
+            </li>
+            <li>
               <NavLink to="/HTML5/basic" activeClassName={styles.active}>
                 기본문서구조
               </NavLink>
