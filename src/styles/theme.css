@@ -23,7 +23,7 @@
     --button-hover-background-color: #666;
     --button-hover-text-color: #ffffff;
     --button-hover-border-color: #666;
-    --border-color: 0.5px solid #d5d5d5
+    --border-color: 1px solid ##fafafa;
 }
 
 /* 라이트 모드 스타일 */
@@ -37,5 +37,5 @@
     --button-hover-background-color: #a19c9c;
     --button-hover-text-color: #ffffff;
     --button-hover-border-color: #a19c9c;
-    --border-color: 0.5px solid #d5d5d5
+    --border-color: 1px solid ##fafafa;
 }

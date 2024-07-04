@@ -5,6 +5,7 @@ const Main = () => {
   return (
     <div className={styles.container}>
       <Header />
+
       <main className={styles.main__wrap}>
         <div>
           <section className={styles.section}>
@@ -39,7 +40,7 @@ const Main = () => {
           <section className={styles.section}>
             <a
               className={styles.main__start__btn}
-              href="/HtmlStudy/devtools/vscode"
+              href="HtmlStudy/devtools/vscode"
             >
               <p className={styles.main__start}>시작하기</p>
             </a>
