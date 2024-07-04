@@ -37,7 +37,10 @@ const Main = () => {
             </p>
           </section>
           <section className={styles.section}>
-            <a className={styles.main__start__btn} href="/paragraph/paragraph">
+            <a
+              className={styles.main__start__btn}
+              href="/HtmlStudy/devtools/vscode"
+            >
               <p className={styles.main__start}>시작하기</p>
             </a>
           </section>
