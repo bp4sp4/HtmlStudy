@@ -1,5 +1,6 @@
 import Header from "../header/header";
 import styles from "./main.module.css";
+import { Link } from "react-router-dom";
 
 const Main = () => {
   return (
@@ -38,9 +39,9 @@ const Main = () => {
             </p>
           </section>
           <section className={styles.section}>
-            <a className={styles.main__start__btn} href="/devtools/vscode">
+            <Link className={styles.main__start__btn} to="/devtools/vscode">
               <p className={styles.main__start}>시작하기</p>
-            </a>
+            </Link>
           </section>
         </div>
       </main>
