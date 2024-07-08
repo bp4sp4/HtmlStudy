@@ -27,64 +27,10 @@ a {
     font-family: "Noto Sans KR", sans-serif;
 }
 
-.header {
-    display: flex;
-    flex-direction: column;
-    justify-content: flex-start;
-    align-items: flex-start;
-    width: 200px;
-    background-color: var(--button-hover-border-color);
-    padding: 20px;
-    height: 100vh;
-    position: fixed;
-    left: 0;
-    top: 0;
-    z-index: 10;
-}
-
-.logo h1 {
-    margin: 0;
-    font-size: 1.7rem;
-    font-family: 'yg-jalnan';
-    color: var(--text-color);
-}
-
-.navbar {
-    padding-top: 3rem;
-}
-
-.navbar ul {
-    list-style: none;
-    padding: 0;
-    margin: 0;
-    width: 100%;
-}
-
-.navbar ul li {
-    margin-bottom: 10px;
-    position: relative;
-}
-
-.navbar ul li a {
-    color: var(--text-color);
-    text-decoration: none;
-
-    display: block;
-    width: 100%;
-    padding: 10px 10px;
-    transition: color 0.3s ease, background-color 0.3s ease;
-}
-
-.navbar ul li a:hover {
-    color: #c9cedc;
-    background-color: rgba(255, 255, 255, 0.1);
-    border-radius: 5px;
-}
-
 .toggleButton {
     position: absolute;
-    top: 1rem;
-    right: -7rem;
+    top: 5rem;
+    right: 1rem;
     padding: 0.5rem 1rem;
     background-color: var(--button-background-color);
     color: var(--button-text-color);
@@ -98,55 +44,4 @@ a {
 .toggleButton:hover {
     background-color: var(--button-hover-background-color);
     color: var(--button-hover-text-color);
-}
-
-.dropdownMenu {
-    display: flex;
-    flex-direction: column;
-    border-radius: 5px;
-    z-index: 1000;
-    padding: 0;
-    margin: 0;
-    max-height: 0;
-    overflow: hidden;
-    opacity: 0;
-    transition: opacity 0.5s ease;
-}
-
-.dropdownMenu.show {
-    max-height: 500px;
-    opacity: 1;
-    margin-top: 0.5rem;
-    margin-left: 1.5rem;
-}
-
-.dropdownMenu li {
-    margin: 0;
-}
-
-.dropdownMenu a {
-    padding: 10px 15px;
-    color: var(--text-color);
-    transition: background-color 0.3s ease;
-}
-
-.dropdownMenu a:hover,
-.dropdownMenu a.active {
-    background-color: var(--button-hover-background-color);
-    color: var(--button-hover-text-color);
-}
-
-.arrow {
-    margin-right: 0.5rem;
-}
-
-.dropdownLink {
-    display: flex;
-    align-items: center;
-    cursor: pointer;
-}
-
-.dropdownLink.active {
-    background-color: rgba(255, 255, 255, 0.1);
-    border-radius: 5px;
 }
