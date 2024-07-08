@@ -7,7 +7,9 @@ import "prismjs/components/prism-markup.min.js";
 
 const Paragraph = () => {
   const [copySuccess, setCopySuccess] = useState("");
-  const exampleCode = `<p>This is a paragraph.</p>`;
+  const exampleCode = `<p>This is a paragraph.<br>이건 P태그에요!</p>
+<hr> <!-- 수평선을 넣는 hr 태그입니다. -->
+<p>이거또한 P태그에요</p>`;
   const jobcode = `<span>This is a span</span> <!-- p태그와 비슷하다고 생각할 수 있지만 스타일 적용이나 요소를 묶을때 사용함 -->`;
 
   const copyToClipboard = () => {
@@ -59,7 +61,11 @@ const Paragraph = () => {
           <div className={styles.render__wrap}>
             <h2 className={styles.render__name}>P 태그 실행 예제 화면</h2>
             <div className={styles.render__code}>
-              <p>This is a paragraph.</p>
+              <p>
+                This is a paragraph.<br></br>이건 P태그에요!
+              </p>
+              <hr></hr>
+              <p>이거또한 P태그에요</p>
             </div>
           </div>
           <div className={styles.render__name}>

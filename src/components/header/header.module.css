@@ -68,7 +68,7 @@ a {
 .navbar ul li a {
     color: var(--text-color);
     text-decoration: none;
-    font-size: 1.1rem;
+
     display: block;
     width: 100%;
     padding: 10px 10px;
@@ -110,13 +110,14 @@ a {
     max-height: 0;
     overflow: hidden;
     opacity: 0;
-    transition: max-height 0.5s ease, opacity 0.5s ease;
+    transition: opacity 0.5s ease;
 }
 
 .dropdownMenu.show {
-
     max-height: 500px;
     opacity: 1;
+    margin-top: 0.5rem;
+    margin-left: 1.5rem;
 }
 
 .dropdownMenu li {
@@ -136,5 +137,16 @@ a {
 }
 
 .arrow {
-    margin-left: 5px;
+    margin-right: 0.5rem;
+}
+
+.dropdownLink {
+    display: flex;
+    align-items: center;
+    cursor: pointer;
+}
+
+.dropdownLink.active {
+    background-color: rgba(255, 255, 255, 0.1);
+    border-radius: 5px;
 }

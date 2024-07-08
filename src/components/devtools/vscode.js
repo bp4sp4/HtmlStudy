@@ -48,7 +48,7 @@ class Vscode extends Component {
           categories: [
             "VSCode",
             "IntelliJ",
-            "Eclipes",
+            "Eclipse",
             "Visual Studio",
             "PyCharm",
             "Android Studio",
@@ -114,7 +114,7 @@ class Vscode extends Component {
                 개발자들은 어떤 개발툴을 사용할까?
               </h2>
               <div>
-                <div>세계</div>
+                <div>세계 개발툴 순위</div>
                 <div className={styles.world__chart} id="world-chart">
                   <ReactApexChart
                     options={this.state.worldOptions}
@@ -124,7 +124,7 @@ class Vscode extends Component {
                   />
                 </div>
 
-                <div>국내</div>
+                <div>국내 개발툴 순위</div>
                 <div className={styles.local__chart} id="local-chart">
                   <ReactApexChart
                     options={this.state.localOptions}
@@ -135,6 +135,45 @@ class Vscode extends Component {
                 </div>
                 <div id="html-dist"></div>
               </div>
+            </div>
+          </section>
+          <section className={styles.section} id="promotion">
+            <div className={styles.descwrap}>
+              <h2 className={styles.descwrap__subtitle}>
+                왜 VSCode를 사용해야 할까요?
+              </h2>
+              <p className={styles.descwrap__text}>
+                VSCode는 개발자들 사이에서 가장 인기 있는 코드 편집기 중
+                하나입니다. 이는 그 강력한 기능, 사용자 친화적인 인터페이스,
+                그리고 다양한 확장 프로그램 덕분입니다. 특히, 다음과 같은 이유로
+                VSCode를 추천합니다
+              </p>
+              <ul className={styles.benefitsList}>
+                <li>
+                  <span className={styles.benefitsList__num}>1.</span>풍부한
+                  확장 프로그램과 플러그인 지원
+                </li>
+                <li>
+                  <span className={styles.benefitsList__num}>2.</span>다양한
+                  언어에 대한 우수한 지원
+                </li>
+                <li>
+                  <span className={styles.benefitsList__num}>3.</span>강력한
+                  디버깅 기능
+                </li>
+                <li>
+                  <span className={styles.benefitsList__num}>4.</span>다양한
+                  테마와 커스터마이징 옵션
+                </li>
+                <li>
+                  <span className={styles.benefitsList__num}>5.</span>무료로
+                  제공되는 오픈소스 소프트웨어
+                </li>
+              </ul>
+              <p className={styles.callToAction}>
+                지금 바로 VSCode를 다운로드하고, &lt;HtmlStudy/&gt; 에서 학습을
+                시작하세요!
+              </p>
             </div>
           </section>
         </main>

@@ -56,24 +56,28 @@ const Header = () => {
                 기본문서구조
               </NavLink>
             </li>
-            <li onClick={toggleDropdown} className={styles.dropdown}>
-              <NavLink
-                to="/paragraph/paragraph"
-                activeClassName={styles.active}
+
+            <li className={styles.dropdown}>
+              <a
+                href="#!"
+                onClick={toggleDropdown}
+                className={`${styles.dropdownLink} ${
+                  isDropdownOpen ? styles.active : ""
+                }`}
               >
-                Paragraph - P태그{" "}
                 <span className={styles.arrow}>
                   {isDropdownOpen ? "▲" : "▼"}
                 </span>
-              </NavLink>
+                텍스트 서식 꾸미기{" "}
+              </a>
               <ul
                 className={`${styles.dropdownMenu} ${
                   isDropdownOpen ? styles.show : ""
                 }`}
               >
                 <li>
-                  <NavLink to="/paragraph/sub1" activeClassName={styles.active}>
-                    SubMenu 1
+                  <NavLink to="/text/paragraph" activeClassName={styles.active}>
+                    P태그
                   </NavLink>
                 </li>
                 <li>
