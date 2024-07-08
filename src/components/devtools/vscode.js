@@ -123,7 +123,6 @@ class Vscode extends Component {
                     height={350}
                   />
                 </div>
-
                 <div>국내 개발툴 순위</div>
                 <div className={styles.local__chart} id="local-chart">
                   <ReactApexChart
@@ -132,7 +131,11 @@ class Vscode extends Component {
                     type="bar"
                     height={350}
                   />
+                  <span className={styles.chart__link}>
+                    출처 : 프로그래머스
+                  </span>
                 </div>
+
                 <div id="html-dist"></div>
               </div>
             </div>

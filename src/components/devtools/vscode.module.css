@@ -68,6 +68,12 @@ foreignObject {
     margin-bottom: 2rem;
 }
 
+.chart__link {
+    float: right;
+    font-size: 0.9rem;
+    color: var(--text-color);
+}
+
 .local_title {
     font-size: 1.5rem;
 }
