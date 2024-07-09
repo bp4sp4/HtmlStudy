@@ -45,3 +45,8 @@ a {
     background-color: var(--button-hover-background-color);
     color: var(--button-hover-text-color);
 }
+
+header {
+    background-color: var(--background-color) !important;
+    color: var(--text-color) !important;
+}

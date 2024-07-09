@@ -35,14 +35,8 @@ const Main = styled("main", { shouldForwardProp: (prop) => prop !== "open" })(
       easing: theme.transitions.easing.sharp,
       duration: theme.transitions.duration.leavingScreen,
     }),
-    marginLeft: `-${drawerWidth}px`,
-    ...(open && {
-      transition: theme.transitions.create("margin", {
-        easing: theme.transitions.easing.easeOut,
-        duration: theme.transitions.duration.enteringScreen,
-      }),
-      marginLeft: 0,
-    }),
+    marginLeft: open ? drawerWidth : 0,
+    position: "relative",
   })
 );
 
@@ -82,7 +76,9 @@ const menuItems = [
   { name: "기본문서구조", path: "/HTML5/basic", icon: <DomainIcon /> },
   { name: "P태그", path: "/text/paragraph", icon: <MailIcon /> },
   { name: "SubMenu 2", path: "/paragraph/sub2", icon: <AccountCircleIcon /> },
-  { name: "SubMenu 3", path: "/paragraph/sub3", icon: <MailIcon /> },
+  { name: "SubMenu 2", path: "/paragraph/sub2", icon: <AccountCircleIcon /> },
+  { name: "SubMenu 2", path: "/paragraph/sub2", icon: <AccountCircleIcon /> },
+  { name: "SubMenu 2", path: "/paragraph/sub2", icon: <AccountCircleIcon /> },
 ];
 
 const Header = () => {
@@ -110,7 +106,9 @@ const Header = () => {
   };
 
   return (
-    <Box sx={{ display: "flex", flexDirection: "column", minHeight: "100vh" }}>
+    <Box
+      sx={{ position: "absolute", flexDirection: "column", minHeight: "100vh" }}
+    >
       <CssBaseline />
       <AppBar position="fixed" open={open}>
         <Toolbar>
@@ -124,7 +122,7 @@ const Header = () => {
             <MenuIcon />
           </IconButton>
           <Typography variant="h6" noWrap component="div">
-            Persistent drawer
+            &lt; HtmlStudy &gt;
           </Typography>
         </Toolbar>
       </AppBar>
@@ -135,6 +133,7 @@ const Header = () => {
           "& .MuiDrawer-paper": {
             width: drawerWidth,
             boxSizing: "border-box",
+            background: "#d2d2d2 !important",
           },
         }}
         variant="persistent"

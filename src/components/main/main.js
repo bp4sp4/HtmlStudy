@@ -6,7 +6,6 @@ const Main = () => {
   return (
     <div className={styles.container}>
       <Header />
-
       <main className={styles.main__wrap}>
         <div>
           <section className={styles.section}>
