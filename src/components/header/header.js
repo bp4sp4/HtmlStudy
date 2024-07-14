@@ -7,23 +7,25 @@ import Drawer from "@mui/material/Drawer";
 import CssBaseline from "@mui/material/CssBaseline";
 import MuiAppBar from "@mui/material/AppBar";
 import Toolbar from "@mui/material/Toolbar";
-import List from "@mui/material/List";
 import Typography from "@mui/material/Typography";
 import Divider from "@mui/material/Divider";
 import IconButton from "@mui/material/IconButton";
 import MenuIcon from "@mui/icons-material/Menu";
 import ChevronLeftIcon from "@mui/icons-material/ChevronLeft";
 import ChevronRightIcon from "@mui/icons-material/ChevronRight";
+import List from "@mui/material/List";
 import ListItem from "@mui/material/ListItem";
 import ListItemButton from "@mui/material/ListItemButton";
 import ListItemIcon from "@mui/material/ListItemIcon";
 import ListItemText from "@mui/material/ListItemText";
+import Collapse from "@mui/material/Collapse";
 import Switch from "@mui/material/Switch";
-import DomainIcon from "@mui/icons-material/Domain";
-import InboxIcon from "@mui/icons-material/MoveToInbox";
-import MailIcon from "@mui/icons-material/Mail";
-import AccountCircleIcon from "@mui/icons-material/AccountCircle";
+import AbcIcon from "@mui/icons-material/Abc";
 import CodeIcon from "@mui/icons-material/Code";
+import { Home, ExpandLess, ExpandMore, Tag } from "@mui/icons-material";
+import HtmlIcon from "@mui/icons-material/Html";
+import ImageIcon from "@mui/icons-material/Image";
+import AddLinkIcon from "@mui/icons-material/AddLink";
 
 const drawerWidth = 240;
 
@@ -66,25 +68,65 @@ const DrawerHeader = styled("div")(({ theme }) => ({
 }));
 
 const menuItems = [
-  { name: "HtmlStudy", path: "/", exact: true, icon: <InboxIcon /> },
+  { name: "HtmlStudy", path: "/", exact: true, icon: <Home /> },
   {
     name: "Visual Studio Code",
     path: "/devtools/vscode",
     exact: true,
     icon: <CodeIcon />,
   },
-  { name: "기본문서구조", path: "/HTML5/basic", icon: <DomainIcon /> },
-  { name: "P태그", path: "/text/paragraph", icon: <MailIcon /> },
-  { name: "SubMenu 2", path: "/paragraph/sub2", icon: <AccountCircleIcon /> },
-  { name: "SubMenu 2", path: "/paragraph/sub2", icon: <AccountCircleIcon /> },
-  { name: "SubMenu 2", path: "/paragraph/sub2", icon: <AccountCircleIcon /> },
-  { name: "SubMenu 2", path: "/paragraph/sub2", icon: <AccountCircleIcon /> },
+  { name: "기본문서구조", path: "/HTML5/basic", icon: <HtmlIcon /> },
+  {
+    name: "텍스트서식",
+    path: "/text/paragraph",
+    icon: <AbcIcon />,
+    subItems: [
+      {
+        name: "P 태그",
+        path: "/text/paragraph",
+        icon: <Tag />,
+      },
+      {
+        name: "HnGroup태그",
+        path: "/text/hngroup",
+        icon: <Tag />,
+      },
+      {
+        name: "HnGroup태그",
+        path: "/text/hngroup",
+        icon: <Tag />,
+      },
+      {
+        name: "비주류 태그 01 ",
+        path: "/text/oftentag",
+        icon: <Tag />,
+      },
+      {
+        name: "비주류 태그 02 ",
+        path: "/text/oftentag02",
+        icon: <Tag />,
+      },
+    ],
+  },
+  {
+    name: "이미지 다루기",
+    path: "/devtools/vscode",
+    exact: true,
+    icon: <ImageIcon />,
+  },
+  {
+    name: "링크 다루기",
+    path: "/devtools/vscode",
+    exact: true,
+    icon: <AddLinkIcon />,
+  },
 ];
 
 const Header = () => {
   const theme = useTheme();
   const [open, setOpen] = useState(false);
   const [isDarkMode, setIsDarkMode] = useState(false);
+  const [openSubMenu, setOpenSubMenu] = useState({});
 
   const handleDrawerOpen = () => {
     setOpen(true);
@@ -105,6 +147,13 @@ const Header = () => {
     }
   };
 
+  const handleSubMenuClick = (name) => {
+    setOpenSubMenu((prevOpenSubMenu) => ({
+      ...prevOpenSubMenu,
+      [name]: !prevOpenSubMenu[name],
+    }));
+  };
+
   return (
     <Box
       sx={{ position: "absolute", flexDirection: "column", minHeight: "100vh" }}
@@ -122,7 +171,7 @@ const Header = () => {
             <MenuIcon />
           </IconButton>
           <Typography variant="h6" noWrap component="div">
-            &lt; HtmlStudy &gt;
+            <h1 className={styles.main__title}>&lt; HtmlStudy /&gt;</h1>
           </Typography>
         </Toolbar>
       </AppBar>
@@ -152,17 +201,55 @@ const Header = () => {
         <Divider />
         <List>
           {menuItems.map((item) => (
-            <ListItem key={item.name} disablePadding>
-              <ListItemButton
-                component={NavLink}
-                to={item.path}
-                exact={item.exact}
-                activeClassName={styles.active}
-              >
-                <ListItemIcon>{item.icon}</ListItemIcon>
-                <ListItemText primary={item.name} />
-              </ListItemButton>
-            </ListItem>
+            <React.Fragment key={item.name}>
+              <ListItem disablePadding>
+                <ListItemButton
+                  component={item.subItems ? "div" : NavLink}
+                  to={item.subItems ? undefined : item.path}
+                  exact={item.exact}
+                  activeClassName={styles.active}
+                  onClick={
+                    item.subItems
+                      ? () => handleSubMenuClick(item.name)
+                      : undefined
+                  }
+                >
+                  <ListItemIcon>{item.icon}</ListItemIcon>
+                  <ListItemText primary={item.name} />
+                  {item.subItems ? (
+                    openSubMenu[item.name] ? (
+                      <ExpandLess />
+                    ) : (
+                      <ExpandMore />
+                    )
+                  ) : null}
+                </ListItemButton>
+              </ListItem>
+              {item.subItems && (
+                <Collapse
+                  in={openSubMenu[item.name]}
+                  timeout="auto"
+                  unmountOnExit
+                >
+                  <List component="div" disablePadding>
+                    {item.subItems.map((subItem) => (
+                      <ListItem key={subItem.name} disablePadding>
+                        <ListItemButton
+                          component={NavLink}
+                          to={subItem.path}
+                          exact={subItem.exact}
+                          activeClassName={styles.active}
+                          sx={{ pl: 4 }}
+                        >
+                          <ListItemIcon>{subItem.icon}</ListItemIcon>
+                          <ListItemText primary={subItem.name} />
+                        </ListItemButton>
+                      </ListItem>
+                    ))}
+                  </List>
+                </Collapse>
+              )}
+            </React.Fragment>
           ))}
         </List>
         <Divider />

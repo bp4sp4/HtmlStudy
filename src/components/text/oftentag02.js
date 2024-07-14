@@ -6,14 +6,17 @@ import "prismjs/themes/prism.css";
 import "prismjs/components/prism-markup.min.js";
 import { Skeleton } from "primereact/skeleton";
 
-const Paragraph = () => {
+const Mark = () => {
   const [copySuccess, setCopySuccess] = useState("");
   const [loading, setLoading] = useState(true);
-  const exampleCode = `<p>This is a paragraph.<br>이건 P태그에요!</p>
-<hr> <!-- 수평선을 넣는 hr 태그입니다. -->
-<p>이거또한 P태그에요</p>`;
-  const jobcode = `<span>This is a span</span> 
-<!-- p태그와 비슷하다고 생각할 수 있지만 스타일 적용이나 요소를 묶을때 사용함 -->`;
+  const exampleCode = `<big>큰 글자</big>
+<small>작은글자</small>
+<mark>하이라이트 표시</mark>
+<pre><code>코드블럭 span {font-size : 30px; }</code></pre>
+`;
+
+  const jobcode = `<!-- 글자크기 조절 같은건 보통 css를 활용해 사용해주는게 좋습니다. -->
+font-size : 30px `;
 
   const copyToClipboard = () => {
     navigator.clipboard.writeText(exampleCode).then(
@@ -40,25 +43,21 @@ const Paragraph = () => {
       <main className={styles.main__wrap}>
         {loading ? (
           <Skeleton
-            width="25%"
-            height="2rem"
+            width="75%"
+            height="2.5rem"
             className={`${styles.skeleton} mb`}
             animation="wave"
           />
         ) : (
-          <h1 className={styles.title}>Paragraph(P태그)</h1>
+          <h1 className={styles.title}>
+            비주류태그02 (big, small, mark, pre 태그)
+          </h1>
         )}
         <section className={styles.section} id="intro">
           {loading ? (
             <>
               <Skeleton
                 width="30%"
-                height="2rem"
-                className={styles.skeleton}
-                animation="wave"
-              />
-              <Skeleton
-                width="100%"
                 height="1.5rem"
                 className={styles.skeleton}
                 animation="wave"
@@ -69,16 +68,29 @@ const Paragraph = () => {
                 className={styles.skeleton}
                 animation="wave"
               />
+              <Skeleton
+                width="80%"
+                height="1.5rem"
+                className={styles.skeleton}
+                animation="wave"
+              />
+              <Skeleton
+                width="40%"
+                height="1.5rem"
+                className={styles.skeleton}
+                animation="wave"
+              />
             </>
           ) : (
             <div className={styles.descwrap}>
               <h2 className={styles.descwrap__subtitle}>
-                P 태그 요소는 하나의 문단을 나타냅니다.
+                그나마 사용하는 mark태그 pre태그
               </h2>
               <p className={styles.descwrap__subtitle__desc}>
-                시각적인 매체에서, 문단은 보통 인접 블록과의 여백과 첫 줄의
-                들여쓰기로 구분하지만, HTML에서 문단은 이미지나 입력 폼 등 서로
-                관련있는 콘텐츠 무엇이나 될 수 있습니다.
+                &lt;mark&gt;태그 : 글자를 하이라이트로 바꿔주는 역활이고, 기본
+                생삭은 노란색입니다. 의미합니다.<br></br> &lt;pre&gt;태그 :
+                pre태그는 미리 정의된 형식(preformatted)의 텍스트를 정의할 떄
+                사용합니다.<br></br> 보통 코드를 설명할때 사용합니다.
               </p>
             </div>
           )}
@@ -93,7 +105,7 @@ const Paragraph = () => {
                 animation="wave"
               />
             ) : (
-              "P 태그 예제"
+              "비주류 태그 예제"
             )}
           </h2>
           <div className={styles.codeContainer}>
@@ -105,7 +117,7 @@ const Paragraph = () => {
             {loading ? (
               <Skeleton
                 width="100%"
-                height="15rem"
+                height="10rem"
                 className={styles.skeleton}
                 animation="wave"
               />
@@ -133,7 +145,7 @@ const Paragraph = () => {
                   animation="wave"
                 />
               ) : (
-                "P 태그 실행 예제 화면"
+                "비주류 태그 실행 예제 화면"
               )}
             </h2>
             <div className={styles.render__code}>
@@ -147,11 +159,15 @@ const Paragraph = () => {
               ) : (
                 <>
                   {" "}
-                  <p>
-                    This is a paragraph.<br></br>이건 P태그에요!
-                  </p>
-                  <hr></hr>
-                  <p>이거또한 P태그에요</p>
+                  <big className={styles.big}>큰 글자</big>
+                  <br></br>
+                  <small className={styles.small}>작은글자</small>
+                  <br></br>
+                  <mark>하이라이트 표시</mark>
+                  <br></br>
+                  <pre>
+                    <code>코드블럭 span 이다</code>
+                  </pre>
                 </>
               )}
             </div>
@@ -188,4 +204,4 @@ const Paragraph = () => {
   );
 };
 
-export default Paragraph;
+export default Mark;

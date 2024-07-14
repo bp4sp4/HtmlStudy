@@ -21,6 +21,10 @@
 
 @import url('https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@100..900&display=swap');
 
+.main__title {
+    font-family: 'JalnanGothic';
+}
+
 a {
     color: var(--button-text-color);
     text-decoration: none;

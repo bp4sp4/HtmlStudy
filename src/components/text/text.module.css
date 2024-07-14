@@ -6,7 +6,6 @@
     display: flex;
     justify-content: center;
     width: 100%;
-    height: 100vh;
     margin-left: auto;
     margin-right: auto;
     font-family: Arial, sans-serif;
@@ -52,6 +51,7 @@
     margin-top: 1rem;
     font-size: 1.1rem;
     color: var(--text-color);
+    line-height: 2;
 }
 
 .codeContainer {
@@ -133,4 +133,20 @@
     font-weight: 700;
     margin-top: 2rem;
     color: var(--text-color);
+}
+
+.skeleton {
+    margin-bottom: 1rem;
+}
+
+.itag {
+    font-style: italic;
+}
+
+.big {
+    font-size: larger;
+}
+
+.small {
+    font-size: smaller;
 }

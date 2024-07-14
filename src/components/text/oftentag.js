@@ -6,14 +6,22 @@ import "prismjs/themes/prism.css";
 import "prismjs/components/prism-markup.min.js";
 import { Skeleton } from "primereact/skeleton";
 
-const Paragraph = () => {
+const Hngroup = () => {
   const [copySuccess, setCopySuccess] = useState("");
   const [loading, setLoading] = useState(true);
-  const exampleCode = `<p>This is a paragraph.<br>이건 P태그에요!</p>
-<hr> <!-- 수평선을 넣는 hr 태그입니다. -->
-<p>이거또한 P태그에요</p>`;
-  const jobcode = `<span>This is a span</span> 
-<!-- p태그와 비슷하다고 생각할 수 있지만 스타일 적용이나 요소를 묶을때 사용함 -->`;
+  const exampleCode = `<i>기울어진글자</i>
+<em>기울어진글자</em>
+<blackqutoe>인용문입니다~(블럭요소)</blackqutoe>
+<q>인용문 넣기~</q>
+<u>언더라인</u>
+<ins>언더라인</ins>
+`;
+
+  const jobcode = `<p>기울어진글씨</p>
+<p>언더라인</p>
+<!-- css 활용 -->
+font-style : italic 으로 기울어진글씨를 지정 할 수 있다.
+text-decoration : underline 으로 밑줄을 표시 할 수 있다. `;
 
   const copyToClipboard = () => {
     navigator.clipboard.writeText(exampleCode).then(
@@ -40,20 +48,28 @@ const Paragraph = () => {
       <main className={styles.main__wrap}>
         {loading ? (
           <Skeleton
-            width="25%"
-            height="2rem"
+            width="75%"
+            height="2.5rem"
             className={`${styles.skeleton} mb`}
             animation="wave"
           />
         ) : (
-          <h1 className={styles.title}>Paragraph(P태그)</h1>
+          <h1 className={styles.title}>
+            비주류태그01 (i, em, blockqutoe, q, u, ins 태그)
+          </h1>
         )}
         <section className={styles.section} id="intro">
           {loading ? (
             <>
               <Skeleton
                 width="30%"
-                height="2rem"
+                height="1.5rem"
+                className={styles.skeleton}
+                animation="wave"
+              />
+              <Skeleton
+                width="45%"
+                height="1.5rem"
                 className={styles.skeleton}
                 animation="wave"
               />
@@ -64,7 +80,7 @@ const Paragraph = () => {
                 animation="wave"
               />
               <Skeleton
-                width="80%"
+                width="20%"
                 height="1.5rem"
                 className={styles.skeleton}
                 animation="wave"
@@ -73,12 +89,13 @@ const Paragraph = () => {
           ) : (
             <div className={styles.descwrap}>
               <h2 className={styles.descwrap__subtitle}>
-                P 태그 요소는 하나의 문단을 나타냅니다.
+                그나마 사용하는 i태그 em태그
               </h2>
               <p className={styles.descwrap__subtitle__desc}>
-                시각적인 매체에서, 문단은 보통 인접 블록과의 여백과 첫 줄의
-                들여쓰기로 구분하지만, HTML에서 문단은 이미지나 입력 폼 등 서로
-                관련있는 콘텐츠 무엇이나 될 수 있습니다.
+                &lt;i&gt;태그 : italic을 줄여서 i태그, 기울어진 글자를
+                의미합니다.<br></br> &lt;em&gt;태그 : emphasized text를 줄여서
+                em태그, &lt;em&gt;태그는 HTML5에서도 여전히 지원되지만, 대신
+                css를 사용하면 더욱 다양한 효과를 줄 수 있습니다.
               </p>
             </div>
           )}
@@ -93,7 +110,7 @@ const Paragraph = () => {
                 animation="wave"
               />
             ) : (
-              "P 태그 예제"
+              "비주류 태그 예제"
             )}
           </h2>
           <div className={styles.codeContainer}>
@@ -105,7 +122,7 @@ const Paragraph = () => {
             {loading ? (
               <Skeleton
                 width="100%"
-                height="15rem"
+                height="10rem"
                 className={styles.skeleton}
                 animation="wave"
               />
@@ -133,7 +150,7 @@ const Paragraph = () => {
                   animation="wave"
                 />
               ) : (
-                "P 태그 실행 예제 화면"
+                "비주류 태그 실행 예제 화면"
               )}
             </h2>
             <div className={styles.render__code}>
@@ -147,11 +164,17 @@ const Paragraph = () => {
               ) : (
                 <>
                   {" "}
-                  <p>
-                    This is a paragraph.<br></br>이건 P태그에요!
-                  </p>
-                  <hr></hr>
-                  <p>이거또한 P태그에요</p>
+                  <i className={styles.itag}>기울어진글자</i>
+                  <br></br>
+                  <em className={styles.itag}>기울어진글자</em>
+                  <br></br>
+                  <blackqutoe>인용문입니다~(블럭요소)</blackqutoe>
+                  <br></br>
+                  <q>인용문 넣기~</q>
+                  <br></br>
+                  <u>언더라인</u>
+                  <br></br>
+                  <ins>언더라인</ins>
                 </>
               )}
             </div>
@@ -188,4 +211,4 @@ const Paragraph = () => {
   );
 };
 
-export default Paragraph;
+export default Hngroup;

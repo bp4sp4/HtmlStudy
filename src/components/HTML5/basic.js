@@ -3,7 +3,6 @@ import "prismjs/themes/prism.css";
 import Prism from "prismjs";
 import styles from "./basic.module.css";
 import Header from "../header/header";
-
 import { Skeleton } from "primereact/skeleton";
 
 const Basic = () => {

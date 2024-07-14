@@ -100,3 +100,7 @@ foreignObject {
     display: inline-block;
     width: 1.5rem;
 }
+
+Skeleton {
+    margin-bottom: 1rem;
+}

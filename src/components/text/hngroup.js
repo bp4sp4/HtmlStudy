@@ -6,14 +6,22 @@ import "prismjs/themes/prism.css";
 import "prismjs/components/prism-markup.min.js";
 import { Skeleton } from "primereact/skeleton";
 
-const Paragraph = () => {
+const Hngroup = () => {
   const [copySuccess, setCopySuccess] = useState("");
   const [loading, setLoading] = useState(true);
-  const exampleCode = `<p>This is a paragraph.<br>이건 P태그에요!</p>
-<hr> <!-- 수평선을 넣는 hr 태그입니다. -->
-<p>이거또한 P태그에요</p>`;
-  const jobcode = `<span>This is a span</span> 
-<!-- p태그와 비슷하다고 생각할 수 있지만 스타일 적용이나 요소를 묶을때 사용함 -->`;
+  const exampleCode = `<h1>제목 꾸미기</h1>
+<h2>제목 꾸미기</h2>
+<h3>제목 꾸미기</h3>
+<h4>제목 꾸미기</h4>
+<h5>제목 꾸미기</h5>
+<h6>제목 꾸미기</h6>
+<b>그냥 굵은 글씨</b>
+<strong>그냥 굵은 글씨</strong>`;
+
+  const jobcode = `<b>굵은글씨</b>
+<strong>그냥 굵은 글씨</strong>
+<!-- css 활용 많이 안쓰이지만 가끔 사용한다.-->
+font-weight : bold 혹은 600,700;`;
 
   const copyToClipboard = () => {
     navigator.clipboard.writeText(exampleCode).then(
@@ -46,25 +54,19 @@ const Paragraph = () => {
             animation="wave"
           />
         ) : (
-          <h1 className={styles.title}>Paragraph(P태그)</h1>
+          <h1 className={styles.title}>Heading(hn태그)</h1>
         )}
         <section className={styles.section} id="intro">
           {loading ? (
             <>
               <Skeleton
-                width="30%"
+                width="10%"
                 height="2rem"
                 className={styles.skeleton}
                 animation="wave"
               />
               <Skeleton
-                width="100%"
-                height="1.5rem"
-                className={styles.skeleton}
-                animation="wave"
-              />
-              <Skeleton
-                width="80%"
+                width="60%"
                 height="1.5rem"
                 className={styles.skeleton}
                 animation="wave"
@@ -72,13 +74,10 @@ const Paragraph = () => {
             </>
           ) : (
             <div className={styles.descwrap}>
-              <h2 className={styles.descwrap__subtitle}>
-                P 태그 요소는 하나의 문단을 나타냅니다.
-              </h2>
+              <h2 className={styles.descwrap__subtitle}>제목 표시하기</h2>
               <p className={styles.descwrap__subtitle__desc}>
-                시각적인 매체에서, 문단은 보통 인접 블록과의 여백과 첫 줄의
-                들여쓰기로 구분하지만, HTML에서 문단은 이미지나 입력 폼 등 서로
-                관련있는 콘텐츠 무엇이나 될 수 있습니다.
+                heading을 뜻하며 h태그로 표시, 제목의 레벨에 따라서
+                &lt;h1&gt;~&lt;h6&gt; 까지 있습니다.
               </p>
             </div>
           )}
@@ -93,7 +92,7 @@ const Paragraph = () => {
                 animation="wave"
               />
             ) : (
-              "P 태그 예제"
+              "Hngroup 태그 예제"
             )}
           </h2>
           <div className={styles.codeContainer}>
@@ -105,7 +104,7 @@ const Paragraph = () => {
             {loading ? (
               <Skeleton
                 width="100%"
-                height="15rem"
+                height="17rem"
                 className={styles.skeleton}
                 animation="wave"
               />
@@ -133,25 +132,29 @@ const Paragraph = () => {
                   animation="wave"
                 />
               ) : (
-                "P 태그 실행 예제 화면"
+                "Hngroup 태그 실행 예제 화면"
               )}
             </h2>
             <div className={styles.render__code}>
               {loading ? (
                 <Skeleton
                   width="100%"
-                  height="5rem"
+                  height="10rem"
                   className={styles.skeleton}
                   animation="wave"
                 />
               ) : (
                 <>
                   {" "}
-                  <p>
-                    This is a paragraph.<br></br>이건 P태그에요!
-                  </p>
-                  <hr></hr>
-                  <p>이거또한 P태그에요</p>
+                  <h1>제목 꾸미기</h1>
+                  <h2>제목 꾸미기</h2>
+                  <h3>제목 꾸미기</h3>
+                  <h4>제목 꾸미기</h4>
+                  <h5>제목 꾸미기</h5>
+                  <h6>제목 꾸미기</h6>
+                  <b>그냥 굵은 글씨</b>
+                  <br></br>
+                  <strong>그냥 굵은 글씨</strong>
                 </>
               )}
             </div>
@@ -188,4 +191,4 @@ const Paragraph = () => {
   );
 };
 
-export default Paragraph;
+export default Hngroup;
