@@ -18,6 +18,7 @@
     margin-right: auto;
     background-color: var(--background-color);
     color: var(--text-color);
+    font-weight: 600;
 }
 
 .main__wrap {

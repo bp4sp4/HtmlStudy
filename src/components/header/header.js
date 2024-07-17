@@ -92,11 +92,6 @@ const menuItems = [
         icon: <Tag />,
       },
       {
-        name: "HnGroup태그",
-        path: "/text/hngroup",
-        icon: <Tag />,
-      },
-      {
         name: "비주류 태그 01 ",
         path: "/text/oftentag",
         icon: <Tag />,
