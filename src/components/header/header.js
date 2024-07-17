@@ -83,35 +83,35 @@ const menuItems = [
     subItems: [
       {
         name: "P 태그",
-        path: "/text/paragraph",
+        path: "/html/paragraph",
         icon: <Tag />,
       },
       {
         name: "HnGroup태그",
-        path: "/text/hngroup",
+        path: "/html/hngroup",
         icon: <Tag />,
       },
       {
         name: "비주류 태그 01 ",
-        path: "/text/oftentag",
+        path: "/html/oftentag",
         icon: <Tag />,
       },
       {
         name: "비주류 태그 02 ",
-        path: "/text/oftentag02",
+        path: "/html/oftentag02",
         icon: <Tag />,
       },
     ],
   },
   {
     name: "이미지 다루기",
-    path: "/devtools/vscode",
+    path: "/html/images",
     exact: true,
     icon: <ImageIcon />,
   },
   {
     name: "링크 다루기",
-    path: "/devtools/vscode",
+    path: "/html/anchor",
     exact: true,
     icon: <AddLinkIcon />,
   },
@@ -268,7 +268,7 @@ const Header = () => {
           onChange={toggleDarkMode}
           inputProps={{ "aria-label": "dark mode switch" }}
         />
-        <Typography variant="body1" sx={{ ml: 1 }}>
+        <Typography className={styles.mode} variant="body1" sx={{ ml: 1 }}>
           {isDarkMode ? "🌞 라이트 모드" : "🌙 다크 모드"}
         </Typography>
       </Box>

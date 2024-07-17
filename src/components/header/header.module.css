@@ -54,3 +54,7 @@ header {
     background-color: var(--background-color) !important;
     color: var(--text-color) !important;
 }
+
+.mode {
+    color: var(--text-color) !important;
+}
