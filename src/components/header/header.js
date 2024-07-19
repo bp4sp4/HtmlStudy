@@ -26,6 +26,7 @@ import { Home, ExpandLess, ExpandMore, Tag } from "@mui/icons-material";
 import HtmlIcon from "@mui/icons-material/Html";
 import ImageIcon from "@mui/icons-material/Image";
 import AddLinkIcon from "@mui/icons-material/AddLink";
+import ListIcon from "@mui/icons-material/List";
 
 const drawerWidth = 240;
 
@@ -114,6 +115,33 @@ const menuItems = [
     path: "/html/anchor",
     exact: true,
     icon: <AddLinkIcon />,
+  },
+  {
+    name: "목록",
+    path: "/html/ollist",
+    icon: <ListIcon />,
+    subItems: [
+      {
+        name: "P 태그",
+        path: "/html/ollist",
+        icon: <Tag />,
+      },
+      {
+        name: "HnGroup태그",
+        path: "/html/hngroup",
+        icon: <Tag />,
+      },
+      {
+        name: "비주류 태그 01 ",
+        path: "/html/oftentag",
+        icon: <Tag />,
+      },
+      {
+        name: "비주류 태그 02 ",
+        path: "/html/oftentag02",
+        icon: <Tag />,
+      },
+    ],
   },
 ];
 

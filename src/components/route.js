@@ -9,6 +9,7 @@ import Oftentag from "./html/oftentag";
 import Mark from "./html/oftentag02";
 import Images from "./html/images";
 import Anchor from "./html/anchor";
+import Ollist from "./html/ollist";
 
 const Router = () => {
   return (
@@ -24,6 +25,7 @@ const Router = () => {
         <Route path="/html/oftentag02" element={<Mark />} />
         <Route path="/html/images" element={<Images />} />
         <Route path="/html/anchor" element={<Anchor />} />
+        <Route path="/html/ollist" element={<Ollist />} />
       </Routes>
     </BrowserRouter>
   );

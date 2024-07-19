@@ -150,3 +150,7 @@
 .small {
     font-size: smaller;
 }
+
+ol {
+    list-style: decimal;
+}
