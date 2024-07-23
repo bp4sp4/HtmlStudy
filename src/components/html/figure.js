@@ -6,16 +6,23 @@ import "prismjs/themes/prism.css";
 import "prismjs/components/prism-markup.min.js";
 import { Skeleton } from "primereact/skeleton";
 
-const Anchor = () => {
+const Figure = () => {
   const [copySuccess, setCopySuccess] = useState("");
   const [loading, setLoading] = useState(true);
-  const exampleCode = `<a href="http://www.google.com" target="_blank" title="구글">구글로이동</a>
-<a href="http://www.naver.com" target="_self" title="네이버">네이버</a>
-<a href="http://www.daum.com">다음</a>`;
-  const jobcode = `<a href="링크주소" target="탭구분" title="툴팁">표시텍스트/이미지</a>
-링크주소 : html파일경로, 이미지 파일경로, #아이디이름
-탭구분 : 링크된 파일을 어떻게 띄울지 결정, _blank(새 탭으로 보이기), _self(현재 탭에서 보이기, 기본값)
-툴팁 : 마우스를 올리면 표시되는 텍스트`;
+  const exampleCode = `<figure>
+<img src="https://via.placeholder.com/100" alt="via">
+<h1>HtmlStudy 에서 공부하기!</h1>
+<figcaption>
+Lorem Ipsum is simply dummy text of the printing and typesetting industry.
+</figcaption>
+</figure>`;
+  const jobcode = `<figure> 태그 : 이미지, 동영상 등 멀티미디어를 넣을 때
+<img>  태그 : 피겨 태그 안에 이미지 넣기
+<h1>~<h6> 태그 : 피규어 태그 안에 이미지에 대한 제목글 넣기
+<figcaption> 태그 : 피규어 태그 안에 이미지에 대한 설명글 넣기
+<!-- figure 태그는 이미지와 텍스트를 함께 사용해야 하는 경우를 위해
+HTML5부터 새롭게 만든 태그로 이미지, 영상 등 멀티미디어 내용을 담을 때 사용합니다. -->
+`;
 
   const copyToClipboard = () => {
     navigator.clipboard.writeText(exampleCode).then(
@@ -42,13 +49,13 @@ const Anchor = () => {
       <main className={styles.main__wrap}>
         {loading ? (
           <Skeleton
-            width="30%"
+            width="25%"
             height="3rem"
             className={`${styles.skeleton} mb`}
             animation="wave"
           />
         ) : (
-          <h1 className={styles.title}>Anchor(a태그)</h1>
+          <h1 className={styles.title}>Figure태그</h1>
         )}
         <section className={styles.section} id="intro">
           {loading ? (
@@ -60,7 +67,13 @@ const Anchor = () => {
                 animation="wave"
               />
               <Skeleton
-                width="70%"
+                width="100%"
+                height="1.5rem"
+                className={styles.skeleton}
+                animation="wave"
+              />
+              <Skeleton
+                width="100%"
                 height="1.5rem"
                 className={styles.skeleton}
                 animation="wave"
@@ -69,11 +82,13 @@ const Anchor = () => {
           ) : (
             <div className={styles.descwrap}>
               <h2 className={styles.descwrap__subtitle}>
-                다른 페이지를 연결할 떄 사용되는 태그
+                관련 콘텐츠 등의 독립된 콘텐츠를 나타내는 태그
               </h2>
               <p className={styles.descwrap__subtitle__desc}>
-                &lt;a&gt;태그에서 가장 중요한 속성은 바로 링크(link)의 목적지를
-                가리키는 href속성입니다.
+                주변 콘텐츠의 이해나 흐름과 관련된 이미지, 그림, 도표, 사진,
+                코드 목록 또는 기타 관련 콘텐츠 등의 독립된 콘텐츠를 나타내는
+                태그입니다. 선택적으로 &lt;figcaption&gt; 태그를 사용해서 이
+                콘텐츠를 참조할 수 있는 캡션(설명)을 추가할 수 있습니다.
               </p>
             </div>
           )}
@@ -88,7 +103,7 @@ const Anchor = () => {
                 animation="wave"
               />
             ) : (
-              "a 태그 예제"
+              "Figure 태그 예제"
             )}
           </h2>
           <div className={styles.codeContainer}>
@@ -100,7 +115,7 @@ const Anchor = () => {
             {loading ? (
               <Skeleton
                 width="100%"
-                height="7rem"
+                height="15rem"
                 className={styles.skeleton}
                 animation="wave"
               />
@@ -128,42 +143,26 @@ const Anchor = () => {
                   animation="wave"
                 />
               ) : (
-                "a 태그 실행 예제 화면"
+                "figure 태그 실행 예제 화면"
               )}
             </h2>
             <div className={styles.render__code}>
               {loading ? (
                 <Skeleton
                   width="100%"
-                  height="5rem"
+                  height="12rem"
                   className={styles.skeleton}
                   animation="wave"
                 />
               ) : (
-                <>
-                  {" "}
-                  <a
-                    className={styles.atag}
-                    href="http://www.google.com"
-                    target="_blank"
-                    title="구글"
-                    rel="noreferrer noopener"
-                  >
-                    구글로이동
-                  </a>
-                  <a
-                    className={styles.atag}
-                    href="http://www.naver.com"
-                    target="_self"
-                    title="네이버"
-                  >
-                    네이버 이동 /*현재페이지에서 넘어가니깐 마우스 우클릭
-                    새탭으로 링크열기 *
-                  </a>
-                  <a className={styles.atag} href="http://www.daum.com">
-                    다음
-                  </a>
-                </>
+                <figure>
+                  <img src="https://via.placeholder.com/100" alt="via" />
+                  <h1 className={styles.renderh1}>HtmlStudy 에서 공부하기!</h1>
+                  <figcaption>
+                    Lorem Ipsum is simply dummy text of the printing and
+                    typesetting industry.
+                  </figcaption>
+                </figure>
               )}
             </div>
           </div>
@@ -183,7 +182,7 @@ const Anchor = () => {
             {loading ? (
               <Skeleton
                 width="100%"
-                height="5rem"
+                height="10rem"
                 className={styles.skeleton}
                 animation="wave"
               />
@@ -199,4 +198,4 @@ const Anchor = () => {
   );
 };
 
-export default Anchor;
+export default Figure;

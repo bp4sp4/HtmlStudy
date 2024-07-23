@@ -49,7 +49,7 @@ const Images = () => {
         {loading ? (
           <Skeleton
             width="25%"
-            height="2rem"
+            height="3rem"
             className={`${styles.skeleton} mb`}
             animation="wave"
           />
@@ -60,8 +60,8 @@ const Images = () => {
           {loading ? (
             <>
               <Skeleton
-                width="30%"
-                height="2rem"
+                width="50%"
+                height="1.5rem"
                 className={styles.skeleton}
                 animation="wave"
               />

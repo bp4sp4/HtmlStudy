@@ -49,7 +49,7 @@ text-decoration : underline 으로 밑줄을 표시 할 수 있다. `;
         {loading ? (
           <Skeleton
             width="75%"
-            height="2.5rem"
+            height="3rem"
             className={`${styles.skeleton} mb`}
             animation="wave"
           />

@@ -27,6 +27,8 @@ import HtmlIcon from "@mui/icons-material/Html";
 import ImageIcon from "@mui/icons-material/Image";
 import AddLinkIcon from "@mui/icons-material/AddLink";
 import ListIcon from "@mui/icons-material/List";
+import SaveAsIcon from "@mui/icons-material/SaveAs";
+import TableRowsIcon from "@mui/icons-material/TableRows";
 
 const drawerWidth = 240;
 
@@ -122,26 +124,28 @@ const menuItems = [
     icon: <ListIcon />,
     subItems: [
       {
-        name: "P 태그",
+        name: "ol태그",
         path: "/html/ollist",
         icon: <Tag />,
       },
       {
-        name: "HnGroup태그",
-        path: "/html/hngroup",
-        icon: <Tag />,
-      },
-      {
-        name: "비주류 태그 01 ",
-        path: "/html/oftentag",
-        icon: <Tag />,
-      },
-      {
-        name: "비주류 태그 02 ",
-        path: "/html/oftentag02",
+        name: "ul태그",
+        path: "/html/ullist",
         icon: <Tag />,
       },
     ],
+  },
+  {
+    name: "피규어 태그",
+    path: "/html/figure",
+    exact: true,
+    icon: <SaveAsIcon />,
+  },
+  {
+    name: "표만들기",
+    path: "/html/table",
+    exact: true,
+    icon: <TableRowsIcon />,
   },
 ];
 

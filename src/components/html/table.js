@@ -6,16 +6,33 @@ import "prismjs/themes/prism.css";
 import "prismjs/components/prism-markup.min.js";
 import { Skeleton } from "primereact/skeleton";
 
-const Anchor = () => {
+const Table = () => {
   const [copySuccess, setCopySuccess] = useState("");
   const [loading, setLoading] = useState(true);
-  const exampleCode = `<a href="http://www.google.com" target="_blank" title="구글">구글로이동</a>
-<a href="http://www.naver.com" target="_self" title="네이버">네이버</a>
-<a href="http://www.daum.com">다음</a>`;
-  const jobcode = `<a href="링크주소" target="탭구분" title="툴팁">표시텍스트/이미지</a>
-링크주소 : html파일경로, 이미지 파일경로, #아이디이름
-탭구분 : 링크된 파일을 어떻게 띄울지 결정, _blank(새 탭으로 보이기), _self(현재 탭에서 보이기, 기본값)
-툴팁 : 마우스를 올리면 표시되는 텍스트`;
+  const exampleCode = `<table border="1">
+  <thead>
+    <tr>
+      <th>학교</th>
+      <th>창립년도</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td>서울대학교</td>
+      <td>1946</td>
+    </tr>
+    <tr>
+      <td>고려대학교</td>
+      <td>1905</td>
+    </tr>
+    <tr>
+      <td>연세대학교</td>
+      <td>1885</td>
+    </tr>
+  </tbody>
+</table>`;
+  const jobcode = `<span>This is a span</span> 
+<!-- p태그와 비슷하다고 생각할 수 있지만 스타일 적용이나 요소를 묶을때 사용함 -->`;
 
   const copyToClipboard = () => {
     navigator.clipboard.writeText(exampleCode).then(
@@ -42,23 +59,24 @@ const Anchor = () => {
       <main className={styles.main__wrap}>
         {loading ? (
           <Skeleton
-            width="30%"
+            width="25%"
             height="3rem"
             className={`${styles.skeleton} mb`}
             animation="wave"
           />
         ) : (
-          <h1 className={styles.title}>Anchor(a태그)</h1>
+          <h1 className={styles.title}>Table(표 만들기)</h1>
         )}
         <section className={styles.section} id="intro">
           {loading ? (
             <>
               <Skeleton
-                width="30%"
+                width="50%"
                 height="1.5rem"
                 className={styles.skeleton}
                 animation="wave"
               />
+
               <Skeleton
                 width="70%"
                 height="1.5rem"
@@ -69,11 +87,11 @@ const Anchor = () => {
           ) : (
             <div className={styles.descwrap}>
               <h2 className={styles.descwrap__subtitle}>
-                다른 페이지를 연결할 떄 사용되는 태그
+                행과 열로 구성된 2차원 테이블을 정의할 때 사용합니다.
               </h2>
               <p className={styles.descwrap__subtitle__desc}>
-                &lt;a&gt;태그에서 가장 중요한 속성은 바로 링크(link)의 목적지를
-                가리키는 href속성입니다.
+                테이블은 &lt;table&gt; 요소와 자식 요소인 하나 이상의
+                &lt;tr&gt;, &lt;th&gt;, &lt;td&gt; 요소들로 구성됩니다.
               </p>
             </div>
           )}
@@ -88,7 +106,7 @@ const Anchor = () => {
                 animation="wave"
               />
             ) : (
-              "a 태그 예제"
+              "Table 태그 예제"
             )}
           </h2>
           <div className={styles.codeContainer}>
@@ -100,7 +118,7 @@ const Anchor = () => {
             {loading ? (
               <Skeleton
                 width="100%"
-                height="7rem"
+                height="30rem"
                 className={styles.skeleton}
                 animation="wave"
               />
@@ -128,7 +146,7 @@ const Anchor = () => {
                   animation="wave"
                 />
               ) : (
-                "a 태그 실행 예제 화면"
+                "P 태그 실행 예제 화면"
               )}
             </h2>
             <div className={styles.render__code}>
@@ -142,27 +160,28 @@ const Anchor = () => {
               ) : (
                 <>
                   {" "}
-                  <a
-                    className={styles.atag}
-                    href="http://www.google.com"
-                    target="_blank"
-                    title="구글"
-                    rel="noreferrer noopener"
-                  >
-                    구글로이동
-                  </a>
-                  <a
-                    className={styles.atag}
-                    href="http://www.naver.com"
-                    target="_self"
-                    title="네이버"
-                  >
-                    네이버 이동 /*현재페이지에서 넘어가니깐 마우스 우클릭
-                    새탭으로 링크열기 *
-                  </a>
-                  <a className={styles.atag} href="http://www.daum.com">
-                    다음
-                  </a>
+                  <table className={styles.tabletag}>
+                    <thead>
+                      <tr>
+                        <th>학교</th>
+                        <th>창립년도</th>
+                      </tr>
+                    </thead>
+                    <tbody>
+                      <tr>
+                        <td>서울대학교</td>
+                        <td>1946</td>
+                      </tr>
+                      <tr>
+                        <td>고려대학교</td>
+                        <td>1905</td>
+                      </tr>
+                      <tr>
+                        <td>연세대학교</td>
+                        <td>1885</td>
+                      </tr>
+                    </tbody>
+                  </table>
                 </>
               )}
             </div>
@@ -199,4 +218,4 @@ const Anchor = () => {
   );
 };
 
-export default Anchor;
+export default Table;

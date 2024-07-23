@@ -44,7 +44,7 @@ font-size : 30px `;
         {loading ? (
           <Skeleton
             width="75%"
-            height="2.5rem"
+            height="3rem"
             className={`${styles.skeleton} mb`}
             animation="wave"
           />

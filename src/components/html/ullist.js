@@ -6,16 +6,20 @@ import "prismjs/themes/prism.css";
 import "prismjs/components/prism-markup.min.js";
 import { Skeleton } from "primereact/skeleton";
 
-const Anchor = () => {
+const UlList = () => {
   const [copySuccess, setCopySuccess] = useState("");
   const [loading, setLoading] = useState(true);
-  const exampleCode = `<a href="http://www.google.com" target="_blank" title="구글">구글로이동</a>
-<a href="http://www.naver.com" target="_self" title="네이버">네이버</a>
-<a href="http://www.daum.com">다음</a>`;
-  const jobcode = `<a href="링크주소" target="탭구분" title="툴팁">표시텍스트/이미지</a>
-링크주소 : html파일경로, 이미지 파일경로, #아이디이름
-탭구분 : 링크된 파일을 어떻게 띄울지 결정, _blank(새 탭으로 보이기), _self(현재 탭에서 보이기, 기본값)
-툴팁 : 마우스를 올리면 표시되는 텍스트`;
+  const exampleCode = `<ul>
+    <li>목록 앞에 기호를 넣어 목록 만드는 형식</li>
+    <li>목록 앞에 기호를 넣어 목록 만드는 형식</li>
+    <li>목록 앞에 기호를 넣어 목록 만드는 형식</li>
+</ul>
+<ul type="circle">
+    <li>목록 앞에 기호를 넣어 목록 만드는 형식</li>
+    <li>목록 앞에 기호를 넣어 목록 만드는 형식</li>
+    <li>목록 앞에 기호를 넣어 목록 만드는 형식</li>
+</ul>
+`;
 
   const copyToClipboard = () => {
     navigator.clipboard.writeText(exampleCode).then(
@@ -42,25 +46,31 @@ const Anchor = () => {
       <main className={styles.main__wrap}>
         {loading ? (
           <Skeleton
-            width="30%"
-            height="3rem"
+            width="35%"
+            height="2rem"
             className={`${styles.skeleton} mb`}
             animation="wave"
           />
         ) : (
-          <h1 className={styles.title}>Anchor(a태그)</h1>
+          <h1 className={styles.title}>Unordered List(ul태그)</h1>
         )}
         <section className={styles.section} id="intro">
           {loading ? (
             <>
               <Skeleton
-                width="30%"
+                width="60%"
+                height="2rem"
+                className={styles.skeleton}
+                animation="wave"
+              />
+              <Skeleton
+                width="100%"
                 height="1.5rem"
                 className={styles.skeleton}
                 animation="wave"
               />
               <Skeleton
-                width="70%"
+                width="15%"
                 height="1.5rem"
                 className={styles.skeleton}
                 animation="wave"
@@ -69,11 +79,12 @@ const Anchor = () => {
           ) : (
             <div className={styles.descwrap}>
               <h2 className={styles.descwrap__subtitle}>
-                다른 페이지를 연결할 떄 사용되는 태그
+                순서가 지정되어 있지 않는 항목의 목록를 나타내는 태그입니다.
               </h2>
               <p className={styles.descwrap__subtitle__desc}>
-                &lt;a&gt;태그에서 가장 중요한 속성은 바로 링크(link)의 목적지를
-                가리키는 href속성입니다.
+                &lt;ul&gt; 은 순서를 변경해도 그 의미가 실질적으로 변경되지
+                않는다는 의미인 Unordered List(정렬되지 않은 목록)의 약자로
+                사용된 것입니다.
               </p>
             </div>
           )}
@@ -88,7 +99,7 @@ const Anchor = () => {
                 animation="wave"
               />
             ) : (
-              "a 태그 예제"
+              "ul 태그 예제"
             )}
           </h2>
           <div className={styles.codeContainer}>
@@ -100,7 +111,7 @@ const Anchor = () => {
             {loading ? (
               <Skeleton
                 width="100%"
-                height="7rem"
+                height="20rem"
                 className={styles.skeleton}
                 animation="wave"
               />
@@ -128,70 +139,33 @@ const Anchor = () => {
                   animation="wave"
                 />
               ) : (
-                "a 태그 실행 예제 화면"
+                "ul 태그 실행 예제 화면"
               )}
             </h2>
             <div className={styles.render__code}>
               {loading ? (
                 <Skeleton
                   width="100%"
-                  height="5rem"
+                  height="12rem"
                   className={styles.skeleton}
                   animation="wave"
                 />
               ) : (
                 <>
                   {" "}
-                  <a
-                    className={styles.atag}
-                    href="http://www.google.com"
-                    target="_blank"
-                    title="구글"
-                    rel="noreferrer noopener"
-                  >
-                    구글로이동
-                  </a>
-                  <a
-                    className={styles.atag}
-                    href="http://www.naver.com"
-                    target="_self"
-                    title="네이버"
-                  >
-                    네이버 이동 /*현재페이지에서 넘어가니깐 마우스 우클릭
-                    새탭으로 링크열기 *
-                  </a>
-                  <a className={styles.atag} href="http://www.daum.com">
-                    다음
-                  </a>
+                  <ul className={styles.ullist}>
+                    <li>목록 앞에 기호를 넣어 목록 만드는 형식</li>
+                    <li>목록 앞에 기호를 넣어 목록 만드는 형식</li>
+                    <li>목록 앞에 기호를 넣어 목록 만드는 형식</li>
+                  </ul>
+                  <ul type="circle" className={styles.ullist2}>
+                    <li>목록 앞에 기호를 넣어 목록 만드는 형식</li>
+                    <li>목록 앞에 기호를 넣어 목록 만드는 형식</li>
+                    <li>목록 앞에 기호를 넣어 목록 만드는 형식</li>
+                  </ul>
                 </>
               )}
             </div>
-          </div>
-          <div className={styles.render__name}>
-            {loading ? (
-              <Skeleton
-                width="20%"
-                height="2rem"
-                className={styles.skeleton}
-                animation="wave"
-              />
-            ) : (
-              <span className={styles.render__name__sub}>알아두기만해!</span>
-            )}
-          </div>
-          <div className={styles.render__code}>
-            {loading ? (
-              <Skeleton
-                width="100%"
-                height="5rem"
-                className={styles.skeleton}
-                animation="wave"
-              />
-            ) : (
-              <pre>
-                <code className="language-markup">{jobcode}</code>
-              </pre>
-            )}
           </div>
         </section>
       </main>
@@ -199,4 +173,4 @@ const Anchor = () => {
   );
 };
 
-export default Anchor;
+export default UlList;

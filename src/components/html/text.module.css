@@ -151,6 +151,48 @@
     font-size: smaller;
 }
 
-ol {
+.ollist {
     list-style: decimal;
+    padding: 1rem;
+}
+
+.ollist2 {
+    list-style: upper-alpha;
+    padding: 1rem;
+}
+
+.ullist {
+    list-style-type: disc;
+    padding: 1rem;
+}
+
+.ullist2 {
+    list-style: circle;
+    padding: 1rem;
+}
+
+.renderh1 {
+    font-size: 2rem;
+}
+
+.atag {
+    color: black;
+    display: flex;
+    margin: 10px 10px;
+}
+
+.tabletag {
+    border: 1px solid #000;
+}
+
+.tabletag thead {
+    border: 1px solid #000;
+}
+
+.tabletag tr {
+    border: 1px solid #000;
+}
+
+.tabletag td {
+    border: 1px solid #000;
 }

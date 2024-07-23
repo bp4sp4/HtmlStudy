@@ -19,14 +19,7 @@ const Ollist = () => {
     <li>목록 앞에 기호를 넣어 목록 만드는 형식</li>
     <li>목록 앞에 기호를 넣어 목록 만드는 형식</li>
 </ol>
-<ol>
-    <li type="A">목록 앞에 기호를 넣어 목록 만드는 형식</li>
-    <li type="a">목록 앞에 기호를 넣어 목록 만드는 형식</li>
-    <li type="ⅰ">목록 앞에 기호를 넣어 목록 만드는 형식</li>
-    <li type="ⅲ">목록 앞에 기호를 넣어 목록 만드는 형식</li>
-</ol>`;
-  const jobcode = `<span>This is a span</span> 
-<!-- p태그와 비슷하다고 생각할 수 있지만 스타일 적용이나 요소를 묶을때 사용함 -->`;
+`;
 
   const copyToClipboard = () => {
     navigator.clipboard.writeText(exampleCode).then(
@@ -54,7 +47,7 @@ const Ollist = () => {
         {loading ? (
           <Skeleton
             width="35%"
-            height="2rem"
+            height="3rem"
             className={`${styles.skeleton} mb`}
             animation="wave"
           />
@@ -65,8 +58,8 @@ const Ollist = () => {
           {loading ? (
             <>
               <Skeleton
-                width="30%"
-                height="2rem"
+                width="60%"
+                height="1.5rem"
                 className={styles.skeleton}
                 animation="wave"
               />
@@ -77,7 +70,7 @@ const Ollist = () => {
                 animation="wave"
               />
               <Skeleton
-                width="80%"
+                width="15%"
                 height="1.5rem"
                 className={styles.skeleton}
                 animation="wave"
@@ -89,9 +82,9 @@ const Ollist = () => {
                 순서가 지정되어 있는 항목의 목록를 나타내는 태그입니다.
               </h2>
               <p className={styles.descwrap__subtitle__desc}>
-                &lt;ol&gt; 은 순서를 변경하면 그 의미가 실질적으로 변경된다는
-                의미인 Ordered List(순서가 지정된 목록)의 약자로 사용된
-                것입니다.
+                &lt;ol&gt; 은 순서를 변경해도 그 의미가 실질적으로 변경되지
+                않는다는 의미인 Unordered List(정렬되지 않은 목록)의 약자로
+                사용된 것입니다.
               </p>
             </div>
           )}
@@ -146,65 +139,33 @@ const Ollist = () => {
                   animation="wave"
                 />
               ) : (
-                "P 태그 실행 예제 화면"
+                "ol 태그 실행 예제 화면"
               )}
             </h2>
             <div className={styles.render__code}>
               {loading ? (
                 <Skeleton
                   width="100%"
-                  height="5rem"
+                  height="12rem"
                   className={styles.skeleton}
                   animation="wave"
                 />
               ) : (
                 <>
                   {" "}
-                  <ol>
+                  <ol className={styles.ollist}>
                     <li>목록 앞에 기호를 넣어 목록 만드는 형식</li>
                     <li>목록 앞에 기호를 넣어 목록 만드는 형식</li>
                     <li>목록 앞에 기호를 넣어 목록 만드는 형식</li>
                   </ol>
-                  <ol type="A">
+                  <ol type="A" className={styles.ollist2}>
                     <li>목록 앞에 기호를 넣어 목록 만드는 형식</li>
                     <li>목록 앞에 기호를 넣어 목록 만드는 형식</li>
                     <li>목록 앞에 기호를 넣어 목록 만드는 형식</li>
-                  </ol>
-                  <ol>
-                    <li type="A">목록 앞에 기호를 넣어 목록 만드는 형식</li>
-                    <li type="a">목록 앞에 기호를 넣어 목록 만드는 형식</li>
-                    <li type="ⅰ">목록 앞에 기호를 넣어 목록 만드는 형식</li>
-                    <li type="ⅲ">목록 앞에 기호를 넣어 목록 만드는 형식</li>
                   </ol>
                 </>
               )}
             </div>
-          </div>
-          <div className={styles.render__name}>
-            {loading ? (
-              <Skeleton
-                width="20%"
-                height="2rem"
-                className={styles.skeleton}
-                animation="wave"
-              />
-            ) : (
-              <span className={styles.render__name__sub}>알아두기만해!</span>
-            )}
-          </div>
-          <div className={styles.render__code}>
-            {loading ? (
-              <Skeleton
-                width="100%"
-                height="5rem"
-                className={styles.skeleton}
-                animation="wave"
-              />
-            ) : (
-              <pre>
-                <code className="language-markup">{jobcode}</code>
-              </pre>
-            )}
           </div>
         </section>
       </main>

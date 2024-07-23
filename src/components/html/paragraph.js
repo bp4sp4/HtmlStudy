@@ -41,7 +41,7 @@ const Paragraph = () => {
         {loading ? (
           <Skeleton
             width="25%"
-            height="2rem"
+            height="3rem"
             className={`${styles.skeleton} mb`}
             animation="wave"
           />
@@ -53,7 +53,7 @@ const Paragraph = () => {
             <>
               <Skeleton
                 width="30%"
-                height="2rem"
+                height="1.5rem"
                 className={styles.skeleton}
                 animation="wave"
               />
@@ -64,7 +64,7 @@ const Paragraph = () => {
                 animation="wave"
               />
               <Skeleton
-                width="80%"
+                width="40%"
                 height="1.5rem"
                 className={styles.skeleton}
                 animation="wave"
@@ -105,7 +105,7 @@ const Paragraph = () => {
             {loading ? (
               <Skeleton
                 width="100%"
-                height="15rem"
+                height="8rem"
                 className={styles.skeleton}
                 animation="wave"
               />

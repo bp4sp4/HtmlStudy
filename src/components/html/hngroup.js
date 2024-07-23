@@ -49,7 +49,7 @@ font-weight : bold 혹은 600,700;`;
         {loading ? (
           <Skeleton
             width="25%"
-            height="2rem"
+            height="3rem"
             className={`${styles.skeleton} mb`}
             animation="wave"
           />
@@ -61,7 +61,7 @@ font-weight : bold 혹은 600,700;`;
             <>
               <Skeleton
                 width="10%"
-                height="2rem"
+                height="1.5rem"
                 className={styles.skeleton}
                 animation="wave"
               />
