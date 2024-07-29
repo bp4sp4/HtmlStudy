@@ -30,7 +30,7 @@ import ListIcon from "@mui/icons-material/List";
 import SaveAsIcon from "@mui/icons-material/SaveAs";
 import TableRowsIcon from "@mui/icons-material/TableRows";
 import InputIcon from "@mui/icons-material/Input";
-
+import logoimg from "./logo.png";
 const drawerWidth = 240;
 
 const Main = styled("main", { shouldForwardProp: (prop) => prop !== "open" })(
@@ -173,6 +173,7 @@ const Header = ({ prevPage, nextPage }) => {
   const [open, setOpen] = useState(false);
   const [isDarkMode, setIsDarkMode] = useState(false);
   const [openSubMenu, setOpenSubMenu] = useState({});
+  const height2 = "50px";
 
   const handleDrawerOpen = () => {
     setOpen(true);
@@ -216,8 +217,18 @@ const Header = ({ prevPage, nextPage }) => {
           >
             <MenuIcon />
           </IconButton>
-          <Typography variant="h6" noWrap component="div">
-            <h1 className={styles.main__title}>&lt; HtmlStudy /&gt;</h1>
+          <Typography
+            variant="h6"
+            noWrap
+            component="div"
+            sx={{
+              display: "flex",
+              justifyContent: "center",
+              alignItems: "center",
+              height: height2, // Use the defined constant here
+            }}
+          >
+            <img src={logoimg} width="240px" alt="logo" />
           </Typography>
         </Toolbar>
       </AppBar>
