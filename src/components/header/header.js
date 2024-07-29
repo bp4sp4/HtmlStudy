@@ -29,6 +29,7 @@ import AddLinkIcon from "@mui/icons-material/AddLink";
 import ListIcon from "@mui/icons-material/List";
 import SaveAsIcon from "@mui/icons-material/SaveAs";
 import TableRowsIcon from "@mui/icons-material/TableRows";
+import InputIcon from "@mui/icons-material/Input";
 
 const drawerWidth = 240;
 
@@ -147,9 +148,27 @@ const menuItems = [
     exact: true,
     icon: <TableRowsIcon />,
   },
+
+  {
+    name: "폼 요소",
+    path: "/html/formoption",
+    icon: <InputIcon />,
+    subItems: [
+      {
+        name: "폼 태그들",
+        path: "/html/formoption",
+        icon: <Tag />,
+      },
+      {
+        name: "ul태그",
+        path: "/html/ullist",
+        icon: <Tag />,
+      },
+    ],
+  },
 ];
 
-const Header = () => {
+const Header = ({ prevPage, nextPage }) => {
   const theme = useTheme();
   const [open, setOpen] = useState(false);
   const [isDarkMode, setIsDarkMode] = useState(false);

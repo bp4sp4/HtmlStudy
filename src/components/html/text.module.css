@@ -189,10 +189,35 @@
     border: 1px solid #000;
 }
 
+.tabletag th {
+    border: 1px solid #000;
+}
+
 .tabletag tr {
     border: 1px solid #000;
 }
 
 .tabletag td {
     border: 1px solid #000;
+}
+
+.navigationButtons {
+    display: flex;
+    justify-content: space-between;
+    margin-top: 1rem;
+    margin-bottom: 2rem;
+}
+
+.navigationLink {
+    color: #32CD32;
+    text-decoration: none;
+    padding: 0.5rem 1rem;
+    border: 1px solid #32CD32;
+    border-radius: 4px;
+    transition: background-color 0.3s ease;
+}
+
+.navigationLink:hover {
+    background-color: #32CD32;
+    color: #fff;
 }

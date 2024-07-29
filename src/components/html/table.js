@@ -31,8 +31,14 @@ const Table = () => {
     </tr>
   </tbody>
 </table>`;
-  const jobcode = `<span>This is a span</span> 
-<!-- p태그와 비슷하다고 생각할 수 있지만 스타일 적용이나 요소를 묶을때 사용함 -->`;
+  const jobcode = `<table> : 표 만들기 시작
+<tr> : 하나의 행을 시작
+<td> : 행 안에 셀
+<th> : 첫번째 행 안에 제목이 되는 셀
+<caption> : 표를 설명하는 제목 만들기 <!-- 잘 안씀 -->
+<colspan> <rowspan> : 행 또는 열 합치기
+<thead> : 표 제목 구조 정의 / <tbody> 표 본문 구조 정의
+<tfoot> : 표 요약 구조 정의 <!-- 잘 안씀 -->`;
 
   const copyToClipboard = () => {
     navigator.clipboard.writeText(exampleCode).then(
@@ -146,7 +152,7 @@ const Table = () => {
                   animation="wave"
                 />
               ) : (
-                "P 태그 실행 예제 화면"
+                "Table 태그 실행 예제 화면"
               )}
             </h2>
             <div className={styles.render__code}>

@@ -5,10 +5,12 @@ import Prism from "prismjs";
 import "prismjs/themes/prism.css";
 import "prismjs/components/prism-markup.min.js";
 import { Skeleton } from "primereact/skeleton";
+import { NavLink } from "react-router-dom";
 
 const Paragraph = () => {
   const [copySuccess, setCopySuccess] = useState("");
   const [loading, setLoading] = useState(true);
+
   const exampleCode = `<p>This is a paragraph.<br>이건 P태그에요!</p>
 <hr> <!-- 수평선을 넣는 hr 태그입니다. -->
 <p>이거또한 P태그에요</p>`;
@@ -34,10 +36,25 @@ const Paragraph = () => {
     }, 1000);
   }, []);
 
+  const prevPage = { path: "/HTML5/basic" };
+  const nextPage = { path: "/html/hngroup" };
+
   return (
     <div className={styles.container}>
       <Header />
       <main className={styles.main__wrap}>
+        <div className={styles.navigationButtons}>
+          {prevPage && (
+            <NavLink to={prevPage.path} className={styles.navigationLink}>
+              ⬅ 이전글
+            </NavLink>
+          )}
+          {nextPage && (
+            <NavLink to={nextPage.path} className={styles.navigationLink}>
+              ⮕ 다음글
+            </NavLink>
+          )}
+        </div>
         {loading ? (
           <Skeleton
             width="25%"
@@ -180,6 +197,18 @@ const Paragraph = () => {
               <pre>
                 <code className="language-markup">{jobcode}</code>
               </pre>
+            )}
+          </div>
+          <div className={styles.navigationButtons}>
+            {prevPage && (
+              <NavLink to={prevPage.path} className={styles.navigationLink}>
+                ⬅ 이전글
+              </NavLink>
+            )}
+            {nextPage && (
+              <NavLink to={nextPage.path} className={styles.navigationLink}>
+                ⮕ 다음글
+              </NavLink>
             )}
           </div>
         </section>

@@ -13,6 +13,7 @@ import Ollist from "./html/ollist";
 import UlList from "./html/ullist";
 import Figure from "./html/figure";
 import Table from "./html/table";
+import Formoption from "./html/formoption";
 
 const Router = () => {
   return (
@@ -32,6 +33,7 @@ const Router = () => {
         <Route path="/html/ullist" element={<UlList />} />
         <Route path="/html/figure" element={<Figure />} />
         <Route path="/html/table" element={<Table />} />
+        <Route path="/html/formoption" element={<Formoption />} />
       </Routes>
     </BrowserRouter>
   );

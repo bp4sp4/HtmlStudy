@@ -2,12 +2,12 @@ import React, { Component } from "react";
 import styles from "./vscode.module.css";
 import Header from "../header/header";
 import ReactApexChart from "react-apexcharts";
+import { NavLink } from "react-router-dom";
 
 class Vscode extends Component {
   constructor(props) {
     super(props);
 
-    // Direct percentage data
     const worldDataInPercentages = [
       74.48, 32.15, 27.97, 27.71, 23.34, 19.8, 17.24, 16.59, 12.57, 11.61,
     ];
@@ -103,10 +103,26 @@ class Vscode extends Component {
   }
 
   render() {
+    const prevPage = { path: "/" };
+    const nextPage = { path: "/HTML5/basic" };
+
     return (
       <div className={styles.container}>
         <Header />
         <main className={styles.main__wrap}>
+          <div className={styles.navigationButtons}>
+            {prevPage && (
+              <NavLink to={prevPage.path} className={styles.navigationLink}>
+                ⬅ Home
+              </NavLink>
+            )}
+            {nextPage && (
+              <NavLink to={nextPage.path} className={styles.navigationLink}>
+                ⮕ 다음글
+              </NavLink>
+            )}
+          </div>
+
           <h1 className={styles.title}>개발자들에게 인기 있는 개발툴 TOP5</h1>
           <section className={styles.section} id="intro">
             <div className={styles.descwrap}>
@@ -179,6 +195,18 @@ class Vscode extends Component {
               </p>
             </div>
           </section>
+          <div className={styles.navigationButtons}>
+            {prevPage && (
+              <NavLink to={prevPage.path} className={styles.navigationLink}>
+                ⬅ Home
+              </NavLink>
+            )}
+            {nextPage && (
+              <NavLink to={nextPage.path} className={styles.navigationLink}>
+                ⮕ 다음글
+              </NavLink>
+            )}
+          </div>
         </main>
       </div>
     );

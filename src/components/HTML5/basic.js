@@ -4,6 +4,7 @@ import Prism from "prismjs";
 import styles from "./basic.module.css";
 import Header from "../header/header";
 import { Skeleton } from "primereact/skeleton";
+import { NavLink } from "react-router-dom";
 
 const Basic = () => {
   const [copySuccess, setCopySuccess] = useState("");
@@ -25,6 +26,9 @@ const Basic = () => {
   const jobcode = `<meta name="Keywords" content = "검색엔진이 우선 순위로 체크하는 검색어">
 <meta name="Author" content = "웹사이트를 제작한 제작자 또는 제작사">
 <meta name="description" content = "웹사이트에 대한 짧은 설명 입력">`;
+
+  const prevPage = { path: "/devtools/vscode" };
+  const nextPage = { path: "/html/paragraph" };
 
   const copyToClipboard = () => {
     navigator.clipboard.writeText(exampleCode).then(
@@ -48,7 +52,20 @@ const Basic = () => {
   return (
     <div className={styles.container}>
       <Header />
+
       <main className={styles.main__wrap}>
+        <div className={styles.navigationButtons}>
+          {prevPage && (
+            <NavLink to={prevPage.path} className={styles.navigationLink}>
+              ⬅ 이전글
+            </NavLink>
+          )}
+          {nextPage && (
+            <NavLink to={nextPage.path} className={styles.navigationLink}>
+              ⮕ 다음글
+            </NavLink>
+          )}
+        </div>
         {loading ? (
           <Skeleton
             width="25%"
@@ -163,6 +180,18 @@ const Basic = () => {
             </div>
           </div>
         </section>
+        <div className={styles.navigationButtons}>
+          {prevPage && (
+            <NavLink to={prevPage.path} className={styles.navigationLink}>
+              ⬅ 이전글
+            </NavLink>
+          )}
+          {nextPage && (
+            <NavLink to={nextPage.path} className={styles.navigationLink}>
+              ⮕ 다음글
+            </NavLink>
+          )}
+        </div>
       </main>
     </div>
   );
