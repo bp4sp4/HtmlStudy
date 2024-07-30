@@ -5,6 +5,7 @@ import Prism from "prismjs";
 import "prismjs/themes/prism.css";
 import "prismjs/components/prism-markup.min.js";
 import { Skeleton } from "primereact/skeleton";
+import { NavLink } from "react-router-dom";
 
 const Hngroup = () => {
   const [copySuccess, setCopySuccess] = useState("");
@@ -22,6 +23,9 @@ const Hngroup = () => {
 <!-- css 활용 -->
 font-style : italic 으로 기울어진글씨를 지정 할 수 있다.
 text-decoration : underline 으로 밑줄을 표시 할 수 있다. `;
+
+  const prevPage = { path: "/html/hngroup" };
+  const nextPage = { path: "/html/oftentag02" };
 
   const copyToClipboard = () => {
     navigator.clipboard.writeText(exampleCode).then(
@@ -46,6 +50,18 @@ text-decoration : underline 으로 밑줄을 표시 할 수 있다. `;
     <div className={styles.container}>
       <Header />
       <main className={styles.main__wrap}>
+        <div className={styles.navigationButtons}>
+          {prevPage && (
+            <NavLink to={prevPage.path} className={styles.navigationLink}>
+              ⬅ 이전글
+            </NavLink>
+          )}
+          {nextPage && (
+            <NavLink to={nextPage.path} className={styles.navigationLink}>
+              ⮕ 다음글
+            </NavLink>
+          )}
+        </div>
         {loading ? (
           <Skeleton
             width="75%"
@@ -206,6 +222,18 @@ text-decoration : underline 으로 밑줄을 표시 할 수 있다. `;
             )}
           </div>
         </section>
+        <div className={styles.navigationButtons}>
+          {prevPage && (
+            <NavLink to={prevPage.path} className={styles.navigationLink}>
+              ⬅ 이전글
+            </NavLink>
+          )}
+          {nextPage && (
+            <NavLink to={nextPage.path} className={styles.navigationLink}>
+              ⮕ 다음글
+            </NavLink>
+          )}
+        </div>
       </main>
     </div>
   );

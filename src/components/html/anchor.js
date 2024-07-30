@@ -5,6 +5,7 @@ import Prism from "prismjs";
 import "prismjs/themes/prism.css";
 import "prismjs/components/prism-markup.min.js";
 import { Skeleton } from "primereact/skeleton";
+import { NavLink } from "react-router-dom";
 
 const Anchor = () => {
   const [copySuccess, setCopySuccess] = useState("");
@@ -16,6 +17,9 @@ const Anchor = () => {
 링크주소 : html파일경로, 이미지 파일경로, #아이디이름
 탭구분 : 링크된 파일을 어떻게 띄울지 결정, _blank(새 탭으로 보이기), _self(현재 탭에서 보이기, 기본값)
 툴팁 : 마우스를 올리면 표시되는 텍스트`;
+
+  const prevPage = { path: "/html/images" };
+  const nextPage = { path: "/html/ollist" };
 
   const copyToClipboard = () => {
     navigator.clipboard.writeText(exampleCode).then(
@@ -40,6 +44,18 @@ const Anchor = () => {
     <div className={styles.container}>
       <Header />
       <main className={styles.main__wrap}>
+        <div className={styles.navigationButtons}>
+          {prevPage && (
+            <NavLink to={prevPage.path} className={styles.navigationLink}>
+              ⬅ 이전글
+            </NavLink>
+          )}
+          {nextPage && (
+            <NavLink to={nextPage.path} className={styles.navigationLink}>
+              ⮕ 다음글
+            </NavLink>
+          )}
+        </div>
         {loading ? (
           <Skeleton
             width="30%"
@@ -194,6 +210,18 @@ const Anchor = () => {
             )}
           </div>
         </section>
+        <div className={styles.navigationButtons}>
+          {prevPage && (
+            <NavLink to={prevPage.path} className={styles.navigationLink}>
+              ⬅ 이전글
+            </NavLink>
+          )}
+          {nextPage && (
+            <NavLink to={nextPage.path} className={styles.navigationLink}>
+              ⮕ 다음글
+            </NavLink>
+          )}
+        </div>
       </main>
     </div>
   );

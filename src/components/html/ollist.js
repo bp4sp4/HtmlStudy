@@ -5,6 +5,7 @@ import Prism from "prismjs";
 import "prismjs/themes/prism.css";
 import "prismjs/components/prism-markup.min.js";
 import { Skeleton } from "primereact/skeleton";
+import { NavLink } from "react-router-dom";
 
 const Ollist = () => {
   const [copySuccess, setCopySuccess] = useState("");
@@ -20,6 +21,9 @@ const Ollist = () => {
     <li>목록 앞에 기호를 넣어 목록 만드는 형식</li>
 </ol>
 `;
+
+  const prevPage = { path: "/html/anchor" };
+  const nextPage = { path: "/html/ullist" };
 
   const copyToClipboard = () => {
     navigator.clipboard.writeText(exampleCode).then(
@@ -44,6 +48,18 @@ const Ollist = () => {
     <div className={styles.container}>
       <Header />
       <main className={styles.main__wrap}>
+        <div className={styles.navigationButtons}>
+          {prevPage && (
+            <NavLink to={prevPage.path} className={styles.navigationLink}>
+              ⬅ 이전글
+            </NavLink>
+          )}
+          {nextPage && (
+            <NavLink to={nextPage.path} className={styles.navigationLink}>
+              ⮕ 다음글
+            </NavLink>
+          )}
+        </div>
         {loading ? (
           <Skeleton
             width="35%"
@@ -168,6 +184,18 @@ const Ollist = () => {
             </div>
           </div>
         </section>
+        <div className={styles.navigationButtons}>
+          {prevPage && (
+            <NavLink to={prevPage.path} className={styles.navigationLink}>
+              ⬅ 이전글
+            </NavLink>
+          )}
+          {nextPage && (
+            <NavLink to={nextPage.path} className={styles.navigationLink}>
+              ⮕ 다음글
+            </NavLink>
+          )}
+        </div>
       </main>
     </div>
   );

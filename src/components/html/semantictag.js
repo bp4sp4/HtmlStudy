@@ -7,25 +7,41 @@ import "prismjs/components/prism-markup.min.js";
 import { Skeleton } from "primereact/skeleton";
 import { NavLink } from "react-router-dom";
 
-const Images = () => {
+const Semantictag = () => {
   const [copySuccess, setCopySuccess] = useState("");
   const [loading, setLoading] = useState(true);
-  const exampleCode = `<img src="images/tree.jpg" alt="tree.jpg">
-<img src="images/star-sign.gif" alt="star sign">
-<img src="images/logo-favicon.png" alt="htmlstudy">
-<img src="images/tree.svg" width="200" alt="tree.svg">
-<img src="images/tree.svg" width="500" alt="tree.svg">
-<!-- 예제복사는 밑에 3개 -->
-<img src="https://via.placeholder.com/400x100">
-<img src="https://via.placeholder.com/300x100">
-<img src="https://via.placeholder.com/100">`;
-  const jobcode = `<img src="images/tree.svg" alt="tree">
-<img src="images/tree.svg">  
-<! -- SVG 파일은 벡터포맷이므로 품질이 전혀 손상되지 않으며 Code로 만들어지는 이미지 입니다. -->
-<! -- 이미지 width, height 또한 css 로 관리하는게 더 좋습니다. -->`;
 
-  const prevPage = { path: "/html/images" };
-  const nextPage = { path: "/html/anchor" };
+  const exampleCode = `<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <!-- 초기 화면 배율(initial-scale) 설정(zoom 레벨 설정) -->
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>시멘틱 태그</title>
+</head>
+<body>
+    <header>
+    <!-- 로고, 네비게이션, 상단 메인 이미지 -->
+        <nav></nav>
+    </header>
+    <main>
+        <section>
+        <!-- 메인 컨텐츠 내용 -->
+            <article></article>
+            <aside></aside>
+        </section>
+    </main>
+    <!-- 회사정보, SNS, 카피라이트 -->
+    <footer></footer>
+</body>
+</html>`;
+  const jobcode = `가장 상위의 컨테이너 : .container 또는 .wrapper
+문서의 주요 내용을 지정 : main
+주제별 콘텐츠 영억 : section
+헤더 영역 (로고, 메뉴, 로그, 검색 등) : header
+제작 정보 및 저작권 정보 표시 : footer
+콘텐츠 내용 넣기 : article
+문서를 링크하는 탐색 영역 : nav`;
 
   const copyToClipboard = () => {
     navigator.clipboard.writeText(exampleCode).then(
@@ -46,6 +62,9 @@ const Images = () => {
     }, 1000);
   }, []);
 
+  const prevPage = { path: "/HTML5/basic" };
+  const nextPage = { path: "/html/hngroup" };
+
   return (
     <div className={styles.container}>
       <Header />
@@ -64,19 +83,31 @@ const Images = () => {
         </div>
         {loading ? (
           <Skeleton
-            width="25%"
+            width="35%"
             height="3rem"
             className={`${styles.skeleton} mb`}
             animation="wave"
           />
         ) : (
-          <h1 className={styles.title}>Image(이미지)</h1>
+          <h1 className={styles.title}>Semantic(시멘틱 태그)</h1>
         )}
         <section className={styles.section} id="intro">
           {loading ? (
             <>
               <Skeleton
-                width="50%"
+                width="70%"
+                height="1.5rem"
+                className={styles.skeleton}
+                animation="wave"
+              />
+              <Skeleton
+                width="100%"
+                height="1.5rem"
+                className={styles.skeleton}
+                animation="wave"
+              />
+              <Skeleton
+                width="75%"
                 height="1.5rem"
                 className={styles.skeleton}
                 animation="wave"
@@ -85,8 +116,15 @@ const Images = () => {
           ) : (
             <div className={styles.descwrap}>
               <h2 className={styles.descwrap__subtitle}>
-                이미지 파일 HTML 코드로 불러오기 - img 태그 사용법
+                시맨틱 태그는 콘텐츠의 형식 뿐만 아니라 콘텐츠의 의미와 구조를
+                설명합니다.
               </h2>
+              <p className={styles.descwrap__subtitle__desc}>
+                시맨틱 태그를 사용하면 접근성과, SEO, 가독성 측면에서 다양한
+                이점을 얻을 수 있습니다. 이번 글에서는 시맨틱 태그가 무엇인지,
+                어떻게 작용하는 지 살펴보고, 시맨틱 태그 요소의 종류와 이점까지
+                알아보겠습니다.
+              </p>
             </div>
           )}
         </section>
@@ -100,7 +138,7 @@ const Images = () => {
                 animation="wave"
               />
             ) : (
-              "이미지 태그 예제"
+              "Semantic 태그 예제"
             )}
           </h2>
           <div className={styles.codeContainer}>
@@ -112,7 +150,7 @@ const Images = () => {
             {loading ? (
               <Skeleton
                 width="100%"
-                height="15rem"
+                height="38rem"
                 className={styles.skeleton}
                 animation="wave"
               />
@@ -130,39 +168,7 @@ const Images = () => {
               </>
             )}
           </div>
-          <div className={styles.render__wrap}>
-            <h2 className={styles.render__name}>
-              {loading ? (
-                <Skeleton
-                  width="20%"
-                  height="2rem"
-                  className={styles.skeleton}
-                  animation="wave"
-                />
-              ) : (
-                "이미지 태그 실행 예제 화면"
-              )}
-            </h2>
-            <div className={styles.render__code}>
-              {loading ? (
-                <Skeleton
-                  width="100%"
-                  height="8rem"
-                  className={styles.skeleton}
-                  animation="wave"
-                />
-              ) : (
-                <>
-                  {" "}
-                  <img src="https://via.placeholder.com/400x100" alt="via" />
-                  <br></br>
-                  <img src="https://via.placeholder.com/300x100" alt="via" />
-                  &nbsp;
-                  <img src="https://via.placeholder.com/100" alt="via" />
-                </>
-              )}
-            </div>
-          </div>
+
           <div className={styles.render__name}>
             {loading ? (
               <Skeleton
@@ -189,22 +195,22 @@ const Images = () => {
               </pre>
             )}
           </div>
+          <div className={styles.navigationButtons}>
+            {prevPage && (
+              <NavLink to={prevPage.path} className={styles.navigationLink}>
+                ⬅ 이전글
+              </NavLink>
+            )}
+            {nextPage && (
+              <NavLink to={nextPage.path} className={styles.navigationLink}>
+                ⮕ 다음글
+              </NavLink>
+            )}
+          </div>
         </section>
-        <div className={styles.navigationButtons}>
-          {prevPage && (
-            <NavLink to={prevPage.path} className={styles.navigationLink}>
-              ⬅ 이전글
-            </NavLink>
-          )}
-          {nextPage && (
-            <NavLink to={nextPage.path} className={styles.navigationLink}>
-              ⮕ 다음글
-            </NavLink>
-          )}
-        </div>
       </main>
     </div>
   );
 };
 
-export default Images;
+export default Semantictag;

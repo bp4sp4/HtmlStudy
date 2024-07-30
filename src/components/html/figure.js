@@ -5,6 +5,7 @@ import Prism from "prismjs";
 import "prismjs/themes/prism.css";
 import "prismjs/components/prism-markup.min.js";
 import { Skeleton } from "primereact/skeleton";
+import { NavLink } from "react-router-dom";
 
 const Figure = () => {
   const [copySuccess, setCopySuccess] = useState("");
@@ -23,6 +24,9 @@ Lorem Ipsum is simply dummy text of the printing and typesetting industry.
 <!-- figure 태그는 이미지와 텍스트를 함께 사용해야 하는 경우를 위해
 HTML5부터 새롭게 만든 태그로 이미지, 영상 등 멀티미디어 내용을 담을 때 사용합니다. -->
 `;
+
+  const prevPage = { path: "/html/ullist" };
+  const nextPage = { path: "/html/table" };
 
   const copyToClipboard = () => {
     navigator.clipboard.writeText(exampleCode).then(
@@ -47,6 +51,18 @@ HTML5부터 새롭게 만든 태그로 이미지, 영상 등 멀티미디어 내
     <div className={styles.container}>
       <Header />
       <main className={styles.main__wrap}>
+        <div className={styles.navigationButtons}>
+          {prevPage && (
+            <NavLink to={prevPage.path} className={styles.navigationLink}>
+              ⬅ 이전글
+            </NavLink>
+          )}
+          {nextPage && (
+            <NavLink to={nextPage.path} className={styles.navigationLink}>
+              ⮕ 다음글
+            </NavLink>
+          )}
+        </div>
         {loading ? (
           <Skeleton
             width="25%"
@@ -193,6 +209,18 @@ HTML5부터 새롭게 만든 태그로 이미지, 영상 등 멀티미디어 내
             )}
           </div>
         </section>
+        <div className={styles.navigationButtons}>
+          {prevPage && (
+            <NavLink to={prevPage.path} className={styles.navigationLink}>
+              ⬅ 이전글
+            </NavLink>
+          )}
+          {nextPage && (
+            <NavLink to={nextPage.path} className={styles.navigationLink}>
+              ⮕ 다음글
+            </NavLink>
+          )}
+        </div>
       </main>
     </div>
   );

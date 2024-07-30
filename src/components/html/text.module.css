@@ -221,3 +221,12 @@
     background-color: #32CD32;
     color: #fff;
 }
+
+.textarea {
+    display: flex;
+    flex-direction: column;
+}
+
+.font {
+    font-family: none;
+}

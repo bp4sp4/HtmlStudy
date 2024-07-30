@@ -1,5 +1,5 @@
-import React, { useState } from "react";
-import { NavLink } from "react-router-dom";
+import React, { useState, useEffect } from "react";
+import { NavLink, useLocation } from "react-router-dom";
 import styles from "./header.module.css";
 import { styled, useTheme } from "@mui/material/styles";
 import Box from "@mui/material/Box";
@@ -31,6 +31,8 @@ import SaveAsIcon from "@mui/icons-material/SaveAs";
 import TableRowsIcon from "@mui/icons-material/TableRows";
 import InputIcon from "@mui/icons-material/Input";
 import logoimg from "./logo.png";
+import WebIcon from "@mui/icons-material/Web";
+
 const drawerWidth = 240;
 
 const Main = styled("main", { shouldForwardProp: (prop) => prop !== "open" })(
@@ -160,20 +162,42 @@ const menuItems = [
         icon: <Tag />,
       },
       {
-        name: "ul태그",
-        path: "/html/ullist",
+        name: "폼 태그들2",
+        path: "/html/formoption2",
         icon: <Tag />,
       },
     ],
+  },
+  {
+    name: "시멘틱 태그",
+    path: "/html/semantictag",
+    exact: true,
+    icon: <WebIcon />,
   },
 ];
 
 const Header = ({ prevPage, nextPage }) => {
   const theme = useTheme();
-  const [open, setOpen] = useState(false);
+  const location = useLocation();
+  const [open, setOpen] = useState(true);
   const [isDarkMode, setIsDarkMode] = useState(false);
   const [openSubMenu, setOpenSubMenu] = useState({});
   const height2 = "50px";
+
+  useEffect(() => {
+    const openMenu = {};
+    menuItems.forEach((item) => {
+      if (item.subItems) {
+        const isOpen = item.subItems.some(
+          (subItem) => location.pathname === subItem.path
+        );
+        if (isOpen) {
+          openMenu[item.name] = true;
+        }
+      }
+    });
+    setOpenSubMenu(openMenu);
+  }, [location.pathname]);
 
   const handleDrawerOpen = () => {
     setOpen(true);
@@ -267,7 +291,10 @@ const Header = ({ prevPage, nextPage }) => {
                   activeClassName={styles.active}
                   onClick={
                     item.subItems
-                      ? () => handleSubMenuClick(item.name)
+                      ? (e) => {
+                          e.stopPropagation(); // Prevents the drawer from closing
+                          handleSubMenuClick(item.name);
+                        }
                       : undefined
                   }
                 >

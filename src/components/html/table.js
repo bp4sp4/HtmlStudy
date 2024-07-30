@@ -5,6 +5,7 @@ import Prism from "prismjs";
 import "prismjs/themes/prism.css";
 import "prismjs/components/prism-markup.min.js";
 import { Skeleton } from "primereact/skeleton";
+import { NavLink } from "react-router-dom";
 
 const Table = () => {
   const [copySuccess, setCopySuccess] = useState("");
@@ -40,6 +41,9 @@ const Table = () => {
 <thead> : 표 제목 구조 정의 / <tbody> 표 본문 구조 정의
 <tfoot> : 표 요약 구조 정의 <!-- 잘 안씀 -->`;
 
+  const prevPage = { path: "/html/figure" };
+  const nextPage = { path: "/html/formoption" };
+
   const copyToClipboard = () => {
     navigator.clipboard.writeText(exampleCode).then(
       () => setCopySuccess("복사 완료!"),
@@ -63,6 +67,18 @@ const Table = () => {
     <div className={styles.container}>
       <Header />
       <main className={styles.main__wrap}>
+        <div className={styles.navigationButtons}>
+          {prevPage && (
+            <NavLink to={prevPage.path} className={styles.navigationLink}>
+              ⬅ 이전글
+            </NavLink>
+          )}
+          {nextPage && (
+            <NavLink to={nextPage.path} className={styles.navigationLink}>
+              ⮕ 다음글
+            </NavLink>
+          )}
+        </div>
         {loading ? (
           <Skeleton
             width="25%"
@@ -219,6 +235,18 @@ const Table = () => {
             )}
           </div>
         </section>
+        <div className={styles.navigationButtons}>
+          {prevPage && (
+            <NavLink to={prevPage.path} className={styles.navigationLink}>
+              ⬅ 이전글
+            </NavLink>
+          )}
+          {nextPage && (
+            <NavLink to={nextPage.path} className={styles.navigationLink}>
+              ⮕ 다음글
+            </NavLink>
+          )}
+        </div>
       </main>
     </div>
   );

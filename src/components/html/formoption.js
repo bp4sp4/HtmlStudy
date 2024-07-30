@@ -5,6 +5,7 @@ import Prism from "prismjs";
 import "prismjs/themes/prism.css";
 import "prismjs/components/prism-markup.min.js";
 import { Skeleton } from "primereact/skeleton";
+import { NavLink } from "react-router-dom";
 
 const Formoption = () => {
   const [copySuccess, setCopySuccess] = useState("");
@@ -27,6 +28,9 @@ const Formoption = () => {
 <input> : 입력 항목 만들기
 <!-- Input 내에 사용하는 type 속성은 다양하게 많이 있습니다. 
 하지만 퍼블리싱 실무 작업에서는 대표적으로 text, password, email을 사용합니다. -->`;
+
+  const prevPage = { path: "/html/table" };
+  const nextPage = { path: "/html/formoption2" };
 
   const copyToClipboard = () => {
     navigator.clipboard.writeText(exampleCode).then(
@@ -51,15 +55,29 @@ const Formoption = () => {
     <div className={styles.container}>
       <Header />
       <main className={styles.main__wrap}>
+        <div className={styles.navigationButtons}>
+          {prevPage && (
+            <NavLink to={prevPage.path} className={styles.navigationLink}>
+              ⬅ 이전글
+            </NavLink>
+          )}
+          {nextPage && (
+            <NavLink to={nextPage.path} className={styles.navigationLink}>
+              ⮕ 다음글
+            </NavLink>
+          )}
+        </div>
         {loading ? (
           <Skeleton
-            width="25%"
+            width="75%"
             height="3rem"
             className={`${styles.skeleton} mb`}
             animation="wave"
           />
         ) : (
-          <h1 className={styles.title}>폼 태그들(Form Tags)</h1>
+          <h1 className={styles.title}>
+            폼 태그들(form, fieldset, legend, label, input)
+          </h1>
         )}
         <section className={styles.section} id="intro">
           {loading ? (
@@ -106,7 +124,7 @@ const Formoption = () => {
                 animation="wave"
               />
             ) : (
-              "P 태그 예제"
+              "Form 태그 예제"
             )}
           </h2>
           <div className={styles.codeContainer}>
@@ -146,7 +164,7 @@ const Formoption = () => {
                   animation="wave"
                 />
               ) : (
-                "P 태그 실행 예제 화면"
+                "Form 태그 실행 예제 화면"
               )}
             </h2>
             <div className={styles.render__code}>
@@ -204,6 +222,18 @@ const Formoption = () => {
             )}
           </div>
         </section>
+        <div className={styles.navigationButtons}>
+          {prevPage && (
+            <NavLink to={prevPage.path} className={styles.navigationLink}>
+              ⬅ 이전글
+            </NavLink>
+          )}
+          {nextPage && (
+            <NavLink to={nextPage.path} className={styles.navigationLink}>
+              ⮕ 다음글
+            </NavLink>
+          )}
+        </div>
       </main>
     </div>
   );

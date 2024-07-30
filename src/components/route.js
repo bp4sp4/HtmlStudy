@@ -14,6 +14,8 @@ import UlList from "./html/ullist";
 import Figure from "./html/figure";
 import Table from "./html/table";
 import Formoption from "./html/formoption";
+import Formoption2 from "./html/formoption2";
+import Semantictag from "./html/semantictag";
 
 const Router = () => {
   return (
@@ -34,6 +36,8 @@ const Router = () => {
         <Route path="/html/figure" element={<Figure />} />
         <Route path="/html/table" element={<Table />} />
         <Route path="/html/formoption" element={<Formoption />} />
+        <Route path="/html/formoption2" element={<Formoption2 />} />
+        <Route path="/html/semantictag" element={<Semantictag />} />
       </Routes>
     </BrowserRouter>
   );

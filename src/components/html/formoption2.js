@@ -7,25 +7,43 @@ import "prismjs/components/prism-markup.min.js";
 import { Skeleton } from "primereact/skeleton";
 import { NavLink } from "react-router-dom";
 
-const Images = () => {
+const Formoption2 = () => {
   const [copySuccess, setCopySuccess] = useState("");
   const [loading, setLoading] = useState(true);
-  const exampleCode = `<img src="images/tree.jpg" alt="tree.jpg">
-<img src="images/star-sign.gif" alt="star sign">
-<img src="images/logo-favicon.png" alt="htmlstudy">
-<img src="images/tree.svg" width="200" alt="tree.svg">
-<img src="images/tree.svg" width="500" alt="tree.svg">
-<!-- 예제복사는 밑에 3개 -->
-<img src="https://via.placeholder.com/400x100">
-<img src="https://via.placeholder.com/300x100">
-<img src="https://via.placeholder.com/100">`;
-  const jobcode = `<img src="images/tree.svg" alt="tree">
-<img src="images/tree.svg">  
-<! -- SVG 파일은 벡터포맷이므로 품질이 전혀 손상되지 않으며 Code로 만들어지는 이미지 입니다. -->
-<! -- 이미지 width, height 또한 css 로 관리하는게 더 좋습니다. -->`;
+  const exampleCode = `<!-- input type 속성 : checkbox -->
+<form>
+  <input type="checkbox" checked>게임하기
+  <input type="checkbox">영화관람
+</form>
+<!-- input type 속성 : radio -->
+<form>
+  <input type="radio" checked>초등학교
+  <input type="radio">중학교
+</form>
+<!-- 폼 요소 : select, option -->
+<form>
+    <select>
+    <option value="">Family Site</option>
+    <option value="건축사무소">건축사무소</option>
+    <option value="건설업체">건설업체</option>
+    </select>
+</form>
+<!-- 폼 요소 : textarea-->
+<form>
+    <label for="">남기실말씀</label><br>
+    <textarea rows="5" cols="40"></textarea>
+</form>
 
-  const prevPage = { path: "/html/images" };
-  const nextPage = { path: "/html/anchor" };
+`;
+  const jobcode = `<select> : 드롭다운 목록 만들기
+<option> : 드롭다운 목록 아이템 만들기
+<textarea> : 여러 줄 입력하는 텍스트 영영 만들기
+cols : 열개수 / rows : 행 개수
+<!-- 폼 요소 태그 안에 속성 중에 name, id는 개발자가 다루는 속성이므로 퍼블리싱
+작업에서는 크게 신경 쓸 부분은 아닙니다. 단, radio일 경우는 name 값을 동일하게 부여 해야 합니다. -->`;
+
+  const prevPage = { path: "/html/formoption" };
+  const nextPage = { path: "/html/semantictag" };
 
   const copyToClipboard = () => {
     navigator.clipboard.writeText(exampleCode).then(
@@ -64,19 +82,31 @@ const Images = () => {
         </div>
         {loading ? (
           <Skeleton
-            width="25%"
+            width="60%"
             height="3rem"
             className={`${styles.skeleton} mb`}
             animation="wave"
           />
         ) : (
-          <h1 className={styles.title}>Image(이미지)</h1>
+          <h1 className={styles.title}>폼 태그들2(select, option, textarea)</h1>
         )}
         <section className={styles.section} id="intro">
           {loading ? (
             <>
               <Skeleton
-                width="50%"
+                width="30%"
+                height="1.5rem"
+                className={styles.skeleton}
+                animation="wave"
+              />
+              <Skeleton
+                width="100%"
+                height="1.5rem"
+                className={styles.skeleton}
+                animation="wave"
+              />
+              <Skeleton
+                width="40%"
                 height="1.5rem"
                 className={styles.skeleton}
                 animation="wave"
@@ -85,8 +115,13 @@ const Images = () => {
           ) : (
             <div className={styles.descwrap}>
               <h2 className={styles.descwrap__subtitle}>
-                이미지 파일 HTML 코드로 불러오기 - img 태그 사용법
+                웹 페이지에서의 입력 양식
               </h2>
+              <p className={styles.descwrap__subtitle__desc}>
+                폼태그란 웹 페이지에서의 입력 양식을 말합니다. 우리가 평소
+                로그인할 때 아이디와 패스워드를 기입하는 용도로 쓰이죠. 사용자가
+                기입한 정보를 백엔드서버로 전송해주는 역할을 합니다.
+              </p>
             </div>
           )}
         </section>
@@ -100,7 +135,7 @@ const Images = () => {
                 animation="wave"
               />
             ) : (
-              "이미지 태그 예제"
+              "Form 태그 예제"
             )}
           </h2>
           <div className={styles.codeContainer}>
@@ -112,7 +147,7 @@ const Images = () => {
             {loading ? (
               <Skeleton
                 width="100%"
-                height="15rem"
+                height="30rem"
                 className={styles.skeleton}
                 animation="wave"
               />
@@ -140,25 +175,43 @@ const Images = () => {
                   animation="wave"
                 />
               ) : (
-                "이미지 태그 실행 예제 화면"
+                "Form 태그 실행 예제 화면"
               )}
             </h2>
             <div className={styles.render__code}>
               {loading ? (
                 <Skeleton
                   width="100%"
-                  height="8rem"
+                  height="5rem"
                   className={styles.skeleton}
                   animation="wave"
                 />
               ) : (
                 <>
                   {" "}
-                  <img src="https://via.placeholder.com/400x100" alt="via" />
-                  <br></br>
-                  <img src="https://via.placeholder.com/300x100" alt="via" />
-                  &nbsp;
-                  <img src="https://via.placeholder.com/100" alt="via" />
+                  <form>
+                    <input type="checkbox" checked />
+                    게임하기
+                    <input type="checkbox" />
+                    영화관람
+                  </form>
+                  <form>
+                    <input type="radio" checked />
+                    초등학교
+                    <input type="radio" />
+                    중학교
+                  </form>
+                  <form>
+                    <select className={styles.font}>
+                      <option value="">Family Site</option>
+                      <option value="건축사무소">건축사무소</option>
+                      <option value="건설업체">건설업체</option>
+                    </select>
+                  </form>
+                  <form className={styles.textarea}>
+                    <label for="">남기실말씀</label>
+                    <textarea rows="5" cols="40"></textarea>
+                  </form>
                 </>
               )}
             </div>
@@ -207,4 +260,4 @@ const Images = () => {
   );
 };
 
-export default Images;
+export default Formoption2;
