@@ -16,6 +16,7 @@ import Table from "./html/table";
 import Formoption from "./html/formoption";
 import Formoption2 from "./html/formoption2";
 import Semantictag from "./html/semantictag";
+import Htmlsummary from "./html/htmlsummary";
 
 const Router = () => {
   return (
@@ -38,6 +39,7 @@ const Router = () => {
         <Route path="/html/formoption" element={<Formoption />} />
         <Route path="/html/formoption2" element={<Formoption2 />} />
         <Route path="/html/semantictag" element={<Semantictag />} />
+        <Route path="/html/htmlsummary" element={<Htmlsummary />} />
       </Routes>
     </BrowserRouter>
   );

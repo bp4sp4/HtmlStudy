@@ -30,7 +30,7 @@ import ListIcon from "@mui/icons-material/List";
 import SaveAsIcon from "@mui/icons-material/SaveAs";
 import TableRowsIcon from "@mui/icons-material/TableRows";
 import InputIcon from "@mui/icons-material/Input";
-import logoimg from "./logo.png";
+import logoimg from "./LOGO.png";
 import WebIcon from "@mui/icons-material/Web";
 
 const drawerWidth = 240;
@@ -80,6 +80,11 @@ const menuItems = [
     path: "/devtools/vscode",
     exact: true,
     icon: <CodeIcon />,
+  },
+  // HTML Section
+  {
+    name: "HTML Section",
+    type: "header",
   },
   { name: "기본문서구조", path: "/HTML5/basic", icon: <HtmlIcon /> },
   {
@@ -174,6 +179,35 @@ const menuItems = [
     exact: true,
     icon: <WebIcon />,
   },
+  {
+    name: "Html 총정리",
+    path: "/html/htmlsummary",
+    exact: true,
+    icon: <SaveAsIcon />,
+  },
+  // CSS Section
+  {
+    name: "CSS Section",
+    type: "header",
+  },
+  {
+    name: "CSS test",
+    path: "/css/intro",
+    exact: true,
+    icon: <CodeIcon />,
+  },
+  {
+    name: "CSS test",
+    path: "/css/selectors",
+    exact: true,
+    icon: <CodeIcon />,
+  },
+  {
+    name: "CSS test",
+    path: "/css/properties",
+    exact: true,
+    icon: <CodeIcon />,
+  },
 ];
 
 const Header = ({ prevPage, nextPage }) => {
@@ -249,10 +283,12 @@ const Header = ({ prevPage, nextPage }) => {
               display: "flex",
               justifyContent: "center",
               alignItems: "center",
-              height: height2, // Use the defined constant here
+              height: height2,
             }}
           >
-            <img src={logoimg} width="240px" alt="logo" />
+            <a href="/HtmlStudy">
+              <img src={logoimg} width="200px" alt="logo" />
+            </a>
           </Typography>
         </Toolbar>
       </AppBar>
@@ -281,34 +317,51 @@ const Header = ({ prevPage, nextPage }) => {
         </DrawerHeader>
         <Divider />
         <List>
-          {menuItems.map((item) => (
+          {menuItems.map((item, index) => (
             <React.Fragment key={item.name}>
-              <ListItem disablePadding>
-                <ListItemButton
-                  component={item.subItems ? "div" : NavLink}
-                  to={item.subItems ? undefined : item.path}
-                  exact={item.exact}
-                  activeClassName={styles.active}
-                  onClick={
-                    item.subItems
-                      ? (e) => {
-                          e.stopPropagation(); // Prevents the drawer from closing
-                          handleSubMenuClick(item.name);
-                        }
-                      : undefined
-                  }
-                >
-                  <ListItemIcon>{item.icon}</ListItemIcon>
-                  <ListItemText primary={item.name} />
-                  {item.subItems ? (
-                    openSubMenu[item.name] ? (
-                      <ExpandLess />
-                    ) : (
-                      <ExpandMore />
-                    )
-                  ) : null}
-                </ListItemButton>
-              </ListItem>
+              {item.type === "header" && (
+                <>
+                  <Divider />
+                  <ListItem>
+                    <ListItemText
+                      primary={item.name === "HTML Section" ? "HTML" : "CSS"}
+                      primaryTypographyProps={{
+                        variant: "p",
+                        fontSize: "10px",
+                        fontWeight: "bold",
+                      }}
+                    />
+                  </ListItem>
+                </>
+              )}
+              {item.type !== "header" && (
+                <ListItem disablePadding>
+                  <ListItemButton
+                    component={item.subItems ? "div" : NavLink}
+                    to={item.subItems ? undefined : item.path}
+                    exact={item.exact}
+                    activeClassName={styles.active}
+                    onClick={
+                      item.subItems
+                        ? (e) => {
+                            e.stopPropagation();
+                            handleSubMenuClick(item.name);
+                          }
+                        : undefined
+                    }
+                  >
+                    <ListItemIcon>{item.icon}</ListItemIcon>
+                    <ListItemText primary={item.name} />
+                    {item.subItems ? (
+                      openSubMenu[item.name] ? (
+                        <ExpandLess />
+                      ) : (
+                        <ExpandMore />
+                      )
+                    ) : null}
+                  </ListItemButton>
+                </ListItem>
+              )}
               {item.subItems && (
                 <Collapse
                   in={openSubMenu[item.name]}
@@ -336,7 +389,6 @@ const Header = ({ prevPage, nextPage }) => {
             </React.Fragment>
           ))}
         </List>
-        <Divider />
       </Drawer>
       <Main open={open}>
         <DrawerHeader />
