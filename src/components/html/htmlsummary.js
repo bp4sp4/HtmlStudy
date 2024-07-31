@@ -63,7 +63,9 @@ const Htmlsummary = () => {
             animation="wave"
           />
         ) : (
-          <h1 className={styles.title}>Html 총정리</h1>
+          <h1 className={styles.title}>
+            Html 총정리(만드는중 아이콘 바꿔야함)
+          </h1>
         )}
         <section className={styles.section} id="intro">
           {loading ? (
