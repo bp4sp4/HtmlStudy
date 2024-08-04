@@ -30,7 +30,7 @@ import ListIcon from "@mui/icons-material/List";
 import SaveAsIcon from "@mui/icons-material/SaveAs";
 import TableRowsIcon from "@mui/icons-material/TableRows";
 import InputIcon from "@mui/icons-material/Input";
-import logoimg from "./LOGO.png";
+import logoimg from "./logo.png";
 import WebIcon from "@mui/icons-material/Web";
 
 const drawerWidth = 240;
@@ -86,7 +86,7 @@ const menuItems = [
     name: "HTML Section",
     type: "header",
   },
-  { name: "기본문서구조", path: "/HTML5/basic", icon: <HtmlIcon /> },
+  { name: "기본문서구조", path: "/html/basic", icon: <HtmlIcon /> },
   {
     name: "텍스트서식",
     path: "/text/paragraph",
@@ -287,7 +287,12 @@ const Header = ({ prevPage, nextPage }) => {
             }}
           >
             <a href="/HtmlStudy">
-              <img src={logoimg} width="200px" alt="logo" />
+              <img
+                className={styles.logoimg}
+                src={logoimg}
+                width="230px"
+                alt="logo"
+              />
             </a>
           </Typography>
         </Toolbar>
@@ -299,7 +304,7 @@ const Header = ({ prevPage, nextPage }) => {
           "& .MuiDrawer-paper": {
             width: drawerWidth,
             boxSizing: "border-box",
-            background: "#d2d2d2 !important",
+            background: "#f0eefa !important",
           },
         }}
         variant="persistent"
@@ -317,6 +322,17 @@ const Header = ({ prevPage, nextPage }) => {
         </DrawerHeader>
         <Divider />
         <List>
+          <ListItem>
+            <ListItemText
+              primary={"Intro"}
+              primaryTypographyProps={{
+                display: "flex",
+                variant: "p",
+                fontSize: "13px",
+                fontWeight: "bold",
+              }}
+            />
+          </ListItem>
           {menuItems.map((item, index) => (
             <React.Fragment key={item.name}>
               {item.type === "header" && (
@@ -324,10 +340,10 @@ const Header = ({ prevPage, nextPage }) => {
                   <Divider />
                   <ListItem>
                     <ListItemText
-                      primary={item.name === "HTML Section" ? "HTML" : "CSS"}
+                      primary={item.name === "HTML Section" ? "HTML5" : "CSS3"}
                       primaryTypographyProps={{
                         variant: "p",
-                        fontSize: "10px",
+                        fontSize: "11px",
                         fontWeight: "bold",
                       }}
                     />

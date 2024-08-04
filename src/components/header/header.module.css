@@ -57,4 +57,9 @@ header {
 
 .mode {
     color: var(--text-color) !important;
+    font-family: 'GongGothicMedium' !important;
+}
+
+.logoimg {
+    display: flex;
 }

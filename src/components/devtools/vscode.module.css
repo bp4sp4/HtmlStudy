@@ -113,15 +113,15 @@ Skeleton {
 }
 
 .navigationLink {
-    color: #32CD32;
+    color: #7c5fdd;
     text-decoration: none;
     padding: 0.5rem 1rem;
-    border: 1px solid #32CD32;
+    border: 1px solid #7c5fdd;
     border-radius: 4px;
     transition: background-color 0.3s ease;
 }
 
 .navigationLink:hover {
-    background-color: #32CD32;
+    background-color: #7c5fdd;
     color: #fff;
 }

@@ -6,7 +6,6 @@
     display: flex;
     justify-content: center;
     width: 100%;
-    height: 100%;
     margin-left: auto;
     margin-right: auto;
     font-family: Arial, sans-serif;
@@ -18,9 +17,9 @@
     max-width: 900px;
     height: 100%;
     display: flex;
-    flex-direction: column;
-    justify-content: center;
     padding-top: 6rem;
+    justify-content: center;
+    flex-direction: column;
     box-sizing: border-box;
 }
 
@@ -40,7 +39,6 @@
 .descwrap {
     width: 100%;
     line-height: 1.5;
-    color: var(--text-color);
 }
 
 .section .descwrap__subtitle {
@@ -53,6 +51,15 @@
     margin-top: 1rem;
     font-size: 1.1rem;
     color: var(--text-color);
+    line-height: 2;
+}
+
+.codeContainer {
+    padding-bottom: 1.5rem;
+    background-color: #f4f4f4;
+    border-radius: 5px;
+    position: relative;
+    font-family: none;
 }
 
 .windowBar {
@@ -82,15 +89,6 @@
 .green {
     background-color: #27c93f;
 }
-
-.codeContainer {
-    padding-bottom: 1.5rem;
-    background-color: #f4f4f4;
-    border-radius: 5px;
-    position: relative;
-    font-family: none;
-}
-
 
 .ex__name {
     font-size: 1.25rem;
@@ -126,7 +124,8 @@
     border: 1px solid #ccc;
     border-radius: 5px;
     background-color: #fafafa;
-
+    margin-bottom: 1rem;
+    font-family: none;
 }
 
 .render__name {
@@ -136,18 +135,70 @@
     color: var(--text-color);
 }
 
-.render__wrap {
-    position: relative;
-    display: flex;
-    flex-direction: column;
-}
-
-.render__name__sub {
-    color: var(--text-color);
-}
-
 .skeleton {
     margin-bottom: 1rem;
+}
+
+.itag {
+    font-style: italic;
+}
+
+.big {
+    font-size: larger;
+}
+
+.small {
+    font-size: smaller;
+}
+
+.ollist {
+    list-style: decimal;
+    padding: 1rem;
+}
+
+.ollist2 {
+    list-style: upper-alpha;
+    padding: 1rem;
+}
+
+.ullist {
+    list-style-type: disc;
+    padding: 1rem;
+}
+
+.ullist2 {
+    list-style: circle;
+    padding: 1rem;
+}
+
+.renderh1 {
+    font-size: 2rem;
+}
+
+.atag {
+    color: black;
+    display: flex;
+    margin: 10px 10px;
+}
+
+.tabletag {
+    border: 1px solid #000;
+}
+
+.tabletag thead {
+    border: 1px solid #000;
+}
+
+.tabletag th {
+    border: 1px solid #000;
+}
+
+.tabletag tr {
+    border: 1px solid #000;
+}
+
+.tabletag td {
+    border: 1px solid #000;
 }
 
 .navigationButtons {
@@ -158,15 +209,24 @@
 }
 
 .navigationLink {
-    color: #32CD32;
+    color: #7c5fdd;
     text-decoration: none;
     padding: 0.5rem 1rem;
-    border: 1px solid #32CD32;
+    border: 1px solid #7c5fdd;
     border-radius: 4px;
     transition: background-color 0.3s ease;
 }
 
 .navigationLink:hover {
-    background-color: #32CD32;
+    background-color: #7c5fdd;
     color: #fff;
+}
+
+.textarea {
+    display: flex;
+    flex-direction: column;
+}
+
+.font {
+    font-family: none;
 }

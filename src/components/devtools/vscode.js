@@ -104,7 +104,7 @@ class Vscode extends Component {
 
   render() {
     const prevPage = { path: "/" };
-    const nextPage = { path: "/HTML5/basic" };
+    const nextPage = { path: "/html/basic" };
 
     return (
       <div className={styles.container}>

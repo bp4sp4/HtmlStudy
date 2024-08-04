@@ -2,7 +2,7 @@ import { BrowserRouter, Route, Routes } from "react-router-dom";
 import Main from "./main/main";
 import Header from "./header/header";
 import Paragraph from "./html/paragraph";
-import Basic from "./HTML5/basic";
+import Basic from "./html/basic";
 import Vscode from "./devtools/vscode";
 import Hngroup from "./html/hngroup";
 import Oftentag from "./html/oftentag";
@@ -17,6 +17,7 @@ import Formoption from "./html/formoption";
 import Formoption2 from "./html/formoption2";
 import Semantictag from "./html/semantictag";
 import Htmlsummary from "./html/htmlsummary";
+import Cssintro from "./css/intro";
 
 const Router = () => {
   return (
@@ -24,7 +25,7 @@ const Router = () => {
       <Routes>
         <Route path="/" element={<Main />} />
         <Route path="/devtools/vscode" element={<Vscode />} />
-        <Route path="/HTML5/basic" element={<Basic />} />
+        <Route path="/html/basic" element={<Basic />} />
         <Route path="/header/header" element={<Header />} />
         <Route path="/html/paragraph" element={<Paragraph />} />
         <Route path="/html/hngroup" element={<Hngroup />} />
@@ -40,6 +41,7 @@ const Router = () => {
         <Route path="/html/formoption2" element={<Formoption2 />} />
         <Route path="/html/semantictag" element={<Semantictag />} />
         <Route path="/html/htmlsummary" element={<Htmlsummary />} />
+        <Route path="/css/intro" element={<Cssintro />} />
       </Routes>
     </BrowserRouter>
   );

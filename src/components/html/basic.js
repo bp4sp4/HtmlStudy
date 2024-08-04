@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from "react";
 import "prismjs/themes/prism.css";
 import Prism from "prismjs";
-import styles from "./basic.module.css";
+import styles from "./text.module.css";
 import Header from "../header/header";
 import { Skeleton } from "primereact/skeleton";
 import { NavLink } from "react-router-dom";
