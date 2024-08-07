@@ -16,8 +16,12 @@ import Table from "./html/table";
 import Formoption from "./html/formoption";
 import Formoption2 from "./html/formoption2";
 import Semantictag from "./html/semantictag";
-import Htmlsummary from "./html/htmlsummary";
 import Cssintro from "./css/intro";
+import Selector from "./css/selector";
+import Selector2 from "./css/selector2";
+import Font01 from "./css/font01";
+import Font02 from "./css/font02";
+import Font03 from "./css/font03";
 
 const Router = () => {
   return (
@@ -40,8 +44,12 @@ const Router = () => {
         <Route path="/html/formoption" element={<Formoption />} />
         <Route path="/html/formoption2" element={<Formoption2 />} />
         <Route path="/html/semantictag" element={<Semantictag />} />
-        <Route path="/html/htmlsummary" element={<Htmlsummary />} />
         <Route path="/css/intro" element={<Cssintro />} />
+        <Route path="/css/selector" element={<Selector />} />
+        <Route path="/css/selector2" element={<Selector2 />} />
+        <Route path="/css/font01" element={<Font01 />} />
+        <Route path="/css/font02" element={<Font02 />} />
+        <Route path="/css/font03" element={<Font03 />} />
       </Routes>
     </BrowserRouter>
   );

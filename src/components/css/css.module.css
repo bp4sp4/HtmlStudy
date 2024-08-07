@@ -135,70 +135,12 @@
     color: var(--text-color);
 }
 
+.render__name__sub {
+    color: var(--text-color);
+}
+
 .skeleton {
     margin-bottom: 1rem;
-}
-
-.itag {
-    font-style: italic;
-}
-
-.big {
-    font-size: larger;
-}
-
-.small {
-    font-size: smaller;
-}
-
-.ollist {
-    list-style: decimal;
-    padding: 1rem;
-}
-
-.ollist2 {
-    list-style: upper-alpha;
-    padding: 1rem;
-}
-
-.ullist {
-    list-style-type: disc;
-    padding: 1rem;
-}
-
-.ullist2 {
-    list-style: circle;
-    padding: 1rem;
-}
-
-.renderh1 {
-    font-size: 2rem;
-}
-
-.atag {
-    color: black;
-    display: flex;
-    margin: 10px 10px;
-}
-
-.tabletag {
-    border: 1px solid #000;
-}
-
-.tabletag thead {
-    border: 1px solid #000;
-}
-
-.tabletag th {
-    border: 1px solid #000;
-}
-
-.tabletag tr {
-    border: 1px solid #000;
-}
-
-.tabletag td {
-    border: 1px solid #000;
 }
 
 .navigationButtons {
@@ -222,11 +164,49 @@
     color: #fff;
 }
 
-.textarea {
-    display: flex;
-    flex-direction: column;
+.linklist {
+    margin-top: 1rem;
+    padding-left: 1rem;
+    list-style-type: disc;
+}
+
+.linklist li {
+    margin-bottom: 0.5rem;
+    color: var(--text-color);
+}
+
+.linklist li a {
+    color: var(--text-color);
+    text-decoration: none;
+}
+
+.linklist li a:hover {
+    text-decoration: underline;
 }
 
 .font {
-    font-family: none;
+    text-align: center;
+    color: red;
+}
+
+.font2 div span {
+    color: red;
+}
+
+.font2 div>span {
+    color: blue;
+}
+
+.font2 h1,
+p span {
+    color: red;
+}
+
+.font2 {
+    font-size: 14px;
+}
+
+.check {
+    font-weight: 600;
+
 }

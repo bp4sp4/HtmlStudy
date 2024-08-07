@@ -1,24 +1,39 @@
 import React, { useState, useEffect } from "react";
-import styles from "./text.module.css";
+import styles from "./css.module.css";
 import Header from "../header/header";
 import Prism from "prismjs";
 import "prismjs/themes/prism.css";
-import "prismjs/components/prism-markup.min.js";
+import "prismjs/components/prism-css.min.js";
 import { Skeleton } from "primereact/skeleton";
 import { NavLink } from "react-router-dom";
 
-const Htmlsummary = () => {
+const Font03 = () => {
   const [copySuccess, setCopySuccess] = useState("");
   const [loading, setLoading] = useState(true);
 
-  const exampleCode = `<p>This is a paragraph.<br>이건 P태그에요!</p>
-<hr> <!-- 수평선을 넣는 hr 태그입니다. -->
-<p>이거또한 P태그에요</p>`;
-  const jobcode = `<span>This is a span</span> 
-<!-- p태그와 비슷하다고 생각할 수 있지만 스타일 적용이나 요소를 묶을때 사용함 -->`;
+  const cssExampleCode = `국가는 지역간의 균형있는 발전을 위하여 지역경제를 육성할 의무를 진다. 
+모든 국민은 종교의 자유를 가진다. 국가는 평생교육을 진흥하여야 한다. 
+비상계엄이 선포된 때에는 법률이 정하는 바에 의하여 영장제도, 언론·출판·집회·결사의 자유, 
+정부나 법원의 권한에 관하여 특별한 조치를 할 수 있다.`;
 
-  const copyToClipboard = () => {
-    navigator.clipboard.writeText(exampleCode).then(
+  const jobcode = `
+text-align : 문자 정렬 방법을 지정하는 속성
+값 : left(기본값) center right justify 
+/* 많이쓰이는 스타일 방법이지만 display: flex 로 정렬을 많이 한다. */
+direction : 쓰기 방향 지정
+값 : ltr rtl /* 많이 쓰이지 않는 스타일 속성이다. */
+text-indent : 들여 쓰기 텍스트
+값 : px em pt % rem /* margin 이나 padding 속성으로 지정하는게 더 효율적이다. */
+white-space : 자동줄 바꿈을 어떻게 처리할지 정하는 속성(기본값 :normal)
+값 : normal(기본값) nowrap(자동 줄 바꿈 안함) /* 말줄임 표시 사용할때 많이 사용하는 스타일 속성이다. */
+overflow : 자동줄 바꿈 하지 않은 경우 넘친 텍스트 감추기
+값 : hidden;
+text-overflow : 넘친 텍스트 감춘 부분을 어떻게 처리할지 결정하는 속성
+값 : clip(기본값) ellipsis(...으로 표시)
+  `;
+
+  const copyToClipboard = (code) => {
+    navigator.clipboard.writeText(code).then(
       () => setCopySuccess("복사 완료!"),
       () => setCopySuccess("복사 실패.")
     );
@@ -36,8 +51,8 @@ const Htmlsummary = () => {
     }, 1000);
   }, []);
 
-  const prevPage = { path: "/html/basic" };
-  const nextPage = { path: "/html/hngroup" };
+  const prevPage = { path: "/css/font02" };
+  const nextPage = { path: "/css/shadow" };
 
   return (
     <div className={styles.container}>
@@ -63,34 +78,34 @@ const Htmlsummary = () => {
             animation="wave"
           />
         ) : (
-          <h1 className={styles.title}>
-            Html 총정리(만드는중 아이콘 바꿔야함)
-          </h1>
+          <h1 className={styles.title}>CSS #텍스트서식</h1>
         )}
         <section className={styles.section} id="intro">
           {loading ? (
             <>
-              <Skeleton
-                width="30%"
-                height="1.5rem"
-                className={styles.skeleton}
-                animation="wave"
-              />
-              <Skeleton
-                width="100%"
-                height="1.5rem"
-                className={styles.skeleton}
-                animation="wave"
-              />
               <Skeleton
                 width="40%"
                 height="1.5rem"
                 className={styles.skeleton}
                 animation="wave"
               />
+              <Skeleton
+                width="55%"
+                height="1.5rem"
+                className={styles.skeleton}
+                animation="wave"
+              />
             </>
           ) : (
-            <div className={styles.descwrap}></div>
+            <div className={styles.descwrap}>
+              <h2 className={styles.descwrap__subtitle}>
+                CSS 텍스트 관련 스타일 - 텍스트 서식(3)
+              </h2>
+              <p className={styles.descwrap__subtitle__desc}>
+                아래 더미 텍스트 내용을 복사해서 알아두면 좋은 TIP CSS 텍스트
+                서식을 연습하세요.
+              </p>
+            </div>
           )}
         </section>
         <section className={styles.section} id="example">
@@ -103,7 +118,7 @@ const Htmlsummary = () => {
                 animation="wave"
               />
             ) : (
-              "P 태그 예제"
+              "더미 텍스트"
             )}
           </h2>
           <div className={styles.codeContainer}>
@@ -115,16 +130,19 @@ const Htmlsummary = () => {
             {loading ? (
               <Skeleton
                 width="100%"
-                height="8rem"
+                height="10rem"
                 className={styles.skeleton}
                 animation="wave"
               />
             ) : (
               <>
                 <pre>
-                  <code className="language-markup">{exampleCode}</code>
+                  <code className="language-markup">{cssExampleCode}</code>
                 </pre>
-                <button onClick={copyToClipboard} className={styles.copyButton}>
+                <button
+                  onClick={() => copyToClipboard(cssExampleCode)}
+                  className={styles.copyButton}
+                >
                   코드 복사
                 </button>
                 {copySuccess && (
@@ -133,8 +151,9 @@ const Htmlsummary = () => {
               </>
             )}
           </div>
+
           <div className={styles.render__wrap}>
-            <h2 className={styles.render__name}>
+            <p className={styles.render__name}>
               {loading ? (
                 <Skeleton
                   width="20%"
@@ -143,54 +162,25 @@ const Htmlsummary = () => {
                   animation="wave"
                 />
               ) : (
-                "P 태그 실행 예제 화면"
+                <span className={styles.render__name__sub}>
+                  알아두면 좋은 TIP!
+                </span>
               )}
-            </h2>
+            </p>
             <div className={styles.render__code}>
               {loading ? (
                 <Skeleton
                   width="100%"
-                  height="5rem"
+                  height="20rem"
                   className={styles.skeleton}
                   animation="wave"
                 />
               ) : (
-                <>
-                  {" "}
-                  <p>
-                    This is a paragraph.<br></br>이건 P태그에요!
-                  </p>
-                  <hr></hr>
-                  <p>이거또한 P태그에요</p>
-                </>
+                <pre>
+                  <code className="language-css">{jobcode}</code>
+                </pre>
               )}
             </div>
-          </div>
-          <div className={styles.render__name}>
-            {loading ? (
-              <Skeleton
-                width="20%"
-                height="2rem"
-                className={styles.skeleton}
-                animation="wave"
-              />
-            ) : (
-              <span className={styles.render__name__sub}>알아두기만해!</span>
-            )}
-          </div>
-          <div className={styles.render__code}>
-            {loading ? (
-              <Skeleton
-                width="100%"
-                height="5rem"
-                className={styles.skeleton}
-                animation="wave"
-              />
-            ) : (
-              <pre>
-                <code className="language-markup">{jobcode}</code>
-              </pre>
-            )}
           </div>
           <div className={styles.navigationButtons}>
             {prevPage && (
@@ -210,4 +200,4 @@ const Htmlsummary = () => {
   );
 };
 
-export default Htmlsummary;
+export default Font03;

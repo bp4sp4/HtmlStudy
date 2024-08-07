@@ -7,37 +7,29 @@ import "prismjs/components/prism-css.min.js";
 import { Skeleton } from "primereact/skeleton";
 import { NavLink } from "react-router-dom";
 
-const CssIntro = () => {
+const Font01 = () => {
   const [copySuccess, setCopySuccess] = useState("");
   const [loading, setLoading] = useState(true);
 
-  const cssExampleCode = `<!-- CSS 기본 문법 (Syntax) -->
-  body { <!-- 선택자(selector) -->
-    color : crimson; <!-- color : 속성(property), crimson : 값(vaule) -->
- }  
+  const cssExampleCode = `국가는 지역간의 균형있는 발전을 위하여 지역경제를 육성할 의무를 진다. 
+모든 국민은 종교의 자유를 가진다. 국가는 평생교육을 진흥하여야 한다. 
+비상계엄이 선포된 때에는 법률이 정하는 바에 의하여 영장제도, 언론·출판·집회·결사의 자유, 
+정부나 법원의 권한에 관하여 특별한 조치를 할 수 있다.`;
 
-<!-- CSS 링크방법 (외부 스타일 / 내부 스타일) -->    
-<!DOCTYPE html>
-<html lang="ko">
-<head> 
-    <meta charset="UTF-8">
-    <title>CSS 링크하기</title>
-    <link rel="stylesheet" href="style.css"> <!-- 외부 스타일 -->
-    <style type="text/css"> <!-- 내부 스타일 -->
-        body {
-            color : navy;
-            font-size : 15px;
-        }
-</head>
-
-<body> 
-</body>
-</html>
-`;
-
-  const jobcode = `color : blue;
-/* 컬러를 직접 지정해도 좋지만 보통으로는 코드로 작성하는게 일반적입니다. */
-color : #fff, #fafafa, #d2d2d2;`;
+  const jobcode = `
+  font-size : 텍스트의 크기를 지정하는 속성 
+  값 : px em pt % rem /* px을 주로 사용하지만 반응형 웹 디자인은 em, rem을 사용합니다. */
+  font-weight : 글꼴 두께를 지정하는 특성 /* 주로 bold, 600~700을 많이 사용합니다. */
+  값 : 100~900 bold, bolder lighter normal(400=normal, 700=bold)
+  line-height : 줄 간격을 지정하는 특성
+  값 : px em pt % rem /* 많이 쓰지만 적절하게 보면서 사용해주는게 좋다. */
+  font-family : 글꼴을 지정하는 속성 /* 폰트에따라 홈페이지 분위기가 정해진다고 생각합니다. */
+  값 : font-family : 'font-name' ex) font-family ; "Noto Sans KR", sans-seif;
+  font-style: 문자 스타일(기울림체)
+  값 : normal italic obique /* 많이 쓰이지 않지만 알고있으면 나쁠게 없다. */
+  font-variant : 소문자를 작은 크기의 대문자 보이기 (영문에만 해당됨)
+  값 : small-caps normal /* 홈페이지를 만들면서 처음 알게 된 스타일 입니다. 중요 하지 않다 */
+  `;
 
   const copyToClipboard = (code) => {
     navigator.clipboard.writeText(code).then(
@@ -58,8 +50,8 @@ color : #fff, #fafafa, #d2d2d2;`;
     }, 1000);
   }, []);
 
-  const prevPage = { path: "/html/semantictag" };
-  const nextPage = { path: "/css/selector" };
+  const prevPage = { path: "/css/selector2" };
+  const nextPage = { path: "/css/font02" };
 
   return (
     <div className={styles.container}>
@@ -85,19 +77,19 @@ color : #fff, #fafafa, #d2d2d2;`;
             animation="wave"
           />
         ) : (
-          <h1 className={styles.title}>CSS #기본문법</h1>
+          <h1 className={styles.title}>CSS #텍스트서식</h1>
         )}
         <section className={styles.section} id="intro">
           {loading ? (
             <>
               <Skeleton
-                width="30%"
+                width="40%"
                 height="1.5rem"
                 className={styles.skeleton}
                 animation="wave"
               />
               <Skeleton
-                width="75%"
+                width="55%"
                 height="1.5rem"
                 className={styles.skeleton}
                 animation="wave"
@@ -106,11 +98,11 @@ color : #fff, #fafafa, #d2d2d2;`;
           ) : (
             <div className={styles.descwrap}>
               <h2 className={styles.descwrap__subtitle}>
-                CSS 기본 문법 / CSS 링크 방법
+                CSS 텍스트 관련 스타일 - 텍스트 서식(1)
               </h2>
               <p className={styles.descwrap__subtitle__desc}>
-                아래 코드는 CSS 예제 코드입니다. 각 속성에 대한 설명은 주석으로
-                표시되어 있습니다.
+                아래 더미 텍스트 내용을 복사해서 알아두면 좋은 TIP CSS 텍스트
+                서식을 연습하세요.
               </p>
             </div>
           )}
@@ -125,7 +117,7 @@ color : #fff, #fafafa, #d2d2d2;`;
                 animation="wave"
               />
             ) : (
-              "CSS 예제"
+              "더미 텍스트"
             )}
           </h2>
           <div className={styles.codeContainer}>
@@ -137,7 +129,7 @@ color : #fff, #fafafa, #d2d2d2;`;
             {loading ? (
               <Skeleton
                 width="100%"
-                height="33rem"
+                height="10rem"
                 className={styles.skeleton}
                 animation="wave"
               />
@@ -178,7 +170,7 @@ color : #fff, #fafafa, #d2d2d2;`;
               {loading ? (
                 <Skeleton
                   width="100%"
-                  height="5rem"
+                  height="20rem"
                   className={styles.skeleton}
                   animation="wave"
                 />
@@ -200,7 +192,7 @@ color : #fff, #fafafa, #d2d2d2;`;
                     />
                   ) : (
                     <span className={styles.render__name__sub}>
-                      추천 컬러 사이트 링크
+                      추천 더미,폰트 사이트
                     </span>
                   )}
                 </p>
@@ -225,34 +217,65 @@ color : #fff, #fafafa, #d2d2d2;`;
                         className={styles.skeleton}
                         animation="wave"
                       />
+                      <Skeleton
+                        width="75%"
+                        height="1.5rem"
+                        className={styles.skeleton}
+                        animation="wave"
+                      />
+                      <Skeleton
+                        width="75%"
+                        height="1.5rem"
+                        className={styles.skeleton}
+                        animation="wave"
+                      />
                     </>
                   ) : (
                     <>
                       <li>
                         <a
-                          href="https://colorhunt.co/"
+                          href="https://fonts.google.com/"
                           target="_blank"
                           rel="noopener noreferrer"
                         >
-                          ColorHunt
+                          구글(폰트)
                         </a>
                       </li>
                       <li>
                         <a
-                          href="https://www.webdesignrankings.com/resources/lolcolors/"
+                          href="https://noonnu.cc/"
                           target="_blank"
                           rel="noopener noreferrer"
                         >
-                          LOLCOLORS
+                          눈누 폰트<span className={styles.check}> (강추)</span>
                         </a>
                       </li>
                       <li>
                         <a
-                          href="https://coolors.co/cae7b9-f3de8a-eb9486-7e7f9a-97a7b3"
+                          href="https://font.co.kr/"
                           target="_blank"
                           rel="noopener noreferrer"
                         >
-                          Coolors
+                          FONCO(폰트)
+                        </a>
+                      </li>
+
+                      <li>
+                        <a
+                          href="http://guny.kr/stuff/klorem/"
+                          target="_blank"
+                          rel="noopener noreferrer"
+                        >
+                          한글 입숨(한글 더미 사이트)
+                        </a>
+                      </li>
+                      <li>
+                        <a
+                          href="https://www.lipsum.com/"
+                          target="_blank"
+                          rel="noopener noreferrer"
+                        >
+                          로렘 입숨(영어 더미 사이트)
                         </a>
                       </li>
                     </>
@@ -279,4 +302,4 @@ color : #fff, #fafafa, #d2d2d2;`;
   );
 };
 
-export default CssIntro;
+export default Font01;

@@ -62,8 +62,8 @@ const Semantictag = () => {
     }, 1000);
   }, []);
 
-  const prevPage = { path: "/HTML5/basic" };
-  const nextPage = { path: "/html/hngroup" };
+  const prevPage = { path: "/html/formoption2" };
+  const nextPage = { path: "/css/intro" };
 
   return (
     <div className={styles.container}>

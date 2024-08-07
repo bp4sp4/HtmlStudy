@@ -7,37 +7,47 @@ import "prismjs/components/prism-css.min.js";
 import { Skeleton } from "primereact/skeleton";
 import { NavLink } from "react-router-dom";
 
-const CssIntro = () => {
+const Selector2 = () => {
   const [copySuccess, setCopySuccess] = useState("");
   const [loading, setLoading] = useState(true);
 
-  const cssExampleCode = `<!-- CSS 기본 문법 (Syntax) -->
-  body { <!-- 선택자(selector) -->
-    color : crimson; <!-- color : 속성(property), crimson : 값(vaule) -->
- }  
+  const cssExampleCode = `<h1>CSS 선택자(Selector)란?</h1>
+<div>
+  <span>CSS에서 HTML 요소를 선택하는것 입니다.</span>
+  선택을 통해 특정 요소들의 스타일을 적용할 수 있게 됩니다.
+  <p>
+    문장들을 한군데에 모으면 <span>스타일 시트(Style Sheet)</span>
+    를 이루게 되어, 많은 수의 스타일 규칙들을 관리하기 쉬워집니다.
+  </p>
+</div>
 
-<!-- CSS 링크방법 (외부 스타일 / 내부 스타일) -->    
-<!DOCTYPE html>
-<html lang="ko">
-<head> 
-    <meta charset="UTF-8">
-    <title>CSS 링크하기</title>
-    <link rel="stylesheet" href="style.css"> <!-- 외부 스타일 -->
-    <style type="text/css"> <!-- 내부 스타일 -->
-        body {
-            color : navy;
-            font-size : 15px;
-        }
-</head>
+<!-- css -->
+<!-- 하위 선택자 -->
+div span {
+  color : red;
+}
+<!-- 자식 선택자 -->
+div > span {
+  color : blue;
+}
+<!-- 그룹 선택자 -->
+h1, p span {
+  color : red;
+}
+<!-- 전체선택자 -->
+* {
+  font-size : 14px; /* 모든 텍스트에 적용 */
+}
 
-<body> 
-</body>
-</html>
 `;
 
-  const jobcode = `color : blue;
-/* 컬러를 직접 지정해도 좋지만 보통으로는 코드로 작성하는게 일반적입니다. */
-color : #fff, #fafafa, #d2d2d2;`;
+  const jobcode = `<!-- CSS 선택자 - 적용 우선순위 -->
+1. !important Style
+2. lnline Style
+3. ID Selector Style
+4. Class Selector Style
+5. Tag Selector Style 
+<!-- 동일한 css 속성이 중복 사용되는 경우 스타일은 왼쪽의 우선 순위에 따라 적용됩니다. --> `;
 
   const copyToClipboard = (code) => {
     navigator.clipboard.writeText(code).then(
@@ -58,8 +68,8 @@ color : #fff, #fafafa, #d2d2d2;`;
     }, 1000);
   }, []);
 
-  const prevPage = { path: "/html/semantictag" };
-  const nextPage = { path: "/css/selector" };
+  const prevPage = { path: "/css/selector" };
+  const nextPage = { path: "/css/font01" };
 
   return (
     <div className={styles.container}>
@@ -85,19 +95,19 @@ color : #fff, #fafafa, #d2d2d2;`;
             animation="wave"
           />
         ) : (
-          <h1 className={styles.title}>CSS #기본문법</h1>
+          <h1 className={styles.title}>CSS 선택자</h1>
         )}
         <section className={styles.section} id="intro">
           {loading ? (
             <>
               <Skeleton
-                width="30%"
+                width="40%"
                 height="1.5rem"
                 className={styles.skeleton}
                 animation="wave"
               />
               <Skeleton
-                width="75%"
+                width="70%"
                 height="1.5rem"
                 className={styles.skeleton}
                 animation="wave"
@@ -106,7 +116,7 @@ color : #fff, #fafafa, #d2d2d2;`;
           ) : (
             <div className={styles.descwrap}>
               <h2 className={styles.descwrap__subtitle}>
-                CSS 기본 문법 / CSS 링크 방법
+                CSS 선택자 - 하위, 자식, 그룹, 전체 선택자
               </h2>
               <p className={styles.descwrap__subtitle__desc}>
                 아래 코드는 CSS 예제 코드입니다. 각 속성에 대한 설명은 주석으로
@@ -158,7 +168,43 @@ color : #fff, #fafafa, #d2d2d2;`;
               </>
             )}
           </div>
-
+          <div className={styles.render__wrap}>
+            <h2 className={styles.render__name}>
+              {loading ? (
+                <Skeleton
+                  width="20%"
+                  height="2rem"
+                  className={styles.skeleton}
+                  animation="wave"
+                />
+              ) : (
+                "CSS 실행 예제 화면"
+              )}
+            </h2>
+            <div className={styles.render__code}>
+              {loading ? (
+                <Skeleton
+                  width="100%"
+                  height="2rem"
+                  className={styles.skeleton}
+                  animation="wave"
+                />
+              ) : (
+                <div className={styles.font2}>
+                  <h1>CSS 선택자(Selector)란?</h1>
+                  <div>
+                    <span>CSS에서 HTML 요소를 선택하는것 입니다.</span>
+                    선택을 통해 특정 요소들의 스타일을 적용할 수 있게 됩니다.
+                    <p>
+                      문장들을 한군ㄷ에 모으면{" "}
+                      <span>스타일 시트(Style Sheet)</span>를 이루게 되어, 많은
+                      수의 스타일 규칙들을 관리하기 쉬워집니다.
+                    </p>
+                  </div>
+                </div>
+              )}
+            </div>
+          </div>
           <div className={styles.render__wrap}>
             <p className={styles.render__name}>
               {loading ? (
@@ -184,82 +230,10 @@ color : #fff, #fafafa, #d2d2d2;`;
                 />
               ) : (
                 <pre>
-                  <code className="language-css">{jobcode}</code>
+                  <code className="language-markup">{jobcode}</code>
                 </pre>
               )}
             </div>
-            <section className={styles.section} id="promotion">
-              <div className={styles.descwrap}>
-                <p className={styles.render__name}>
-                  {loading ? (
-                    <Skeleton
-                      width="20%"
-                      height="2rem"
-                      className={styles.skeleton}
-                      animation="wave"
-                    />
-                  ) : (
-                    <span className={styles.render__name__sub}>
-                      추천 컬러 사이트 링크
-                    </span>
-                  )}
-                </p>
-                <ul className={styles.linklist}>
-                  {loading ? (
-                    <>
-                      <Skeleton
-                        width="75%"
-                        height="1.5rem"
-                        className={styles.skeleton}
-                        animation="wave"
-                      />
-                      <Skeleton
-                        width="75%"
-                        height="1.5rem"
-                        className={styles.skeleton}
-                        animation="wave"
-                      />
-                      <Skeleton
-                        width="75%"
-                        height="1.5rem"
-                        className={styles.skeleton}
-                        animation="wave"
-                      />
-                    </>
-                  ) : (
-                    <>
-                      <li>
-                        <a
-                          href="https://colorhunt.co/"
-                          target="_blank"
-                          rel="noopener noreferrer"
-                        >
-                          ColorHunt
-                        </a>
-                      </li>
-                      <li>
-                        <a
-                          href="https://www.webdesignrankings.com/resources/lolcolors/"
-                          target="_blank"
-                          rel="noopener noreferrer"
-                        >
-                          LOLCOLORS
-                        </a>
-                      </li>
-                      <li>
-                        <a
-                          href="https://coolors.co/cae7b9-f3de8a-eb9486-7e7f9a-97a7b3"
-                          target="_blank"
-                          rel="noopener noreferrer"
-                        >
-                          Coolors
-                        </a>
-                      </li>
-                    </>
-                  )}
-                </ul>
-              </div>
-            </section>
           </div>
           <div className={styles.navigationButtons}>
             {prevPage && (
@@ -279,4 +253,4 @@ color : #fff, #fafafa, #d2d2d2;`;
   );
 };
 
-export default CssIntro;
+export default Selector2;

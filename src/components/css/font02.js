@@ -7,37 +7,30 @@ import "prismjs/components/prism-css.min.js";
 import { Skeleton } from "primereact/skeleton";
 import { NavLink } from "react-router-dom";
 
-const CssIntro = () => {
+const Font02 = () => {
   const [copySuccess, setCopySuccess] = useState("");
   const [loading, setLoading] = useState(true);
 
-  const cssExampleCode = `<!-- CSS 기본 문법 (Syntax) -->
-  body { <!-- 선택자(selector) -->
-    color : crimson; <!-- color : 속성(property), crimson : 값(vaule) -->
- }  
+  const cssExampleCode = `국가는 지역간의 균형있는 발전을 위하여 지역경제를 육성할 의무를 진다. 
+모든 국민은 종교의 자유를 가진다. 국가는 평생교육을 진흥하여야 한다. 
+비상계엄이 선포된 때에는 법률이 정하는 바에 의하여 영장제도, 언론·출판·집회·결사의 자유, 
+정부나 법원의 권한에 관하여 특별한 조치를 할 수 있다.`;
 
-<!-- CSS 링크방법 (외부 스타일 / 내부 스타일) -->    
-<!DOCTYPE html>
-<html lang="ko">
-<head> 
-    <meta charset="UTF-8">
-    <title>CSS 링크하기</title>
-    <link rel="stylesheet" href="style.css"> <!-- 외부 스타일 -->
-    <style type="text/css"> <!-- 내부 스타일 -->
-        body {
-            color : navy;
-            font-size : 15px;
-        }
-</head>
-
-<body> 
-</body>
-</html>
-`;
-
-  const jobcode = `color : blue;
-/* 컬러를 직접 지정해도 좋지만 보통으로는 코드로 작성하는게 일반적입니다. */
-color : #fff, #fafafa, #d2d2d2;`;
+  const jobcode = `
+text-align : 문자 정렬 방법을 지정하는 속성
+값 : left(기본값) center right justify 
+/* 많이쓰이는 스타일 방법이지만 display: flex 로 정렬을 많이 한다. */
+direction : 쓰기 방향 지정
+값 : ltr rtl /* 많이 쓰이지 않는 스타일 속성이다. */
+text-indent : 들여 쓰기 텍스트
+값 : px em pt % rem /* margin 이나 padding 속성으로 지정하는게 더 효율적이다. */
+white-space : 자동줄 바꿈을 어떻게 처리할지 정하는 속성(기본값 :normal)
+값 : normal(기본값) nowrap(자동 줄 바꿈 안함) /* 말줄임 표시 사용할때 많이 사용하는 스타일 속성이다. */
+overflow : 자동줄 바꿈 하지 않은 경우 넘친 텍스트 감추기
+값 : hidden;
+text-overflow : 넘친 텍스트 감춘 부분을 어떻게 처리할지 결정하는 속성
+값 : clip(기본값) ellipsis(...으로 표시)
+  `;
 
   const copyToClipboard = (code) => {
     navigator.clipboard.writeText(code).then(
@@ -58,8 +51,8 @@ color : #fff, #fafafa, #d2d2d2;`;
     }, 1000);
   }, []);
 
-  const prevPage = { path: "/html/semantictag" };
-  const nextPage = { path: "/css/selector" };
+  const prevPage = { path: "/css/font01" };
+  const nextPage = { path: "/css/font3" };
 
   return (
     <div className={styles.container}>
@@ -85,19 +78,19 @@ color : #fff, #fafafa, #d2d2d2;`;
             animation="wave"
           />
         ) : (
-          <h1 className={styles.title}>CSS #기본문법</h1>
+          <h1 className={styles.title}>CSS #텍스트서식</h1>
         )}
         <section className={styles.section} id="intro">
           {loading ? (
             <>
               <Skeleton
-                width="30%"
+                width="40%"
                 height="1.5rem"
                 className={styles.skeleton}
                 animation="wave"
               />
               <Skeleton
-                width="75%"
+                width="55%"
                 height="1.5rem"
                 className={styles.skeleton}
                 animation="wave"
@@ -106,11 +99,11 @@ color : #fff, #fafafa, #d2d2d2;`;
           ) : (
             <div className={styles.descwrap}>
               <h2 className={styles.descwrap__subtitle}>
-                CSS 기본 문법 / CSS 링크 방법
+                CSS 텍스트 관련 스타일 - 텍스트 서식(2)
               </h2>
               <p className={styles.descwrap__subtitle__desc}>
-                아래 코드는 CSS 예제 코드입니다. 각 속성에 대한 설명은 주석으로
-                표시되어 있습니다.
+                아래 더미 텍스트 내용을 복사해서 알아두면 좋은 TIP CSS 텍스트
+                서식을 연습하세요.
               </p>
             </div>
           )}
@@ -125,7 +118,7 @@ color : #fff, #fafafa, #d2d2d2;`;
                 animation="wave"
               />
             ) : (
-              "CSS 예제"
+              "더미 텍스트"
             )}
           </h2>
           <div className={styles.codeContainer}>
@@ -137,7 +130,7 @@ color : #fff, #fafafa, #d2d2d2;`;
             {loading ? (
               <Skeleton
                 width="100%"
-                height="33rem"
+                height="10rem"
                 className={styles.skeleton}
                 animation="wave"
               />
@@ -178,7 +171,7 @@ color : #fff, #fafafa, #d2d2d2;`;
               {loading ? (
                 <Skeleton
                   width="100%"
-                  height="5rem"
+                  height="20rem"
                   className={styles.skeleton}
                   animation="wave"
                 />
@@ -188,78 +181,6 @@ color : #fff, #fafafa, #d2d2d2;`;
                 </pre>
               )}
             </div>
-            <section className={styles.section} id="promotion">
-              <div className={styles.descwrap}>
-                <p className={styles.render__name}>
-                  {loading ? (
-                    <Skeleton
-                      width="20%"
-                      height="2rem"
-                      className={styles.skeleton}
-                      animation="wave"
-                    />
-                  ) : (
-                    <span className={styles.render__name__sub}>
-                      추천 컬러 사이트 링크
-                    </span>
-                  )}
-                </p>
-                <ul className={styles.linklist}>
-                  {loading ? (
-                    <>
-                      <Skeleton
-                        width="75%"
-                        height="1.5rem"
-                        className={styles.skeleton}
-                        animation="wave"
-                      />
-                      <Skeleton
-                        width="75%"
-                        height="1.5rem"
-                        className={styles.skeleton}
-                        animation="wave"
-                      />
-                      <Skeleton
-                        width="75%"
-                        height="1.5rem"
-                        className={styles.skeleton}
-                        animation="wave"
-                      />
-                    </>
-                  ) : (
-                    <>
-                      <li>
-                        <a
-                          href="https://colorhunt.co/"
-                          target="_blank"
-                          rel="noopener noreferrer"
-                        >
-                          ColorHunt
-                        </a>
-                      </li>
-                      <li>
-                        <a
-                          href="https://www.webdesignrankings.com/resources/lolcolors/"
-                          target="_blank"
-                          rel="noopener noreferrer"
-                        >
-                          LOLCOLORS
-                        </a>
-                      </li>
-                      <li>
-                        <a
-                          href="https://coolors.co/cae7b9-f3de8a-eb9486-7e7f9a-97a7b3"
-                          target="_blank"
-                          rel="noopener noreferrer"
-                        >
-                          Coolors
-                        </a>
-                      </li>
-                    </>
-                  )}
-                </ul>
-              </div>
-            </section>
           </div>
           <div className={styles.navigationButtons}>
             {prevPage && (
@@ -279,4 +200,4 @@ color : #fff, #fafafa, #d2d2d2;`;
   );
 };
 
-export default CssIntro;
+export default Font02;

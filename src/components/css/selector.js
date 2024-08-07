@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from "react";
-import styles from "./text.module.css";
+import styles from "./css.module.css";
 import Header from "../header/header";
 import Prism from "prismjs";
 import "prismjs/themes/prism.css";
@@ -7,37 +7,32 @@ import "prismjs/components/prism-css.min.js";
 import { Skeleton } from "primereact/skeleton";
 import { NavLink } from "react-router-dom";
 
-const CssIntro = () => {
+const Selector = () => {
   const [copySuccess, setCopySuccess] = useState("");
   const [loading, setLoading] = useState(true);
 
-  const cssExampleCode = `<!-- CSS 기본 문법 (Syntax) -->
-  body { <!-- 선택자(selector) -->
-    color : crimson; <!-- color : 속성(property), crimson : 값(vaule) -->
- }  
+  const cssExampleCode = `<!-- 태그 선택자 -->
+<p>내용</p>
+p{
+  text-align : center;
+  color : red;
+}
 
-<!-- CSS 링크방법 (외부 스타일 / 내부 스타일) -->    
-<!DOCTYPE html>
-<html lang="ko">
-<head> 
-    <meta charset="UTF-8">
-    <title>CSS 링크하기</title>
-    <link rel="stylesheet" href="style.css"> <!-- 외부 스타일 -->
-    <style type="text/css"> <!-- 내부 스타일 -->
-        body {
-            color : navy;
-            font-size : 15px;
-        }
-</head>
+<!-- 클래스 선택자 -->
+<p class="center">내용 </p>
+.center {
+  text-align : center;
+  color : red;
+}
 
-<body> 
-</body>
-</html>
-`;
+<!-- 아이디 선택자 -->
+<p id="center">내용<p>
+#center {
+  text-align : center;
+  color : red;
+}`;
 
-  const jobcode = `<meta name="Keywords" content = "검색엔진이 우선 순위로 체크하는 검색어">
-<meta name="Author" content = "웹사이트를 제작한 제작자 또는 제작사">
-<meta name="description" content = "웹사이트에 대한 짧은 설명 입력">`;
+  const jobcode = `text-align : left, center, right; /* 텍스트 왼쪽, 가운데, 오른쪽 정렬 을 뜻한다. */`;
 
   const copyToClipboard = (code) => {
     navigator.clipboard.writeText(code).then(
@@ -58,8 +53,8 @@ const CssIntro = () => {
     }, 1000);
   }, []);
 
-  const prevPage = { path: "/CSS/basic" };
-  const nextPage = { path: "/css/advanced" };
+  const prevPage = { path: "/css/intro" };
+  const nextPage = { path: "/css/selector2" };
 
   return (
     <div className={styles.container}>
@@ -85,19 +80,19 @@ const CssIntro = () => {
             animation="wave"
           />
         ) : (
-          <h1 className={styles.title}>#기본 문법</h1>
+          <h1 className={styles.title}>CSS 선택자</h1>
         )}
         <section className={styles.section} id="intro">
           {loading ? (
             <>
               <Skeleton
-                width="30%"
+                width="55%"
                 height="1.5rem"
                 className={styles.skeleton}
                 animation="wave"
               />
               <Skeleton
-                width="75%"
+                width="70%"
                 height="1.5rem"
                 className={styles.skeleton}
                 animation="wave"
@@ -106,7 +101,7 @@ const CssIntro = () => {
           ) : (
             <div className={styles.descwrap}>
               <h2 className={styles.descwrap__subtitle}>
-                CSS 기본 문법 / CSS 링크 방법
+                CSS 선택자 - 태그, 클래스, 아이디, 태그와 함께 쓰는 선택자
               </h2>
               <p className={styles.descwrap__subtitle__desc}>
                 아래 코드는 CSS 예제 코드입니다. 각 속성에 대한 설명은 주석으로
@@ -180,8 +175,10 @@ const CssIntro = () => {
                   animation="wave"
                 />
               ) : (
-                <div>
-                  <p className="example">This is a sample text.</p>
+                <div className={styles.font}>
+                  <p>내용</p>
+                  <p className={styles.center}>내용</p>
+                  <p id="center">내용</p>
                 </div>
               )}
             </div>
@@ -196,7 +193,9 @@ const CssIntro = () => {
                   animation="wave"
                 />
               ) : (
-                <span className={styles.render__name__sub}>알아두기만해!</span>
+                <span className={styles.render__name__sub}>
+                  알아두면 좋은 TIP!
+                </span>
               )}
             </p>
             <div className={styles.render__code}>
@@ -209,7 +208,7 @@ const CssIntro = () => {
                 />
               ) : (
                 <pre>
-                  <code className="language-markup">{jobcode}</code>
+                  <code className="language-css">{jobcode}</code>
                 </pre>
               )}
             </div>
@@ -232,4 +231,4 @@ const CssIntro = () => {
   );
 };
 
-export default CssIntro;
+export default Selector;

@@ -30,8 +30,9 @@ import ListIcon from "@mui/icons-material/List";
 import SaveAsIcon from "@mui/icons-material/SaveAs";
 import TableRowsIcon from "@mui/icons-material/TableRows";
 import InputIcon from "@mui/icons-material/Input";
-import logoimg from "./logo.png";
 import WebIcon from "@mui/icons-material/Web";
+import CssIcon from "@mui/icons-material/Css";
+import logoimg from "./logo.png";
 
 const drawerWidth = 240;
 
@@ -44,7 +45,6 @@ const Main = styled("main", { shouldForwardProp: (prop) => prop !== "open" })(
       duration: theme.transitions.duration.leavingScreen,
     }),
     marginLeft: open ? drawerWidth : 0,
-    position: "relative",
   })
 );
 
@@ -155,7 +155,6 @@ const menuItems = [
     exact: true,
     icon: <TableRowsIcon />,
   },
-
   {
     name: "폼 요소",
     path: "/html/formoption",
@@ -179,59 +178,70 @@ const menuItems = [
     exact: true,
     icon: <WebIcon />,
   },
-  {
-    name: "Html 총정리",
-    path: "/html/htmlsummary",
-    exact: true,
-    icon: <SaveAsIcon />,
-  },
   // CSS Section
   {
     name: "CSS Section",
     type: "header",
   },
   {
-    name: "CSS test",
+    name: "CSS 기본문법",
     path: "/css/intro",
     exact: true,
-    icon: <CodeIcon />,
+    icon: <CssIcon />,
   },
   {
-    name: "CSS test",
-    path: "/css/selectors",
-    exact: true,
-    icon: <CodeIcon />,
+    name: "CSS 선택자",
+    path: "/css/selector",
+    icon: <CssIcon />,
+    subItems: [
+      {
+        name: "선택자01",
+        path: "/css/selector",
+        icon: <Tag />,
+      },
+      {
+        name: "선택자02",
+        path: "/css/selector2",
+        icon: <Tag />,
+      },
+    ],
   },
   {
-    name: "CSS test",
-    path: "/css/properties",
+    name: "CSS 텍스트서식",
+    path: "/css/font01",
+    icon: <CssIcon />,
+    subItems: [
+      {
+        name: "font01",
+        path: "/css/font01",
+        icon: <Tag />,
+      },
+      {
+        name: "font02",
+        path: "/css/font02",
+        icon: <Tag />,
+      },
+      {
+        name: "font03",
+        path: "/css/font03",
+        icon: <Tag />,
+      },
+    ],
+  },
+  {
+    name: "CSS 텍스트 쉐도우",
+    path: "/css/shadow",
     exact: true,
-    icon: <CodeIcon />,
+    icon: <CssIcon />,
   },
 ];
 
-const Header = ({ prevPage, nextPage }) => {
+const Header = () => {
   const theme = useTheme();
   const location = useLocation();
   const [open, setOpen] = useState(true);
   const [isDarkMode, setIsDarkMode] = useState(false);
   const [openSubMenu, setOpenSubMenu] = useState({});
-  const height2 = "50px";
-
-  useEffect(() => {
-    const openMenu = {};
-    menuItems.forEach((item) => {
-      if (item.subItems) {
-        const isOpen = item.subItems.some(
-          (subItem) => location.pathname === subItem.path
-        );
-        if (isOpen) {
-          openMenu[item.name] = true;
-        }
-      }
-    });
-    setOpenSubMenu(openMenu);
-  }, [location.pathname]);
 
   const handleDrawerOpen = () => {
     setOpen(true);
@@ -243,11 +253,11 @@ const Header = ({ prevPage, nextPage }) => {
 
   const toggleDarkMode = () => {
     setIsDarkMode((prev) => !prev);
-    if (isDarkMode) {
+    if (document.documentElement.classList.contains("dark")) {
       document.documentElement.classList.remove("dark");
-      document.documentElement.classList.add("light");
+      localStorage.setItem("theme", "light");
     } else {
-      document.documentElement.classList.remove("light");
+      localStorage.setItem("theme", "dark");
       document.documentElement.classList.add("dark");
     }
   };
@@ -258,6 +268,27 @@ const Header = ({ prevPage, nextPage }) => {
       [name]: !prevOpenSubMenu[name],
     }));
   };
+
+  useEffect(() => {
+    const savedScrollPosition = sessionStorage.getItem("scrollPosition");
+    if (savedScrollPosition) {
+      window.scrollTo(0, parseInt(savedScrollPosition, 10));
+    }
+
+    const openMenu = () => {
+      const handleScroll = () => {
+        sessionStorage.setItem("scrollPosition", window.scrollY);
+      };
+
+      window.addEventListener("scroll", handleScroll);
+
+      return () => {
+        window.removeEventListener("scroll", handleScroll);
+      };
+    };
+
+    openMenu();
+  }, [location]);
 
   return (
     <Box
@@ -283,7 +314,7 @@ const Header = ({ prevPage, nextPage }) => {
               display: "flex",
               justifyContent: "center",
               alignItems: "center",
-              height: height2,
+              height: "60px", // Adjust based on actual height
             }}
           >
             <a href="/HtmlStudy">
@@ -357,14 +388,13 @@ const Header = ({ prevPage, nextPage }) => {
                     to={item.subItems ? undefined : item.path}
                     exact={item.exact}
                     activeClassName={styles.active}
-                    onClick={
-                      item.subItems
-                        ? (e) => {
-                            e.stopPropagation();
-                            handleSubMenuClick(item.name);
-                          }
-                        : undefined
-                    }
+                    onClick={(e) => {
+                      if (item.subItems) {
+                        e.stopPropagation();
+                        handleSubMenuClick(item.name);
+                      }
+                      sessionStorage.setItem("scrollPosition", window.scrollY);
+                    }}
                   >
                     <ListItemIcon>{item.icon}</ListItemIcon>
                     <ListItemText primary={item.name} />
@@ -393,6 +423,12 @@ const Header = ({ prevPage, nextPage }) => {
                           exact={subItem.exact}
                           activeClassName={styles.active}
                           sx={{ pl: 4 }}
+                          onClick={() =>
+                            sessionStorage.setItem(
+                              "scrollPosition",
+                              window.scrollY
+                            )
+                          }
                         >
                           <ListItemIcon>{subItem.icon}</ListItemIcon>
                           <ListItemText primary={subItem.name} />
