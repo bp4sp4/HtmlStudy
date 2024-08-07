@@ -1,5 +1,5 @@
-import React, { useState, useEffect } from "react";
-import { NavLink, useLocation } from "react-router-dom";
+import React, { useState, useEffect, useRef } from "react";
+import { useLocation, useNavigate } from "react-router-dom";
 import styles from "./header.module.css";
 import { styled, useTheme } from "@mui/material/styles";
 import Box from "@mui/material/Box";
@@ -239,17 +239,16 @@ const menuItems = [
 const Header = () => {
   const theme = useTheme();
   const location = useLocation();
+  const navigate = useNavigate();
   const [open, setOpen] = useState(true);
   const [isDarkMode, setIsDarkMode] = useState(false);
   const [openSubMenu, setOpenSubMenu] = useState({});
+  const drawerRef = useRef(null);
+  const [drawerScrollPosition, setDrawerScrollPosition] = useState(0);
 
-  const handleDrawerOpen = () => {
-    setOpen(true);
-  };
+  const handleDrawerOpen = () => setOpen(true);
 
-  const handleDrawerClose = () => {
-    setOpen(false);
-  };
+  const handleDrawerClose = () => setOpen(false);
 
   const toggleDarkMode = () => {
     setIsDarkMode((prev) => !prev);
@@ -275,25 +274,58 @@ const Header = () => {
       window.scrollTo(0, parseInt(savedScrollPosition, 10));
     }
 
-    const openMenu = () => {
-      const handleScroll = () => {
-        sessionStorage.setItem("scrollPosition", window.scrollY);
-      };
-
-      window.addEventListener("scroll", handleScroll);
-
-      return () => {
-        window.removeEventListener("scroll", handleScroll);
-      };
+    const handleScroll = () => {
+      sessionStorage.setItem("scrollPosition", window.scrollY);
     };
 
-    openMenu();
+    window.addEventListener("scroll", handleScroll);
+
+    return () => {
+      window.removeEventListener("scroll", handleScroll);
+    };
+  }, []);
+
+  useEffect(() => {
+    const paths = location.pathname.split("/");
+    if (paths.length > 2) {
+      const section = paths[1]; // e.g., 'html' or 'css'
+      const item = paths[2]; // e.g., 'basic' or 'selector'
+      menuItems.forEach((menuItem) => {
+        if (menuItem.path && menuItem.path.includes(section)) {
+          if (menuItem.subItems) {
+            menuItem.subItems.forEach((subItem) => {
+              if (subItem.path.includes(item)) {
+                setOpenSubMenu((prevOpenSubMenu) => ({
+                  ...prevOpenSubMenu,
+                  [menuItem.name]: true,
+                }));
+              }
+            });
+          }
+        }
+      });
+    }
   }, [location]);
 
+  const handleNavigate = (path) => {
+    sessionStorage.setItem("scrollPosition", window.scrollY);
+    navigate(path);
+  };
+
+  const handleDrawerScroll = () => {
+    if (drawerRef.current) {
+      setDrawerScrollPosition(drawerRef.current.scrollTop);
+    }
+  };
+
+  useEffect(() => {
+    if (drawerRef.current) {
+      drawerRef.current.scrollTop = drawerScrollPosition;
+    }
+  }, [drawerScrollPosition, open]);
+
   return (
-    <Box
-      sx={{ position: "absolute", flexDirection: "column", minHeight: "100vh" }}
-    >
+    <Box sx={{ position: "relative", minHeight: "100vh" }}>
       <CssBaseline />
       <AppBar position="fixed" open={open}>
         <Toolbar>
@@ -314,7 +346,7 @@ const Header = () => {
               display: "flex",
               justifyContent: "center",
               alignItems: "center",
-              height: "60px", // Adjust based on actual height
+              height: "60px",
             }}
           >
             <a href="/HtmlStudy">
@@ -341,6 +373,8 @@ const Header = () => {
         variant="persistent"
         anchor="left"
         open={open}
+        ref={drawerRef}
+        onScroll={handleDrawerScroll}
       >
         <DrawerHeader>
           <IconButton onClick={handleDrawerClose}>
@@ -364,7 +398,7 @@ const Header = () => {
               }}
             />
           </ListItem>
-          {menuItems.map((item, index) => (
+          {menuItems.map((item) => (
             <React.Fragment key={item.name}>
               {item.type === "header" && (
                 <>
@@ -384,16 +418,14 @@ const Header = () => {
               {item.type !== "header" && (
                 <ListItem disablePadding>
                   <ListItemButton
-                    component={item.subItems ? "div" : NavLink}
-                    to={item.subItems ? undefined : item.path}
-                    exact={item.exact}
-                    activeClassName={styles.active}
                     onClick={(e) => {
                       if (item.subItems) {
                         e.stopPropagation();
                         handleSubMenuClick(item.name);
+                      } else {
+                        e.preventDefault();
+                        handleNavigate(item.path);
                       }
-                      sessionStorage.setItem("scrollPosition", window.scrollY);
                     }}
                   >
                     <ListItemIcon>{item.icon}</ListItemIcon>
@@ -418,17 +450,11 @@ const Header = () => {
                     {item.subItems.map((subItem) => (
                       <ListItem key={subItem.name} disablePadding>
                         <ListItemButton
-                          component={NavLink}
-                          to={subItem.path}
-                          exact={subItem.exact}
-                          activeClassName={styles.active}
+                          onClick={(e) => {
+                            e.preventDefault();
+                            handleNavigate(subItem.path);
+                          }}
                           sx={{ pl: 4 }}
-                          onClick={() =>
-                            sessionStorage.setItem(
-                              "scrollPosition",
-                              window.scrollY
-                            )
-                          }
                         >
                           <ListItemIcon>{subItem.icon}</ListItemIcon>
                           <ListItemText primary={subItem.name} />
@@ -444,6 +470,7 @@ const Header = () => {
       </Drawer>
       <Main open={open}>
         <DrawerHeader />
+        {/* Content goes here */}
       </Main>
       <Box
         sx={{
