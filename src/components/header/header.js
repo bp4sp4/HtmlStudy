@@ -1,28 +1,29 @@
 import React, { useState, useEffect, useRef } from "react";
 import { useLocation, useNavigate } from "react-router-dom";
-import styles from "./header.module.css";
+import {
+  Box,
+  CssBaseline,
+  AppBar as MuiAppBar,
+  Toolbar,
+  Typography,
+  Divider,
+  IconButton,
+  List,
+  ListItem,
+  ListItemButton,
+  ListItemIcon,
+  ListItemText,
+  Collapse,
+  Switch,
+} from "@mui/material";
 import { styled, useTheme } from "@mui/material/styles";
-import Box from "@mui/material/Box";
-import Drawer from "@mui/material/Drawer";
-import CssBaseline from "@mui/material/CssBaseline";
-import MuiAppBar from "@mui/material/AppBar";
-import Toolbar from "@mui/material/Toolbar";
-import Typography from "@mui/material/Typography";
-import Divider from "@mui/material/Divider";
-import IconButton from "@mui/material/IconButton";
 import MenuIcon from "@mui/icons-material/Menu";
 import ChevronLeftIcon from "@mui/icons-material/ChevronLeft";
 import ChevronRightIcon from "@mui/icons-material/ChevronRight";
-import List from "@mui/material/List";
-import ListItem from "@mui/material/ListItem";
-import ListItemButton from "@mui/material/ListItemButton";
-import ListItemIcon from "@mui/material/ListItemIcon";
-import ListItemText from "@mui/material/ListItemText";
-import Collapse from "@mui/material/Collapse";
-import Switch from "@mui/material/Switch";
-import AbcIcon from "@mui/icons-material/Abc";
+import ExpandLess from "@mui/icons-material/ExpandLess";
+import ExpandMore from "@mui/icons-material/ExpandMore";
+import Home from "@mui/icons-material/Home";
 import CodeIcon from "@mui/icons-material/Code";
-import { Home, ExpandLess, ExpandMore, Tag } from "@mui/icons-material";
 import HtmlIcon from "@mui/icons-material/Html";
 import ImageIcon from "@mui/icons-material/Image";
 import AddLinkIcon from "@mui/icons-material/AddLink";
@@ -32,7 +33,12 @@ import TableRowsIcon from "@mui/icons-material/TableRows";
 import InputIcon from "@mui/icons-material/Input";
 import WebIcon from "@mui/icons-material/Web";
 import CssIcon from "@mui/icons-material/Css";
+import Tag from "@mui/icons-material/Tag";
 import logoimg from "./logo.png";
+import styles from "./header.module.css";
+
+// Import Drawer from MUI
+import Drawer from "@mui/material/Drawer";
 
 const drawerWidth = 240;
 
@@ -81,129 +87,51 @@ const menuItems = [
     exact: true,
     icon: <CodeIcon />,
   },
-  // HTML Section
-  {
-    name: "HTML Section",
-    type: "header",
-  },
+  { name: "HTML Section", type: "header" },
   { name: "기본문서구조", path: "/html/basic", icon: <HtmlIcon /> },
   {
     name: "텍스트서식",
     path: "/text/paragraph",
-    icon: <AbcIcon />,
+    icon: <Tag />,
     subItems: [
-      {
-        name: "P 태그",
-        path: "/html/paragraph",
-        icon: <Tag />,
-      },
-      {
-        name: "HnGroup태그",
-        path: "/html/hngroup",
-        icon: <Tag />,
-      },
-      {
-        name: "비주류 태그 01 ",
-        path: "/html/oftentag",
-        icon: <Tag />,
-      },
-      {
-        name: "비주류 태그 02 ",
-        path: "/html/oftentag02",
-        icon: <Tag />,
-      },
+      { name: "P 태그", path: "/html/paragraph", icon: <Tag /> },
+      { name: "HnGroup태그", path: "/html/hngroup", icon: <Tag /> },
+      { name: "비주류 태그 01", path: "/html/oftentag", icon: <Tag /> },
+      { name: "비주류 태그 02", path: "/html/oftentag02", icon: <Tag /> },
     ],
   },
-  {
-    name: "이미지 다루기",
-    path: "/html/images",
-    exact: true,
-    icon: <ImageIcon />,
-  },
-  {
-    name: "링크 다루기",
-    path: "/html/anchor",
-    exact: true,
-    icon: <AddLinkIcon />,
-  },
+  { name: "이미지 다루기", path: "/html/images", icon: <ImageIcon /> },
+  { name: "링크 다루기", path: "/html/anchor", icon: <AddLinkIcon /> },
   {
     name: "목록",
     path: "/html/ollist",
     icon: <ListIcon />,
     subItems: [
-      {
-        name: "ol태그",
-        path: "/html/ollist",
-        icon: <Tag />,
-      },
-      {
-        name: "ul태그",
-        path: "/html/ullist",
-        icon: <Tag />,
-      },
+      { name: "ol태그", path: "/html/ollist", icon: <Tag /> },
+      { name: "ul태그", path: "/html/ullist", icon: <Tag /> },
     ],
   },
-  {
-    name: "피규어 태그",
-    path: "/html/figure",
-    exact: true,
-    icon: <SaveAsIcon />,
-  },
-  {
-    name: "표만들기",
-    path: "/html/table",
-    exact: true,
-    icon: <TableRowsIcon />,
-  },
+  { name: "피규어 태그", path: "/html/figure", icon: <SaveAsIcon /> },
+  { name: "표만들기", path: "/html/table", icon: <TableRowsIcon /> },
   {
     name: "폼 요소",
     path: "/html/formoption",
     icon: <InputIcon />,
     subItems: [
-      {
-        name: "폼 태그들",
-        path: "/html/formoption",
-        icon: <Tag />,
-      },
-      {
-        name: "폼 태그들2",
-        path: "/html/formoption2",
-        icon: <Tag />,
-      },
+      { name: "폼 태그들", path: "/html/formoption", icon: <Tag /> },
+      { name: "폼 태그들2", path: "/html/formoption2", icon: <Tag /> },
     ],
   },
-  {
-    name: "시멘틱 태그",
-    path: "/html/semantictag",
-    exact: true,
-    icon: <WebIcon />,
-  },
-  // CSS Section
-  {
-    name: "CSS Section",
-    type: "header",
-  },
-  {
-    name: "CSS 기본문법",
-    path: "/css/intro",
-    exact: true,
-    icon: <CssIcon />,
-  },
+  { name: "시멘틱 태그", path: "/html/semantictag", icon: <WebIcon /> },
+  { name: "CSS Section", type: "header" },
+  { name: "CSS 기본문법", path: "/css/intro", icon: <CssIcon /> },
   {
     name: "CSS 선택자",
     path: "/css/selector",
     icon: <CssIcon />,
     subItems: [
-      {
-        name: "선택자01",
-        path: "/css/selector",
-        icon: <Tag />,
-      },
-      {
-        name: "선택자02",
-        path: "/css/selector2",
-        icon: <Tag />,
-      },
+      { name: "선택자01", path: "/css/selector", icon: <Tag /> },
+      { name: "선택자02", path: "/css/selector2", icon: <Tag /> },
     ],
   },
   {
@@ -211,29 +139,12 @@ const menuItems = [
     path: "/css/font01",
     icon: <CssIcon />,
     subItems: [
-      {
-        name: "font01",
-        path: "/css/font01",
-        icon: <Tag />,
-      },
-      {
-        name: "font02",
-        path: "/css/font02",
-        icon: <Tag />,
-      },
-      {
-        name: "font03",
-        path: "/css/font03",
-        icon: <Tag />,
-      },
+      { name: "font01", path: "/css/font01", icon: <Tag /> },
+      { name: "font02", path: "/css/font02", icon: <Tag /> },
+      { name: "font03", path: "/css/font03", icon: <Tag /> },
     ],
   },
-  {
-    name: "CSS 텍스트 쉐도우",
-    path: "/css/shadow",
-    exact: true,
-    icon: <CssIcon />,
-  },
+  { name: "CSS 텍스트 쉐도우", path: "/css/shadow", icon: <CssIcon /> },
 ];
 
 const Header = () => {
@@ -244,34 +155,42 @@ const Header = () => {
   const [isDarkMode, setIsDarkMode] = useState(false);
   const [openSubMenu, setOpenSubMenu] = useState({});
   const drawerRef = useRef(null);
-  const [drawerScrollPosition, setDrawerScrollPosition] = useState(0);
-
-  const handleDrawerOpen = () => setOpen(true);
-
-  const handleDrawerClose = () => setOpen(false);
 
   const toggleDarkMode = () => {
     setIsDarkMode((prev) => !prev);
-    if (document.documentElement.classList.contains("dark")) {
-      document.documentElement.classList.remove("dark");
-      localStorage.setItem("theme", "light");
-    } else {
-      localStorage.setItem("theme", "dark");
-      document.documentElement.classList.add("dark");
-    }
+    const newTheme = document.documentElement.classList.contains("dark")
+      ? "light"
+      : "dark";
+    document.documentElement.classList.toggle("dark");
+    localStorage.setItem("theme", newTheme);
   };
 
   const handleSubMenuClick = (name) => {
-    setOpenSubMenu((prevOpenSubMenu) => ({
-      ...prevOpenSubMenu,
-      [name]: !prevOpenSubMenu[name],
+    setOpenSubMenu((prev) => ({
+      ...prev,
+      [name]: !prev[name],
     }));
+  };
+
+  const handleNavigate = (path) => {
+    const drawerScrollPosition = drawerRef.current
+      ? drawerRef.current.scrollTop
+      : 0;
+    sessionStorage.setItem("scrollPosition", window.scrollY);
+    sessionStorage.setItem("drawerScrollPosition", drawerScrollPosition);
+    navigate(path);
   };
 
   useEffect(() => {
     const savedScrollPosition = sessionStorage.getItem("scrollPosition");
+    const savedDrawerScrollPosition = sessionStorage.getItem(
+      "drawerScrollPosition"
+    );
     if (savedScrollPosition) {
-      window.scrollTo(0, parseInt(savedScrollPosition, 10));
+      window.scrollTo(0, parseInt(savedScrollPosition, 0));
+    }
+    if (drawerRef.current && savedDrawerScrollPosition) {
+      drawerRef.current.scrollTop = parseInt(savedDrawerScrollPosition, 10);
     }
 
     const handleScroll = () => {
@@ -279,50 +198,44 @@ const Header = () => {
     };
 
     window.addEventListener("scroll", handleScroll);
-
-    return () => {
-      window.removeEventListener("scroll", handleScroll);
-    };
+    return () => window.removeEventListener("scroll", handleScroll);
   }, []);
 
   useEffect(() => {
     const paths = location.pathname.split("/");
     if (paths.length > 2) {
-      const section = paths[1]; // e.g., 'html' or 'css'
-      const item = paths[2]; // e.g., 'basic' or 'selector'
+      const item = paths[2];
       menuItems.forEach((menuItem) => {
-        if (menuItem.path && menuItem.path.includes(section)) {
-          if (menuItem.subItems) {
-            menuItem.subItems.forEach((subItem) => {
-              if (subItem.path.includes(item)) {
-                setOpenSubMenu((prevOpenSubMenu) => ({
-                  ...prevOpenSubMenu,
-                  [menuItem.name]: true,
-                }));
-              }
-            });
-          }
+        if (menuItem.subItems) {
+          menuItem.subItems.forEach((subItem) => {
+            if (subItem.path.includes(item)) {
+              setOpenSubMenu((prev) => ({
+                ...prev,
+                [menuItem.name]: true,
+              }));
+            }
+          });
         }
       });
     }
   }, [location]);
 
-  const handleNavigate = (path) => {
-    sessionStorage.setItem("scrollPosition", window.scrollY);
-    navigate(path);
-  };
+  useEffect(() => {
+    if (drawerRef.current) {
+      drawerRef.current.scrollTop = parseInt(
+        sessionStorage.getItem("drawerScrollPosition") || "0"
+      );
+    }
+  }, []);
 
   const handleDrawerScroll = () => {
     if (drawerRef.current) {
-      setDrawerScrollPosition(drawerRef.current.scrollTop);
+      sessionStorage.setItem(
+        "drawerScrollPosition",
+        drawerRef.current.scrollTop
+      );
     }
   };
-
-  useEffect(() => {
-    if (drawerRef.current) {
-      drawerRef.current.scrollTop = drawerScrollPosition;
-    }
-  }, [drawerScrollPosition, open]);
 
   return (
     <Box sx={{ position: "relative", minHeight: "100vh" }}>
@@ -332,7 +245,7 @@ const Header = () => {
           <IconButton
             color="inherit"
             aria-label="open drawer"
-            onClick={handleDrawerOpen}
+            onClick={() => setOpen(true)}
             edge="start"
             sx={{ mr: 2, ...(open && { display: "none" }) }}
           >
@@ -377,7 +290,7 @@ const Header = () => {
         onScroll={handleDrawerScroll}
       >
         <DrawerHeader>
-          <IconButton onClick={handleDrawerClose}>
+          <IconButton onClick={() => setOpen(false)}>
             {theme.direction === "ltr" ? (
               <ChevronLeftIcon />
             ) : (

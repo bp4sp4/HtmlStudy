@@ -22,22 +22,24 @@ const Selector2 = () => {
 </div>
 
 <!-- css -->
-<!-- 하위 선택자 -->
+/* 하위 선택자 */
+<style>
 div span {
   color : red;
 }
-<!-- 자식 선택자 -->
+/* 자식 선택자 */
 div > span {
   color : blue;
 }
-<!-- 그룹 선택자 -->
+/* 그룹 선택자 */
 h1, p span {
   color : red;
 }
-<!-- 전체선택자 -->
+/* 전체선택자 */
 * {
   font-size : 14px; /* 모든 텍스트에 적용 */
 }
+</style>
 
 `;
 
@@ -95,7 +97,7 @@ h1, p span {
             animation="wave"
           />
         ) : (
-          <h1 className={styles.title}>CSS 선택자</h1>
+          <h1 className={styles.title}>CSS #선택자</h1>
         )}
         <section className={styles.section} id="intro">
           {loading ? (

@@ -13,24 +13,30 @@ const Selector = () => {
 
   const cssExampleCode = `<!-- 태그 선택자 -->
 <p>내용</p>
+<style>
 p{
   text-align : center;
   color : red;
 }
+</style>
 
 <!-- 클래스 선택자 -->
 <p class="center">내용 </p>
+<style>
 .center {
   text-align : center;
   color : red;
 }
+</style>
 
 <!-- 아이디 선택자 -->
 <p id="center">내용<p>
+<style>
 #center {
   text-align : center;
   color : red;
-}`;
+}
+</style> `;
 
   const jobcode = `text-align : left, center, right; /* 텍스트 왼쪽, 가운데, 오른쪽 정렬 을 뜻한다. */`;
 
@@ -80,7 +86,7 @@ p{
             animation="wave"
           />
         ) : (
-          <h1 className={styles.title}>CSS 선택자</h1>
+          <h1 className={styles.title}>CSS #선택자</h1>
         )}
         <section className={styles.section} id="intro">
           {loading ? (

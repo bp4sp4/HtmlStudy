@@ -7,37 +7,28 @@ import "prismjs/components/prism-css.min.js";
 import { Skeleton } from "primereact/skeleton";
 import { NavLink } from "react-router-dom";
 
-const CssIntro = () => {
+const Shadow = () => {
   const [copySuccess, setCopySuccess] = useState("");
   const [loading, setLoading] = useState(true);
 
-  const cssExampleCode = `<!-- CSS 기본 문법 (Syntax) -->
-  body { <!-- 선택자(selector) -->
-    color : crimson; <!-- color : 속성(property), crimson : 값(vaule) -->
- }  
+  const cssExampleCode = `<style>
+  body {
+    background-color : #333;
+  }
 
-<!-- CSS 링크방법 (외부 스타일 / 내부 스타일) -->    
-<!DOCTYPE html>
-<html lang="ko">
-<head> 
-    <meta charset="UTF-8">
-    <title>CSS 링크하기</title>
-    <link rel="stylesheet" href="style.css"> <!-- 외부 스타일 -->
-    <style type="text/css"> <!-- 내부 스타일 -->
-        body {
-            color : navy;
-            font-size : 15px;
-        }
-</head>
+.heading{
+    font-size : 60px;
+    text-transform : capitalize;
+    text-align : center
+    color : gold;
+    text-shadow : 0 0 15px white;
+  }
+</style>
 
-<body> 
-</body>
-</html>
-`;
+<h1 class="heading">Html/CSS Online Study</h1>
+  `;
 
-  const jobcode = `color : blue;
-/* 컬러를 직접 지정해도 좋지만 보통으로는 코드로 작성하는게 일반적입니다. */
-color : #fff, #fafafa, #d2d2d2;`;
+  const jobcode = `text-align : left, center, right; /* 텍스트 왼쪽, 가운데, 오른쪽 정렬 을 뜻한다. */`;
 
   const copyToClipboard = (code) => {
     navigator.clipboard.writeText(code).then(
@@ -58,8 +49,8 @@ color : #fff, #fafafa, #d2d2d2;`;
     }, 1000);
   }, []);
 
-  const prevPage = { path: "/html/semantictag" };
-  const nextPage = { path: "/css/selector" };
+  const prevPage = { path: "/css/intro" };
+  const nextPage = { path: "/css/selector2" };
 
   return (
     <div className={styles.container}>
@@ -85,19 +76,19 @@ color : #fff, #fafafa, #d2d2d2;`;
             animation="wave"
           />
         ) : (
-          <h1 className={styles.title}>CSS #기본문법</h1>
+          <h1 className={styles.title}>CSS #텍스트 쉐도우</h1>
         )}
         <section className={styles.section} id="intro">
           {loading ? (
             <>
               <Skeleton
-                width="30%"
+                width="55%"
                 height="1.5rem"
                 className={styles.skeleton}
                 animation="wave"
               />
               <Skeleton
-                width="75%"
+                width="70%"
                 height="1.5rem"
                 className={styles.skeleton}
                 animation="wave"
@@ -106,7 +97,7 @@ color : #fff, #fafafa, #d2d2d2;`;
           ) : (
             <div className={styles.descwrap}>
               <h2 className={styles.descwrap__subtitle}>
-                CSS 기본 문법 / CSS 링크 방법
+                CSS 텍스트 그림자 효과 (속성 : text-shadow)
               </h2>
               <p className={styles.descwrap__subtitle__desc}>
                 아래 코드는 CSS 예제 코드입니다. 각 속성에 대한 설명은 주석으로
@@ -158,7 +149,34 @@ color : #fff, #fafafa, #d2d2d2;`;
               </>
             )}
           </div>
-
+          <div className={styles.render__wrap}>
+            <h2 className={styles.render__name}>
+              {loading ? (
+                <Skeleton
+                  width="20%"
+                  height="2rem"
+                  className={styles.skeleton}
+                  animation="wave"
+                />
+              ) : (
+                "CSS 실행 예제 화면"
+              )}
+            </h2>
+            <div className={styles.render__code}>
+              {loading ? (
+                <Skeleton
+                  width="100%"
+                  height="2rem"
+                  className={styles.skeleton}
+                  animation="wave"
+                />
+              ) : (
+                <div className={styles.backgrond}>
+                  <h1 class={styles.heading}>Html/CSS Online Study</h1>
+                </div>
+              )}
+            </div>
+          </div>
           <div className={styles.render__wrap}>
             <p className={styles.render__name}>
               {loading ? (
@@ -188,78 +206,6 @@ color : #fff, #fafafa, #d2d2d2;`;
                 </pre>
               )}
             </div>
-            <section className={styles.section} id="promotion">
-              <div className={styles.descwrap}>
-                <p className={styles.render__name}>
-                  {loading ? (
-                    <Skeleton
-                      width="20%"
-                      height="2rem"
-                      className={styles.skeleton}
-                      animation="wave"
-                    />
-                  ) : (
-                    <span className={styles.render__name__sub}>
-                      추천 컬러 사이트 링크
-                    </span>
-                  )}
-                </p>
-                <ul className={styles.linklist}>
-                  {loading ? (
-                    <>
-                      <Skeleton
-                        width="75%"
-                        height="1.5rem"
-                        className={styles.skeleton}
-                        animation="wave"
-                      />
-                      <Skeleton
-                        width="75%"
-                        height="1.5rem"
-                        className={styles.skeleton}
-                        animation="wave"
-                      />
-                      <Skeleton
-                        width="75%"
-                        height="1.5rem"
-                        className={styles.skeleton}
-                        animation="wave"
-                      />
-                    </>
-                  ) : (
-                    <>
-                      <li>
-                        <a
-                          href="https://colorhunt.co/"
-                          target="_blank"
-                          rel="noopener noreferrer"
-                        >
-                          ColorHunt
-                        </a>
-                      </li>
-                      <li>
-                        <a
-                          href="https://www.webdesignrankings.com/resources/lolcolors/"
-                          target="_blank"
-                          rel="noopener noreferrer"
-                        >
-                          LOLCOLORS
-                        </a>
-                      </li>
-                      <li>
-                        <a
-                          href="https://coolors.co/cae7b9-f3de8a-eb9486-7e7f9a-97a7b3"
-                          target="_blank"
-                          rel="noopener noreferrer"
-                        >
-                          Coolors
-                        </a>
-                      </li>
-                    </>
-                  )}
-                </ul>
-              </div>
-            </section>
           </div>
           <div className={styles.navigationButtons}>
             {prevPage && (
@@ -279,4 +225,4 @@ color : #fff, #fafafa, #d2d2d2;`;
   );
 };
 
-export default CssIntro;
+export default Shadow;

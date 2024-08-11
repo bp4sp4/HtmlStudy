@@ -12,10 +12,11 @@ const CssIntro = () => {
   const [loading, setLoading] = useState(true);
 
   const cssExampleCode = `<!-- CSS 기본 문법 (Syntax) -->
-  body { <!-- 선택자(selector) -->
-    color : crimson; <!-- color : 속성(property), crimson : 값(vaule) -->
+<style>
+  body { /* 선택자(selector) */
+    color : crimson;  /* color : 속성(property), crimson : 값(vaule) */
  }  
-
+</style>
 <!-- CSS 링크방법 (외부 스타일 / 내부 스타일) -->    
 <!DOCTYPE html>
 <html lang="ko">
