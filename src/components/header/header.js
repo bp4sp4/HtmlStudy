@@ -144,7 +144,15 @@ const menuItems = [
       { name: "font03", path: "/css/font03", icon: <Tag /> },
     ],
   },
-  { name: "CSS 텍스트 쉐도우", path: "/css/shadow", icon: <CssIcon /> },
+  {
+    name: "CSS 텍스트 쉐도우",
+    path: "/css/shadow01",
+    icon: <CssIcon />,
+    subItems: [
+      { name: "shadow01", path: "/css/shadow01", icon: <Tag /> },
+      { name: "shadow02", path: "/css/shadow02", icon: <Tag /> },
+    ],
+  },
 ];
 
 const Header = () => {

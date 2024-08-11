@@ -7,7 +7,7 @@ import "prismjs/components/prism-css.min.js";
 import { Skeleton } from "primereact/skeleton";
 import { NavLink } from "react-router-dom";
 
-const Shadow = () => {
+const Shadow01 = () => {
   const [copySuccess, setCopySuccess] = useState("");
   const [loading, setLoading] = useState(true);
 
@@ -19,7 +19,7 @@ const Shadow = () => {
 .heading{
     font-size : 60px;
     text-transform : capitalize;
-    text-align : center
+    text-align : center;
     color : gold;
     text-shadow : 0 0 15px white;
   }
@@ -28,7 +28,13 @@ const Shadow = () => {
 <h1 class="heading">Html/CSS Online Study</h1>
   `;
 
-  const jobcode = `text-align : left, center, right; /* 텍스트 왼쪽, 가운데, 오른쪽 정렬 을 뜻한다. */`;
+  const jobcode = `/* 딱히 중요한 css속성은 아닙니다. */  
+text-shadow : offset-x offset-y blur-radius shadow-color
+Offset-x : 그림자의 수평 거리를 정합니다. /* 0을 넣는 경우 이동 안함 */ 
+Offset-y : 그림자의 수직 거리를 정합니다. /* 0을 넣는 경우 이동 안함 */ 
+Blur-radius : 그림자의 흐림 정도를 정합니다. /* 값을 정하지 않으면 0 */
+Shadow-color : 그림자의 색상을 정합니다. /* black, red, blue, green, yellow
+`;
 
   const copyToClipboard = (code) => {
     navigator.clipboard.writeText(code).then(
@@ -49,8 +55,8 @@ const Shadow = () => {
     }, 1000);
   }, []);
 
-  const prevPage = { path: "/css/intro" };
-  const nextPage = { path: "/css/selector2" };
+  const prevPage = { path: "/css/selector2" };
+  const nextPage = { path: "/css/shadow02" };
 
   return (
     <div className={styles.container}>
@@ -128,7 +134,7 @@ const Shadow = () => {
             {loading ? (
               <Skeleton
                 width="100%"
-                height="33rem"
+                height="30rem"
                 className={styles.skeleton}
                 animation="wave"
               />
@@ -166,7 +172,7 @@ const Shadow = () => {
               {loading ? (
                 <Skeleton
                   width="100%"
-                  height="2rem"
+                  height="5rem"
                   className={styles.skeleton}
                   animation="wave"
                 />
@@ -225,4 +231,4 @@ const Shadow = () => {
   );
 };
 
-export default Shadow;
+export default Shadow01;

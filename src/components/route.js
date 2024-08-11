@@ -22,7 +22,8 @@ import Selector2 from "./css/selector2";
 import Font01 from "./css/font01";
 import Font02 from "./css/font02";
 import Font03 from "./css/font03";
-import Shadow from "./css/shadow";
+import Shadow01 from "./css/shadow01";
+import Shadow02 from "./css/shadow02";
 
 const Router = () => {
   return (
@@ -51,7 +52,8 @@ const Router = () => {
         <Route path="/css/font01" element={<Font01 />} />
         <Route path="/css/font02" element={<Font02 />} />
         <Route path="/css/font03" element={<Font03 />} />
-        <Route path="/css/shadow" element={<Shadow />} />
+        <Route path="/css/shadow01" element={<Shadow01 />} />
+        <Route path="/css/shadow02" element={<Shadow02 />} />
       </Routes>
     </BrowserRouter>
   );
