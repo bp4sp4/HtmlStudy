@@ -51,7 +51,7 @@ text-shadow : 5px 5px 0 yellowgreen, 10px 10px 0 #ddd;
   }, []);
 
   const prevPage = { path: "/css/shadow01" };
-  const nextPage = { path: "/css/selector2" };
+  const nextPage = { path: "/css/ullist01" };
 
   return (
     <div className={styles.container}>
@@ -188,9 +188,7 @@ text-shadow : 5px 5px 0 yellowgreen, 10px 10px 0 #ddd;
                   animation="wave"
                 />
               ) : (
-                <span className={styles.render__name__sub}>
-                  알아두면 좋은 TIP!
-                </span>
+                <span className={styles.render__name__sub}>알아두기만해!</span>
               )}
             </p>
             <div className={styles.render__code}>

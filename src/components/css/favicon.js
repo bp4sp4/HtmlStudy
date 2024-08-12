@@ -7,34 +7,18 @@ import "prismjs/components/prism-css.min.js";
 import { Skeleton } from "primereact/skeleton";
 import { NavLink } from "react-router-dom";
 
-const Shadow01 = () => {
+const Favicon = () => {
   const [copySuccess, setCopySuccess] = useState("");
   const [loading, setLoading] = useState(true);
 
-  const cssExampleCode = `<style>
-  body {
-    background-color : #333;
-  }
-
-.heading{
-    font-size : 60px;
-    text-transform : capitalize;
-    text-align : center;
-    color : gold;
-    text-shadow : 0 0 15px white;
-  }
-</style>
-
-<h1 class="heading">Html/CSS Online Study</h1>
-  `;
-
-  const jobcode = `/* 딱히 중요한 css속성은 아닙니다. */  
-text-shadow : offset-x offset-y blur-radius shadow-color
-Offset-x : 그림자의 수평 거리를 정합니다. /* 0을 넣는 경우 이동 안함 */ 
-Offset-y : 그림자의 수직 거리를 정합니다. /* 0을 넣는 경우 이동 안함 */ 
-Blur-radius : 그림자의 흐림 정도를 정합니다. /* 값을 정하지 않으면 0 */
-Shadow-color : 그림자의 색상을 정합니다. /* black, red, blue, green, yellow
+  const cssExampleCode = `<head>
+  <link rel="icon or stylesheet" href="favicon.png">
+<head>
 `;
+
+  const jobcode = `<link> 태그 안에 사용하는 속성과 값
+href : 링크 된 문서의 위치를 지정합니다 value : URL
+rel : 현재 문서와 링크 된 문서 간의 관계를 지정합니다. value : stylesheet, icon`;
 
   const copyToClipboard = (code) => {
     navigator.clipboard.writeText(code).then(
@@ -55,8 +39,8 @@ Shadow-color : 그림자의 색상을 정합니다. /* black, red, blue, green, 
     }, 1000);
   }, []);
 
-  const prevPage = { path: "/css/selector2" };
-  const nextPage = { path: "/css/shadow02" };
+  const prevPage = { path: "/css/ullist02" };
+  const nextPage = { path: "/css/selector" };
 
   return (
     <div className={styles.container}>
@@ -82,19 +66,19 @@ Shadow-color : 그림자의 색상을 정합니다. /* black, red, blue, green, 
             animation="wave"
           />
         ) : (
-          <h1 className={styles.title}>CSS #텍스트 쉐도우</h1>
+          <h1 className={styles.title}>CSS #파비콘</h1>
         )}
         <section className={styles.section} id="intro">
           {loading ? (
             <>
               <Skeleton
-                width="55%"
+                width="30%"
                 height="1.5rem"
                 className={styles.skeleton}
                 animation="wave"
               />
               <Skeleton
-                width="70%"
+                width="75%"
                 height="1.5rem"
                 className={styles.skeleton}
                 animation="wave"
@@ -103,7 +87,7 @@ Shadow-color : 그림자의 색상을 정합니다. /* black, red, blue, green, 
           ) : (
             <div className={styles.descwrap}>
               <h2 className={styles.descwrap__subtitle}>
-                CSS 텍스트 그림자 효과 (속성 : text-shadow)
+                링크 태그 파비콘(favicon) 링크하기
               </h2>
               <p className={styles.descwrap__subtitle__desc}>
                 아래 코드는 CSS 예제 코드입니다. 각 속성에 대한 설명은 주석으로
@@ -134,7 +118,7 @@ Shadow-color : 그림자의 색상을 정합니다. /* black, red, blue, green, 
             {loading ? (
               <Skeleton
                 width="100%"
-                height="30rem"
+                height="5rem"
                 className={styles.skeleton}
                 animation="wave"
               />
@@ -155,34 +139,7 @@ Shadow-color : 그림자의 색상을 정합니다. /* black, red, blue, green, 
               </>
             )}
           </div>
-          <div className={styles.render__wrap}>
-            <h2 className={styles.render__name}>
-              {loading ? (
-                <Skeleton
-                  width="20%"
-                  height="2rem"
-                  className={styles.skeleton}
-                  animation="wave"
-                />
-              ) : (
-                "CSS 실행 예제 화면"
-              )}
-            </h2>
-            <div className={styles.render__code}>
-              {loading ? (
-                <Skeleton
-                  width="100%"
-                  height="5rem"
-                  className={styles.skeleton}
-                  animation="wave"
-                />
-              ) : (
-                <div className={styles.backgrond}>
-                  <h1 class={styles.heading}>Html/CSS Online Study</h1>
-                </div>
-              )}
-            </div>
-          </div>
+
           <div className={styles.render__wrap}>
             <p className={styles.render__name}>
               {loading ? (
@@ -193,7 +150,9 @@ Shadow-color : 그림자의 색상을 정합니다. /* black, red, blue, green, 
                   animation="wave"
                 />
               ) : (
-                <span className={styles.render__name__sub}>알아두기만해!</span>
+                <span className={styles.render__name__sub}>
+                  알아두면 좋은 TIP!
+                </span>
               )}
             </p>
             <div className={styles.render__code}>
@@ -229,4 +188,4 @@ Shadow-color : 그림자의 색상을 정합니다. /* black, red, blue, green, 
   );
 };
 
-export default Shadow01;
+export default Favicon;

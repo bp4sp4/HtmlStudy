@@ -24,6 +24,9 @@ import Font02 from "./css/font02";
 import Font03 from "./css/font03";
 import Shadow01 from "./css/shadow01";
 import Shadow02 from "./css/shadow02";
+import Ullist01 from "./css/ullist01";
+import Ullist02 from "./css/ullist02";
+import Favicon from "./css/favicon";
 
 const Router = () => {
   return (
@@ -54,6 +57,9 @@ const Router = () => {
         <Route path="/css/font03" element={<Font03 />} />
         <Route path="/css/shadow01" element={<Shadow01 />} />
         <Route path="/css/shadow02" element={<Shadow02 />} />
+        <Route path="/css/ullist01" element={<Ullist01 />} />
+        <Route path="/css/ullist02" element={<Ullist02 />} />
+        <Route path="/css/favicon" element={<Favicon />} />
       </Routes>
     </BrowserRouter>
   );

@@ -36,23 +36,9 @@ import CssIcon from "@mui/icons-material/Css";
 import Tag from "@mui/icons-material/Tag";
 import logoimg from "./logo.png";
 import styles from "./header.module.css";
-
-// Import Drawer from MUI
 import Drawer from "@mui/material/Drawer";
 
 const drawerWidth = 240;
-
-const Main = styled("main", { shouldForwardProp: (prop) => prop !== "open" })(
-  ({ theme, open }) => ({
-    flexGrow: 1,
-    padding: theme.spacing(3),
-    transition: theme.transitions.create("margin", {
-      easing: theme.transitions.easing.sharp,
-      duration: theme.transitions.duration.leavingScreen,
-    }),
-    marginLeft: open ? drawerWidth : 0,
-  })
-);
 
 const AppBar = styled(MuiAppBar, {
   shouldForwardProp: (prop) => prop !== "open",
@@ -153,6 +139,16 @@ const menuItems = [
       { name: "shadow02", path: "/css/shadow02", icon: <Tag /> },
     ],
   },
+  {
+    name: "CSS 목록스타일",
+    path: "/css/shadow01",
+    icon: <CssIcon />,
+    subItems: [
+      { name: "ullist01", path: "/css/ullist01", icon: <Tag /> },
+      { name: "ullist02", path: "/css/ullist02", icon: <Tag /> },
+    ],
+  },
+  { name: "CSS 파비콘", path: "/css/favicon", icon: <CssIcon /> },
 ];
 
 const Header = () => {
@@ -163,6 +159,7 @@ const Header = () => {
   const [isDarkMode, setIsDarkMode] = useState(false);
   const [openSubMenu, setOpenSubMenu] = useState({});
   const drawerRef = useRef(null);
+  const scrollPosition = useRef(0);
 
   const toggleDarkMode = () => {
     setIsDarkMode((prev) => !prev);
@@ -181,33 +178,21 @@ const Header = () => {
   };
 
   const handleNavigate = (path) => {
-    const drawerScrollPosition = drawerRef.current
-      ? drawerRef.current.scrollTop
-      : 0;
-    sessionStorage.setItem("scrollPosition", window.scrollY);
-    sessionStorage.setItem("drawerScrollPosition", drawerScrollPosition);
     navigate(path);
   };
 
   useEffect(() => {
-    const savedScrollPosition = sessionStorage.getItem("scrollPosition");
-    const savedDrawerScrollPosition = sessionStorage.getItem(
-      "drawerScrollPosition"
-    );
-    if (savedScrollPosition) {
-      window.scrollTo(0, parseInt(savedScrollPosition, 0));
+    // Restore scroll position when drawer opens
+    if (drawerRef.current) {
+      drawerRef.current.scrollTop = scrollPosition.current;
     }
-    if (drawerRef.current && savedDrawerScrollPosition) {
-      drawerRef.current.scrollTop = parseInt(savedDrawerScrollPosition, 10);
+  }, [open]);
+
+  const handleDrawerScroll = () => {
+    if (drawerRef.current) {
+      scrollPosition.current = drawerRef.current.scrollTop;
     }
-
-    const handleScroll = () => {
-      sessionStorage.setItem("scrollPosition", window.scrollY);
-    };
-
-    window.addEventListener("scroll", handleScroll);
-    return () => window.removeEventListener("scroll", handleScroll);
-  }, []);
+  };
 
   useEffect(() => {
     const paths = location.pathname.split("/");
@@ -228,25 +213,8 @@ const Header = () => {
     }
   }, [location]);
 
-  useEffect(() => {
-    if (drawerRef.current) {
-      drawerRef.current.scrollTop = parseInt(
-        sessionStorage.getItem("drawerScrollPosition") || "0"
-      );
-    }
-  }, []);
-
-  const handleDrawerScroll = () => {
-    if (drawerRef.current) {
-      sessionStorage.setItem(
-        "drawerScrollPosition",
-        drawerRef.current.scrollTop
-      );
-    }
-  };
-
   return (
-    <Box sx={{ position: "relative", minHeight: "100vh" }}>
+    <Box sx={{ position: "absolute", minHeight: "100vh" }}>
       <CssBaseline />
       <AppBar position="fixed" open={open}>
         <Toolbar>
@@ -389,10 +357,6 @@ const Header = () => {
           ))}
         </List>
       </Drawer>
-      <Main open={open}>
-        <DrawerHeader />
-        {/* Content goes here */}
-      </Main>
       <Box
         sx={{
           position: "fixed",

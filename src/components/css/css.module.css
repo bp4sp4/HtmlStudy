@@ -231,3 +231,49 @@ p span {
     color: crimson;
     text-shadow: 5px 5px 0 yellowgreen, 10px 10px 0 #ddd;
 }
+
+.list {
+    padding: 0;
+    line-height: 2em;
+}
+
+.list>li {
+    list-style: none;
+}
+
+.list>li>b {
+    background-color: #000;
+    color: #fff;
+    font-weight: normal;
+}
+
+.list>li ul {
+    list-style: decimal;
+}
+
+.football {
+    list-style: none;
+    margin: 0;
+    padding: 40px;
+    border: 1px solid #ddd;
+    width: 800px;
+    overflow: hidden
+}
+
+.football li {
+    float: left;
+    text-align: center;
+    width: 20%;
+}
+
+
+
+.football li a {
+    text-decoration: none;
+    color: #000;
+}
+
+.football li a:hover {
+    color: royalblue;
+    text-decoration: underline;
+}

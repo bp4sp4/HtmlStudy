@@ -7,33 +7,58 @@ import "prismjs/components/prism-css.min.js";
 import { Skeleton } from "primereact/skeleton";
 import { NavLink } from "react-router-dom";
 
-const Shadow01 = () => {
+const Ullist01 = () => {
   const [copySuccess, setCopySuccess] = useState("");
   const [loading, setLoading] = useState(true);
 
   const cssExampleCode = `<style>
-  body {
-    background-color : #333;
-  }
-
-.heading{
-    font-size : 60px;
-    text-transform : capitalize;
-    text-align : center;
-    color : gold;
-    text-shadow : 0 0 15px white;
-  }
+ul.list {
+  padding : 0;
+  line-height : 2em;
+}
+ul.list > li {
+  list-style : none;
+}
+ul.list > li > b {
+  background-color : #000;
+  color: #fff;
+  font-weight : normal;
+}
+ul. list > li ul {
+  list-style : decimal;
+}
+ 
 </style>
 
-<h1 class="heading">Html/CSS Online Study</h1>
+<ul class="list>
+  <li><b>잉글랜드 프리미어 리그 </b>
+    <ul>
+      <li>우승 : 맨체스터 시티 </li>
+      <li>챔피언스 리그 : 맨시티, 맨유, 토트넘, 리버풀 </li>
+      <li>유로파리그 : 첼시, 아스날, 번리(예선)</li>
+    </ul>
+  </li>   
+   <li><b>스페인 프리메라리가 </b>
+    <ul>
+      <li>우승 : 바로셀로나 </li>
+      <li>챔피언스 리그 : 바로셀로나, AT마드리드 </li>
+      <li>유로파리그 : 비야레알, 베티스, 세비야(예선)</li>
+    </ul>
+  </li>
+</ul>
+
   `;
 
-  const jobcode = `/* 딱히 중요한 css속성은 아닙니다. */  
-text-shadow : offset-x offset-y blur-radius shadow-color
-Offset-x : 그림자의 수평 거리를 정합니다. /* 0을 넣는 경우 이동 안함 */ 
-Offset-y : 그림자의 수직 거리를 정합니다. /* 0을 넣는 경우 이동 안함 */ 
-Blur-radius : 그림자의 흐림 정도를 정합니다. /* 값을 정하지 않으면 0 */
-Shadow-color : 그림자의 색상을 정합니다. /* black, red, blue, green, yellow
+  const jobcode = `list-style-type : 목록에서 글 머리 기호 및 숫자 스타일 지정
+ul{
+    list-style : square ◼️ /* 리스트 스타일의 값을 변경하면 됨 */
+    list-style : circle ○
+    list-style : disc ●
+  }
+⭐⭐⭐⭐⭐ 굉장히 많이 쓰이는 스타일 속성이다.
+ul {
+    list-style : none; /* ul을 네비게이션 제작할 경우 */
+  }
 `;
 
   const copyToClipboard = (code) => {
@@ -55,8 +80,8 @@ Shadow-color : 그림자의 색상을 정합니다. /* black, red, blue, green, 
     }, 1000);
   }, []);
 
-  const prevPage = { path: "/css/selector2" };
-  const nextPage = { path: "/css/shadow02" };
+  const prevPage = { path: "/css/shadow02" };
+  const nextPage = { path: "/css/ullist02" };
 
   return (
     <div className={styles.container}>
@@ -82,7 +107,7 @@ Shadow-color : 그림자의 색상을 정합니다. /* black, red, blue, green, 
             animation="wave"
           />
         ) : (
-          <h1 className={styles.title}>CSS #텍스트 쉐도우</h1>
+          <h1 className={styles.title}>CSS #목록스타일</h1>
         )}
         <section className={styles.section} id="intro">
           {loading ? (
@@ -134,7 +159,7 @@ Shadow-color : 그림자의 색상을 정합니다. /* black, red, blue, green, 
             {loading ? (
               <Skeleton
                 width="100%"
-                height="30rem"
+                height="45rem"
                 className={styles.skeleton}
                 animation="wave"
               />
@@ -172,14 +197,29 @@ Shadow-color : 그림자의 색상을 정합니다. /* black, red, blue, green, 
               {loading ? (
                 <Skeleton
                   width="100%"
-                  height="5rem"
+                  height="16rem"
                   className={styles.skeleton}
                   animation="wave"
                 />
               ) : (
-                <div className={styles.backgrond}>
-                  <h1 class={styles.heading}>Html/CSS Online Study</h1>
-                </div>
+                <ul className={styles.list}>
+                  <li>
+                    <b>잉글랜드 프리미어 리그 </b>
+                    <ul>
+                      <li>우승 : 맨체스터 시티 </li>
+                      <li>챔피언스 리그 : 맨시티, 맨유, 토트넘, 리버풀 </li>
+                      <li>유로파리그 : 첼시, 아스날, 번리(예선)</li>
+                    </ul>
+                  </li>
+                  <li>
+                    <b>스페인 프리메라리가 </b>
+                    <ul>
+                      <li>우승 : 바로셀로나 </li>
+                      <li>챔피언스 리그 : 바로셀로나, AT마드리드 </li>
+                      <li>유로파리그 : 비야레알, 베티스, 세비야(예선)</li>
+                    </ul>
+                  </li>
+                </ul>
               )}
             </div>
           </div>
@@ -193,7 +233,9 @@ Shadow-color : 그림자의 색상을 정합니다. /* black, red, blue, green, 
                   animation="wave"
                 />
               ) : (
-                <span className={styles.render__name__sub}>알아두기만해!</span>
+                <span className={styles.render__name__sub}>
+                  알아두면 좋은 TIP!
+                </span>
               )}
             </p>
             <div className={styles.render__code}>
@@ -229,4 +271,4 @@ Shadow-color : 그림자의 색상을 정합니다. /* black, red, blue, green, 
   );
 };
 
-export default Shadow01;
+export default Ullist01;
