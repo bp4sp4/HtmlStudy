@@ -12,10 +12,10 @@ const Paragraph = () => {
   const [loading, setLoading] = useState(true);
 
   const exampleCode = `<p>This is a paragraph.<br>이건 P태그에요!</p>
-<hr> <!-- 수평선을 넣는 hr 태그입니다. -->
-<p>이거또한 P태그에요</p>`;
+  <hr> <!-- 수평선을 넣는 hr 태그입니다. -->
+  <p>이거또한 P태그에요</p>`;
   const jobcode = `<span>This is a span</span> 
-<!-- p태그와 비슷하다고 생각할 수 있지만 스타일 적용이나 요소를 묶을때 사용함 -->`;
+  <!-- p태그와 비슷하다고 생각할 수 있지만 스타일 적용이나 요소를 묶을때 사용함 -->`;
 
   const copyToClipboard = () => {
     navigator.clipboard.writeText(exampleCode).then(

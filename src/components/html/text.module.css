@@ -1,16 +1,24 @@
 * {
     font-family: 'GongGothicMedium';
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
 }
+
 
 .container {
     display: flex;
-    justify-content: center;
+    height: 100vh;
     width: 100%;
     margin-left: auto;
     margin-right: auto;
-    font-family: Arial, sans-serif;
     background-color: var(--background-color);
+    color: var(--text-color);
+    font-weight: 600;
+
 }
+
+
 
 .main__wrap {
     width: 100%;
