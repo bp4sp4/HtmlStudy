@@ -17,6 +17,7 @@ import styles from "./header.module.css";
 
 const { Header, Sider, Content } = Layout;
 
+// 메뉴 항목 데이터 정의
 const menuItems = [
   { label: "HtmlStudy", key: "/", icon: <HomeOutlined /> },
   {
@@ -144,14 +145,14 @@ const menuItems = [
 ];
 
 const App = () => {
-  const location = useLocation();
-  const navigate = useNavigate();
-  const [collapsed, setCollapsed] = useState(false);
-  const [isDarkMode, setIsDarkMode] = useState(false);
-  const siderRef = useRef(null);
-  const contentRef = useRef(null);
-  const [openKeys, setOpenKeys] = useState([]);
-  const [previousPath, setPreviousPath] = useState(location.pathname);
+  const location = useLocation(); // 현재 위치 (URL 경로) 가져오기
+  const navigate = useNavigate(); // 페이지 이동 함수
+  const [collapsed, setCollapsed] = useState(false); // 사이드바의 접힘 상태
+  const [isDarkMode, setIsDarkMode] = useState(false); // 테마 상태 (다크 모드 여부)
+  const siderRef = useRef(null); // 사이드바의 스크롤 위치를 참조하기 위한 ref
+  const contentRef = useRef(null); // 콘텐츠의 스크롤 위치를 참조하기 위한 ref
+  const [openKeys, setOpenKeys] = useState([]); // 열려있는 서브메뉴의 키
+  const [previousPath, setPreviousPath] = useState(location.pathname); // 이전 경로 저장
 
   useEffect(() => {
     // 페이지 로드 시 저장된 사이드바 상태와 테마 복원
@@ -178,8 +179,8 @@ const App = () => {
   }, []);
 
   useEffect(() => {
+    // 현재 경로에 따라 열려야 할 서브메뉴의 키를 계산
     const paths = location.pathname.split("/").filter(Boolean);
-    // eslint-disable-next-line
     const keys = paths.map(
       (_, index) => `/${paths.slice(0, index + 1).join("/")}`
     );
@@ -212,6 +213,7 @@ const App = () => {
   }, [location]);
 
   useEffect(() => {
+    // 페이지 이동 시 열린 서브메뉴 상태를 유지
     if (location.pathname !== previousPath) {
       setOpenKeys((prevOpenKeys) => {
         // 현재 열려있는 서브메뉴의 상태를 저장
@@ -223,10 +225,11 @@ const App = () => {
   }, [location, previousPath]);
 
   const handleNavigate = (path) => {
-    navigate(path);
+    navigate(path); // 주어진 경로로 페이지 이동
   };
 
   const toggleDarkMode = () => {
+    // 다크 모드와 라이트 모드 전환
     setIsDarkMode((prev) => !prev);
     const newTheme = document.documentElement.classList.contains("dark")
       ? "light"
@@ -236,10 +239,12 @@ const App = () => {
   };
 
   const handleOpenChange = (keys) => {
+    // 서브메뉴 열기/닫기 상태 변경
     setOpenKeys(keys);
   };
 
   const handleSiderScroll = () => {
+    // 사이드바의 스크롤 위치 저장
     if (siderRef.current) {
       localStorage.setItem(
         "siderScrollPosition",
@@ -249,6 +254,7 @@ const App = () => {
   };
 
   const handleContentScroll = () => {
+    // 콘텐츠 영역의 스크롤 위치 저장
     if (contentRef.current) {
       localStorage.setItem(
         "contentScrollPosition",
@@ -258,6 +264,7 @@ const App = () => {
   };
 
   const handleCollapse = (collapsed) => {
+    // 사이드바 접힘 상태 변경 및 저장
     setCollapsed(collapsed);
     localStorage.setItem("sidebarCollapsed", collapsed.toString());
   };
