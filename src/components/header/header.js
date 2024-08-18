@@ -1,8 +1,6 @@
 import React, { useState, useEffect, useRef } from "react";
 import { useLocation, useNavigate } from "react-router-dom";
 import {
-  MenuFoldOutlined,
-  MenuUnfoldOutlined,
   HomeOutlined,
   CodeOutlined,
   PictureOutlined,
@@ -28,12 +26,13 @@ const menuItems = [
   },
   {
     label: "HTML Section",
+    key: "/html",
     type: "group",
     children: [
       { label: "기본문서구조", key: "/html/basic", icon: <FileTextOutlined /> },
       {
         label: "텍스트서식",
-        key: "text",
+        key: "/html/text",
         icon: <TagOutlined />,
         children: [
           { label: "P 태그", key: "/html/paragraph", icon: <TagOutlined /> },
@@ -58,7 +57,7 @@ const menuItems = [
       { label: "링크 다루기", key: "/html/anchor", icon: <LinkOutlined /> },
       {
         label: "목록",
-        key: "list",
+        key: "/html/list",
         icon: <OrderedListOutlined />,
         children: [
           { label: "ol태그", key: "/html/ollist", icon: <TagOutlined /> },
@@ -69,7 +68,7 @@ const menuItems = [
       { label: "표만들기", key: "/html/table", icon: <TableOutlined /> },
       {
         label: "폼 요소",
-        key: "form",
+        key: "/html/form",
         children: [
           {
             label: "폼 태그들",
@@ -92,12 +91,13 @@ const menuItems = [
   },
   {
     label: "CSS Section",
+    key: "/css",
     type: "group",
     children: [
       { label: "CSS 기본문법", key: "/css/intro", icon: <GlobalOutlined /> },
       {
         label: "CSS 선택자",
-        key: "cssSelector",
+        key: "/css/selector",
         children: [
           { label: "선택자01", key: "/css/selector", icon: <TagOutlined /> },
           { label: "선택자02", key: "/css/selector2", icon: <TagOutlined /> },
@@ -105,7 +105,7 @@ const menuItems = [
       },
       {
         label: "CSS 텍스트서식",
-        key: "cssFont",
+        key: "/css/font",
         children: [
           { label: "font01", key: "/css/font01", icon: <TagOutlined /> },
           { label: "font02", key: "/css/font02", icon: <TagOutlined /> },
@@ -114,7 +114,7 @@ const menuItems = [
       },
       {
         label: "CSS 텍스트 쉐도우",
-        key: "cssShadow",
+        key: "/css/shadow",
         children: [
           { label: "shadow01", key: "/css/shadow01", icon: <TagOutlined /> },
           { label: "shadow02", key: "/css/shadow02", icon: <TagOutlined /> },
@@ -122,13 +122,18 @@ const menuItems = [
       },
       {
         label: "CSS 목록스타일",
-        key: "cssListStyle",
+        key: "/css/list-style",
         children: [
           { label: "ullist01", key: "/css/ullist01", icon: <TagOutlined /> },
           { label: "ullist02", key: "/css/ullist02", icon: <TagOutlined /> },
         ],
       },
       { label: "CSS 파비콘", key: "/css/favicon", icon: <GlobalOutlined /> },
+      {
+        label: "CSS 배경 제어하기",
+        key: "/css/background",
+        icon: <GlobalOutlined />,
+      },
     ],
   },
 ];
@@ -139,7 +144,73 @@ const App = () => {
   const [collapsed, setCollapsed] = useState(false);
   const [isDarkMode, setIsDarkMode] = useState(false);
   const siderRef = useRef(null);
-  const [scrollPosition, setScrollPosition] = useState(0);
+  const [openKeys, setOpenKeys] = useState([]);
+  const [previousPath, setPreviousPath] = useState(location.pathname);
+
+  useEffect(() => {
+    // 페이지 로드 시 저장된 사이드바 상태와 테마 복원
+    const savedCollapsed = localStorage.getItem("sidebarCollapsed") === "true";
+    const savedTheme = localStorage.getItem("theme");
+    const savedScrollPosition = localStorage.getItem("siderScrollPosition");
+
+    setCollapsed(savedCollapsed);
+    if (savedTheme) {
+      document.documentElement.classList.toggle("dark", savedTheme === "dark");
+      setIsDarkMode(savedTheme === "dark");
+    }
+    if (savedScrollPosition && siderRef.current) {
+      siderRef.current.scrollTop = parseInt(savedScrollPosition, 10);
+    }
+  }, []);
+
+  useEffect(() => {
+    const paths = location.pathname.split("/").filter(Boolean);
+    // eslint-disable-next-line
+    const keys = paths.map(
+      (_, index) => `/${paths.slice(0, index + 1).join("/")}`
+    );
+
+    const findOpenKeys = (items, path) => {
+      let openKeys = [];
+      items.forEach((item) => {
+        if (
+          item.key === path ||
+          (item.children &&
+            item.children.some(
+              (child) => findOpenKeys([child], path).length > 0
+            ))
+        ) {
+          openKeys.push(item.key);
+          if (item.children) {
+            openKeys = openKeys.concat(
+              item.children.reduce((acc, child) => {
+                return acc.concat(findOpenKeys([child], path));
+              }, [])
+            );
+          }
+        }
+      });
+      return openKeys;
+    };
+
+    const initialOpenKeys = findOpenKeys(menuItems, location.pathname);
+    setOpenKeys(initialOpenKeys);
+  }, [location]);
+
+  useEffect(() => {
+    if (location.pathname !== previousPath) {
+      setOpenKeys((prevOpenKeys) => {
+        // 현재 열려있는 서브메뉴의 상태를 저장
+        const currentOpenKeys = new Set(prevOpenKeys);
+        return Array.from(currentOpenKeys);
+      });
+    }
+    setPreviousPath(location.pathname);
+  }, [location, previousPath]);
+
+  const handleNavigate = (path) => {
+    navigate(path);
+  };
 
   const toggleDarkMode = () => {
     setIsDarkMode((prev) => !prev);
@@ -150,74 +221,55 @@ const App = () => {
     localStorage.setItem("theme", newTheme);
   };
 
-  const handleNavigate = (path) => {
-    navigate(path);
+  const handleOpenChange = (keys) => {
+    setOpenKeys(keys);
   };
 
-  useEffect(() => {
-    const paths = location.pathname.split("/");
-    if (paths.length > 2) {
-      const item = paths[2];
-      menuItems.forEach((menuItem) => {
-        if (menuItem.children) {
-          menuItem.children.forEach((subItem) => {
-            if (subItem.key.includes(item)) {
-              setScrollPosition((prev) => ({
-                ...prev,
-                [menuItem.label]: true,
-              }));
-            }
-          });
-        }
-      });
-    }
-  }, [location]);
-
-  useEffect(() => {
-    const savedPosition = localStorage.getItem("siderScrollPosition");
-    if (savedPosition) {
-      setScrollPosition(parseInt(savedPosition, 10));
-    }
-  }, []);
-
-  useEffect(() => {
+  const handleSiderScroll = () => {
     if (siderRef.current) {
-      siderRef.current.scrollTop = scrollPosition;
+      localStorage.setItem(
+        "siderScrollPosition",
+        siderRef.current.scrollTop.toString()
+      );
     }
-  }, [scrollPosition, collapsed]);
+  };
 
-  useEffect(() => {
-    const savedPosition = localStorage.getItem("siderScrollPosition");
-    if (savedPosition) {
-      const position = parseInt(savedPosition, 10);
-      setScrollPosition(position);
-      if (siderRef.current) {
-        siderRef.current.scrollTop = position;
-      }
-    }
-  }, [location.pathname]);
+  const handleCollapse = (collapsed) => {
+    setCollapsed(collapsed);
+    localStorage.setItem("sidebarCollapsed", collapsed.toString());
+  };
 
   return (
-    <Layout style={{ minHeight: "100vh" }}>
+    <Layout>
       <Sider
         ref={siderRef}
         collapsible
         collapsed={collapsed}
-        onCollapse={setCollapsed}
-        theme="light"
-        style={{ background: "#f0eefa" }}
+        onCollapse={handleCollapse}
+        theme={isDarkMode ? "dark" : "light"}
+        style={{
+          overflowY: "auto",
+          position: "fixed",
+          left: 0,
+          top: 0,
+          bottom: 0,
+        }}
+        onScroll={handleSiderScroll}
       >
         <Menu
-          theme="light"
-          defaultSelectedKeys={["/"]}
+          theme={isDarkMode ? "dark" : "light"}
           mode="inline"
+          selectedKeys={[location.pathname]}
+          openKeys={openKeys}
+          onOpenChange={handleOpenChange}
           items={menuItems}
           onClick={({ key }) => handleNavigate(key)}
+          style={{ height: "100%", borderRight: 0, overflow: "scroll" }}
         />
       </Sider>
 
-      <Layout>
-        <Header className={styles.header}>
+      <Layout style={{ marginLeft: collapsed ? "80px" : "200px" }}>
+        <Header className={styles.header} style={{ padding: 0 }}>
           <div className={styles.toggleButton}>
             <Switch
               checked={isDarkMode}
@@ -229,9 +281,9 @@ const App = () => {
             </Typography>
           </div>
         </Header>
-        <Content style={{ margin: "0", padding: "24px" }}>
-          {/* 여기에 페이지 컨텐츠를 추가하세요 */}
-        </Content>
+        <Content
+          style={{ margin: "24px 16px 0", overflow: "initial" }}
+        ></Content>
       </Layout>
     </Layout>
   );

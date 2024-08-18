@@ -71,7 +71,7 @@ const Font01 = () => {
         </div>
         {loading ? (
           <Skeleton
-            width="25%"
+            width="20%"
             height="3rem"
             className={`${styles.skeleton} mb`}
             animation="wave"
@@ -83,13 +83,13 @@ const Font01 = () => {
           {loading ? (
             <>
               <Skeleton
-                width="40%"
+                width="25%"
                 height="1.5rem"
                 className={styles.skeleton}
                 animation="wave"
               />
               <Skeleton
-                width="55%"
+                width="40%"
                 height="1.5rem"
                 className={styles.skeleton}
                 animation="wave"

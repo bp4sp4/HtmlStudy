@@ -4,23 +4,19 @@
 
 .container {
     display: flex;
-    justify-content: center;
     width: 100%;
-    margin-left: auto;
-    margin-right: auto;
-    font-family: Arial, sans-serif;
     background-color: var(--background-color);
+    color: var(--text-color);
+    font-weight: 600;
 }
 
 .main__wrap {
     width: 100%;
-    max-width: 900px;
-    height: 100%;
-    display: flex;
-    padding-top: 6rem;
-    justify-content: center;
-    flex-direction: column;
+    margin-left: 5rem;
+    padding: 6rem 24px 1.5rem;
     box-sizing: border-box;
+    display: flex;
+    flex-direction: column;
 }
 
 .section {
@@ -28,6 +24,7 @@
     display: flex;
     flex-direction: column;
 }
+
 
 .main__wrap .title {
     font-size: 2rem;
@@ -276,4 +273,15 @@ p span {
 .football li a:hover {
     color: royalblue;
     text-decoration: underline;
+}
+
+.contents {
+    width: 600px;
+    padding: 20px;
+    text-align: center;
+    background-color: #983a3a;
+}
+
+.contents__lorem {
+    color: #f4f4f4;
 }

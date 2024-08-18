@@ -76,7 +76,7 @@ Shadow-color : 그림자의 색상을 정합니다. /* black, red, blue, green, 
         </div>
         {loading ? (
           <Skeleton
-            width="25%"
+            width="20%"
             height="3rem"
             className={`${styles.skeleton} mb`}
             animation="wave"
@@ -88,13 +88,13 @@ Shadow-color : 그림자의 색상을 정합니다. /* black, red, blue, green, 
           {loading ? (
             <>
               <Skeleton
-                width="55%"
+                width="30%"
                 height="1.5rem"
                 className={styles.skeleton}
                 animation="wave"
               />
               <Skeleton
-                width="70%"
+                width="40%"
                 height="1.5rem"
                 className={styles.skeleton}
                 animation="wave"

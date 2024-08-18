@@ -80,7 +80,7 @@ color : #fff, #fafafa, #d2d2d2;`;
         </div>
         {loading ? (
           <Skeleton
-            width="25%"
+            width="15%"
             height="3rem"
             className={`${styles.skeleton} mb`}
             animation="wave"
@@ -92,7 +92,7 @@ color : #fff, #fafafa, #d2d2d2;`;
           {loading ? (
             <>
               <Skeleton
-                width="30%"
+                width="20%"
                 height="1.5rem"
                 className={styles.skeleton}
                 animation="wave"

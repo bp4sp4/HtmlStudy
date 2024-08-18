@@ -91,7 +91,7 @@ h1, p span {
         </div>
         {loading ? (
           <Skeleton
-            width="25%"
+            width="15%"
             height="3rem"
             className={`${styles.skeleton} mb`}
             animation="wave"
@@ -103,13 +103,13 @@ h1, p span {
           {loading ? (
             <>
               <Skeleton
-                width="40%"
+                width="25%"
                 height="1.5rem"
                 className={styles.skeleton}
                 animation="wave"
               />
               <Skeleton
-                width="70%"
+                width="40%"
                 height="1.5rem"
                 className={styles.skeleton}
                 animation="wave"
@@ -149,7 +149,7 @@ h1, p span {
             {loading ? (
               <Skeleton
                 width="100%"
-                height="33rem"
+                height="40em"
                 className={styles.skeleton}
                 animation="wave"
               />

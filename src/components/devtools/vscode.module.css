@@ -1,27 +1,26 @@
 * {
-    font-family: 'GongGothicMedium';
+    font-family: 'GongGothicMedium', sans-serif;
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
 }
 
 .container {
     display: flex;
-    justify-content: center;
+    height: 100vh;
     width: 100%;
-    height: 100%;
-    margin-left: auto;
-    margin-right: auto;
-    font-family: Arial, sans-serif;
     background-color: var(--background-color);
+    color: var(--text-color);
+    font-weight: 600;
 }
 
 .main__wrap {
     width: 100%;
-    max-width: 900px;
-    height: 100%;
+    margin-left: 5rem;
+    padding: 6rem 24px 1.5rem;
+    box-sizing: border-box;
     display: flex;
     flex-direction: column;
-    justify-content: center;
-    box-sizing: border-box;
-    padding-top: 6rem;
 }
 
 .section {
@@ -30,7 +29,7 @@
     flex-direction: column;
 }
 
-.main__wrap .title {
+.title {
     font-size: 2rem;
     font-weight: 700;
     margin-bottom: 1.3rem;
@@ -40,69 +39,153 @@
 .descwrap {
     width: 100%;
     line-height: 1.5;
-    color: var(--text-color);
 }
 
-.section .descwrap__subtitle {
+.descwrap__subtitle {
     font-size: 1.25rem;
     font-weight: bold;
     color: var(--text-color);
+}
+
+.descwrap__subtitle__desc {
+    margin-top: 1rem;
+    font-size: 1.1rem;
+    color: var(--text-color);
+    line-height: 2;
+}
+
+.codeContainer {
+    padding-bottom: 1.5rem;
+    background-color: #f4f4f4;
+    border-radius: 5px;
+    position: relative;
+    font-family: inherit;
+}
+
+.windowBar {
+    display: flex;
+    align-items: center;
+    padding: 0.5rem;
+    background-color: #e0e0e0;
+    border-radius: 5px 5px 0 0;
+    margin-bottom: 0.5rem;
+}
+
+.circle {
+    width: 12px;
+    height: 12px;
+    border-radius: 50%;
+    margin-right: 0.5rem;
+}
+
+.red {
+    background-color: #ff5f56;
+}
+
+.yellow {
+    background-color: #ffbd2e;
+}
+
+.green {
+    background-color: #27c93f;
+}
+
+.ex__name {
+    font-size: 1.25rem;
+    font-weight: 700;
     margin-bottom: 1rem;
-}
-
-foreignObject {
-    background-color: #fafafa;
-    border-radius: 10px;
-    border: var(--border-color);
-    border-radius: 10px;
-}
-
-.world__chart {
-    background-color: var(--background-color);
-    margin-bottom: 3rem;
-}
-
-.local__chart {
-    background-color: var(--background-color);
-    margin-bottom: 2rem;
-}
-
-.chart__link {
-    float: right;
-    font-size: 0.9rem;
     color: var(--text-color);
 }
 
-.local_title {
-    font-size: 1.5rem;
+.copyButton {
+    margin-left: 1rem;
+    padding: 0.5rem 1rem;
+    background-color: #333;
+    color: #fff;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
 }
 
-.descwrap__text {
-    margin-bottom: 1rem;
+.copyButton:hover {
+    background-color: #555;
 }
 
-.benefitsList {
-
-    margin-left: 1.5rem;
-    margin-bottom: 1rem;
-
-}
-
-.callToAction {
+.copySuccess {
+    margin-left: 1rem;
+    color: green;
     font-weight: bold;
-    font-size: 1.1rem;
-    color: var(--highlight-color);
 }
 
-.benefitsList .benefitsList__num {
-    font-size: 1.5rem;
-    margin-right: 1rem;
-    display: inline-block;
-    width: 1.5rem;
-}
-
-Skeleton {
+.render__code {
+    margin-top: 1rem;
+    padding: 1rem;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    background-color: #fafafa;
     margin-bottom: 1rem;
+    font-family: inherit;
+}
+
+.render__name {
+    font-size: 1.25rem;
+    font-weight: 700;
+    margin-top: 2rem;
+    color: var(--text-color);
+}
+
+.skeleton {
+    margin-bottom: 1rem;
+}
+
+.itag {
+    font-style: italic;
+}
+
+.big {
+    font-size: larger;
+}
+
+.small {
+    font-size: smaller;
+}
+
+.ollist {
+    list-style: decimal;
+    padding: 1rem;
+}
+
+.ollist2 {
+    list-style: upper-alpha;
+    padding: 1rem;
+}
+
+.ullist {
+    list-style-type: disc;
+    padding: 1rem;
+}
+
+.ullist2 {
+    list-style: circle;
+    padding: 1rem;
+}
+
+.tabletag {
+    border: 1px solid #000;
+    border-collapse: collapse;
+    width: 100%;
+}
+
+.tabletag thead {
+    border: 1px solid #000;
+}
+
+.tabletag th,
+.tabletag td {
+    border: 1px solid #000;
+    padding: 0.5rem;
+    text-align: left;
 }
 
 .navigationButtons {
@@ -124,4 +207,13 @@ Skeleton {
 .navigationLink:hover {
     background-color: #7c5fdd;
     color: #fff;
+}
+
+.textarea {
+    display: flex;
+    flex-direction: column;
+}
+
+.font {
+    font-family: inherit;
 }

@@ -52,7 +52,7 @@ text-overflow : 넘친 텍스트 감춘 부분을 어떻게 처리할지 결정�
   }, []);
 
   const prevPage = { path: "/css/font01" };
-  const nextPage = { path: "/css/font3" };
+  const nextPage = { path: "/css/font03" };
 
   return (
     <div className={styles.container}>
@@ -72,7 +72,7 @@ text-overflow : 넘친 텍스트 감춘 부분을 어떻게 처리할지 결정�
         </div>
         {loading ? (
           <Skeleton
-            width="25%"
+            width="15%"
             height="3rem"
             className={`${styles.skeleton} mb`}
             animation="wave"
@@ -84,13 +84,13 @@ text-overflow : 넘친 텍스트 감춘 부분을 어떻게 처리할지 결정�
           {loading ? (
             <>
               <Skeleton
-                width="40%"
+                width="25%"
                 height="1.5rem"
                 className={styles.skeleton}
                 animation="wave"
               />
               <Skeleton
-                width="55%"
+                width="40%"
                 height="1.5rem"
                 className={styles.skeleton}
                 animation="wave"

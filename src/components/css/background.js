@@ -7,38 +7,29 @@ import "prismjs/components/prism-css.min.js";
 import { Skeleton } from "primereact/skeleton";
 import { NavLink } from "react-router-dom";
 
-const Selector = () => {
+const Background = () => {
   const [copySuccess, setCopySuccess] = useState("");
   const [loading, setLoading] = useState(true);
 
-  const cssExampleCode = `<!-- 태그 선택자 -->
-<p>내용</p>
-<style>
-p{
+  const cssExampleCode = `<style>
+.contents{
+  width:600px;
+  padding: 20px;
   text-align : center;
-  color : red;
+  background-color : #fff;
+}
+
+.contents__lorem {
+ background-color : #ddd;
 }
 </style>
 
-<!-- 클래스 선택자 -->
-<p class="center">내용 </p>
-<style>
-.center {
-  text-align : center;
-  color : red;
-}
-</style>
+<div class="contents">
+  <h1>Background Color</h1>
+  <p class="contents__lorem">Background color is used to change the background color of an element.</p>
+</div>
 
-<!-- 아이디 선택자 -->
-<p id="center">내용<p>
-<style>
-#center {
-  text-align : center;
-  color : red;
-}
-</style> `;
-
-  const jobcode = `text-align : left, center, right; /* 텍스트 왼쪽, 가운데, 오른쪽 정렬 을 뜻한다. */`;
+  `;
 
   const copyToClipboard = (code) => {
     navigator.clipboard.writeText(code).then(
@@ -59,8 +50,8 @@ p{
     }, 1000);
   }, []);
 
-  const prevPage = { path: "/css/intro" };
-  const nextPage = { path: "/css/selector2" };
+  const prevPage = { path: "/css/ullist01" };
+  const nextPage = { path: "/css/favicon" };
 
   return (
     <div className={styles.container}>
@@ -80,25 +71,25 @@ p{
         </div>
         {loading ? (
           <Skeleton
-            width="15%"
+            width="25%"
             height="3rem"
             className={`${styles.skeleton} mb`}
             animation="wave"
           />
         ) : (
-          <h1 className={styles.title}>CSS #선택자</h1>
+          <h1 className={styles.title}>CSS #배경 제어하기</h1>
         )}
         <section className={styles.section} id="intro">
           {loading ? (
             <>
               <Skeleton
-                width="35%"
+                width="45%"
                 height="1.5rem"
                 className={styles.skeleton}
                 animation="wave"
               />
               <Skeleton
-                width="40%"
+                width="45%"
                 height="1.5rem"
                 className={styles.skeleton}
                 animation="wave"
@@ -107,7 +98,8 @@ p{
           ) : (
             <div className={styles.descwrap}>
               <h2 className={styles.descwrap__subtitle}>
-                CSS 선택자 - 태그, 클래스, 아이디, 태그와 함께 쓰는 선택자
+                CSS 배경 색상 및 이미지 제어하기 (background-color : 배경 색상
+                조정)
               </h2>
               <p className={styles.descwrap__subtitle__desc}>
                 아래 코드는 CSS 예제 코드입니다. 각 속성에 대한 설명은 주석으로
@@ -138,7 +130,7 @@ p{
             {loading ? (
               <Skeleton
                 width="100%"
-                height="33rem"
+                height="30rem"
                 className={styles.skeleton}
                 animation="wave"
               />
@@ -176,49 +168,84 @@ p{
               {loading ? (
                 <Skeleton
                   width="100%"
-                  height="2rem"
+                  height="16rem"
                   className={styles.skeleton}
                   animation="wave"
                 />
               ) : (
-                <div className={styles.font}>
-                  <p>내용</p>
-                  <p className={styles.center}>내용</p>
-                  <p id="center">내용</p>
+                <div className={styles.contents}>
+                  <h1>Background Color</h1>
+                  <p class={styles.contents__lorem}>
+                    Background color is used to change the background color of
+                    an element.
+                  </p>
                 </div>
               )}
             </div>
           </div>
-          <div className={styles.render__wrap}>
-            <p className={styles.render__name}>
-              {loading ? (
-                <Skeleton
-                  width="20%"
-                  height="2rem"
-                  className={styles.skeleton}
-                  animation="wave"
-                />
-              ) : (
-                <span className={styles.render__name__sub}>
-                  알아두면 좋은 TIP!
-                </span>
-              )}
-            </p>
-            <div className={styles.render__code}>
-              {loading ? (
-                <Skeleton
-                  width="100%"
-                  height="5rem"
-                  className={styles.skeleton}
-                  animation="wave"
-                />
-              ) : (
-                <pre>
-                  <code className="language-css">{jobcode}</code>
-                </pre>
-              )}
+          <section className={styles.section} id="promotion">
+            <div className={styles.descwrap}>
+              <p className={styles.render__name}>
+                {loading ? (
+                  <Skeleton
+                    width="20%"
+                    height="2rem"
+                    className={styles.skeleton}
+                    animation="wave"
+                  />
+                ) : (
+                  <span className={styles.render__name__sub}>
+                    추천 컬러 사이트 링크
+                  </span>
+                )}
+              </p>
+              <ul className={styles.linklist}>
+                {loading ? (
+                  <>
+                    <Skeleton
+                      width="75%"
+                      height="1.5rem"
+                      className={styles.skeleton}
+                      animation="wave"
+                    />
+                    <Skeleton
+                      width="75%"
+                      height="1.5rem"
+                      className={styles.skeleton}
+                      animation="wave"
+                    />
+                    <Skeleton
+                      width="75%"
+                      height="1.5rem"
+                      className={styles.skeleton}
+                      animation="wave"
+                    />
+                  </>
+                ) : (
+                  <>
+                    <li>
+                      <a
+                        href="https://apost.dev/1025/"
+                        target="_blank"
+                        rel="noopener noreferrer"
+                      >
+                        CSS 가상 요소 설명 블로그1
+                      </a>
+                    </li>
+                    <li>
+                      <a
+                        href="https://velog.io/@sebinn/%EA%B0%80%EC%83%81-%EC%9A%94%EC%86%8C-%EC%84%A0%ED%83%9D%EC%9E%90-before-after"
+                        target="_blank"
+                        rel="noopener noreferrer"
+                      >
+                        CSS 가상 요소 설명 블로그2
+                      </a>
+                    </li>
+                  </>
+                )}
+              </ul>
             </div>
-          </div>
+          </section>
           <div className={styles.navigationButtons}>
             {prevPage && (
               <NavLink to={prevPage.path} className={styles.navigationLink}>
@@ -237,4 +264,4 @@ p{
   );
 };
 
-export default Selector;
+export default Background;
