@@ -28,6 +28,7 @@ import Ullist01 from "./css/ullist01";
 import Ullist02 from "./css/ullist02";
 import Favicon from "./css/favicon";
 import Background from "./css/background";
+import Element from "./css/elements";
 
 const Router = () => {
   return (
@@ -62,6 +63,7 @@ const Router = () => {
         <Route path="/css/ullist02" element={<Ullist02 />} />
         <Route path="/css/favicon" element={<Favicon />} />
         <Route path="/css/background" element={<Background />} />
+        <Route path="/css/element" element={<Element />} />
       </Routes>
     </BrowserRouter>
   );

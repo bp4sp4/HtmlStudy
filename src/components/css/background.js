@@ -26,10 +26,14 @@ const Background = () => {
 
 <div class="contents">
   <h1>Background Color</h1>
-  <p class="contents__lorem">Background color is used to change the background color of an element.</p>
-</div>
-
-  `;
+  <p class="contents__lorem">백그라운드 컬러 중요하지만 중요한것만 알려드림...</p>
+</div>`;
+  const jobcode = `/* 많은 속성이 있지만 알짜베기만 알려드리겠습니다. */
+background-color :green /* 색상 이름 : 기본 색상 사용 */
+background-image : HTML 요소에 배경 이미지 넣기("")를 사용해도 되고 없어도됌
+⭐⭐⭐⭐⭐ 굉장히 많이 쓰이는 스타일 속성이고, 이것만 알아도 반은 먹고 들어간다.
+예시) background-image : url(images/background-image.jpg)
+예시) background-image : url("images/background-image.jpg")`;
 
   const copyToClipboard = (code) => {
     navigator.clipboard.writeText(code).then(
@@ -168,7 +172,7 @@ const Background = () => {
               {loading ? (
                 <Skeleton
                   width="100%"
-                  height="16rem"
+                  height="5 rem"
                   className={styles.skeleton}
                   animation="wave"
                 />
@@ -180,6 +184,36 @@ const Background = () => {
                     an element.
                   </p>
                 </div>
+              )}
+            </div>
+          </div>
+          <div className={styles.render__wrap}>
+            <p className={styles.render__name}>
+              {loading ? (
+                <Skeleton
+                  width="20%"
+                  height="2rem"
+                  className={styles.skeleton}
+                  animation="wave"
+                />
+              ) : (
+                <span className={styles.render__name__sub}>
+                  알아두면 좋은 TIP!
+                </span>
+              )}
+            </p>
+            <div className={styles.render__code}>
+              {loading ? (
+                <Skeleton
+                  width="100%"
+                  height="5rem"
+                  className={styles.skeleton}
+                  animation="wave"
+                />
+              ) : (
+                <pre>
+                  <code className="language-css">{jobcode}</code>
+                </pre>
               )}
             </div>
           </div>
@@ -225,20 +259,20 @@ const Background = () => {
                   <>
                     <li>
                       <a
-                        href="https://apost.dev/1025/"
+                        href="https://velog.io/@seeyong_0/css-background-image%EC%97%90-%EB%8C%80%ED%95%B4-%EC%95%8C%EC%95%84%EB%B3%B4%EC%9E%90"
                         target="_blank"
                         rel="noopener noreferrer"
                       >
-                        CSS 가상 요소 설명 블로그1
+                        css background-image 상세 속성 설명 페이지
                       </a>
                     </li>
                     <li>
                       <a
-                        href="https://velog.io/@sebinn/%EA%B0%80%EC%83%81-%EC%9A%94%EC%86%8C-%EC%84%A0%ED%83%9D%EC%9E%90-before-after"
+                        href="https://webgradients.com/"
                         target="_blank"
                         rel="noopener noreferrer"
                       >
-                        CSS 가상 요소 설명 블로그2
+                        그라디언트 제네레이터 추천 사이트
                       </a>
                     </li>
                   </>

@@ -82,7 +82,7 @@ ul.football li a:hover {
         </div>
         {loading ? (
           <Skeleton
-            width="25%"
+            width="18%"
             height="3rem"
             className={`${styles.skeleton} mb`}
             animation="wave"
@@ -94,13 +94,13 @@ ul.football li a:hover {
           {loading ? (
             <>
               <Skeleton
-                width="55%"
+                width="30%"
                 height="1.5rem"
                 className={styles.skeleton}
                 animation="wave"
               />
               <Skeleton
-                width="70%"
+                width="40%"
                 height="1.5rem"
                 className={styles.skeleton}
                 animation="wave"

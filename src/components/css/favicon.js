@@ -40,7 +40,7 @@ rel : 현재 문서와 링크 된 문서 간의 관계를 지정합니다. value
   }, []);
 
   const prevPage = { path: "/css/ullist02" };
-  const nextPage = { path: "/css/selector" };
+  const nextPage = { path: "/css/background" };
 
   return (
     <div className={styles.container}>
@@ -60,7 +60,7 @@ rel : 현재 문서와 링크 된 문서 간의 관계를 지정합니다. value
         </div>
         {loading ? (
           <Skeleton
-            width="25%"
+            width="15%"
             height="3rem"
             className={`${styles.skeleton} mb`}
             animation="wave"
@@ -72,13 +72,13 @@ rel : 현재 문서와 링크 된 문서 간의 관계를 지정합니다. value
           {loading ? (
             <>
               <Skeleton
-                width="30%"
+                width="20%"
                 height="1.5rem"
                 className={styles.skeleton}
                 animation="wave"
               />
               <Skeleton
-                width="75%"
+                width="40%"
                 height="1.5rem"
                 className={styles.skeleton}
                 animation="wave"

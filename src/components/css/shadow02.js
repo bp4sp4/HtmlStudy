@@ -71,7 +71,7 @@ text-shadow : 5px 5px 0 yellowgreen, 10px 10px 0 #ddd;
         </div>
         {loading ? (
           <Skeleton
-            width="25%"
+            width="20%"
             height="3rem"
             className={`${styles.skeleton} mb`}
             animation="wave"
@@ -83,13 +83,13 @@ text-shadow : 5px 5px 0 yellowgreen, 10px 10px 0 #ddd;
           {loading ? (
             <>
               <Skeleton
-                width="55%"
+                width="30%"
                 height="1.5rem"
                 className={styles.skeleton}
                 animation="wave"
               />
               <Skeleton
-                width="70%"
+                width="40%"
                 height="1.5rem"
                 className={styles.skeleton}
                 animation="wave"

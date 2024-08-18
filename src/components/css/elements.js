@@ -7,59 +7,33 @@ import "prismjs/components/prism-css.min.js";
 import { Skeleton } from "primereact/skeleton";
 import { NavLink } from "react-router-dom";
 
-const Ullist01 = () => {
+const Element = () => {
   const [copySuccess, setCopySuccess] = useState("");
   const [loading, setLoading] = useState(true);
 
   const cssExampleCode = `<style>
-ul.list {
-  padding : 0;
-  line-height : 2em;
+.contents{
+  width:600px;
+  padding: 20px;
+  text-align : center;
+  background-color : #fff;
 }
-ul.list > li {
-  list-style : none;
+
+.contents__lorem {
+ background-color : #ddd;
 }
-ul.list > li > b {
-  background-color : #000;
-  color: #fff;
-  font-weight : normal;
-}
-ul. list > li ul {
-  list-style : decimal;
-}
- 
 </style>
 
-<ul class="list>
-  <li><b>잉글랜드 프리미어 리그 </b>
-    <ul>
-      <li>우승 : 맨체스터 시티 </li>
-      <li>챔피언스 리그 : 맨시티, 맨유, 토트넘, 리버풀 </li>
-      <li>유로파리그 : 첼시, 아스날, 번리(예선)</li>
-    </ul>
-  </li>   
-   <li><b>스페인 프리메라리가 </b>
-    <ul>
-      <li>우승 : 바로셀로나 </li>
-      <li>챔피언스 리그 : 바로셀로나, AT마드리드 </li>
-      <li>유로파리그 : 비야레알, 베티스, 세비야(예선)</li>
-    </ul>
-  </li>
-</ul>
-
-  `;
-
-  const jobcode = `list-style-type : 목록에서 글 머리 기호 및 숫자 스타일 지정
-ul{
-    list-style : square ◼️ /* 리스트 스타일의 값을 변경하면 됨 */
-    list-style : circle ○
-    list-style : disc ●
-  }
-⭐⭐⭐⭐⭐ 굉장히 많이 쓰이는 스타일 속성이다.
-ul {
-    list-style : none; /* ul을 네비게이션 제작할 경우 */
-  }
-`;
+<div class="contents">
+  <h1>Background Color</h1>
+  <p class="contents__lorem">백그라운드 컬러 중요하지만 중요한것만 알려드림...</p>
+</div>`;
+  const jobcode = `/* 많은 속성이 있지만 알짜베기만 알려드리겠습니다. */
+background-color :green /* 색상 이름 : 기본 색상 사용 */
+background-image : HTML 요소에 배경 이미지 넣기("")를 사용해도 되고 없어도됌
+⭐⭐⭐⭐⭐ 굉장히 많이 쓰이는 스타일 속성이고, 이것만 알아도 반은 먹고 들어간다.
+예시) background-image : url(images/background-image.jpg)
+예시) background-image : url("images/background-image.jpg")`;
 
   const copyToClipboard = (code) => {
     navigator.clipboard.writeText(code).then(
@@ -80,8 +54,8 @@ ul {
     }, 1000);
   }, []);
 
-  const prevPage = { path: "/css/shadow02" };
-  const nextPage = { path: "/css/ullist02" };
+  const prevPage = { path: "/css/ullist01" };
+  const nextPage = { path: "/css/favicon" };
 
   return (
     <div className={styles.container}>
@@ -101,25 +75,25 @@ ul {
         </div>
         {loading ? (
           <Skeleton
-            width="18%"
+            width="25%"
             height="3rem"
             className={`${styles.skeleton} mb`}
             animation="wave"
           />
         ) : (
-          <h1 className={styles.title}>CSS #목록스타일</h1>
+          <h1 className={styles.title}>CSS #블록 요소, 인라인 요소</h1>
         )}
         <section className={styles.section} id="intro">
           {loading ? (
             <>
               <Skeleton
-                width="30%"
+                width="45%"
                 height="1.5rem"
                 className={styles.skeleton}
                 animation="wave"
               />
               <Skeleton
-                width="40%"
+                width="45%"
                 height="1.5rem"
                 className={styles.skeleton}
                 animation="wave"
@@ -128,7 +102,8 @@ ul {
           ) : (
             <div className={styles.descwrap}>
               <h2 className={styles.descwrap__subtitle}>
-                CSS 텍스트 그림자 효과 (속성 : text-shadow)
+                CSS 배경 색상 및 이미지 제어하기 (background-color : 배경 색상
+                조정)
               </h2>
               <p className={styles.descwrap__subtitle__desc}>
                 아래 코드는 CSS 예제 코드입니다. 각 속성에 대한 설명은 주석으로
@@ -159,7 +134,7 @@ ul {
             {loading ? (
               <Skeleton
                 width="100%"
-                height="45rem"
+                height="30rem"
                 className={styles.skeleton}
                 animation="wave"
               />
@@ -197,29 +172,18 @@ ul {
               {loading ? (
                 <Skeleton
                   width="100%"
-                  height="16rem"
+                  height="5 rem"
                   className={styles.skeleton}
                   animation="wave"
                 />
               ) : (
-                <ul className={styles.list}>
-                  <li>
-                    <b>잉글랜드 프리미어 리그 </b>
-                    <ul>
-                      <li>우승 : 맨체스터 시티 </li>
-                      <li>챔피언스 리그 : 맨시티, 맨유, 토트넘, 리버풀 </li>
-                      <li>유로파리그 : 첼시, 아스날, 번리(예선)</li>
-                    </ul>
-                  </li>
-                  <li>
-                    <b>스페인 프리메라리가 </b>
-                    <ul>
-                      <li>우승 : 바로셀로나 </li>
-                      <li>챔피언스 리그 : 바로셀로나, AT마드리드 </li>
-                      <li>유로파리그 : 비야레알, 베티스, 세비야(예선)</li>
-                    </ul>
-                  </li>
-                </ul>
+                <div className={styles.contents}>
+                  <h1>Background Color</h1>
+                  <p class={styles.contents__lorem}>
+                    Background color is used to change the background color of
+                    an element.
+                  </p>
+                </div>
               )}
             </div>
           </div>
@@ -253,6 +217,69 @@ ul {
               )}
             </div>
           </div>
+          <section className={styles.section} id="promotion">
+            <div className={styles.descwrap}>
+              <p className={styles.render__name}>
+                {loading ? (
+                  <Skeleton
+                    width="20%"
+                    height="2rem"
+                    className={styles.skeleton}
+                    animation="wave"
+                  />
+                ) : (
+                  <span className={styles.render__name__sub}>
+                    추천 컬러 사이트 링크
+                  </span>
+                )}
+              </p>
+              <ul className={styles.linklist}>
+                {loading ? (
+                  <>
+                    <Skeleton
+                      width="75%"
+                      height="1.5rem"
+                      className={styles.skeleton}
+                      animation="wave"
+                    />
+                    <Skeleton
+                      width="75%"
+                      height="1.5rem"
+                      className={styles.skeleton}
+                      animation="wave"
+                    />
+                    <Skeleton
+                      width="75%"
+                      height="1.5rem"
+                      className={styles.skeleton}
+                      animation="wave"
+                    />
+                  </>
+                ) : (
+                  <>
+                    <li>
+                      <a
+                        href="https://velog.io/@seeyong_0/css-background-image%EC%97%90-%EB%8C%80%ED%95%B4-%EC%95%8C%EC%95%84%EB%B3%B4%EC%9E%90"
+                        target="_blank"
+                        rel="noopener noreferrer"
+                      >
+                        css background-image 상세 속성 설명 페이지
+                      </a>
+                    </li>
+                    <li>
+                      <a
+                        href="https://webgradients.com/"
+                        target="_blank"
+                        rel="noopener noreferrer"
+                      >
+                        그라디언트 제네레이터 추천 사이트
+                      </a>
+                    </li>
+                  </>
+                )}
+              </ul>
+            </div>
+          </section>
           <div className={styles.navigationButtons}>
             {prevPage && (
               <NavLink to={prevPage.path} className={styles.navigationLink}>
@@ -271,4 +298,4 @@ ul {
   );
 };
 
-export default Ullist01;
+export default Element;

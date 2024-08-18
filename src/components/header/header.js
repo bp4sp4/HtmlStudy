@@ -134,6 +134,11 @@ const menuItems = [
         key: "/css/background",
         icon: <GlobalOutlined />,
       },
+      {
+        label: "CSS 요소들",
+        key: "/css/element",
+        icon: <GlobalOutlined />,
+      },
     ],
   },
 ];
@@ -144,6 +149,7 @@ const App = () => {
   const [collapsed, setCollapsed] = useState(false);
   const [isDarkMode, setIsDarkMode] = useState(false);
   const siderRef = useRef(null);
+  const contentRef = useRef(null);
   const [openKeys, setOpenKeys] = useState([]);
   const [previousPath, setPreviousPath] = useState(location.pathname);
 
@@ -151,15 +157,23 @@ const App = () => {
     // 페이지 로드 시 저장된 사이드바 상태와 테마 복원
     const savedCollapsed = localStorage.getItem("sidebarCollapsed") === "true";
     const savedTheme = localStorage.getItem("theme");
-    const savedScrollPosition = localStorage.getItem("siderScrollPosition");
+    const savedSiderScrollPosition = localStorage.getItem(
+      "siderScrollPosition"
+    );
+    const savedContentScrollPosition = localStorage.getItem(
+      "contentScrollPosition"
+    );
 
     setCollapsed(savedCollapsed);
     if (savedTheme) {
       document.documentElement.classList.toggle("dark", savedTheme === "dark");
       setIsDarkMode(savedTheme === "dark");
     }
-    if (savedScrollPosition && siderRef.current) {
-      siderRef.current.scrollTop = parseInt(savedScrollPosition, 10);
+    if (savedSiderScrollPosition && siderRef.current) {
+      siderRef.current.scrollTop = parseInt(savedSiderScrollPosition, 10);
+    }
+    if (savedContentScrollPosition && contentRef.current) {
+      contentRef.current.scrollTop = parseInt(savedContentScrollPosition, 10);
     }
   }, []);
 
@@ -234,6 +248,15 @@ const App = () => {
     }
   };
 
+  const handleContentScroll = () => {
+    if (contentRef.current) {
+      localStorage.setItem(
+        "contentScrollPosition",
+        contentRef.current.scrollTop.toString()
+      );
+    }
+  };
+
   const handleCollapse = (collapsed) => {
     setCollapsed(collapsed);
     localStorage.setItem("sidebarCollapsed", collapsed.toString());
@@ -253,6 +276,7 @@ const App = () => {
           left: 0,
           top: 0,
           bottom: 0,
+          height: "100vh",
         }}
         onScroll={handleSiderScroll}
       >
@@ -264,7 +288,7 @@ const App = () => {
           onOpenChange={handleOpenChange}
           items={menuItems}
           onClick={({ key }) => handleNavigate(key)}
-          style={{ height: "100%", borderRight: 0, overflow: "scroll" }}
+          style={{ height: "100%", borderRight: 0 }}
         />
       </Sider>
 
@@ -282,8 +306,16 @@ const App = () => {
           </div>
         </Header>
         <Content
-          style={{ margin: "24px 16px 0", overflow: "initial" }}
-        ></Content>
+          ref={contentRef}
+          style={{
+            margin: "24px 16px 0",
+            overflowY: "auto",
+            height: "calc(100vh - 64px)",
+          }}
+          onScroll={handleContentScroll}
+        >
+          {/* 여기에 라우트에 따른 컴포넌트를 렌더링하세요 */}
+        </Content>
       </Layout>
     </Layout>
   );
