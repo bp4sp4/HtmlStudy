@@ -2,7 +2,6 @@ import React, { useState, useEffect, useRef } from "react";
 import { useLocation, useNavigate } from "react-router-dom";
 import {
   HomeOutlined,
-  CodeOutlined,
   PictureOutlined,
   LinkOutlined,
   TableOutlined,
@@ -11,19 +10,39 @@ import {
   SaveOutlined,
   OrderedListOutlined,
   TagOutlined,
+  FormOutlined,
 } from "@ant-design/icons";
 import { Layout, Menu, Switch, Typography } from "antd";
 import styles from "./header.module.css";
-
+import TranslateIcon from "@mui/icons-material/Translate";
+import CodeIcon from "@mui/icons-material/Code";
+import DoneOutlineIcon from "@mui/icons-material/DoneOutline";
+import FormatColorTextIcon from "@mui/icons-material/FormatColorText";
+import BookmarksIcon from "@mui/icons-material/Bookmarks";
+import GradientIcon from "@mui/icons-material/Gradient";
+import ExplicitIcon from "@mui/icons-material/Explicit";
+import DisplaySettingsIcon from "@mui/icons-material/DisplaySettings";
+import PictureInPictureIcon from "@mui/icons-material/PictureInPicture";
 const { Header, Sider, Content } = Layout;
 
 // 메뉴 항목 데이터 정의
 const menuItems = [
-  { label: "HtmlStudy", key: "/", icon: <HomeOutlined /> },
   {
-    label: "Visual Studio Code",
-    key: "/devtools/vscode",
-    icon: <CodeOutlined />,
+    label: "intro",
+    key: "/",
+    type: "group",
+    children: [
+      {
+        label: "HtmlStudy",
+        key: "/",
+        icon: <HomeOutlined />,
+      },
+      {
+        label: "Visual Studio Code",
+        key: "/devtools/vscode",
+        icon: <CodeIcon />,
+      },
+    ],
   },
   {
     label: "HTML Section",
@@ -32,9 +51,9 @@ const menuItems = [
     children: [
       { label: "기본문서구조", key: "/html/basic", icon: <FileTextOutlined /> },
       {
-        label: "텍스트서식",
+        label: <span style={{ color: "#FF69B4" }}>텍스트 서식</span>,
         key: "/html/text",
-        icon: <TagOutlined />,
+        icon: <TranslateIcon />,
         children: [
           { label: "P 태그", key: "/html/paragraph", icon: <TagOutlined /> },
           { label: "HnGroup태그", key: "/html/hngroup", icon: <TagOutlined /> },
@@ -70,6 +89,7 @@ const menuItems = [
       {
         label: "폼 요소",
         key: "/html/form",
+        icon: <FormOutlined />,
         children: [
           {
             label: "폼 태그들",
@@ -84,7 +104,7 @@ const menuItems = [
         ],
       },
       {
-        label: "시멘틱 태그",
+        label: <span style={{ color: "#FF69B4" }}>시멘틱 태그</span>,
         key: "/html/semantictag",
         icon: <GlobalOutlined />,
       },
@@ -95,18 +115,24 @@ const menuItems = [
     key: "/css",
     type: "group",
     children: [
-      { label: "CSS 기본문법", key: "/css/intro", icon: <GlobalOutlined /> },
       {
-        label: "CSS 선택자",
+        label: <span style={{ color: "#FF69B4" }}>CSS 기본문법</span>,
+        key: "/css/intro",
+        icon: <FileTextOutlined />,
+      },
+      {
+        label: <span style={{ color: "#FF69B4" }}>CSS 선택자</span>,
         key: "/css/selector",
+        icon: <DoneOutlineIcon />,
         children: [
           { label: "선택자01", key: "/css/selector", icon: <TagOutlined /> },
           { label: "선택자02", key: "/css/selector2", icon: <TagOutlined /> },
         ],
       },
       {
-        label: "CSS 텍스트서식",
+        label: <span style={{ color: "#FF69B4" }}>CSS 텍스트서식</span>,
         key: "/css/font",
+        icon: <FormatColorTextIcon />,
         children: [
           { label: "font01", key: "/css/font01", icon: <TagOutlined /> },
           { label: "font02", key: "/css/font02", icon: <TagOutlined /> },
@@ -116,28 +142,51 @@ const menuItems = [
       {
         label: "CSS 텍스트 쉐도우",
         key: "/css/shadow",
+        icon: <FormatColorTextIcon />,
         children: [
           { label: "shadow01", key: "/css/shadow01", icon: <TagOutlined /> },
           { label: "shadow02", key: "/css/shadow02", icon: <TagOutlined /> },
         ],
       },
       {
-        label: "CSS 목록스타일",
+        label: <span style={{ color: "#FF69B4" }}>CSS 목록 스타일</span>,
         key: "/css/list-style",
+        icon: <OrderedListOutlined />,
         children: [
           { label: "ullist01", key: "/css/ullist01", icon: <TagOutlined /> },
           { label: "ullist02", key: "/css/ullist02", icon: <TagOutlined /> },
         ],
       },
-      { label: "CSS 파비콘", key: "/css/favicon", icon: <GlobalOutlined /> },
+      { label: "CSS 파비콘", key: "/css/favicon", icon: <BookmarksIcon /> },
       {
         label: "CSS 배경 제어하기",
         key: "/css/background",
-        icon: <GlobalOutlined />,
+        icon: <GradientIcon />,
       },
       {
         label: "CSS 요소들",
         key: "/css/element",
+        icon: <ExplicitIcon />,
+      },
+
+      {
+        label: <span style={{ color: "#FF69B4" }}>CSS display</span>,
+        key: "/css/display",
+        icon: <DisplaySettingsIcon />,
+      },
+      {
+        label: <span style={{ color: "#FF69B4" }}>CSS 포지셔닝</span>,
+        icon: <PictureInPictureIcon />,
+        key: "/css/position",
+        children: [
+          { label: "float", key: "/css/float", icon: <TagOutlined /> },
+          { label: "position", key: "/css/position", icon: <TagOutlined /> },
+        ],
+      },
+      {
+        // 강조된 색상
+
+        key: "/css/display",
         icon: <GlobalOutlined />,
       },
     ],
@@ -271,7 +320,7 @@ const App = () => {
   };
 
   return (
-    <Layout>
+    <Layout className={styles.wrap}>
       <Sider
         ref={siderRef}
         collapsible

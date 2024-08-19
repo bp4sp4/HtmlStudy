@@ -86,7 +86,12 @@ color : #fff, #fafafa, #d2d2d2;`;
             animation="wave"
           />
         ) : (
-          <h1 className={styles.title}>CSS #기본문법</h1>
+          <h1 className={styles.title}>
+            <span role="img" aria-label="fire">
+              🔥
+            </span>
+            CSS #기본문법
+          </h1>
         )}
         <section className={styles.section} id="intro">
           {loading ? (

@@ -107,13 +107,19 @@ ul {
             animation="wave"
           />
         ) : (
-          <h1 className={styles.title}>CSS #목록스타일</h1>
+          <h1 className={styles.title}>
+            {" "}
+            <span role="img" aria-label="fire">
+              🔥
+            </span>
+            CSS #목록스타일
+          </h1>
         )}
         <section className={styles.section} id="intro">
           {loading ? (
             <>
               <Skeleton
-                width="30%"
+                width="20%"
                 height="1.5rem"
                 className={styles.skeleton}
                 animation="wave"
@@ -128,7 +134,7 @@ ul {
           ) : (
             <div className={styles.descwrap}>
               <h2 className={styles.descwrap__subtitle}>
-                CSS 텍스트 그림자 효과 (속성 : text-shadow)
+                CSS 목록 스타일(1) - 속성과 값
               </h2>
               <p className={styles.descwrap__subtitle__desc}>
                 아래 코드는 CSS 예제 코드입니다. 각 속성에 대한 설명은 주석으로

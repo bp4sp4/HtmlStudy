@@ -97,7 +97,12 @@ h1, p span {
             animation="wave"
           />
         ) : (
-          <h1 className={styles.title}>CSS #선택자</h1>
+          <h1 className={styles.title}>
+            <span role="img" aria-label="fire">
+              🔥
+            </span>
+            CSS #선택자
+          </h1>
         )}
         <section className={styles.section} id="intro">
           {loading ? (

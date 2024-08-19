@@ -55,7 +55,7 @@ background-image : HTML 요소에 배경 이미지 넣기("")를 사용해도 �
   }, []);
 
   const prevPage = { path: "/css/ullist01" };
-  const nextPage = { path: "/css/favicon" };
+  const nextPage = { path: "/css/element" };
 
   return (
     <div className={styles.container}>

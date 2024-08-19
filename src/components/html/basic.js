@@ -155,7 +155,7 @@ const Basic = () => {
               )}
             </div>
             <div className={styles.render__wrap}>
-              <p className={styles.render__name}>
+              <h2 className={styles.render__name}>
                 {loading ? (
                   <Skeleton
                     width="20%"
@@ -168,7 +168,7 @@ const Basic = () => {
                     알아두기만해!
                   </span>
                 )}
-              </p>
+              </h2>
               <div className={styles.render__code}>
                 {loading ? (
                   <Skeleton

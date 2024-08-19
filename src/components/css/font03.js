@@ -78,7 +78,12 @@ text-overflow : 넘친 텍스트 감춘 부분을 어떻게 처리할지 결정�
             animation="wave"
           />
         ) : (
-          <h1 className={styles.title}>CSS #텍스트서식</h1>
+          <h1 className={styles.title}>
+            <span role="img" aria-label="fire">
+              🔥
+            </span>
+            CSS #텍스트서식
+          </h1>
         )}
         <section className={styles.section} id="intro">
           {loading ? (

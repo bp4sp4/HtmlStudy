@@ -63,7 +63,13 @@ const Paragraph = () => {
             animation="wave"
           />
         ) : (
-          <h1 className={styles.title}>Paragraph(P태그)</h1>
+          <h1 className={styles.title}>
+            {" "}
+            <span role="img" aria-label="fire">
+              🔥
+            </span>
+            Paragraph(P태그)
+          </h1>
         )}
         <section className={styles.section} id="intro">
           {loading ? (

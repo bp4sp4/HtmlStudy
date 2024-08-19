@@ -7,38 +7,44 @@ import "prismjs/components/prism-css.min.js";
 import { Skeleton } from "primereact/skeleton";
 import { NavLink } from "react-router-dom";
 
-const Selector = () => {
+const Display = () => {
   const [copySuccess, setCopySuccess] = useState("");
   const [loading, setLoading] = useState(true);
 
-  const cssExampleCode = `<!-- 태그 선택자 -->
-<p>내용</p>
-<style>
-p{
-  text-align : center;
-  color : red;
+  const cssExampleCode = `<style>
+.imgcontents img{
+  display : block;
+}
+.imgcontents2 img{
+  display : lnline;
+}
+
+.imgcontents3 img{
+  display : none;
 }
 </style>
 
-<!-- 클래스 선택자 -->
-<p class="center">내용 </p>
-<style>
-.center {
-  text-align : center;
-  color : red;
-}
-</style>
+<div class="imgcontents">
+  <img src="https://via.placeholder.com/100">
+  <img src="https://via.placeholder.com/200">
+  <img src="https://via.placeholder.com/200">
+</div>
 
-<!-- 아이디 선택자 -->
-<p id="center">내용<p>
-<style>
-#center {
-  text-align : center;
-  color : red;
-}
-</style> `;
+<div class="imgcontents2">
+  <img src="https://via.placeholder.com/100">
+  <img src="https://via.placeholder.com/200">
+  <img src="https://via.placeholder.com/200">
+</div>
 
-  const jobcode = `text-align : left, center, right; /* 텍스트 왼쪽, 가운데, 오른쪽 정렬 을 뜻한다. */`;
+<div class="imgcontents3">
+  <img src="https://via.placeholder.com/100">
+  <img src="https://via.placeholder.com/200">
+  <img src="https://via.placeholder.com/200">
+</div>`;
+  const jobcode = `inline, block, inline-block, none
+레이아웃 요소를 배치 및 특성을 변경하는정말 중요한 속성과 값
+display 속성으로 블록 요소와 인라인 요소의 속성을 변경할 수 있고, 요소를 보이거나 보이지 않게 할 수 있습니다.
+`;
 
   const copyToClipboard = (code) => {
     navigator.clipboard.writeText(code).then(
@@ -59,8 +65,8 @@ p{
     }, 1000);
   }, []);
 
-  const prevPage = { path: "/css/intro" };
-  const nextPage = { path: "/css/selector2" };
+  const prevPage = { path: "/css/ullist01" };
+  const nextPage = { path: "/css/element" };
 
   return (
     <div className={styles.container}>
@@ -80,7 +86,7 @@ p{
         </div>
         {loading ? (
           <Skeleton
-            width="15%"
+            width="25%"
             height="3rem"
             className={`${styles.skeleton} mb`}
             animation="wave"
@@ -90,20 +96,21 @@ p{
             <span role="img" aria-label="fire">
               🔥
             </span>
-            CSS #선택자
+            CSS <span className={styles.highlight}>#display 속성</span>으로 속성
+            변경하기
           </h1>
         )}
         <section className={styles.section} id="intro">
           {loading ? (
             <>
               <Skeleton
-                width="40%"
+                width="45%"
                 height="1.5rem"
                 className={styles.skeleton}
                 animation="wave"
               />
               <Skeleton
-                width="48%"
+                width="45%"
                 height="1.5rem"
                 className={styles.skeleton}
                 animation="wave"
@@ -112,7 +119,8 @@ p{
           ) : (
             <div className={styles.descwrap}>
               <h2 className={styles.descwrap__subtitle}>
-                CSS 선택자 - 태그, 클래스, 아이디, 태그와 함께 쓰는 선택자
+                레이아웃 스타일(display 속성 : inline, block, inline-block,
+                none)
               </h2>
               <p className={styles.descwrap__subtitle__desc}>
                 아래 코드는 CSS 예제 코드입니다. 각 속성에 대한 설명은 주석으로
@@ -143,7 +151,7 @@ p{
             {loading ? (
               <Skeleton
                 width="100%"
-                height="33rem"
+                height="30rem"
                 className={styles.skeleton}
                 animation="wave"
               />
@@ -181,16 +189,32 @@ p{
               {loading ? (
                 <Skeleton
                   width="100%"
-                  height="2rem"
+                  height="5 rem"
                   className={styles.skeleton}
                   animation="wave"
                 />
               ) : (
-                <div className={styles.font}>
-                  <p>내용</p>
-                  <p className={styles.center}>내용</p>
-                  <p id="center">내용</p>
-                </div>
+                <>
+                  <h1>inline block</h1>
+                  <div className={styles.imgcontents}>
+                    <img src="https://via.placeholder.com/100" alt="" />
+                    <img src="https://via.placeholder.com/100" alt="" />
+                    <img src="https://via.placeholder.com/100" alt="" />
+                  </div>
+
+                  <h1>inline</h1>
+                  <div className={styles.imgcontents2}>
+                    <img src="https://via.placeholder.com/100" alt="" />
+                    <img src="https://via.placeholder.com/100" alt="" />
+                    <img src="https://via.placeholder.com/100" alt="" />
+                  </div>
+                  <h1>none</h1>
+                  <div className={styles.imgcontents3}>
+                    <img src="https://via.placeholder.com/100" alt="" />
+                    <img src="https://via.placeholder.com/100" alt="" />
+                    <img src="https://via.placeholder.com/100" alt="" />
+                  </div>
+                </>
               )}
             </div>
           </div>
@@ -224,6 +248,7 @@ p{
               )}
             </div>
           </div>
+
           <div className={styles.navigationButtons}>
             {prevPage && (
               <NavLink to={prevPage.path} className={styles.navigationLink}>
@@ -242,4 +267,4 @@ p{
   );
 };
 
-export default Selector;
+export default Display;

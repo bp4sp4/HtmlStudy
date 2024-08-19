@@ -77,7 +77,12 @@ const Font01 = () => {
             animation="wave"
           />
         ) : (
-          <h1 className={styles.title}>CSS #텍스트서식</h1>
+          <h1 className={styles.title}>
+            <span role="img" aria-label="fire">
+              🔥
+            </span>
+            CSS #텍스트서식
+          </h1>
         )}
         <section className={styles.section} id="intro">
           {loading ? (

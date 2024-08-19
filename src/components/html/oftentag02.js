@@ -66,6 +66,9 @@ font-size : 30px `;
           />
         ) : (
           <h1 className={styles.title}>
+            <span role="img" aria-label="fire">
+              🔥
+            </span>
             비주류태그02 (big, small, mark, pre 태그)
           </h1>
         )}

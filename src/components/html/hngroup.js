@@ -70,7 +70,13 @@ font-weight : bold 혹은 600,700;`;
             animation="wave"
           />
         ) : (
-          <h1 className={styles.title}>Heading(hn태그)</h1>
+          <h1 className={styles.title}>
+            {" "}
+            <span role="img" aria-label="fire">
+              🔥
+            </span>
+            Heading(hn태그)
+          </h1>
         )}
         <section className={styles.section} id="intro">
           {loading ? (

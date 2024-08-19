@@ -71,6 +71,9 @@ text-decoration : underline 으로 밑줄을 표시 할 수 있다. `;
           />
         ) : (
           <h1 className={styles.title}>
+            <span role="img" aria-label="fire">
+              🔥
+            </span>
             비주류태그01 (i, em, blockqutoe, q, u, ins 태그)
           </h1>
         )}

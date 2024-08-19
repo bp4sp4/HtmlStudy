@@ -29,6 +29,8 @@ import Ullist02 from "./css/ullist02";
 import Favicon from "./css/favicon";
 import Background from "./css/background";
 import Element from "./css/elements";
+import Float from "./css/float";
+import Display from "./css/display";
 
 const Router = () => {
   return (
@@ -64,6 +66,8 @@ const Router = () => {
         <Route path="/css/favicon" element={<Favicon />} />
         <Route path="/css/background" element={<Background />} />
         <Route path="/css/element" element={<Element />} />
+        <Route path="/css/display" element={<Display />} />
+        <Route path="/css/float" element={<Float />} />
       </Routes>
     </BrowserRouter>
   );
