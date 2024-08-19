@@ -142,7 +142,7 @@ float 속성
                 animation="wave"
               />
             ) : (
-              "CSS 예제"
+              "CSS 예제입니다."
             )}
           </h2>
           <div className={styles.codeContainer}>
