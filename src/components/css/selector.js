@@ -92,13 +92,13 @@ p{
           {loading ? (
             <>
               <Skeleton
-                width="35%"
+                width="40%"
                 height="1.5rem"
                 className={styles.skeleton}
                 animation="wave"
               />
               <Skeleton
-                width="40%"
+                width="48%"
                 height="1.5rem"
                 className={styles.skeleton}
                 animation="wave"

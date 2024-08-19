@@ -181,6 +181,7 @@ const App = () => {
   useEffect(() => {
     // 현재 경로에 따라 열려야 할 서브메뉴의 키를 계산
     const paths = location.pathname.split("/").filter(Boolean);
+    // eslint-disable-next-line
     const keys = paths.map(
       (_, index) => `/${paths.slice(0, index + 1).join("/")}`
     );
