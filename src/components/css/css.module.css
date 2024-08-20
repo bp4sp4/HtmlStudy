@@ -136,6 +136,7 @@
     background-color: #fafafa;
     margin-bottom: 1rem;
     font-family: none;
+    color: var(--background-color);
 }
 
 /* 실행 예제 제목 */
@@ -395,4 +396,127 @@ p span {
     height: 50px;
     background-color: yellow;
     float: right;
+}
+
+/* 포지셔닝 예제 */
+.parent {
+    position: relative;
+    background-color: blue;
+    width: 300px;
+    height: 200px;
+}
+
+.child {
+    position: absolute;
+    right: 0;
+    bottom: 0;
+    width: 50px;
+    height: 50px;
+    background-color: red;
+    color: #ddd;
+}
+
+.btn__top {
+    position: fixed;
+    width: 20px;
+    height: 20px;
+    right: 20px;
+    bottom: 20px;
+    background-color: aqua;
+}
+
+/* absolute 예제 */
+.parent1 {
+    position: relative;
+    border: 2px solid red;
+    width: 600px;
+    height: 300px;
+}
+
+.child1 {
+    position: absolute;
+    background-color: gold;
+    width: 200px;
+    height: 100px;
+}
+
+/* Position the .child1 elements */
+.child1:nth-child(1) {
+    top: 0;
+    left: 0;
+}
+
+.child1:nth-child(2) {
+    top: 0;
+    right: 0;
+}
+
+.child1:nth-child(3) {
+    bottom: 0;
+    right: 0;
+}
+
+.child1:nth-child(4) {
+    bottom: 0;
+    left: 0;
+}
+
+/* z-index */
+
+.parents {
+    height: 250px;
+    position: relative;
+}
+
+.parents div {
+    width: 200px;
+    height: 200px;
+    position: absolute;
+}
+
+.childs {
+    background-color: skyblue;
+    z-index: 0;
+}
+
+.childs2 {
+    background-color: gold;
+    z-index: 1;
+    top: 10px;
+    left: 10px;
+
+}
+
+.childs3 {
+    background-color: gray;
+    z-index: 2;
+    top: 20px;
+    left: 20px;
+}
+
+/* hover 태그 예제 */
+.btn {
+    background-color: #fff;
+    color: #000;
+    text-align: center;
+}
+
+.btn:hover {
+    background-color: skyblue;
+    color: #fff;
+}
+
+.div {
+    background-color: #eee;
+    padding: 15px;
+    width: 400px;
+    text-align: center;
+}
+
+.div:hover h2 {
+    color: red;
+}
+
+.div:hover span {
+    color: blue;
 }

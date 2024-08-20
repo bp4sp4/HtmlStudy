@@ -28,7 +28,7 @@ const { Header, Sider, Content } = Layout;
 // 메뉴 항목 데이터 정의
 const menuItems = [
   {
-    label: "intro",
+    label: "Intro",
     key: "/",
     type: "group",
     children: [
@@ -180,8 +180,45 @@ const menuItems = [
         key: "/css/position",
         children: [
           { label: "float", key: "/css/float", icon: <TagOutlined /> },
-          { label: "position", key: "/css/position", icon: <TagOutlined /> },
+          {
+            label: "position01",
+            key: "/css/position01",
+            icon: <TagOutlined />,
+          },
+          {
+            label: "position02",
+            key: "/css/position02",
+            icon: <TagOutlined />,
+          },
+
+          {
+            label: "fixed",
+            key: "/css/fixed",
+            icon: <TagOutlined />,
+          },
+          {
+            label: "absolute",
+            key: "/css/absolute",
+            icon: <TagOutlined />,
+          },
         ],
+      },
+      {
+        label: <span style={{ color: "#FF69B4" }}>CSS 가상클래스</span>,
+        icon: <PictureInPictureIcon />,
+        key: "/css/pesudo-class",
+        children: [
+          {
+            label: ":hover",
+            key: "/css/hover",
+            icon: <TagOutlined />,
+          },
+        ],
+      },
+      {
+        label: "Comming Soon",
+        key: "/",
+        icon: <GlobalOutlined />,
       },
       {
         // 강조된 색상

@@ -70,8 +70,8 @@ float 속성
     }, 1000);
   }, []);
 
-  const prevPage = { path: "/css/ullist01" };
-  const nextPage = { path: "/css/element" };
+  const prevPage = { path: "/css/display" };
+  const nextPage = { path: "/css/position01" };
 
   return (
     <div className={styles.container}>
@@ -101,7 +101,7 @@ float 속성
             <span role="img" aria-label="fire">
               🔥
             </span>
-            CSS <span className={styles.highlight}>#포지셔닝</span>
+            CSS <span className={styles.highlight}># 포지셔닝</span>
           </h1>
         )}
         <section className={styles.section} id="intro">

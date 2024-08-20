@@ -134,6 +134,7 @@
     background-color: #fafafa;
     margin-bottom: 1rem;
     font-family: none;
+    color: var(--background-color);
 }
 
 .render__name {

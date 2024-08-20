@@ -31,6 +31,11 @@ import Background from "./css/background";
 import Element from "./css/elements";
 import Float from "./css/float";
 import Display from "./css/display";
+import Position01 from "./css/position02";
+import Position02 from "./css/position01";
+import Fixed from "./css/fixed";
+import Absolute from "./css/absolute";
+import Hover from "./css/hover";
 
 const Router = () => {
   return (
@@ -50,7 +55,7 @@ const Router = () => {
         <Route path="/html/ullist" element={<UlList />} />
         <Route path="/html/figure" element={<Figure />} />
         <Route path="/html/table" element={<Table />} />
-        <Route path="/html/formoption" element={<Formoption />} />
+        <Route path="/html/formoption" element={<Formoption />} /> ㅇ ㅂ
         <Route path="/html/formoption2" element={<Formoption2 />} />
         <Route path="/html/semantictag" element={<Semantictag />} />
         <Route path="/css/intro" element={<Cssintro />} />
@@ -68,6 +73,11 @@ const Router = () => {
         <Route path="/css/element" element={<Element />} />
         <Route path="/css/display" element={<Display />} />
         <Route path="/css/float" element={<Float />} />
+        <Route path="/css/position01" element={<Position01 />} />
+        <Route path="/css/position02" element={<Position02 />} />
+        <Route path="/css/fixed" element={<Fixed />} />
+        <Route path="/css/absolute" element={<Absolute />} />
+        <Route path="/css/hover" element={<Hover />} />
       </Routes>
     </BrowserRouter>
   );

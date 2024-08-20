@@ -209,69 +209,7 @@ ul.football li a:hover {
               )}
             </div>
           </div>
-          <section className={styles.section} id="promotion">
-            <div className={styles.descwrap}>
-              <p className={styles.render__name}>
-                {loading ? (
-                  <Skeleton
-                    width="20%"
-                    height="2rem"
-                    className={styles.skeleton}
-                    animation="wave"
-                  />
-                ) : (
-                  <span className={styles.render__name__sub}>
-                    추천 컬러 사이트 링크
-                  </span>
-                )}
-              </p>
-              <ul className={styles.linklist}>
-                {loading ? (
-                  <>
-                    <Skeleton
-                      width="75%"
-                      height="1.5rem"
-                      className={styles.skeleton}
-                      animation="wave"
-                    />
-                    <Skeleton
-                      width="75%"
-                      height="1.5rem"
-                      className={styles.skeleton}
-                      animation="wave"
-                    />
-                    <Skeleton
-                      width="75%"
-                      height="1.5rem"
-                      className={styles.skeleton}
-                      animation="wave"
-                    />
-                  </>
-                ) : (
-                  <>
-                    <li>
-                      <a
-                        href="https://apost.dev/1025/"
-                        target="_blank"
-                        rel="noopener noreferrer"
-                      >
-                        CSS 가상 요소 설명 블로그1
-                      </a>
-                    </li>
-                    <li>
-                      <a
-                        href="https://velog.io/@sebinn/%EA%B0%80%EC%83%81-%EC%9A%94%EC%86%8C-%EC%84%A0%ED%83%9D%EC%9E%90-before-after"
-                        target="_blank"
-                        rel="noopener noreferrer"
-                      >
-                        CSS 가상 요소 설명 블로그2
-                      </a>
-                    </li>
-                  </>
-                )}
-              </ul>
-            </div>
-          </section>
+
           <div className={styles.navigationButtons}>
             {prevPage && (
               <NavLink to={prevPage.path} className={styles.navigationLink}>

@@ -25,7 +25,7 @@
     background-color: var(--background-color);
     color: var(--text-color);
     font-weight: 600;
-
+    overflow: hidden;
 }
 
 .main__wrap {
@@ -73,14 +73,12 @@ code {
     font-size: 1.5rem;
     color: var(--text-color);
     position: relative;
-    cursor: pointer;
     font-family: 'GongGothicMedium';
     padding: 15px 60px;
-    border: 1px solid var(--button-border-color);
+    border: 3px solid var(--button-border-color);
     border-radius: 100px;
     text-align: center;
     display: inline-block;
-    font-size: 20px;
     font-weight: 500;
     cursor: pointer;
     z-index: 1;
@@ -89,6 +87,6 @@ code {
 .section .main__start:hover {
     background-color: var(--button-hover-background-color);
     color: var(--button-hover-text-color);
-    border: 1px solid var(--button-hover-border-color);
+    border: 3px solid var(--button-hover-border-color);
     transition: 0.5s ease-out;
 }

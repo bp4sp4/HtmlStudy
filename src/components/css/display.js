@@ -65,8 +65,8 @@ display 속성으로 블록 요소와 인라인 요소의 속성을 변경할 �
     }, 1000);
   }, []);
 
-  const prevPage = { path: "/css/ullist01" };
-  const nextPage = { path: "/css/element" };
+  const prevPage = { path: "/css/element" };
+  const nextPage = { path: "/css/float" };
 
   return (
     <div className={styles.container}>
