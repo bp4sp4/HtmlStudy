@@ -1,6 +1,14 @@
 # Mini Project Htmlteacer -> Htmlstudy
 
+홈페이지 - <a href="https://htmlstudy.co.kr/">HtmlStudy</a>
+
 <h1>24/06/27(목) ~ 24/ing 9월 완성 목표</h1>
+
+<h3>24/08/22</h3>
+
+- 가상태그 hover, first,last-child, nth-child, focus 추가
+- 도메인 연결 완료
+- 메인 홈페이지 이미지 추가, 인스타그램 연결 아이콘 다크모드 옆에 추가 예정
 
 <h3>24/08/21</h3>
 
