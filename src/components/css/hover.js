@@ -18,7 +18,7 @@ const Hover = () => {
   text-align : center;
 }
 
-.btn:hover {
+.btn:hover { /* :hover : 마우스를 올려놨을때 */
   background-color : skyblue;
   color : #fff;
 }
@@ -46,7 +46,7 @@ div:hover span {
   <span>마우스 오버되었을 떄 오버된 엘리먼트의 자식요소</span>
 </div>
 `;
-  const jobcode = `/* 자주 사용되는 클래스입니다. */
+  const jobcode = `/* 디자인 할떄 자주 사용되는 클래스 입니다. */
 :hover는 마우스를 오버 했을 때 오버된 자신의 CSS 속성을 변경하는 가상 클래스 입니다.
 :hover 다음에 스페이스가 오고 자식요소의 선택자가 오면 오버된 요소의 자식 요소가 변경됩니다.
 가상 클래스는 선택자 뒤에 콜론(:)을 사용해서 가상클래스를 만듭니다. 콜론(:)앞뒤로 스페이가 있으면 절대 안됩니다.
@@ -71,8 +71,8 @@ div:hover span {
     }, 1000);
   }, []);
 
-  const prevPage = { path: "/css/position03" };
-  const nextPage = { path: "/css/first,last-child" };
+  const prevPage = { path: "/css/absolute" };
+  const nextPage = { path: "/css/FirstLastChild" };
 
   return (
     <div className={styles.container}>
@@ -109,7 +109,7 @@ div:hover span {
           {loading ? (
             <>
               <Skeleton
-                width="45%"
+                width="30%"
                 height="1.5rem"
                 className={styles.skeleton}
                 animation="wave"

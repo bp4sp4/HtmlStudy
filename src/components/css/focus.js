@@ -7,33 +7,29 @@ import "prismjs/components/prism-css.min.js";
 import { Skeleton } from "primereact/skeleton";
 import { NavLink } from "react-router-dom";
 
-const Background = () => {
+const Focus = () => {
   const [copySuccess, setCopySuccess] = useState("");
   const [loading, setLoading] = useState(true);
 
   const cssExampleCode = `<style>
-.contents{
-  width:600px;
-  padding: 20px;
-  text-align : center;
-  background-color: #82a2cc;
+input {
+    padding: 5px;
+    border-radius: 3px;
+    border: 1px solid #ccc;
+    outline: none;
 }
-
-.contents__lorem {
- color: #834444;
+input:focus { /* 폼 요소 input을 클릭했을 때 디자인 속성을 변경합니다. */
+    background-color : skyblue;
 }
 </style>
 
-<div class="contents">
-  <h1>Background Color</h1>
-  <p class="contents__lorem">백그라운드 컬러 중요하지만 중요한것만 알려드림...</p>
-</div>`;
-  const jobcode = `/* 많은 속성이 있지만 알짜베기만 알려드리겠습니다. */
-background-color :green /* 색상 이름 : 기본 색상 사용 */
-background-image : HTML 요소에 배경 이미지 넣기("")를 사용해도 되고 없어도됌
-⭐⭐⭐⭐⭐ 굉장히 많이 쓰이는 스타일 속성이고, 이것만 알아도 반은 먹고 들어간다.
-예시) background-image : url(images/background-image.jpg)
-예시) background-image : url("images/background-image.jpg")`;
+이메일 주소&nbsp;&nbsp; <input type="email"> <!-- &nbsp; : 공백한칸 -->
+`;
+  const jobcode = `/* 많이 사용되지 않는 클래스입니다. */
+가상클래스는 콜론(:)으로 시작합니다..
+CSS3 버전부터 새로 생긴 가상클래스는 반드시 콜론(:) 2개를 사용해야 합니다.
+예시) :before == ::before, :after == ::after
+`;
 
   const copyToClipboard = (code) => {
     navigator.clipboard.writeText(code).then(
@@ -54,8 +50,8 @@ background-image : HTML 요소에 배경 이미지 넣기("")를 사용해도 �
     }, 1000);
   }, []);
 
-  const prevPage = { path: "/css/favicon" };
-  const nextPage = { path: "/css/element" };
+  const prevPage = { path: "/css/FirstLastChild" };
+  const nextPage = { path: "/css/nthchild" };
 
   return (
     <div className={styles.container}>
@@ -81,13 +77,18 @@ background-image : HTML 요소에 배경 이미지 넣기("")를 사용해도 �
             animation="wave"
           />
         ) : (
-          <h1 className={styles.title}>CSS #배경 제어하기</h1>
+          <h1 className={styles.title}>
+            <span role="img" aria-label="fire">
+              🔥
+            </span>
+            CSS <span className={styles.highlight}>#가상 클래스 </span>
+          </h1>
         )}
         <section className={styles.section} id="intro">
           {loading ? (
             <>
               <Skeleton
-                width="45%"
+                width="20%"
                 height="1.5rem"
                 className={styles.skeleton}
                 animation="wave"
@@ -102,8 +103,7 @@ background-image : HTML 요소에 배경 이미지 넣기("")를 사용해도 �
           ) : (
             <div className={styles.descwrap}>
               <h2 className={styles.descwrap__subtitle}>
-                CSS 배경 색상 및 이미지 제어하기 (background-color : 배경 색상
-                조정)
+                주요 가상 클래스 이해하기 - focus
               </h2>
               <p className={styles.descwrap__subtitle__desc}>
                 아래 코드는 CSS 예제 코드입니다. 각 속성에 대한 설명은 주석으로
@@ -177,12 +177,10 @@ background-image : HTML 요소에 배경 이미지 넣기("")를 사용해도 �
                   animation="wave"
                 />
               ) : (
-                <div className={styles.contents}>
-                  <h1>Background Color</h1>
-                  <p class={styles.contents__lorem}>
-                    백그라운드 컬러 중요하지만 중요한것만 알려드림...
-                  </p>
-                </div>
+                <>
+                  이메일 주소&nbsp;&nbsp;
+                  <input className={styles.inputemail} type="email" />
+                </>
               )}
             </div>
           </div>
@@ -216,69 +214,7 @@ background-image : HTML 요소에 배경 이미지 넣기("")를 사용해도 �
               )}
             </div>
           </div>
-          <section className={styles.section} id="promotion">
-            <div className={styles.descwrap}>
-              <p className={styles.render__name}>
-                {loading ? (
-                  <Skeleton
-                    width="20%"
-                    height="2rem"
-                    className={styles.skeleton}
-                    animation="wave"
-                  />
-                ) : (
-                  <span className={styles.render__name__sub}>
-                    추천 컬러 사이트 링크
-                  </span>
-                )}
-              </p>
-              <ul className={styles.linklist}>
-                {loading ? (
-                  <>
-                    <Skeleton
-                      width="75%"
-                      height="1.5rem"
-                      className={styles.skeleton}
-                      animation="wave"
-                    />
-                    <Skeleton
-                      width="75%"
-                      height="1.5rem"
-                      className={styles.skeleton}
-                      animation="wave"
-                    />
-                    <Skeleton
-                      width="75%"
-                      height="1.5rem"
-                      className={styles.skeleton}
-                      animation="wave"
-                    />
-                  </>
-                ) : (
-                  <>
-                    <li>
-                      <a
-                        href="https://velog.io/@seeyong_0/css-background-image%EC%97%90-%EB%8C%80%ED%95%B4-%EC%95%8C%EC%95%84%EB%B3%B4%EC%9E%90"
-                        target="_blank"
-                        rel="noopener noreferrer"
-                      >
-                        css background-image 상세 속성 설명 페이지
-                      </a>
-                    </li>
-                    <li>
-                      <a
-                        href="https://webgradients.com/"
-                        target="_blank"
-                        rel="noopener noreferrer"
-                      >
-                        그라디언트 제네레이터 추천 사이트
-                      </a>
-                    </li>
-                  </>
-                )}
-              </ul>
-            </div>
-          </section>
+
           <div className={styles.navigationButtons}>
             {prevPage && (
               <NavLink to={prevPage.path} className={styles.navigationLink}>
@@ -297,4 +233,4 @@ background-image : HTML 요소에 배경 이미지 넣기("")를 사용해도 �
   );
 };
 
-export default Background;
+export default Focus;

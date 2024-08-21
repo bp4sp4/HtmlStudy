@@ -136,7 +136,7 @@
     background-color: #fafafa;
     margin-bottom: 1rem;
     font-family: none;
-    color: var(--background-color);
+    color: black;
 }
 
 /* 실행 예제 제목 */
@@ -298,7 +298,10 @@ p span {
 /* element 예제 */
 
 .contents {
-    display: block;
+    width: 600px;
+    padding: 20px;
+    text-align: center;
+    background-color: #82a2cc;
 }
 
 .contents__box1 {
@@ -353,7 +356,7 @@ p span {
 
 /* 컨텐츠 더미텍스트 */
 .contents__lorem {
-    color: #f4f4f4;
+    color: #834444;
 }
 
 /* display 예제 */
@@ -519,4 +522,52 @@ p span {
 
 .div:hover span {
     color: blue;
+}
+
+/* 가상클래스 first-last */
+.divfirst {
+    background-color: #eee;
+    padding: 15px;
+    width: 400px;
+    text-align: center;
+}
+
+.divfirst h2:first-child {
+    color: red
+}
+
+.divfirst h2:last-child {
+    color: blue;
+}
+
+/* nth-of-tpye 예제 */
+
+.div__nth__of__type {
+    background-color: #eee;
+    padding: 15px;
+    width: 400px;
+    text-align: center;
+}
+
+.div_nth__font {
+    font-size: 1.5rem;
+}
+
+.div__nth__of__type h2:nth-of-type(1) {
+    color: red;
+}
+
+.div__nth__of__type h2:nth-of-type(2) {
+    color: blue;
+}
+
+.inputemail {
+    padding: 5px;
+    border-radius: 3px;
+    border: 1px solid #ccc;
+    outline: none;
+}
+
+.inputemail:focus {
+    background-color: skyblue;
 }

@@ -23,6 +23,7 @@ import GradientIcon from "@mui/icons-material/Gradient";
 import ExplicitIcon from "@mui/icons-material/Explicit";
 import DisplaySettingsIcon from "@mui/icons-material/DisplaySettings";
 import PictureInPictureIcon from "@mui/icons-material/PictureInPicture";
+import CompareArrowsIcon from "@mui/icons-material/CompareArrows";
 const { Header, Sider, Content } = Layout;
 
 // 메뉴 항목 데이터 정의
@@ -204,21 +205,38 @@ const menuItems = [
         ],
       },
       {
-        label: <span style={{ color: "#FF69B4" }}>CSS 가상클래스</span>,
-        icon: <PictureInPictureIcon />,
-        key: "/css/pesudo-class",
+        label: "CSS Professional",
+        key: "/css",
+        type: "group",
         children: [
           {
-            label: ":hover",
-            key: "/css/hover",
-            icon: <TagOutlined />,
+            label: <span style={{ color: "#FF69B4" }}>CSS 가상클래스</span>,
+            icon: <CompareArrowsIcon />,
+            key: "/css/pesudo-class",
+            children: [
+              {
+                label: ":hover",
+                key: "/css/hover",
+                icon: <TagOutlined />,
+              },
+              {
+                label: "FristLastChild",
+                key: "/css/firstlastchild",
+                icon: <TagOutlined />,
+              },
+              {
+                label: "nth-child",
+                key: "/css/nthchild",
+                icon: <TagOutlined />,
+              },
+              {
+                label: "focus",
+                key: "/css/focus",
+                icon: <TagOutlined />,
+              },
+            ],
           },
         ],
-      },
-      {
-        label: "Comming Soon",
-        key: "/",
-        icon: <GlobalOutlined />,
       },
       {
         // 강조된 색상

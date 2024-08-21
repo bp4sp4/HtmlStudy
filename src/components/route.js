@@ -36,6 +36,9 @@ import Position02 from "./css/position01";
 import Fixed from "./css/fixed";
 import Absolute from "./css/absolute";
 import Hover from "./css/hover";
+import FirstLastChild from "./css/FirstLastChild";
+import NthChild from "./css/nthchild";
+import Focus from "./css/focus";
 
 const Router = () => {
   return (
@@ -78,6 +81,9 @@ const Router = () => {
         <Route path="/css/fixed" element={<Fixed />} />
         <Route path="/css/absolute" element={<Absolute />} />
         <Route path="/css/hover" element={<Hover />} />
+        <Route path="/css/firstlastchild" element={<FirstLastChild />} />
+        <Route path="/css/nthchild" element={<NthChild />} />
+        <Route path="/css/focus" element={<Focus />} />
       </Routes>
     </BrowserRouter>
   );
