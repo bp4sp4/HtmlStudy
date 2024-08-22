@@ -60,7 +60,7 @@ last-child는 부모 요소 안에 있는 마지막 자식요소를 선택
     }, 1000);
   }, []);
 
-  const prevPage = { path: "/css/FirstLastChild" };
+  const prevPage = { path: "/css/hover" };
   const nextPage = { path: "/css/nthchild" };
 
   return (
@@ -98,13 +98,13 @@ last-child는 부모 요소 안에 있는 마지막 자식요소를 선택
           {loading ? (
             <>
               <Skeleton
-                width="30%"
+                width="40%"
                 height="1.5rem"
                 className={styles.skeleton}
                 animation="wave"
               />
               <Skeleton
-                width="45%"
+                width="55%"
                 height="1.5rem"
                 className={styles.skeleton}
                 animation="wave"

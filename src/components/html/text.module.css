@@ -20,6 +20,7 @@
     box-sizing: border-box;
     display: flex;
     flex-direction: column;
+    margin-right: 2rem;
 }
 
 .section {
@@ -28,7 +29,6 @@
     flex-direction: column;
 }
 
-/* Title styling */
 .title {
     font-size: 2rem;
     font-weight: 700;
@@ -36,20 +36,17 @@
     color: var(--text-color);
 }
 
-/* Description wrap styling */
 .descwrap {
     width: 100%;
     line-height: 1.5;
 }
 
-/* Subtitle styling */
 .descwrap__subtitle {
     font-size: 1.25rem;
     font-weight: bold;
     color: var(--text-color);
 }
 
-/* Subtitle description styling */
 .descwrap__subtitle__desc {
     margin-top: 1rem;
     font-size: 1.1rem;
@@ -57,7 +54,6 @@
     line-height: 2;
 }
 
-/* Code container styling */
 .codeContainer {
     padding-bottom: 1.5rem;
     background-color: #f4f4f4;
@@ -66,7 +62,6 @@
     font-family: inherit;
 }
 
-/* Window bar styling */
 .windowBar {
     display: flex;
     align-items: center;
@@ -76,7 +71,6 @@
     margin-bottom: 0.5rem;
 }
 
-/* Circle indicators */
 .circle {
     width: 12px;
     height: 12px;
@@ -96,7 +90,6 @@
     background-color: #27c93f;
 }
 
-/* Example name styling */
 .ex__name {
     font-size: 1.25rem;
     font-weight: 700;
@@ -104,7 +97,6 @@
     color: var(--text-color);
 }
 
-/* Copy button styling */
 .copyButton {
     margin-left: 1rem;
     padding: 0.5rem 1rem;

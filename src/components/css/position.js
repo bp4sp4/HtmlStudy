@@ -7,48 +7,55 @@ import "prismjs/components/prism-css.min.js";
 import { Skeleton } from "primereact/skeleton";
 import { NavLink } from "react-router-dom";
 
-const Float = () => {
+const Position02 = () => {
   const [copySuccess, setCopySuccess] = useState("");
   const [loading, setLoading] = useState(true);
 
   const cssExampleCode = `<style>
-.floatwrap {
-    width: 300px;
-    height: 100px;
-    background-color: #27c93f;
+.parents {
+    height: 250px;
+    position: relative;
 }
-.boxs {
-    width: 50px;
-    height: 50px;
-    background-color: yellow;
-    float: left;
+
+.parents div {
+    width: 200px;
+    height: 200px;
+    position: absolute;
 }
-.boxs2 {
-    width: 50px;
-    height: 50px;
-    background-color: yellow;
-    margin: auto;
+
+.childs {
+    background-color: skyblue;
+    z-index: 0;
 }
-.boxs3 {
-    width: 50px;
-    height: 50px;
-    background-color: yellow;
-    float: right;
+
+.childs2 {
+    background-color: gold;
+    z-index: 1;
+    top: 10px;
+    left: 10px;
+
+}
+
+.childs3 {
+    background-color: gray;
+    z-index: 2;
+    top: 20px;
+    left: 20px;
 }
 </style>
-<div class="floatwrap">
-  <div class="boxs">box</div>
-  <div class="boxs">box</div>
-  <div class="boxs">box</div>
+
+<div class="parents"> 
+  <div class="childs"></div>
+  <div class="childs2"></div>
+  <div class="childs3"></div>
 </div>
 `;
-  const jobcode = `
-float 속성
-- none(default) : float 속성 적용안함
-- left : 요소가 컨테이너의 왼쪽 배치
-- right : 요소가 컨테이너의 오른쪽 배치
-- margin : atuo 요소를 중앙에 배치
 
+  const jobcode = `/* 생각보다 많이 사용하는 속성값입니다. 알아두시면 좋은 팁입니다. */
+- z-index 속성이 없는 경우 html 순서상 늦게 나온 html 요소에 위로 올라옵니다.
+- z-index는 숫자가 높을 수록 위로 올라옴
+- z-index는 마이너스(-) 값도 사용할 수 있음
+- z-index를 0, 1, 2, 3 이런 식으로 꼭 단계로 넣을 필요 없음( ex, 100또는 1000)
 `;
 
   const copyToClipboard = (code) => {
@@ -70,8 +77,8 @@ float 속성
     }, 1000);
   }, []);
 
-  const prevPage = { path: "/css/display" };
-  const nextPage = { path: "/css/position01" };
+  const prevPage = { path: "/css/position01" };
+  const nextPage = { path: "/css/fixed" };
 
   return (
     <div className={styles.container}>
@@ -123,7 +130,7 @@ float 속성
           ) : (
             <div className={styles.descwrap}>
               <h2 className={styles.descwrap__subtitle}>
-                CSS 포지셔닝 - 엘리먼트 수평 정렬하기(속성 : float)
+                겹처진 HTML 요소의 레이어 순서 바꾸기(z-index)
               </h2>
               <p className={styles.descwrap__subtitle__desc}>
                 아래 코드는 CSS 예제 코드입니다. 각 속성에 대한 설명은 주석으로
@@ -192,16 +199,16 @@ float 속성
               {loading ? (
                 <Skeleton
                   width="100%"
-                  height="5 rem"
+                  height="20rem"
                   className={styles.skeleton}
                   animation="wave"
                 />
               ) : (
                 <>
-                  <div className={styles.floatwrap}>
-                    <div class={styles.boxs}>box</div>
-                    <div class={styles.boxs3}>box</div>
-                    <div class={styles.boxs2}>box</div>
+                  <div className={styles.parents}>
+                    <div className={styles.childs}></div>
+                    <div className={styles.childs2}></div>
+                    <div className={styles.childs3}></div>
                   </div>
                 </>
               )}
@@ -226,7 +233,7 @@ float 속성
               {loading ? (
                 <Skeleton
                   width="100%"
-                  height="5rem"
+                  height="15rem"
                   className={styles.skeleton}
                   animation="wave"
                 />
@@ -237,6 +244,7 @@ float 속성
               )}
             </div>
           </div>
+
           <div className={styles.navigationButtons}>
             {prevPage && (
               <NavLink to={prevPage.path} className={styles.navigationLink}>
@@ -255,4 +263,4 @@ float 속성
   );
 };
 
-export default Float;
+export default Position02;

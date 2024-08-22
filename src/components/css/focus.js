@@ -50,8 +50,8 @@ CSS3 버전부터 새로 생긴 가상클래스는 반드시 콜론(:) 2개를 �
     }, 1000);
   }, []);
 
-  const prevPage = { path: "/css/FirstLastChild" };
-  const nextPage = { path: "/css/nthchild" };
+  const prevPage = { path: "/css/nthoftype" };
+  const nextPage = { path: "/css/placeholder" };
 
   return (
     <div className={styles.container}>
@@ -78,9 +78,6 @@ CSS3 버전부터 새로 생긴 가상클래스는 반드시 콜론(:) 2개를 �
           />
         ) : (
           <h1 className={styles.title}>
-            <span role="img" aria-label="fire">
-              🔥
-            </span>
             CSS <span className={styles.highlight}>#가상 클래스 </span>
           </h1>
         )}
@@ -88,13 +85,13 @@ CSS3 버전부터 새로 생긴 가상클래스는 반드시 콜론(:) 2개를 �
           {loading ? (
             <>
               <Skeleton
-                width="20%"
+                width="30%"
                 height="1.5rem"
                 className={styles.skeleton}
                 animation="wave"
               />
               <Skeleton
-                width="45%"
+                width="55%"
                 height="1.5rem"
                 className={styles.skeleton}
                 animation="wave"

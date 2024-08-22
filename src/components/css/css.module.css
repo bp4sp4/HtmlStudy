@@ -17,6 +17,7 @@
     box-sizing: border-box;
     display: flex;
     flex-direction: column;
+    margin-right: 2rem;
 }
 
 .section {
@@ -540,6 +541,26 @@ p span {
     color: blue;
 }
 
+/* nth-child 예제 */
+.div__nthcild {
+    background-color: #eee;
+    padding: 15px;
+    width: 400px;
+    text-align: center;
+}
+
+.div__nthcild h2:nth-child(1) {
+    color: red;
+}
+
+.div__nthcild h2:nth-child(2) {
+    color: blue;
+}
+
+.div__nthcild h2:nth-child(3) {
+    color: green;
+}
+
 /* nth-of-tpye 예제 */
 
 .div__nth__of__type {
@@ -561,6 +582,7 @@ p span {
     color: blue;
 }
 
+/* focus 예제 */
 .inputemail {
     padding: 5px;
     border-radius: 3px;
@@ -570,4 +592,111 @@ p span {
 
 .inputemail:focus {
     background-color: skyblue;
+}
+
+/* placeholder 예제 */
+
+.inputemailex {
+    padding: 5px;
+    border-radius: 3px;
+    border: 1px solid #ccc;
+    outline: none;
+}
+
+.inputemailex::placeholder {
+    color: violet;
+    font-style: italic;
+}
+
+/* checked 예제 */
+.formex {
+    border: 1px solid #ddd;
+    width: 350px;
+    padding: 20px;
+    border-radius: 5px;
+}
+
+.formex label {
+    display: inline-block;
+    width: 80px;
+    margin: 10px;
+}
+
+.formex input[type=text] {
+    border: 2px solid red;
+}
+
+.formex input[type=password] {
+    border: 2px solid blue;
+}
+
+.formex input[type=email] {
+    border: 2px solid gold;
+}
+
+/* before & after 예제01 */
+
+.bfex01 {
+    font-weight: normal;
+    position: relative;
+}
+
+.bfex01::before {
+    content: '✌️';
+}
+
+.bfex01::after {
+    content: '#01';
+    background-color: crimson;
+    color: #fff;
+    font-size: 18px;
+    padding: 0 5px;
+    border-radius: 3px;
+    margin-left: 10px;
+    position: absolute;
+}
+
+/* before & after 예제02 */
+
+.bfex02 {
+    list-style: none;
+    padding: 0;
+    line-height: 2rem;
+}
+
+.bfex02 li::before {
+    content: '❌';
+    color: crimson;
+}
+
+.bfex02 .bfex02__active::after {
+    content: 'new';
+    background-color: royalblue;
+    color: #fff;
+    font-size: 12px;
+    margin-left: 5px;
+    padding: 0 3px;
+    border-radius: 3px;
+}
+
+/* before & after 예제03 */
+
+
+
+.bf03 {
+    width: 600px;
+    height: 400px;
+    background-size: cover;
+    position: relative;
+    background-image: url(../images/flower.jpg);
+}
+
+.bf03::before {
+    content: '';
+    background-color: rgba(10, 0, 255, 0.34);
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
 }

@@ -7,48 +7,39 @@ import "prismjs/components/prism-css.min.js";
 import { Skeleton } from "primereact/skeleton";
 import { NavLink } from "react-router-dom";
 
-const Float = () => {
+const BeforeAfter01 = () => {
   const [copySuccess, setCopySuccess] = useState("");
   const [loading, setLoading] = useState(true);
 
   const cssExampleCode = `<style>
-.floatwrap {
-    width: 300px;
-    height: 100px;
-    background-color: #27c93f;
+.h1 {
+    font-weight: normal;
+    position: relative;
 }
-.boxs {
-    width: 50px;
-    height: 50px;
-    background-color: yellow;
-    float: left;
+
+.h1::before {
+    content: '✌️';
 }
-.boxs2 {
-    width: 50px;
-    height: 50px;
-    background-color: yellow;
-    margin: auto;
-}
-.boxs3 {
-    width: 50px;
-    height: 50px;
-    background-color: yellow;
-    float: right;
+
+.h1::after {
+    content: '#01'; /* 반드시 있어야하는 속성 */
+    background-color: crimson;
+    color: #fff;
+    font-size: 18px;
+    padding: 0 5px;
+    border-radius: 3px;
+    margin-left: 10px;
+    position: absolute;
+    top: 10px;
 }
 </style>
-<div class="floatwrap">
-  <div class="boxs">box</div>
-  <div class="boxs">box</div>
-  <div class="boxs">box</div>
-</div>
-`;
-  const jobcode = `
-float 속성
-- none(default) : float 속성 적용안함
-- left : 요소가 컨테이너의 왼쪽 배치
-- right : 요소가 컨테이너의 오른쪽 배치
-- margin : atuo 요소를 중앙에 배치
 
+<h1> HtmlStudy 온라인 강의</h1>
+`;
+  const jobcode = `/* 많이 사용되는 클래스 입니다. 꼭 알고 넘어가셔야 합니다! */
+HTML 요소 앞이나 뒤에 생성되는 내용을 넣어주는 가상 클래스, HTML 요소는 부모요소, :befere :after는 자식요소
+가상클래스 :before와 :after를 사용할 떄 content ''; 따옴표 안에 텍스트를 사용하지 않는 경우라도 
+반드시 content:""; 있어야 다른것들이 표시됩니다.
 `;
 
   const copyToClipboard = (code) => {
@@ -70,8 +61,8 @@ float 속성
     }, 1000);
   }, []);
 
-  const prevPage = { path: "/css/display" };
-  const nextPage = { path: "/css/position01" };
+  const prevPage = { path: "/css/checked" };
+  const nextPage = { path: "/css/beforeafter02" };
 
   return (
     <div className={styles.container}>
@@ -91,7 +82,7 @@ float 속성
         </div>
         {loading ? (
           <Skeleton
-            width="25%"
+            width="20%"
             height="3rem"
             className={`${styles.skeleton} mb`}
             animation="wave"
@@ -101,14 +92,14 @@ float 속성
             <span role="img" aria-label="fire">
               🔥
             </span>
-            CSS <span className={styles.highlight}># 포지셔닝</span>
+            CSS <span className={styles.highlight}>#가상 클래스 </span>
           </h1>
         )}
         <section className={styles.section} id="intro">
           {loading ? (
             <>
               <Skeleton
-                width="45%"
+                width="35%"
                 height="1.5rem"
                 className={styles.skeleton}
                 animation="wave"
@@ -123,7 +114,7 @@ float 속성
           ) : (
             <div className={styles.descwrap}>
               <h2 className={styles.descwrap__subtitle}>
-                CSS 포지셔닝 - 엘리먼트 수평 정렬하기(속성 : float)
+                :before :after 상급자를 위한 가상 클래스(1)
               </h2>
               <p className={styles.descwrap__subtitle__desc}>
                 아래 코드는 CSS 예제 코드입니다. 각 속성에 대한 설명은 주석으로
@@ -142,7 +133,7 @@ float 속성
                 animation="wave"
               />
             ) : (
-              "CSS 예제입니다."
+              "CSS 예제"
             )}
           </h2>
           <div className={styles.codeContainer}>
@@ -154,7 +145,7 @@ float 속성
             {loading ? (
               <Skeleton
                 width="100%"
-                height="30rem"
+                height="50rem"
                 className={styles.skeleton}
                 animation="wave"
               />
@@ -192,17 +183,13 @@ float 속성
               {loading ? (
                 <Skeleton
                   width="100%"
-                  height="5 rem"
+                  height="10rem"
                   className={styles.skeleton}
                   animation="wave"
                 />
               ) : (
                 <>
-                  <div className={styles.floatwrap}>
-                    <div class={styles.boxs}>box</div>
-                    <div class={styles.boxs3}>box</div>
-                    <div class={styles.boxs2}>box</div>
-                  </div>
+                  <h1 className={styles.bfex01}> HtmlStudy 온라인 강의</h1>
                 </>
               )}
             </div>
@@ -237,6 +224,7 @@ float 속성
               )}
             </div>
           </div>
+
           <div className={styles.navigationButtons}>
             {prevPage && (
               <NavLink to={prevPage.path} className={styles.navigationLink}>
@@ -255,4 +243,4 @@ float 속성
   );
 };
 
-export default Float;
+export default BeforeAfter01;

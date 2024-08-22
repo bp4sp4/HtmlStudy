@@ -7,48 +7,28 @@ import "prismjs/components/prism-css.min.js";
 import { Skeleton } from "primereact/skeleton";
 import { NavLink } from "react-router-dom";
 
-const Float = () => {
+const Placeholder = () => {
   const [copySuccess, setCopySuccess] = useState("");
   const [loading, setLoading] = useState(true);
 
   const cssExampleCode = `<style>
-.floatwrap {
-    width: 300px;
-    height: 100px;
-    background-color: #27c93f;
+input {
+    padding: 5px;
+    border-radius: 3px;
+    border: 1px solid #ccc;
+    outline: none;
 }
-.boxs {
-    width: 50px;
-    height: 50px;
-    background-color: yellow;
-    float: left;
-}
-.boxs2 {
-    width: 50px;
-    height: 50px;
-    background-color: yellow;
-    margin: auto;
-}
-.boxs3 {
-    width: 50px;
-    height: 50px;
-    background-color: yellow;
-    float: right;
+input::placeholder{ /* 폼 요소 input에 placeholder 텍스트를 css 속성으로 디자인하는 가상 클래스 */
+    color : violet;
+    font-style : italic;
 }
 </style>
-<div class="floatwrap">
-  <div class="boxs">box</div>
-  <div class="boxs">box</div>
-  <div class="boxs">box</div>
-</div>
-`;
-  const jobcode = `
-float 속성
-- none(default) : float 속성 적용안함
-- left : 요소가 컨테이너의 왼쪽 배치
-- right : 요소가 컨테이너의 오른쪽 배치
-- margin : atuo 요소를 중앙에 배치
 
+이메일 주소&nbsp;&nbsp; <input type="email" placeholder="이메일을 입력하세요."> <!-- &nbsp; : 공백한칸 -->
+`;
+  const jobcode = `/* 가끔 사용되는 클래스 입니다. */
+::placeholder는 CSS3 버전부터 새로 생긴 가상 클래스이므로 반드시 콜론을 2개 사용해야 합니다.
+예시 ) :placeholder (X)
 `;
 
   const copyToClipboard = (code) => {
@@ -70,8 +50,8 @@ float 속성
     }, 1000);
   }, []);
 
-  const prevPage = { path: "/css/display" };
-  const nextPage = { path: "/css/position01" };
+  const prevPage = { path: "/css/focus" };
+  const nextPage = { path: "/css/checked" };
 
   return (
     <div className={styles.container}>
@@ -91,24 +71,21 @@ float 속성
         </div>
         {loading ? (
           <Skeleton
-            width="25%"
+            width="20%"
             height="3rem"
             className={`${styles.skeleton} mb`}
             animation="wave"
           />
         ) : (
           <h1 className={styles.title}>
-            <span role="img" aria-label="fire">
-              🔥
-            </span>
-            CSS <span className={styles.highlight}># 포지셔닝</span>
+            CSS <span className={styles.highlight}>#가상 클래스 </span>
           </h1>
         )}
         <section className={styles.section} id="intro">
           {loading ? (
             <>
               <Skeleton
-                width="45%"
+                width="25%"
                 height="1.5rem"
                 className={styles.skeleton}
                 animation="wave"
@@ -123,7 +100,7 @@ float 속성
           ) : (
             <div className={styles.descwrap}>
               <h2 className={styles.descwrap__subtitle}>
-                CSS 포지셔닝 - 엘리먼트 수평 정렬하기(속성 : float)
+                주요 가상 클래스 이해하기 - checked
               </h2>
               <p className={styles.descwrap__subtitle__desc}>
                 아래 코드는 CSS 예제 코드입니다. 각 속성에 대한 설명은 주석으로
@@ -142,7 +119,7 @@ float 속성
                 animation="wave"
               />
             ) : (
-              "CSS 예제입니다."
+              "CSS 예제"
             )}
           </h2>
           <div className={styles.codeContainer}>
@@ -192,17 +169,18 @@ float 속성
               {loading ? (
                 <Skeleton
                   width="100%"
-                  height="5 rem"
+                  height="5rem"
                   className={styles.skeleton}
                   animation="wave"
                 />
               ) : (
                 <>
-                  <div className={styles.floatwrap}>
-                    <div class={styles.boxs}>box</div>
-                    <div class={styles.boxs3}>box</div>
-                    <div class={styles.boxs2}>box</div>
-                  </div>
+                  이메일 주소&nbsp;&nbsp;
+                  <input
+                    className={styles.inputemailex}
+                    type="email"
+                    placeholder="이메일을 입력하세요."
+                  />
                 </>
               )}
             </div>
@@ -237,6 +215,7 @@ float 속성
               )}
             </div>
           </div>
+
           <div className={styles.navigationButtons}>
             {prevPage && (
               <NavLink to={prevPage.path} className={styles.navigationLink}>
@@ -255,4 +234,4 @@ float 속성
   );
 };
 
-export default Float;
+export default Placeholder;

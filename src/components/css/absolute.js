@@ -115,13 +115,13 @@ transform : translate(-50%, 50%);
           {loading ? (
             <>
               <Skeleton
-                width="45%"
+                width="55%"
                 height="1.5rem"
                 className={styles.skeleton}
                 animation="wave"
               />
               <Skeleton
-                width="45%"
+                width="55%"
                 height="1.5rem"
                 className={styles.skeleton}
                 animation="wave"
@@ -130,7 +130,8 @@ transform : translate(-50%, 50%);
           ) : (
             <div className={styles.descwrap}>
               <h2 className={styles.descwrap__subtitle}>
-                CSS 포지셔닝 - 엘리먼트 자유롭게 배치하기 (속성 : fixed)
+                CSS 포지셔닝 - 엘리먼트 자유롭게 배치하기 (position 속성 :
+                absolute)
               </h2>
               <p className={styles.descwrap__subtitle__desc}>
                 아래 코드는 CSS 예제 코드입니다. 각 속성에 대한 설명은 주석으로

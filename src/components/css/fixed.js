@@ -45,7 +45,7 @@ const Fixed = () => {
     }, 1000);
   }, []);
 
-  const prevPage = { path: "/css/position02" };
+  const prevPage = { path: "/css/position01" };
   const nextPage = { path: "/css/absolute" };
 
   return (
@@ -89,7 +89,7 @@ const Fixed = () => {
                 animation="wave"
               />
               <Skeleton
-                width="45%"
+                width="55%"
                 height="1.5rem"
                 className={styles.skeleton}
                 animation="wave"

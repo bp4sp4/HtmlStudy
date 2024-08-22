@@ -7,48 +7,41 @@ import "prismjs/components/prism-css.min.js";
 import { Skeleton } from "primereact/skeleton";
 import { NavLink } from "react-router-dom";
 
-const Float = () => {
+const NthOfType = () => {
   const [copySuccess, setCopySuccess] = useState("");
   const [loading, setLoading] = useState(true);
 
   const cssExampleCode = `<style>
-.floatwrap {
-    width: 300px;
-    height: 100px;
-    background-color: #27c93f;
+div {
+    background-color: #eee;
+    padding: 15px;
+    width: 400px;
+    text-align: center;
 }
-.boxs {
-    width: 50px;
-    height: 50px;
-    background-color: yellow;
-    float: left;
+
+div h2:nth-of-type(1) { /* div 태그안의 h2 태그 첫번째 요소 */
+  color: red;
 }
-.boxs2 {
-    width: 50px;
-    height: 50px;
-    background-color: yellow;
-    margin: auto;
+
+div h2:nth-of-type(2) { /* div 태그안의 h2 태그 마지막 요소 */
+  color: blue;
 }
-.boxs3 {
-    width: 50px;
-    height: 50px;
-    background-color: yellow;
-    float: right;
-}
+
+
 </style>
-<div class="floatwrap">
-  <div class="boxs">box</div>
-  <div class="boxs">box</div>
-  <div class="boxs">box</div>
+
+<div>
+  <h2>첫번째 요소</h2>
+  <h1>두번째 요소</h1>
+  <h2>세번째 요소</h2>
 </div>
 `;
-  const jobcode = `
-float 속성
-- none(default) : float 속성 적용안함
-- left : 요소가 컨테이너의 왼쪽 배치
-- right : 요소가 컨테이너의 오른쪽 배치
-- margin : atuo 요소를 중앙에 배치
-
+  const jobcode = `/* 많이 사용되지 않는 클래스입니다. 시용해본 경험이 홈페이지 제작자도 손에 꼽습니다. */
+nth-of-type()는 태그의 타입을 체크하기 때문에 해당 태그가 아닌 경우 체크하지 않습니다.
+div p:nth-of-type(even) {color : red;}
+/* div 요소 안에서 짝수 번째 p 태그의 텍스트 색상을 빨간색(red) 으로 설정합니다. */
+div p:nth-of-type(odd) {color : blue;}
+/* div 요소 안에서 홀수 번째 p 태그의 텍스트 색상을 파란색(blue) 으로 설정합니다. */
 `;
 
   const copyToClipboard = (code) => {
@@ -70,8 +63,8 @@ float 속성
     }, 1000);
   }, []);
 
-  const prevPage = { path: "/css/display" };
-  const nextPage = { path: "/css/position01" };
+  const prevPage = { path: "/css/FirstLastChild" };
+  const nextPage = { path: "/css/focus" };
 
   return (
     <div className={styles.container}>
@@ -101,7 +94,7 @@ float 속성
             <span role="img" aria-label="fire">
               🔥
             </span>
-            CSS <span className={styles.highlight}># 포지셔닝</span>
+            CSS <span className={styles.highlight}>#가상 클래스 </span>
           </h1>
         )}
         <section className={styles.section} id="intro">
@@ -123,7 +116,7 @@ float 속성
           ) : (
             <div className={styles.descwrap}>
               <h2 className={styles.descwrap__subtitle}>
-                CSS 포지셔닝 - 엘리먼트 수평 정렬하기(속성 : float)
+                주요 가상 클래스 이해하기 - nth-of-type()
               </h2>
               <p className={styles.descwrap__subtitle__desc}>
                 아래 코드는 CSS 예제 코드입니다. 각 속성에 대한 설명은 주석으로
@@ -142,7 +135,7 @@ float 속성
                 animation="wave"
               />
             ) : (
-              "CSS 예제입니다."
+              "CSS 예제"
             )}
           </h2>
           <div className={styles.codeContainer}>
@@ -192,16 +185,16 @@ float 속성
               {loading ? (
                 <Skeleton
                   width="100%"
-                  height="5 rem"
+                  height="5rem"
                   className={styles.skeleton}
                   animation="wave"
                 />
               ) : (
                 <>
-                  <div className={styles.floatwrap}>
-                    <div class={styles.boxs}>box</div>
-                    <div class={styles.boxs3}>box</div>
-                    <div class={styles.boxs2}>box</div>
+                  <div className={styles.div__nth__of__type}>
+                    <h2>첫번째 요소</h2>
+                    <h1 className={styles.div_nth__font}>두번째 요소</h1>
+                    <h2>세번째 요소</h2>
                   </div>
                 </>
               )}
@@ -217,9 +210,7 @@ float 속성
                   animation="wave"
                 />
               ) : (
-                <span className={styles.render__name__sub}>
-                  알아두면 좋은 TIP!
-                </span>
+                <span className={styles.render__name__sub}>알아두기만해!</span>
               )}
             </p>
             <div className={styles.render__code}>
@@ -237,6 +228,7 @@ float 속성
               )}
             </div>
           </div>
+
           <div className={styles.navigationButtons}>
             {prevPage && (
               <NavLink to={prevPage.path} className={styles.navigationLink}>
@@ -255,4 +247,4 @@ float 속성
   );
 };
 
-export default Float;
+export default NthOfType;

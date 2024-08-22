@@ -182,13 +182,8 @@ const menuItems = [
         children: [
           { label: "float", key: "/css/float", icon: <TagOutlined /> },
           {
-            label: "position01",
+            label: "position",
             key: "/css/position01",
-            icon: <TagOutlined />,
-          },
-          {
-            label: "position02",
-            key: "/css/position02",
             icon: <TagOutlined />,
           },
 
@@ -225,13 +220,54 @@ const menuItems = [
                 icon: <TagOutlined />,
               },
               {
-                label: "nth-child",
+                label: "nthchild",
                 key: "/css/nthchild",
+                icon: <TagOutlined />,
+              },
+              {
+                label: "nth-of-type",
+                key: "/css/nthoftype",
                 icon: <TagOutlined />,
               },
               {
                 label: "focus",
                 key: "/css/focus",
+                icon: <TagOutlined />,
+              },
+              {
+                label: "placeholder",
+                key: "/css/placeholder",
+                icon: <TagOutlined />,
+              },
+              {
+                label: "checked",
+                key: "/css/checked",
+                icon: <TagOutlined />,
+              },
+            ],
+          },
+          {
+            label: (
+              <span style={{ color: "#FF69B4", fontSize: "13px" }}>
+                CSS Before&After
+              </span>
+            ),
+            icon: <CompareArrowsIcon />,
+            key: "/css/before&after",
+            children: [
+              {
+                label: "before&after01",
+                key: "/css/BeforeAfter01",
+                icon: <TagOutlined />,
+              },
+              {
+                label: "before&after02",
+                key: "/css/BeforeAfter02",
+                icon: <TagOutlined />,
+              },
+              {
+                label: "before&after03",
+                key: "/css/BeforeAfter03",
                 icon: <TagOutlined />,
               },
             ],

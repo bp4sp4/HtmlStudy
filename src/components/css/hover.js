@@ -115,7 +115,7 @@ div:hover span {
                 animation="wave"
               />
               <Skeleton
-                width="45%"
+                width="55%"
                 height="1.5rem"
                 className={styles.skeleton}
                 animation="wave"
@@ -193,7 +193,7 @@ div:hover span {
               {loading ? (
                 <Skeleton
                   width="100%"
-                  height="5 rem"
+                  height="5rem"
                   className={styles.skeleton}
                   animation="wave"
                 />

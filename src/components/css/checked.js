@@ -7,55 +7,47 @@ import "prismjs/components/prism-css.min.js";
 import { Skeleton } from "primereact/skeleton";
 import { NavLink } from "react-router-dom";
 
-const Position02 = () => {
+const Checked = () => {
   const [copySuccess, setCopySuccess] = useState("");
   const [loading, setLoading] = useState(true);
 
   const cssExampleCode = `<style>
-.parents {
-    height: 250px;
-    position: relative;
+.form {
+    border: 1px solid #ddd;
+    width: 350px;
+    padding: 20px;
+    border-radius: 5px;
 }
 
-.parents div {
-    width: 200px;
-    height: 200px;
-    position: absolute;
+.form label {
+    display: inline-block;
+    width: 80px;
+    margin: 10px;
+}
+/* HTML 태그에 사용하는 속성을 선택하는 선택자로서 주로 폼 요소 중 input 태그의 type을 선택합니다. */
+.form input[type=text] {
+    border: 2px solid red;
 }
 
-.childs {
-    background-color: skyblue;
-    z-index: 0;
+.form input[type=password] {
+    border: 2px solid blue;
 }
 
-.childs2 {
-    background-color: gold;
-    z-index: 1;
-    top: 10px;
-    left: 10px;
-
-}
-
-.childs3 {
-    background-color: gray;
-    z-index: 2;
-    top: 20px;
-    left: 20px;
+.form input[type=email] {
+    border: 2px solid gold;
 }
 </style>
 
-<div class="parents"> 
-  <div class="childs"></div>
-  <div class="childs2"></div>
-  <div class="childs3"></div>
-</div>
+<form>
+  <label>아이디:</label><input type="text">
+  <label>비밀번호:</label><input type="password">
+  <label>이메일 : </label><input type="email">
+</form>
 `;
-
-  const jobcode = `/* 생각보다 많이 사용하는 속성값입니다. 알아두시면 좋은 팁입니다. */
-- z-index 속성이 없는 경우 html 순서상 늦게 나온 html 요소에 위로 올라옵니다.
-- z-index는 숫자가 높을 수록 위로 올라옴
-- z-index는 마이너스(-) 값도 사용할 수 있음
-- z-index를 0, 1, 2, 3 이런 식으로 꼭 단계로 넣을 필요 없음( ex, 100또는 1000)
+  const jobcode = `/* 가끔 사용되는 클래스 입니다. */
+HTML 요소의 속성을 선택합니다. 
+곧 input 태그가 3개 있어도 속성선택자로 클래스 이름 없이 개별적으로 선택할 수 있습니다.
+type="text" 처럼 따옴표를 사용해도 되고 사용하지 않아도 됩니다.
 `;
 
   const copyToClipboard = (code) => {
@@ -77,8 +69,8 @@ const Position02 = () => {
     }, 1000);
   }, []);
 
-  const prevPage = { path: "/css/position01" };
-  const nextPage = { path: "/css/fixed" };
+  const prevPage = { path: "/css/placeholder" };
+  const nextPage = { path: "/css/BeforeAfter01" };
 
   return (
     <div className={styles.container}>
@@ -98,30 +90,27 @@ const Position02 = () => {
         </div>
         {loading ? (
           <Skeleton
-            width="25%"
+            width="20%"
             height="3rem"
             className={`${styles.skeleton} mb`}
             animation="wave"
           />
         ) : (
           <h1 className={styles.title}>
-            <span role="img" aria-label="fire">
-              🔥
-            </span>
-            CSS <span className={styles.highlight}># 포지셔닝</span>
+            CSS <span className={styles.highlight}>#가상 클래스 </span>
           </h1>
         )}
         <section className={styles.section} id="intro">
           {loading ? (
             <>
               <Skeleton
-                width="45%"
+                width="20%"
                 height="1.5rem"
                 className={styles.skeleton}
                 animation="wave"
               />
               <Skeleton
-                width="45%"
+                width="55%"
                 height="1.5rem"
                 className={styles.skeleton}
                 animation="wave"
@@ -130,7 +119,7 @@ const Position02 = () => {
           ) : (
             <div className={styles.descwrap}>
               <h2 className={styles.descwrap__subtitle}>
-                겹처진 HTML 요소의 레이어 순서 바꾸기(z-index)
+                :checked를 위한 속성 선택자
               </h2>
               <p className={styles.descwrap__subtitle__desc}>
                 아래 코드는 CSS 예제 코드입니다. 각 속성에 대한 설명은 주석으로
@@ -149,7 +138,7 @@ const Position02 = () => {
                 animation="wave"
               />
             ) : (
-              "CSS 예제입니다."
+              "CSS 예제"
             )}
           </h2>
           <div className={styles.codeContainer}>
@@ -161,7 +150,7 @@ const Position02 = () => {
             {loading ? (
               <Skeleton
                 width="100%"
-                height="30rem"
+                height="50rem"
                 className={styles.skeleton}
                 animation="wave"
               />
@@ -199,17 +188,20 @@ const Position02 = () => {
               {loading ? (
                 <Skeleton
                   width="100%"
-                  height="20rem"
+                  height="10rem"
                   className={styles.skeleton}
                   animation="wave"
                 />
               ) : (
                 <>
-                  <div className={styles.parents}>
-                    <div className={styles.childs}></div>
-                    <div className={styles.childs2}></div>
-                    <div className={styles.childs3}></div>
-                  </div>
+                  <form className={styles.formex}>
+                    <label>아이디:</label>
+                    <input type="text" />
+                    <label>비밀번호:</label>
+                    <input type="password" />
+                    <label>이메일 : </label>
+                    <input type="email" />
+                  </form>
                 </>
               )}
             </div>
@@ -233,7 +225,7 @@ const Position02 = () => {
               {loading ? (
                 <Skeleton
                   width="100%"
-                  height="15rem"
+                  height="5rem"
                   className={styles.skeleton}
                   animation="wave"
                 />
@@ -263,4 +255,4 @@ const Position02 = () => {
   );
 };
 
-export default Position02;
+export default Checked;

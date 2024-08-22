@@ -7,48 +7,44 @@ import "prismjs/components/prism-css.min.js";
 import { Skeleton } from "primereact/skeleton";
 import { NavLink } from "react-router-dom";
 
-const Float = () => {
+const BeforeAfter02 = () => {
   const [copySuccess, setCopySuccess] = useState("");
   const [loading, setLoading] = useState(true);
 
   const cssExampleCode = `<style>
-.floatwrap {
-    width: 300px;
-    height: 100px;
-    background-color: #27c93f;
+ul {
+    list-style: none;
+    padding: 0;
+    line-height: 2rem;
 }
-.boxs {
-    width: 50px;
-    height: 50px;
-    background-color: yellow;
-    float: left;
+
+ul li::before {
+    content: '❌';
+    color: crimson;
 }
-.boxs2 {
-    width: 50px;
-    height: 50px;
-    background-color: yellow;
-    margin: auto;
-}
-.boxs3 {
-    width: 50px;
-    height: 50px;
-    background-color: yellow;
-    float: right;
+
+ul li.active::after {
+    content: 'new';
+    background-color: royalblue;
+    color: #fff;
+    font-size: 12px;
+    margin-left: 5px;
+    padding: 0 3px;
+    border-radius: 3px;
 }
 </style>
-<div class="floatwrap">
-  <div class="boxs">box</div>
-  <div class="boxs">box</div>
-  <div class="boxs">box</div>
-</div>
-`;
-  const jobcode = `
-float 속성
-- none(default) : float 속성 적용안함
-- left : 요소가 컨테이너의 왼쪽 배치
-- right : 요소가 컨테이너의 오른쪽 배치
-- margin : atuo 요소를 중앙에 배치
 
+<ul>
+  <li>가상클래스 사용한 목록</li>
+  <li class="active">가상클래스 사용한 목록2</li>
+  <li>가상클래스 사용한 목록3</li>
+  <li>가상클래스 사용한 목록4</li>
+</ul>
+`;
+  const jobcode = `/* 많이 사용되는 클래스 입니다. 꼭 알고 넘어가셔야 합니다! */
+모든 가상클래스 앞에 콜론을 2개 넣는 것과 1개 넣는 것은 동일합니다. 다만 ::Placeholder
+처럼 CSS3 버전에서 새로 생긴 가상클래스는 꼭 콜론을 2개 넣어야 합니다. :before :after는
+CSS3 이전부터 있던 가상클래스이기 때문에 콜론을 1개만 사용해도 괜찮습니다.
 `;
 
   const copyToClipboard = (code) => {
@@ -70,8 +66,8 @@ float 속성
     }, 1000);
   }, []);
 
-  const prevPage = { path: "/css/display" };
-  const nextPage = { path: "/css/position01" };
+  const prevPage = { path: "/css/beforeafter01" };
+  const nextPage = { path: "/css/beforeafter03" };
 
   return (
     <div className={styles.container}>
@@ -91,7 +87,7 @@ float 속성
         </div>
         {loading ? (
           <Skeleton
-            width="25%"
+            width="20%"
             height="3rem"
             className={`${styles.skeleton} mb`}
             animation="wave"
@@ -101,14 +97,14 @@ float 속성
             <span role="img" aria-label="fire">
               🔥
             </span>
-            CSS <span className={styles.highlight}># 포지셔닝</span>
+            CSS <span className={styles.highlight}>#가상 클래스 </span>
           </h1>
         )}
         <section className={styles.section} id="intro">
           {loading ? (
             <>
               <Skeleton
-                width="45%"
+                width="35%"
                 height="1.5rem"
                 className={styles.skeleton}
                 animation="wave"
@@ -123,7 +119,7 @@ float 속성
           ) : (
             <div className={styles.descwrap}>
               <h2 className={styles.descwrap__subtitle}>
-                CSS 포지셔닝 - 엘리먼트 수평 정렬하기(속성 : float)
+                :before :after 상급자를 위한 가상 클래스(2)
               </h2>
               <p className={styles.descwrap__subtitle__desc}>
                 아래 코드는 CSS 예제 코드입니다. 각 속성에 대한 설명은 주석으로
@@ -142,7 +138,7 @@ float 속성
                 animation="wave"
               />
             ) : (
-              "CSS 예제입니다."
+              "CSS 예제"
             )}
           </h2>
           <div className={styles.codeContainer}>
@@ -154,7 +150,7 @@ float 속성
             {loading ? (
               <Skeleton
                 width="100%"
-                height="30rem"
+                height="50rem"
                 className={styles.skeleton}
                 animation="wave"
               />
@@ -192,17 +188,20 @@ float 속성
               {loading ? (
                 <Skeleton
                   width="100%"
-                  height="5 rem"
+                  height="10rem"
                   className={styles.skeleton}
                   animation="wave"
                 />
               ) : (
                 <>
-                  <div className={styles.floatwrap}>
-                    <div class={styles.boxs}>box</div>
-                    <div class={styles.boxs3}>box</div>
-                    <div class={styles.boxs2}>box</div>
-                  </div>
+                  <ul className={styles.bfex02}>
+                    <li>가상클래스 사용한 목록</li>
+                    <li className={styles.bfex02__active}>
+                      가상클래스 사용한 목록2
+                    </li>
+                    <li>가상클래스 사용한 목록3</li>
+                    <li>가상클래스 사용한 목록4</li>
+                  </ul>
                 </>
               )}
             </div>
@@ -237,6 +236,7 @@ float 속성
               )}
             </div>
           </div>
+
           <div className={styles.navigationButtons}>
             {prevPage && (
               <NavLink to={prevPage.path} className={styles.navigationLink}>
@@ -255,4 +255,4 @@ float 속성
   );
 };
 
-export default Float;
+export default BeforeAfter02;

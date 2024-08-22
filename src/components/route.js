@@ -31,14 +31,19 @@ import Background from "./css/background";
 import Element from "./css/elements";
 import Float from "./css/float";
 import Display from "./css/display";
-import Position01 from "./css/position02";
-import Position02 from "./css/position01";
+import Position01 from "./css/position";
 import Fixed from "./css/fixed";
 import Absolute from "./css/absolute";
 import Hover from "./css/hover";
 import FirstLastChild from "./css/FirstLastChild";
-import NthChild from "./css/nthchild";
 import Focus from "./css/focus";
+import Placeholder from "./css/placeholder";
+import Checked from "./css/checked";
+import BeforeAfter01 from "./css/beforeafter01";
+import NthOfType from "./css/nth-of-type";
+import NthChild from "./css/nthchild";
+import BeforeAfter02 from "./css/beforeafter02";
+import BeforeAfter03 from "./css/beforeafter03";
 
 const Router = () => {
   return (
@@ -77,13 +82,18 @@ const Router = () => {
         <Route path="/css/display" element={<Display />} />
         <Route path="/css/float" element={<Float />} />
         <Route path="/css/position01" element={<Position01 />} />
-        <Route path="/css/position02" element={<Position02 />} />
         <Route path="/css/fixed" element={<Fixed />} />
         <Route path="/css/absolute" element={<Absolute />} />
         <Route path="/css/hover" element={<Hover />} />
         <Route path="/css/firstlastchild" element={<FirstLastChild />} />
         <Route path="/css/nthchild" element={<NthChild />} />
+        <Route path="/css/nthoftype" element={<NthOfType />} />
         <Route path="/css/focus" element={<Focus />} />
+        <Route path="/css/placeholder" element={<Placeholder />} />
+        <Route path="/css/checked" element={<Checked />} />
+        <Route path="/css/BeforeAfter01" element={<BeforeAfter01 />} />
+        <Route path="/css/BeforeAfter02" element={<BeforeAfter02 />} />
+        <Route path="/css/BeforeAfter03" element={<BeforeAfter03 />} />
       </Routes>
     </BrowserRouter>
   );
