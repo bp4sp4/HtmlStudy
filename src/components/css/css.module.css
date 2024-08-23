@@ -103,6 +103,9 @@
 }
 
 /* 복사 버튼 */
+.commonbtn {
+    position: relative;
+}
 
 .copyButton {
     margin-left: 1rem;
@@ -119,12 +122,33 @@
     background-color: #555;
 }
 
+.downbtn__wrap {
+    margin-top: 2rem;
+    margin-bottom: 1rem;
+}
+
+.downbtn {
+    padding: 0.5rem 1rem;
+    background-color: #333;
+    color: #fff;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+}
+
+.downbtn:hover {
+    background-color: #555;
+}
+
 /* 복사 완료 멘트 */
 
 .copySuccess {
     margin-left: 1rem;
     color: green;
     font-weight: bold;
+    position: absolute;
+    top: 9px;
 }
 
 /* 실행 예제 코드 백그라운드 */
@@ -688,7 +712,7 @@ p span {
     height: 400px;
     background-size: cover;
     position: relative;
-    background-image: url(../images/flower.jpg);
+    background-image: url(/public/images/flower.jpg);
 }
 
 .bf03::before {
@@ -699,4 +723,23 @@ p span {
     left: 0;
     width: 100%;
     height: 100%;
+}
+
+/* display : flex 예제 */
+.flex__wrap {
+    display: flex;
+    width: 100%;
+    height: 100px;
+    position: relative;
+    justify-content: center;
+    align-items: center;
+}
+
+.flexex01 {
+    width: 100px;
+    height: 100px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-color: #26ff00bd;
 }

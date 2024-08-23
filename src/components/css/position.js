@@ -77,7 +77,7 @@ const Position02 = () => {
     }, 1000);
   }, []);
 
-  const prevPage = { path: "/css/position01" };
+  const prevPage = { path: "/css/float" };
   const nextPage = { path: "/css/fixed" };
 
   return (

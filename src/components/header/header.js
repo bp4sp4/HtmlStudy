@@ -1,4 +1,5 @@
 import React, { useState, useEffect, useRef } from "react";
+import logoimg from "../header/logo.png";
 import { useLocation, useNavigate } from "react-router-dom";
 import {
   HomeOutlined,
@@ -46,7 +47,7 @@ const menuItems = [
     ],
   },
   {
-    label: "HTML Section",
+    label: "HTML5 Section",
     key: "/html",
     type: "group",
     children: [
@@ -112,7 +113,7 @@ const menuItems = [
     ],
   },
   {
-    label: "CSS Section",
+    label: "CSS3 Section",
     key: "/css",
     type: "group",
     children: [
@@ -164,12 +165,7 @@ const menuItems = [
         key: "/css/background",
         icon: <GradientIcon />,
       },
-      {
-        label: "CSS 요소들",
-        key: "/css/element",
-        icon: <ExplicitIcon />,
-      },
-
+      { label: "CSS 요소들", key: "/css/element", icon: <ExplicitIcon /> },
       {
         label: <span style={{ color: "#FF69B4" }}>CSS display</span>,
         key: "/css/display",
@@ -181,104 +177,84 @@ const menuItems = [
         key: "/css/position",
         children: [
           { label: "float", key: "/css/float", icon: <TagOutlined /> },
+          { label: "position", key: "/css/position01", icon: <TagOutlined /> },
+          { label: "fixed", key: "/css/fixed", icon: <TagOutlined /> },
+          { label: "absolute", key: "/css/absolute", icon: <TagOutlined /> },
+        ],
+      },
+    ],
+  },
+  {
+    label: "CSS3 Professional",
+    key: "/css-professional",
+    type: "group",
+    children: [
+      {
+        label: <span style={{ color: "#ff0000" }}>CSS display : flex</span>,
+        key: "/css/flex",
+        icon: <PictureInPictureIcon />,
+      },
+      {
+        label: <span style={{ color: "#FF69B4" }}>CSS 가상클래스</span>,
+        key: "/css/pseudo-class",
+        icon: <CompareArrowsIcon />,
+        children: [
+          { label: ":hover", key: "/css/hover", icon: <TagOutlined /> },
           {
-            label: "position",
-            key: "/css/position01",
+            label: "FirstLastChild",
+            key: "/css/firstlastchild",
             icon: <TagOutlined />,
           },
-
           {
-            label: "fixed",
-            key: "/css/fixed",
+            label: "nthchild",
+            key: "/css/nthchild",
             icon: <TagOutlined />,
           },
           {
-            label: "absolute",
-            key: "/css/absolute",
+            label: "nth-of-type",
+            key: "/css/nthoftype",
             icon: <TagOutlined />,
           },
+          { label: "focus", key: "/css/focus", icon: <TagOutlined /> },
+          {
+            label: "placeholder",
+            key: "/css/placeholder",
+            icon: <TagOutlined />,
+          },
+          { label: "checked", key: "/css/checked", icon: <TagOutlined /> },
         ],
       },
       {
-        label: "CSS Professional",
-        key: "/css",
-        type: "group",
+        label: (
+          <span style={{ color: "#FF69B4", fontSize: "13px" }}>
+            CSS Before&After
+          </span>
+        ),
+        key: "/css/before-after",
+        icon: <CompareArrowsIcon />,
         children: [
           {
-            label: <span style={{ color: "#FF69B4" }}>CSS 가상클래스</span>,
-            icon: <CompareArrowsIcon />,
-            key: "/css/pesudo-class",
-            children: [
-              {
-                label: ":hover",
-                key: "/css/hover",
-                icon: <TagOutlined />,
-              },
-              {
-                label: "FristLastChild",
-                key: "/css/firstlastchild",
-                icon: <TagOutlined />,
-              },
-              {
-                label: "nthchild",
-                key: "/css/nthchild",
-                icon: <TagOutlined />,
-              },
-              {
-                label: "nth-of-type",
-                key: "/css/nthoftype",
-                icon: <TagOutlined />,
-              },
-              {
-                label: "focus",
-                key: "/css/focus",
-                icon: <TagOutlined />,
-              },
-              {
-                label: "placeholder",
-                key: "/css/placeholder",
-                icon: <TagOutlined />,
-              },
-              {
-                label: "checked",
-                key: "/css/checked",
-                icon: <TagOutlined />,
-              },
-            ],
+            label: "before&after01",
+            key: "/css/BeforeAfter01",
+            icon: <TagOutlined />,
           },
           {
-            label: (
-              <span style={{ color: "#FF69B4", fontSize: "13px" }}>
-                CSS Before&After
-              </span>
-            ),
-            icon: <CompareArrowsIcon />,
-            key: "/css/before&after",
-            children: [
-              {
-                label: "before&after01",
-                key: "/css/BeforeAfter01",
-                icon: <TagOutlined />,
-              },
-              {
-                label: "before&after02",
-                key: "/css/BeforeAfter02",
-                icon: <TagOutlined />,
-              },
-              {
-                label: "before&after03",
-                key: "/css/BeforeAfter03",
-                icon: <TagOutlined />,
-              },
-            ],
+            label: "before&after02",
+            key: "/css/BeforeAfter02",
+            icon: <TagOutlined />,
+          },
+          {
+            label: "before&after03",
+            key: "/css/BeforeAfter03",
+            icon: <TagOutlined />,
           },
         ],
       },
-      {
-        // 강조된 색상
 
-        key: "/css/display",
-        icon: <GlobalOutlined />,
+      {
+        label: "before&after03",
+        key: "/css/BeforeAfter03",
+        icon: <TagOutlined />,
       },
     ],
   },
@@ -428,6 +404,9 @@ const App = () => {
         }}
         onScroll={handleSiderScroll}
       >
+        <div className={styles.logo__wrap}>
+          <img src={logoimg} alt="Logo" className={styles.logo} />
+        </div>
         <Menu
           theme={isDarkMode ? "dark" : "light"}
           mode="inline"
@@ -461,9 +440,7 @@ const App = () => {
             height: "calc(100vh - 64px)",
           }}
           onScroll={handleContentScroll}
-        >
-          {/* 여기에 라우트에 따른 컴포넌트를 렌더링하세요 */}
-        </Content>
+        ></Content>
       </Layout>
     </Layout>
   );

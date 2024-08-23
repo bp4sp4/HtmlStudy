@@ -78,7 +78,7 @@ transform : translate(-50%, 50%);
   }, []);
 
   const prevPage = { path: "/css/fixed" };
-  const nextPage = { path: "/css/hover" };
+  const nextPage = { path: "/css/flex" };
 
   return (
     <div className={styles.container}>

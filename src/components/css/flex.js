@@ -7,49 +7,37 @@ import "prismjs/components/prism-css.min.js";
 import { Skeleton } from "primereact/skeleton";
 import { NavLink } from "react-router-dom";
 
-const Hover = () => {
+const Flex = () => {
   const [copySuccess, setCopySuccess] = useState("");
   const [loading, setLoading] = useState(true);
 
   const cssExampleCode = `<style>
-.btn {
-  background-color : #fff;
-  color : #000;
-  text-align : center;
+body{ /* 홈페이지 제작자 또는 퍼블리셔, 프론트앤드 개발자 들이 가장 많이 사용하는 속성 입니다. */
+    height: 100vh; /* body의 높이 값이 반드시 필요합니다. */
+    display: flex;
+    justify-content: center;
+    align-items: center;
 }
 
-.btn:hover { /* :hover : 마우스를 올려놨을때 */
-  background-color : skyblue;
-  color : #fff;
-}
-
-div {
-    background-color: #eee;
-    padding: 15px;
-    width: 400px;
-    text-align: center;
-}
-
-div:hover h2 {
-    color: red;
-}
-
-div:hover span {
-    color: blue;
+.content{
+    width: 100px;
+    height: 100px;
+    background-color: #26ff00bd;
 }
 </style>
 
-<a class="btn" href="#none">마우스 올라가는 HTML 요소</a>
-
-<div>
-  <h2>마우스 오버</h2>
-  <span>마우스 오버되었을 떄 오버된 엘리먼트의 자식요소</span>
+<div clss="content">
+  display: flex 속성
 </div>
 `;
-  const jobcode = `/* 디자인 할떄 자주 사용되는 클래스 입니다. */
-:hover는 마우스를 오버 했을 때 오버된 자신의 CSS 속성을 변경하는 가상 클래스 입니다.
-:hover 다음에 스페이스가 오고 자식요소의 선택자가 오면 오버된 요소의 자식 요소가 변경됩니다.
-가상 클래스는 선택자 뒤에 콜론(:)을 사용해서 가상클래스를 만듭니다. 콜론(:)앞뒤로 스페이가 있으면 절대 안됩니다.
+
+  const jobcode = `/* display: flex가 자주 사용되고 많은 개발자들이 선호하는 이유 */
+이 홈페이지 또한 display : flex 속성이 가장많이 사용되었다는.. 
+- 유연한 레이아웃
+- 정렬 및 배치의 편리성
+- 반응형 디자인의 용이성
+- 복잡한 레이아웃도 쉽게 구현 가능 
+- 브라우저 호환성
 `;
 
   const copyToClipboard = (code) => {
@@ -71,8 +59,8 @@ div:hover span {
     }, 1000);
   }, []);
 
-  const prevPage = { path: "/css/flex" };
-  const nextPage = { path: "/css/FirstLastChild" };
+  const prevPage = { path: "/css/absolute" };
+  const nextPage = { path: "/css/hover" };
 
   return (
     <div className={styles.container}>
@@ -92,7 +80,7 @@ div:hover span {
         </div>
         {loading ? (
           <Skeleton
-            width="25%"
+            width="20%"
             height="3rem"
             className={`${styles.skeleton} mb`}
             animation="wave"
@@ -102,14 +90,14 @@ div:hover span {
             <span role="img" aria-label="fire">
               🔥
             </span>
-            CSS <span className={styles.highlight}>#가상 클래스 </span>
+            CSS <span className={styles.highlight}> #display : flex </span>
           </h1>
         )}
         <section className={styles.section} id="intro">
           {loading ? (
             <>
               <Skeleton
-                width="30%"
+                width="35%"
                 height="1.5rem"
                 className={styles.skeleton}
                 animation="wave"
@@ -124,7 +112,7 @@ div:hover span {
           ) : (
             <div className={styles.descwrap}>
               <h2 className={styles.descwrap__subtitle}>
-                주요 가상 클래스 이해하기 - 자신을 바꾸는 hover
+                수직중앙 수평 중앙의 모든 것
               </h2>
               <p className={styles.descwrap__subtitle__desc}>
                 아래 코드는 CSS 예제 코드입니다. 각 속성에 대한 설명은 주석으로
@@ -143,7 +131,7 @@ div:hover span {
                 animation="wave"
               />
             ) : (
-              "CSS 예제"
+              "🔥 CSS 예제"
             )}
           </h2>
           <div className={styles.codeContainer}>
@@ -155,7 +143,7 @@ div:hover span {
             {loading ? (
               <Skeleton
                 width="100%"
-                height="30rem"
+                height="50rem"
                 className={styles.skeleton}
                 animation="wave"
               />
@@ -164,15 +152,17 @@ div:hover span {
                 <pre>
                   <code className="language-markup">{cssExampleCode}</code>
                 </pre>
-                <button
-                  onClick={() => copyToClipboard(cssExampleCode)}
-                  className={styles.copyButton}
-                >
-                  코드 복사
-                </button>
-                {copySuccess && (
-                  <span className={styles.copySuccess}>{copySuccess}</span>
-                )}
+                <div className={styles.commonbtn}>
+                  <button
+                    onClick={() => copyToClipboard(cssExampleCode)}
+                    className={styles.copyButton}
+                  >
+                    코드 복사
+                  </button>
+                  {copySuccess && (
+                    <span className={styles.copySuccess}>{copySuccess}</span>
+                  )}
+                </div>
               </>
             )}
           </div>
@@ -186,26 +176,22 @@ div:hover span {
                   animation="wave"
                 />
               ) : (
-                "CSS 실행 예제 화면"
+                "🔥 CSS 실행 예제 화면"
               )}
             </h2>
+
             <div className={styles.render__code}>
               {loading ? (
                 <Skeleton
                   width="100%"
-                  height="5rem"
+                  height="10rem"
                   className={styles.skeleton}
                   animation="wave"
                 />
               ) : (
                 <>
-                  <a className={styles.btn} href="#none">
-                    마우스 올라가는 HTML 요소
-                  </a>
-
-                  <div className={styles.div}>
-                    <h2>마우스 오버</h2>
-                    <span>마우스 오버되었을 떄 오버된 엘리먼트의 자식요소</span>
+                  <div className={styles.flex__wrap}>
+                    <div className={styles.flexex01}>display :flex 속성</div>
                   </div>
                 </>
               )}
@@ -222,7 +208,7 @@ div:hover span {
                 />
               ) : (
                 <span className={styles.render__name__sub}>
-                  알아두면 좋은 TIP!
+                  🔥 알아두면 좋은 TIP!
                 </span>
               )}
             </p>
@@ -241,6 +227,48 @@ div:hover span {
               )}
             </div>
           </div>
+          <section className={styles.section} id="promotion">
+            <div className={styles.descwrap}>
+              <p className={styles.render__name}>
+                {loading ? (
+                  <Skeleton
+                    width="30%"
+                    height="2rem"
+                    className={styles.skeleton}
+                    animation="wave"
+                  />
+                ) : (
+                  <span className={styles.render__name__sub}>
+                    🔥 추천 컬러 사이트 링크(강추!!)
+                  </span>
+                )}
+              </p>
+              <ul className={styles.linklist}>
+                {loading ? (
+                  <>
+                    <Skeleton
+                      width="20%"
+                      height="1.5rem"
+                      className={styles.skeleton}
+                      animation="wave"
+                    />
+                  </>
+                ) : (
+                  <>
+                    <li>
+                      <a
+                        href="https://studiomeal.com/archives/197"
+                        target="_blank"
+                        rel="noopener noreferrer"
+                      >
+                        1분코딩 - display : flex
+                      </a>
+                    </li>
+                  </>
+                )}
+              </ul>
+            </div>
+          </section>
 
           <div className={styles.navigationButtons}>
             {prevPage && (
@@ -260,4 +288,4 @@ div:hover span {
   );
 };
 
-export default Hover;
+export default Flex;

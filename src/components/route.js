@@ -44,6 +44,7 @@ import NthOfType from "./css/nth-of-type";
 import NthChild from "./css/nthchild";
 import BeforeAfter02 from "./css/beforeafter02";
 import BeforeAfter03 from "./css/beforeafter03";
+import Flex from "./css/flex";
 
 const Router = () => {
   return (
@@ -94,6 +95,7 @@ const Router = () => {
         <Route path="/css/BeforeAfter01" element={<BeforeAfter01 />} />
         <Route path="/css/BeforeAfter02" element={<BeforeAfter02 />} />
         <Route path="/css/BeforeAfter03" element={<BeforeAfter03 />} />
+        <Route path="/css/flex" element={<Flex />} />
       </Routes>
     </BrowserRouter>
   );

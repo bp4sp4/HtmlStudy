@@ -24,7 +24,7 @@ const Images = () => {
 <! -- SVG 파일은 벡터포맷이므로 품질이 전혀 손상되지 않으며 Code로 만들어지는 이미지 입니다. -->
 <! -- 이미지 width, height 또한 css 로 관리하는게 더 좋습니다. -->`;
 
-  const prevPage = { path: "/html/images" };
+  const prevPage = { path: "/html/oftentag02" };
   const nextPage = { path: "/html/anchor" };
 
   const copyToClipboard = () => {

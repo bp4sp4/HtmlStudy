@@ -55,7 +55,7 @@ Shadow-color : 그림자의 색상을 정합니다. /* black, red, blue, green, 
     }, 1000);
   }, []);
 
-  const prevPage = { path: "/css/selector2" };
+  const prevPage = { path: "/css/font03" };
   const nextPage = { path: "/css/shadow02" };
 
   return (

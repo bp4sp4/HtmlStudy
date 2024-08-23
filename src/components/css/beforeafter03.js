@@ -6,40 +6,37 @@ import "prismjs/themes/prism.css";
 import "prismjs/components/prism-css.min.js";
 import { Skeleton } from "primereact/skeleton";
 import { NavLink } from "react-router-dom";
-// 진행중 @@@@@@@@@@@@// 진행중 @@@@@@@@@@@@// 진행중 @@@@@@@@@@@@// 진행중 @@@@@@@@@@@@// 진행중 @@@@@@@@@@@@// 진행중 @@@@@@@@@@@@
+
 const BeforeAfter03 = () => {
   const [copySuccess, setCopySuccess] = useState("");
+  const [downSuccess, setDownSuccess] = useState(""); // New state for download success
   const [loading, setLoading] = useState(true);
 
   const cssExampleCode = `<style>
-ul {
-    list-style: none;
-    padding: 0;
-    line-height: 2rem;
+.content {
+    width: 600px;
+    height: 400px;
+    background-image: url('/images/flower.jpg') no-repeat;
+    background-size: cover;
+    position: relative;
 }
-
-ul li::before {
-    content: '❌';
-    color: crimson;
-}
-
-ul li.active::after {
-    content: 'new';
-    background-color: royalblue;
-    color: #fff;
-    font-size: 12px;
-    margin-left: 5px;
-    padding: 0 3px;
-    border-radius: 3px;
+/* 가상클래스 :before :after 사용 예시 - 배경 이미지에 오버레이 사용하기 */
+.content::before {
+    content: '';
+    background-color: rgba(10, 0, 255, 0.34);
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
 }
 </style>
 
-<div className={styles.bf03}></div>
+<div class="content"></div>
 `;
-  const jobcode = `/* 많이 사용되는 클래스 입니다. 꼭 알고 넘어가셔야 합니다! */
-모든 가상클래스 앞에 콜론을 2개 넣는 것과 1개 넣는 것은 동일합니다. 다만 ::Placeholder
-처럼 CSS3 버전에서 새로 생긴 가상클래스는 꼭 콜론을 2개 넣어야 합니다. :before :after는
-CSS3 이전부터 있던 가상클래스이기 때문에 콜론을 1개만 사용해도 괜찮습니다.
+
+  const jobcode = `/* 많이 사용되지 않는 방법 입니다. */
+.content:before를 .cotent:after로 바뀌어도 결과는 동일합니다. before로 꾸미고 after로 다른 디자인을 꾸며도 됩니다.
 `;
 
   const copyToClipboard = (code) => {
@@ -47,6 +44,16 @@ CSS3 이전부터 있던 가상클래스이기 때문에 콜론을 1개만 사�
       () => setCopySuccess("복사 완료!"),
       () => setCopySuccess("복사 실패.")
     );
+  };
+
+  const downToClipboard = (url) => {
+    const link = document.createElement("a");
+    link.href = url;
+    link.download = "flower.jpg"; // You can change the file name here
+    document.body.appendChild(link);
+    link.click();
+    document.body.removeChild(link);
+    setDownSuccess("다운 완료!"); // Update state on success
   };
 
   useEffect(() => {
@@ -62,7 +69,6 @@ CSS3 이전부터 있던 가상클래스이기 때문에 콜론을 1개만 사�
   }, []);
 
   const prevPage = { path: "/css/beforeafter02" };
-  const nextPage = { path: "/css/before" };
 
   return (
     <div className={styles.container}>
@@ -72,11 +78,6 @@ CSS3 이전부터 있던 가상클래스이기 때문에 콜론을 1개만 사�
           {prevPage && (
             <NavLink to={prevPage.path} className={styles.navigationLink}>
               ⬅ 이전글
-            </NavLink>
-          )}
-          {nextPage && (
-            <NavLink to={nextPage.path} className={styles.navigationLink}>
-              ⮕ 다음글
             </NavLink>
           )}
         </div>
@@ -154,15 +155,17 @@ CSS3 이전부터 있던 가상클래스이기 때문에 콜론을 1개만 사�
                 <pre>
                   <code className="language-markup">{cssExampleCode}</code>
                 </pre>
-                <button
-                  onClick={() => copyToClipboard(cssExampleCode)}
-                  className={styles.copyButton}
-                >
-                  코드 복사
-                </button>
-                {copySuccess && (
-                  <span className={styles.copySuccess}>{copySuccess}</span>
-                )}
+                <div className={styles.commonbtn}>
+                  <button
+                    onClick={() => copyToClipboard(cssExampleCode)}
+                    className={styles.copyButton}
+                  >
+                    코드 복사
+                  </button>
+                  {copySuccess && (
+                    <span className={styles.copySuccess}>{copySuccess}</span>
+                  )}
+                </div>
               </>
             )}
           </div>
@@ -179,6 +182,7 @@ CSS3 이전부터 있던 가상클래스이기 때문에 콜론을 1개만 사�
                 "CSS 실행 예제 화면"
               )}
             </h2>
+
             <div className={styles.render__code}>
               {loading ? (
                 <Skeleton
@@ -190,6 +194,21 @@ CSS3 이전부터 있던 가상클래스이기 때문에 콜론을 1개만 사�
               ) : (
                 <>
                   <div className={styles.bf03}></div>
+                  <div className={styles.commonbtn}>
+                    <div className={styles.downbtn__wrap}>
+                      <button
+                        onClick={() => downToClipboard("/images/flower.jpg")}
+                        className={styles.downbtn}
+                      >
+                        이미지 다운로드
+                      </button>
+                      {downSuccess && (
+                        <span className={styles.copySuccess}>
+                          {downSuccess}
+                        </span>
+                      )}
+                    </div>
+                  </div>
                 </>
               )}
             </div>
@@ -229,11 +248,6 @@ CSS3 이전부터 있던 가상클래스이기 때문에 콜론을 1개만 사�
             {prevPage && (
               <NavLink to={prevPage.path} className={styles.navigationLink}>
                 ⬅ 이전글
-              </NavLink>
-            )}
-            {nextPage && (
-              <NavLink to={nextPage.path} className={styles.navigationLink}>
-                ⮕ 다음글
               </NavLink>
             )}
           </div>

@@ -36,7 +36,7 @@ const Paragraph = () => {
     }, 1000);
   }, []);
 
-  const prevPage = { path: "/HTML5/basic" };
+  const prevPage = { path: "/html/basic" };
   const nextPage = { path: "/html/hngroup" };
 
   return (

@@ -23,7 +23,16 @@
 
 .wrap {
     font-family: "Noto Sans KR", sans-serif;
+}
 
+.logo__wrap {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.logo {
+    width: 200px;
 }
 
 a {
