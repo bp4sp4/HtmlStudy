@@ -6,15 +6,15 @@ const Footer = () => {
     <footer className={styles.footer}>
       <p>
         <a
-          href="https://yourblog.com"
+          href="https://frontdevpark.tistory.com/"
           target="_blank"
           rel="noopener noreferrer"
         >
           Blog
-        </a>{" "}
+        </a>
         <span className={styles.line}>|</span>
         <a
-          href="https://github.com/yourusername"
+          href="https://github.com/bp4sp4/HtmlStudy"
           target="_blank"
           rel="noopener noreferrer"
         >
@@ -22,7 +22,11 @@ const Footer = () => {
         </a>
       </p>
       <p className={styles.copyright}>
-        &copy; {new Date().getFullYear()} SangHunPark. All rights reserved.
+        &copy; {new Date().getFullYear()} HtmlStudy. All rights reserved.
+        <br></br> 모든 사람을 위한 Html/Css Study 사이트입니다. 완전한 정확성을
+        보증할 수는 없습니다.<br></br>버그, 오타, 문법오류, 문의사항은 메일로
+        보내주시면 감사합니다. <br></br>이메일 : bp4sp456@gmail.com 메일
+        보내주시면 감사하겠습니다.
       </p>
     </footer>
   );

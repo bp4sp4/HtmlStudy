@@ -406,7 +406,9 @@ const App = () => {
         onScroll={handleSiderScroll}
       >
         <div className={styles.logo__wrap}>
-          <img src={logoimg} alt="Logo" className={styles.logo} />
+          <a href="/">
+            <img src={logoimg} alt="Logo" className={styles.logo} />
+          </a>
         </div>
         <Menu
           theme={isDarkMode ? "dark" : "light"}
