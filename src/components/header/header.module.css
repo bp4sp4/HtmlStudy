@@ -23,6 +23,7 @@
 
 .wrap {
     font-family: "Noto Sans KR", sans-serif;
+    background-color: #fff;
 }
 
 .logo__wrap {
@@ -52,16 +53,26 @@ a {
     cursor: pointer;
     transition: background-color 0.3s ease;
     z-index: 99;
-
     display: flex;
     align-items: center;
-    gap: 8px;
+    gap: 16px;
 }
 
-.mode {
-    margin: 0;
-    font-size: 1rem;
+.switchWrapper {
+    display: flex;
 }
+
+.instagramIcon {
+    color: #e1306c;
+    font-size: 24px;
+    transition: transform 0.3s ease, color 0.3s ease;
+}
+
+.instagramIcon:hover {
+    transform: scale(1.2);
+    color: #ff69b4;
+}
+
 
 
 header {
@@ -72,4 +83,36 @@ header {
 .mode {
     color: var(--text-color) !important;
     font-family: 'GongGothicMedium' !important;
+}
+
+/* 태블릿 및 모바일용 스타일 */
+@media (max-width: 768px) {
+    .logo {
+        width: 120px;
+    }
+
+    .toggleButton {
+        right: -16.5rem;
+    }
+
+    /* 스위치와 다크 모드 텍스트 숨기기 */
+    .switchWrapper {
+        display: none;
+    }
+}
+
+/* 모바일용 스타일 */
+@media (max-width: 480px) {
+    .logo {
+        width: 100px;
+    }
+
+    .toggleButton {
+        right: -16.5rem;
+    }
+
+    /* 스위치와 다크 모드 텍스트 숨기기 */
+    .switchWrapper {
+        display: none;
+    }
 }

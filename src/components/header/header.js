@@ -25,6 +25,7 @@ import ExplicitIcon from "@mui/icons-material/Explicit";
 import DisplaySettingsIcon from "@mui/icons-material/DisplaySettings";
 import PictureInPictureIcon from "@mui/icons-material/PictureInPicture";
 import CompareArrowsIcon from "@mui/icons-material/CompareArrows";
+import InstagramIcon from "@mui/icons-material/Instagram";
 const { Header, Sider, Content } = Layout;
 
 // 메뉴 항목 데이터 정의
@@ -422,16 +423,27 @@ const App = () => {
       <Layout style={{ marginLeft: collapsed ? "80px" : "200px" }}>
         <Header className={styles.header} style={{ padding: 0 }}>
           <div className={styles.toggleButton}>
-            <Switch
-              checked={isDarkMode}
-              onChange={toggleDarkMode}
-              style={{ marginRight: "8px" }}
-            />
-            <Typography className={styles.mode} variant="body1">
-              {isDarkMode ? "🌞 라이트 모드" : "🌙 다크 모드"}
-            </Typography>
+            <div className={styles.switchWrapper}>
+              <Switch
+                checked={isDarkMode}
+                onChange={toggleDarkMode}
+                style={{ marginRight: "8px" }}
+              />
+              <Typography className={styles.mode} variant="body1">
+                {isDarkMode ? "🌞 라이트 모드" : "🌙 다크 모드"}
+              </Typography>
+            </div>
+            <a
+              href="https://www.instagram.com/htmlstudy"
+              target="_blank"
+              rel="noopener noreferrer"
+              className={styles.instagramIcon}
+            >
+              <InstagramIcon />
+            </a>
           </div>
         </Header>
+
         <Content
           ref={contentRef}
           style={{
