@@ -404,6 +404,8 @@ const App = () => {
           height: "100vh",
         }}
         onScroll={handleSiderScroll}
+        breakpoint="lg" // 큰 화면에서 접기/펼치기
+        collapsedWidth="80" // 접혔을 때의 너비
       >
         <div className={styles.logo__wrap}>
           <a href="/">
@@ -422,8 +424,23 @@ const App = () => {
         />
       </Sider>
 
-      <Layout style={{ marginLeft: collapsed ? "80px" : "200px" }}>
-        <Header className={styles.header} style={{ padding: 0 }}>
+      <Layout
+        style={{
+          marginLeft: collapsed ? "80px" : "200px",
+          background: "var(--background-color)",
+          transition: "all 0.2s",
+        }}
+      >
+        <Header
+          className={styles.header}
+          style={{
+            padding: "0 16px",
+            position: "fixed",
+            top: 0,
+            width: "100%",
+            zIndex: 10,
+          }}
+        >
           <div className={styles.toggleButton}>
             <div className={styles.switchWrapper}>
               <Switch
@@ -449,9 +466,7 @@ const App = () => {
         <Content
           ref={contentRef}
           style={{
-            margin: "24px 16px 0",
             overflowY: "auto",
-            height: "calc(100vh - 64px)",
           }}
           onScroll={handleContentScroll}
         ></Content>

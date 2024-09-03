@@ -39,7 +39,6 @@
     justify-content: center;
     align-items: center;
     margin-top: 3rem;
-
 }
 
 .section {
@@ -89,4 +88,20 @@ code {
     color: var(--button-hover-text-color);
     border: 3px solid var(--button-hover-border-color);
     transition: 0.5s ease-out;
+}
+
+
+@media (max-width: 480px) {
+    .container {
+        display: flex;
+        height: 100%;
+        width: 100%;
+        margin-left: auto;
+        margin-right: auto;
+        background-color: var(--background-color);
+        color: var(--text-color);
+        font-weight: 600;
+        overflow: hidden;
+        margin-top: 5rem;
+    }
 }

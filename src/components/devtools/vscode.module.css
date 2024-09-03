@@ -1,10 +1,3 @@
-* {
-    font-family: 'GongGothicMedium', sans-serif;
-    margin: 0;
-    padding: 0;
-    box-sizing: border-box;
-}
-
 .container {
     display: flex;
     width: 100%;
@@ -13,14 +6,6 @@
     font-weight: 600;
 }
 
-.main__wrap {
-    width: 100%;
-    margin-left: 5rem;
-    padding: 6rem 24px 1.5rem;
-    box-sizing: border-box;
-    display: flex;
-    flex-direction: column;
-}
 
 .section {
     margin-bottom: 1.5rem;
@@ -195,17 +180,17 @@
 }
 
 .navigationLink {
-    color: #7c5fdd;
+    color: #6d84c8;
     text-decoration: none;
     padding: 0.5rem 1rem;
-    border: 1px solid #7c5fdd;
+    border: 1px solid #6d84c8;
     border-radius: 4px;
     transition: background-color 0.3s ease;
 }
 
 .navigationLink:hover {
-    background-color: #7c5fdd;
-    color: #fff;
+    background-color: #6d84c8;
+    color: #ffffff;
 }
 
 .textarea {
@@ -240,4 +225,38 @@ foreignObject {
     margin-right: 1rem;
     display: inline-block;
     width: 1.5rem;
+}
+
+@media (min-width: 768px) {
+
+    .container {
+        flex-direction: row;
+        padding: 2rem;
+    }
+
+    .main__wrap {
+        padding: 6rem 0rem
+    }
+
+    .codeContainer {
+        padding-bottom: 2rem;
+    }
+}
+
+@media (min-width: 1024px) {
+    .container {
+        padding: 3rem;
+    }
+
+    .title {
+        font-size: 2.5rem;
+    }
+
+    .descwrap__subtitle {
+        font-size: 1.5rem;
+    }
+
+    .descwrap__subtitle__desc {
+        font-size: 1.25rem;
+    }
 }

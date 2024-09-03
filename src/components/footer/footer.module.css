@@ -11,28 +11,28 @@
     margin: 0 auto;
     flex-direction: column;
     background: #fff;
-
     font-family: 'S-CoreDream-3Light';
-
+    background-color: var(--background-color);
 }
 
 .footer a {
     display: inline-block;
     margin: 0 20px 10px 20px;
     color: #808080;
-    font-size: 13px;
+    color: var(--text-color) !important;
 }
 
 .line {
-    color: #808080;
+    color: var(--text-color) !important;
 }
 
 .footer a:visited {
-    color: #808080;
+    color: var(--text-color) !important;
 }
 
 .footer p {
     text-align: center;
     font-size: 13px;
+    color: var(--text-color) !important;
     line-height: 17px;
 }

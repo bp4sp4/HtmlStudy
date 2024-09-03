@@ -1,5 +1,6 @@
 * {
     font-family: 'GongGothicMedium';
+    color: (0, 149, 246);
 }
 
 .container {
@@ -191,17 +192,17 @@
 }
 
 .navigationLink {
-    color: #7c5fdd;
+    color: #6d84c8;
     text-decoration: none;
     padding: 0.5rem 1rem;
-    border: 1px solid #7c5fdd;
+    border: 1px solid #6d84c8;
     border-radius: 4px;
     transition: background-color 0.3s ease;
 }
 
 .navigationLink:hover {
-    background-color: #7c5fdd;
-    color: #fff;
+    background-color: #6d84c8;
+    color: #ffffff;
 }
 
 /* 추천 링크 */

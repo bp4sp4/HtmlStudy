@@ -23,12 +23,15 @@
 
 .wrap {
     font-family: "Noto Sans KR", sans-serif;
-    background-color: #fff;
+    background-color: var(--background-color);
+    z-index: 999;
+
 }
 
 .logo__wrap {
     display: flex;
     justify-content: center;
+
     align-items: center;
 }
 
@@ -45,7 +48,7 @@ a {
 .toggleButton {
     position: absolute;
     top: 1rem;
-    right: 1rem;
+    right: 16rem;
     padding: 0.5rem 1rem;
     color: var(--button-text-color);
     border: none;
@@ -83,36 +86,4 @@ header {
 .mode {
     color: var(--text-color) !important;
     font-family: 'GongGothicMedium' !important;
-}
-
-/* 태블릿 및 모바일용 스타일 */
-@media (max-width: 768px) {
-    .logo {
-        width: 120px;
-    }
-
-    .toggleButton {
-        right: -14.5rem;
-    }
-
-    /* 스위치와 다크 모드 텍스트 숨기기 */
-    .switchWrapper {
-        display: none;
-    }
-}
-
-/* 모바일용 스타일 */
-@media (max-width: 480px) {
-    .logo {
-        width: 100px;
-    }
-
-    .toggleButton {
-        right: -14.5rem;
-    }
-
-    /* 스위치와 다크 모드 텍스트 숨기기 */
-    .switchWrapper {
-        display: none;
-    }
 }
