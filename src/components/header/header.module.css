@@ -51,14 +51,11 @@ a {
     right: 16rem;
     padding: 0.5rem 1rem;
     color: var(--button-text-color);
-    border: none;
-    border-radius: 5px;
     cursor: pointer;
     transition: background-color 0.3s ease;
     z-index: 99;
     display: flex;
     align-items: center;
-    gap: 16px;
 }
 
 .switchWrapper {
@@ -86,4 +83,5 @@ header {
 .mode {
     color: var(--text-color) !important;
     font-family: 'GongGothicMedium' !important;
+    width: 90px;
 }
